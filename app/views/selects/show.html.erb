@@ -1,5 +1,5 @@
 <% if current_user?(@select.user) %>
-<center><h1><%= best_in_place @select, :name, :nil => "Click here to add a lesson name" %></h1>
+<center><h4><%= best_in_place @select, :name, :nil => "Click here to add a lesson name" %></h4>
 
 <h4>Description: <%= best_in_place @select, :description, :type => :textarea, :nil => "Click here to add a description" %></h4>
 <h4>Objective: <%= best_in_place @select, :objective, :type => :textarea, :nil => "Click here to add an objective" %></h4>
@@ -175,7 +175,7 @@
 	<% end %>
 </table>
 <br />
-<div id="pdf_link">
+<div id="pdflink">
 		  <div class="accordion" id="accordion2">
 
 		    <div class="accordion-group">

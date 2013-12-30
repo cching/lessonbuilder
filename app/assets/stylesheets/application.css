@@ -14,7 +14,7 @@
  */
 
 @media print {
-        #pdf_link {
+        #pdflink {
                 display: none;
         }
 }

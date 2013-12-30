@@ -1,5 +1,5 @@
 <% if current_user?(@select.user) %>
-<h1><%= best_in_place @select, :name, :nil => "Click here to add a lesson name" %></h1>
+<h4><%= best_in_place @select, :name, :nil => "Click here to add a lesson name" %></h4>
 
 <center><h4>Description: <%= best_in_place @select, :description, :type => :textarea, :nil => "Click here to add a description" %></h4>
 <h4>Objective: <%= best_in_place @select, :objective, :type => :textarea, :nil => "Click here to add an objective" %></h4>

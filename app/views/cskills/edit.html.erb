@@ -1,0 +1,18 @@
+<h1>Edit Skill</h1>
+<center><h3>for <%= @cskill.standard_id %></h3></center><br />
+	
+
+<%= form_for([@select,@cskill]) do |f| %>
+
+<div class="field">
+  <%= f.label :standard_id, "Standard" %>
+  <%= f.collection_select :standard_id, @select.standards.all, :id, :id %>
+</div>
+
+<div class="field">
+	<%= f.label :content %>
+	<%= f.text_area :content, :size => "90x10" %></div><br />
+
+
+  <button type="submit" class="btn">Save</button>
+<% end %>

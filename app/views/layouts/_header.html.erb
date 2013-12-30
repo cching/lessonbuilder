@@ -1,0 +1,81 @@
+<% if signed_in? %>
+<div id="pdf_link"><%= image_tag("aftersignin.jpg") %></div>
+<% else %>
+<%= image_tag("home.jpg") %>
+<% end %>
+<body>
+<div class="navbar">
+  <div class="navbar-inner">
+    <ul class="nav">
+	    <ul class="nav pull-left">
+
+	         <li><%= link_to "Home", root_path %></li>
+
+	</ul>
+       <% if signed_in? %>
+
+	            <li id="fat-menu" class="dropdown">
+           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+             Lesson Builder <b class="caret"></b>
+           </a>
+           <ul class="dropdown-menu">
+          <li><%= link_to "ELA", lessons_path %></li>
+
+             <li><%= link_to "Math", '#' %></li>
+           </ul>
+         </li>
+         <li><%= link_to "Browse Lessons", selects_path %></li>
+		 <% end %>
+		        <li><%= link_to "Help", help_path %></li>
+		 <% if signed_in? %>
+		 
+         <li id="fat-menu" class="dropdown">
+           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+             Account <b class="caret"></b>
+           </a>
+           <ul class="dropdown-menu">
+             <li><%= link_to "Profile", current_user %></li>
+             <li><%= link_to "Settings", '#' %></li>
+             <li class="divider"></li>
+             <li>
+               <%= link_to "Sign out", signout_path, method: "delete" %>
+             </li>
+           </ul>
+         </li>
+		 <% end %>
+    </ul>
+	
+  </div>
+</div>
+</body>
+
+
+<style type="text/css">   
+.navbar-inner {
+  background-image: -moz-linear-gradient(top, #47cde5, #47cde5);
+  background-image: -ms-linear-gradient(top, #47cde5, #47cde5);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#47cde5), to(#47cde5));
+  background-image: -webkit-linear-gradient(top, #47cde5, #47cde5);
+  background-image: -o-linear-gradient(top, #47cde5, #47cde5);
+  background-image: linear-gradient(top, #47cde5, #47cde5);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#'47cde5, endColorstr='#'47cde5, GradientType=0);
+}
+
+body { padding-top: 0px; }
+@media screen and (max-width: 768px) {
+    body { padding-top: 0px; }
+}
+
+
+.navbar .nav > li > a {
+  padding: 10px 10px 11px;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.navbar .nav > .active > a,
+.navbar .nav > .active > a:hover,
+.navbar .nav > .active > a:focus {
+  color: #ffffff;
+}
+</style>

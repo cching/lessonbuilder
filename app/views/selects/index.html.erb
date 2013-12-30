@@ -1,0 +1,76 @@
+<% if signed_in? %>
+
+<h1>Search Lessons</h1>
+
+	<table id="search">
+		<%= search_form_for @search do |f| %>
+ 	   		<div class="field">
+     		   <tr>
+				   <td>  
+   		   			   <%= f.label :name_cont, "Name contains:" %>
+    				   <%= f.text_field :name_cont %>
+		 		  </td>
+
+  	  </div>
+  	 	 	<tr>
+				<td>
+			 	   	<div class="actions">
+				 	   <button type="submit" class="btn"><i class="icon-search"></i> Search</button>
+				    </div>
+		<% end %>
+				</td>
+			</tr>
+			
+		</table> <br />
+		
+
+
+<table class="table-hover">
+	<thead>
+
+		<th>
+			<%= sort_link @search, :name, "Lesson Name" %>
+		</th>
+		        <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+
+
+		<th>
+			<%= sort_link @search, :date, "Date" %>
+		</th>
+		        <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<th>
+			<%= sort_link @search, :user_id, "Created By" %>
+		</th>
+	</thead>
+	
+	<tbody>
+		<tr>
+		<% @selects.where(:private => FALSE).each do |select| %>
+
+			<td><% unless select.name.blank? %>
+
+				<%= link_to select.name, select, class: "btn btn-link" %></td>
+				
+				<% else %> 
+					<div class="exception">No lesson name!
+					</div>
+				<% end %>
+			</td>
+			 <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+
+			<td><%= select.date.to_time.strftime('%B %e, %Y') %></td>
+			        <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td><%= link_to select.user.name, select.user, class: "btn btn-link" %></td>
+		</tr>
+	</tbody>
+	<% end %>
+</table>
+
+
+<div align="right"><%= will_paginate @selects, :page_links => false %></div>
+
+<% else %>
+Please sign in before continuing.
+<% end %>
+
+

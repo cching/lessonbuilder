@@ -1,0 +1,39 @@
+<h1>Standards</h1>
+
+<table id="search">
+<%= search_form_for @search do |f| %>
+  <div class="field">
+      <tr>
+		  <td><%= f.label :grade_id_eq, "Grade:" %>
+	 		  <%= f.select :grade_id_eq, options_from_collection_for_select(Grade.all, "id", "number", @search.grade_id_eq) %>
+          </td>
+	  	  <td><%= f.label :subject_id_eq, "Subject:" %>
+  			  <%= f.select :subject_id_eq, options_from_collection_for_select(Subject.all, "id", "name", @search.subject_id_eq) %>
+  		  </td>
+		  <td>
+		  </td>
+	  </tr>
+  </div>
+  <tr><td><div class="actions"><i class="icon-search"></i><%= f.submit "Search" %></div>
+<% end %></tr></td>
+</table>
+</ br>
+<table class="table table-hover">
+	<tr>
+		<th>Select</th>
+		<th><%= sort_link @search, :number, "ID" %></th>
+		<th><%= sort_link @search, :content, "Standard" %></th>
+	</tr>
+	<%= form_for(@select) do |f| %>
+		<% @standards.each do |standard| %>
+		<tr>
+    		<td><%= check_box_tag "select[standard_ids][]", standard.id, @select.standard_ids.include?(standard.id), id: dom_id(standard) %></td>
+			<td><%= standard.id %></td>
+    		<td><%= label_tag dom_id(standard), standard.content %></td>
+			</tr>
+		<% end %>
+		</table>
+		<div class="actions", align="left">
+		 	<%= f.submit "Select Standards" %>
+		</div>
+	<% end %>

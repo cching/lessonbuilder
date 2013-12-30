@@ -1,0 +1,46 @@
+<% if current_user.admin? %>
+
+<h1>Questions</h1>
+<table id="search">
+<%= search_form_for @search do |f| %>
+  <div class="field">
+      <tr>
+		  <td><%= f.label :standard_id_eq, "Standard ID:" %>
+	 		  <%= f.select :standard_id_eq, options_from_collection_for_select(Standard.all, "id", "id", @search.standard_id_eq), {:include_blank => 'All Standards' } %>
+          </td>
+
+	  </tr>
+  </div>
+  <tr><td><div class="actions"><button type="submit" class="btn"><i class="icon-search"></i> Search</button></div>
+<% end %></tr></td>
+</table>
+
+<%= link_to 'Add new question', new_question_path, class: "btn" %><div align="right"><%= will_paginate @questions %></div>
+<table class="table table-hover">
+	<thead>
+    <th>Standard ID</th>
+	<th>Question</th>
+    <th></th>
+    <th></th>
+
+</thead>
+<tbody>
+<% @questions.each do |question| %>
+  <tr>
+	<td><%= question.standard.id %></td>
+    <td><%= question.content %></td>
+    <td><%= link_to 'Edit', edit_question_path(question), class: "btn btn-mini" %></td>
+    <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-mini" %></td>
+  </tr>
+</tbody>
+<% end %>
+</table><br />
+
+
+<br />
+
+<% end %>
+
+
+
+

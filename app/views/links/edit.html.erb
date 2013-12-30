@@ -1,0 +1,23 @@
+<% if current_user.admin? %>
+
+<h1>Edit Resource</h1>
+
+<%= form_for @link do |f| %>
+
+<div class="field">
+  <%= f.label :standard_id, "Standard" %>
+  <%= f.collection_select :standard_id, Standard.all, :id, :id %>
+</div>
+
+<div class="field">
+	<%= f.label :comment %>
+	<%= f.text_area :comment, :size => "90x10" %></div><br />
+	
+	<div class="field">
+		<%= f.label :link %>
+		<%= f.text_area :link, :size => "90x10" %></div><br />
+
+	<%= f.submit "Save Resource", class: "btn" %>
+<% end %>
+<%= link_to 'Back', links_path %>
+<% end %>

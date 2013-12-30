@@ -1,0 +1,48 @@
+<% if current_user.admin? %>
+
+<h1>Links</h1>
+<table id="search">
+<%= search_form_for @search do |f| %>
+  <div class="field">
+      <tr>
+		  <td><%= f.label :standard_id_eq, "Standard ID:" %>
+	 		  <%= f.select :standard_id_eq, options_from_collection_for_select(Standard.all, "id", "id", @search.standard_id_eq), {:include_blank => 'All Standards' } %>
+          </td>
+
+	  </tr>
+  </div>
+  <tr><td><div class="actions"><button type="submit" class="btn"><i class="icon-search"></i> Search</button></div>
+<% end %></tr></td>
+</table>
+
+<%= link_to 'Add new link', new_link_path, class: "btn" %><div align="right"><%= will_paginate @links %></div>
+<table class="table table-hover">
+	<thead>
+    <th>Standard ID</th>
+	<th>Comment and Description</th>
+	<th>Resource</th>
+    <th></th>
+    <th></th>
+
+</thead>
+<tbody>
+<% @links.each do |link| %>
+  <tr>
+	<td><%= link.standard_id %></td>
+    <td><%= link.comment %></td>
+	<td><%= truncate(Rinku.auto_link(link.link), :length=>400).html_safe %></td>
+    <td><%= link_to 'Edit', edit_link_path(link), class: "btn btn-mini" %></td>
+    <td><%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-mini" %></td>
+  </tr>
+</tbody>
+<% end %>
+</table><br />
+
+
+<br />
+
+<% end %>
+
+
+
+

@@ -1,0 +1,42 @@
+<% if current_user.admin? %>
+<h1>Vocabulary</h1>
+
+<table id="search">
+<%= search_form_for @search do |f| %>
+  <div class="field">
+      <tr>
+		  <td><%= f.label :standard_id_eq, "Standard ID:" %>
+	 		  <%= f.select :standard_id_eq, options_from_collection_for_select(Standard.all, "id", "id", @search.standard_id_eq), {:include_blank => 'All Standards'} %>
+          </td>
+
+	  </tr>
+  </div>
+  <tr><td><div class="actions"><button type="submit" class="btn"><i class="icon-search"></i> Search</button></div>
+<% end %></tr></td>
+</table>
+<%= link_to 'Add new vocabulary word', new_vocab_path, class: "btn" %><div align="right"><%= will_paginate @vocabs %></div>
+<table class="table table-hover">
+	<thead>
+    <th>Standard ID</th>
+	<th>English</th>
+	<th>Spanish</th>
+    <th></th>
+    <th></th>
+
+</thead>
+<tbody>
+<% @vocabs.each do |vocab| %>
+  <tr>
+	<td><%= vocab.standard.id %></td>
+    <td><%= vocab.content_english %></td>
+	    <td><%= vocab.content_spanish %></td>
+    <td><%= link_to 'Edit', edit_vocab_path(vocab), class: "btn btn-mini" %></td>
+    <td><%= link_to 'Destroy', vocab, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-mini" %></td>
+  </tr>
+</tbody>
+<% end %>
+</table><br />
+<% end %>
+
+
+

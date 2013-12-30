@@ -1,0 +1,29 @@
+<h1>Listing clinks</h1>
+
+<table>
+  <tr>
+    <th>Select</th>
+    <th>Standard</th>
+    <th>Comment</th>
+    <th>Link</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @clinks.each do |clink| %>
+  <tr>
+    <td><%= clink.select_id %></td>
+    <td><%= clink.standard_id %></td>
+    <td><%= clink.comment %></td>
+    <td><%= clink.link %></td>
+    <td><%= link_to 'Show', clink %></td>
+    <td><%= link_to 'Edit', edit_clink_path(clink) %></td>
+    <td><%= link_to 'Destroy', clink, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Clink', new_clink_path %>

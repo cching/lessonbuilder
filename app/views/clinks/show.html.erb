@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Select:</b>
+  <%= @clink.select_id %>
+</p>
+
+<p>
+  <b>Standard:</b>
+  <%= @clink.standard_id %>
+</p>
+
+<p>
+  <b>Comment:</b>
+  <%= @clink.comment %>
+</p>
+
+<p>
+  <b>Link:</b>
+  <%= @clink.link %>
+</p>
+
+
+<%= link_to 'Edit', edit_clink_path(@clink) %> |
+<%= link_to 'Back', clinks_path %>

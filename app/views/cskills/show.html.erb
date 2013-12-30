@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Select:</b>
+  <%= @cskill.select_id %>
+</p>
+
+<p>
+  <b>Standard:</b>
+  <%= @cskill.standard_id %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @cskill.content %>
+</p>
+
+
+<%= link_to 'Edit', edit_cskill_path(@cskill) %> |
+<%= link_to 'Back', cskills_path %>

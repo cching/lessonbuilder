@@ -1,0 +1,133 @@
+<% if signed_in? %>
+
+<h4><font color="#00BFFF">Common Core: English Language Arts and Mathematics</h4></font>
+<p>Rich, complex text is the CORE of Common Core.  Standards by themselves cannot raise achievement (David Coleman).
+The strength of Common Core is in the abundant opportunities it provides for students to engage in close reading of
+large amounts of high quality, complex text, combined with opportunities to engage in discussion and writing
+grounded in text. (Michael Schmoker).   Please select appropriate text before selecting standards to teach.<br />
+<!-- Button to trigger modal -->
+<a href="#myModal" role="button" data-toggle="modal">Appendix B of the CCCSS</a>
+ 
+<!-- Modal -->
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel"><a href="http://www.corestandards.org/assets/Appendix_B.pdf">Appendex B of the CCCSS</a></h3>
+  </div>
+  <div class="modal-body">
+    <p><iframe src="http://docs.google.com/viewer?url=http%3A%2F%2Fwww.corestandards.org%2Fassets%2FAppendix_B.pdf&embedded=true" width="600" height="780" style="border: none;"></iframe></p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+
+  </div>
+</div>is the best place to start.
+The Mathematical Practices are the heart of Common Core Mathematics. They serve as the starting point for building COmmon Core math lessons.
+</p>
+<%= image_tag("info.jpg") %>
+
+<% else %>
+
+<div class="row">
+
+  <div class="span8"> <h4><font color="#00BFFF">Common Core: English Language Arts and Mathematics</h4></font>
+<p>Rich, complex text is the CORE of Common Core.  Standards by themselves cannot raise achievement (David Coleman).
+The strength of Common Core is in the abundant opportunities it provides for students to engage in close reading of
+large amounts of high quality, complex text, combined with opportunities to engage in discussion and writing
+grounded in text. (Michael Schmoker).   Please select appropriate text before selecting standards to teach.
+<!-- Button to trigger modal -->
+<a href="#myModal" role="button" class="btn btn-link" data-toggle="modal">Appendix B of the CCCSS</a>
+ 
+<!-- Modal -->
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel"><a href="http://www.corestandards.org/assets/Appendix_B.pdf">Appendex B of the CCCSS</a></h3>
+  </div>
+  <div class="modal-body">
+    <p><iframe src="http://docs.google.com/viewer?url=http%3A%2F%2Fwww.corestandards.org%2Fassets%2FAppendix_B.pdf&embedded=true" width="600" height="780" style="border: none;"></iframe></p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+
+  </div>
+</div>
+ is the best place to start.
+The Mathematical Practices are the heart of Common Core Mathematics. They serve as the starting point for building COmmon Core math lessons.
+</p><%= image_tag("info.jpg") %></div>
+
+
+
+
+
+  <div class="span4 offset3"></div>
+  <div align="right">
+	  <h3>Login</h3>
+
+      <%= form_for(:session, url: sessions_path) do |f| %>
+  <div class="control-group">
+          <p><%= f.label :email %>
+
+
+
+   <div class="controls">
+     <div class="input-prepend">
+       <span class="add-on"><i class="icon-envelope"></i></span>
+           <%= f.text_field :email %></p>
+     </div>
+   </div>
+  </div>
+
+  <div class="control-group">
+        <p><%= f.label :password %>
+
+
+   <div class="controls">
+     <div class="input-prepend">
+       <span class="add-on"><i class="icon-lock"></i></span>
+        <%= f.password_field :password %></p>
+     </div>
+   </div>
+  </div>
+
+        <p><%= f.submit "Sign in", class: "btn" %></p>
+      <% end %>
+
+
+      <p>New user?</p> <p><%= link_to "Sign up now", signup_path, class: "btn btn-link" %></p>
+	  
+</div>
+</div>
+</div>
+<% end %>
+
+<style type="text/css">
+a:link {color:#00BFFF;}      /* unvisited link */
+a:visited {color:#00BFFF;}  /* visited link */
+a:hover {background-color:#FFFFFF;}  /* mouse over link */
+a:active {color:#00BFFF;}
+
+body .modal {
+  width: 44%; /* desired relative width */
+  left: 28%; /* (100%-width)/2 */
+  /* place center */
+  margin-left:auto;
+  margin-right:auto; 
+}
+</style>
+
+<script>
+
+$(document).ready(function() {
+  $("a").click(function() {
+    link_host = this.href.split("/")[2];
+    document_host = document.location.href.split("/")[2];
+
+    if (link_host != document_host) {
+      window.open(this.href);
+      return false;
+    }
+  });
+});
+</script>
+

@@ -1,7 +1,7 @@
 <% if current_user?(@select.user) %>
-<h4><%= best_in_place @select, :name, :nil => "Click here to add a lesson name" %></h4>
+<center><h1><%= best_in_place @select, :name, :nil => "Click here to add a lesson name" %></h1>
 
-<center><h4>Description: <%= best_in_place @select, :description, :type => :textarea, :nil => "Click here to add a description" %></h4>
+<h4>Description: <%= best_in_place @select, :description, :type => :textarea, :nil => "Click here to add a description" %></h4>
 <h4>Objective: <%= best_in_place @select, :objective, :type => :textarea, :nil => "Click here to add an objective" %></h4>
 <h4>Text: <%= best_in_place @select, :text, :nil => "Click here to add text" %></h4>
 <h4><%= @select.date.to_time.strftime('%B %e, %Y') %></h4></center><br />

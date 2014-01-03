@@ -2,12 +2,12 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :author, input_html: {style: 'width:500px;'} %><br />
-    <%= f.input :title, input_html: {style: 'width:500px;'} %><br />
-    <%= f.input :publisher, input_html: {style: 'height:100px; width:500px'} %><br />
-        <%= f.input :example, label: "Example Text", input_html: {style: 'height:100px; width:500px'} %><br />
-    <%= f.input :assess_questions, label: "Assessment Questions", input_html: {style: 'height:100px; width:500px'} %><br />
-    <%= f.input :availability, input_html: {style: 'height:100px; width:500px'} %><br />
+    <%= f.input :author, input_html: {style: 'width:100%;'} %><br />
+    <%= f.input :title, input_html: {style: 'width:100%;'} %><br />
+    <%= f.input :publisher, input_html: {style: 'height:100px; width:100%'} %><br />
+        <%= f.input :example, label: "Example Text", input_html: {style: 'height:100px; width:100%'} %><br />
+    <%= f.input :assess_questions, label: "Assessment Questions", input_html: {style: 'height:100px; width:100%'} %><br />
+    <%= f.input :availability, input_html: {style: 'height:100px; width:100%'} %><br />
     <%= f.association :grades, as: :check_boxes, label_method: :number %><br />
   </div>
 

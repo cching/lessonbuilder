@@ -7,18 +7,18 @@
 
 <p>
   <b>Publisher:</b>
-  <%= simple_format @book.publisher %>
+  <%= simple_format(@book.publisher) %>
 </p>
 
 <p>
   <b>Title:</b>
   <%= @book.title %>
 </p>
-
+<html id=style="white-space: pre-wrap;">
 <p>
   <b>Example text:</b>
-  <%= simple_format @book.example %>
-</p>
+  <%= raw simple_format h(@book.example) %>
+</p></html>
 
 <p>
   <b>Assessment questions:</b>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140103182934) do
+ActiveRecord::Schema.define(:version => 20140103230452) do
 
   create_table "admin_notes", :force => true do |t|
     t.string   "resource_id",     :null => false
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20140103182934) do
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
     t.text     "example"
+    t.integer  "textcategory_id"
   end
 
   create_table "clinks", :force => true do |t|
@@ -195,13 +196,13 @@ ActiveRecord::Schema.define(:version => 20140103182934) do
     t.integer  "subsubject_id", :default => 1
     t.string   "name",          :default => ""
     t.date     "date"
-    t.datetime "created_at",                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  :null => false
-    t.datetime "updated_at",                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
     t.boolean  "private",       :default => false
     t.string   "description",   :default => ""
     t.text     "objective",     :default => ""
     t.string   "book",          :default => ""
-    t.text     "notes",         :default => "1. Learning Objective.\nCheck for Understanding; what are we going to do today? What are we going to (skill)\n\n2. Activate Prior Knowledge.\nCheck for Understanding\nConnection to new learning\n\n3. Concept Development\nProvide written definitions and examples.\nCognitive Strategies\nCheck for Understanding\n\n4. Skill Development/Guided Practice\nStrategic Steps\nProvide matched teacher/student problems\nCheck for understanding\n\n5. Relevance\nProvide reasons with examples\nCheck for Understanding\n\n6. Closure\nConcept\nSkill\n\n7. Summary Closure; what did you learn today about _____\n\n8. Independent Practice"
+    t.text     "notes"
   end
 
   create_table "skills", :force => true do |t|
@@ -238,6 +239,10 @@ ActiveRecord::Schema.define(:version => 20140103182934) do
   create_table "tests", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "textcategories", :force => true do |t|
+    t.string "category"
   end
 
   create_table "texts", :force => true do |t|

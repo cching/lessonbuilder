@@ -16,6 +16,8 @@
         <th>
             Grade(s):
         </th>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
     </thead>
     
     <tbody>
@@ -33,6 +35,8 @@
                     <% book.grades.each do |grade| %>
             <td><%= grade.number %></td>
             <% end %>
+                <td><%= link_to 'Edit', edit_book_path(book), class: "btn btn-mini" %></td>
+    <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-mini" %></td>
         </tr>
     </tbody>
     <% end %>

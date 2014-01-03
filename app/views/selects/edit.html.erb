@@ -40,9 +40,10 @@
 				<% @standards.each do |standard| %>
 				<%= standard.id %>
 				<% end %></font>
-				<br />&nbsp;<br />&nbsp;<br /><br /></div>
+				<br />&nbsp;<br />&nbsp;<br /><br /></div></div></div>
+
 				<div class="row">
-					  <div class="span2"><font color="33CCFF">Select the resources to be included in this lesson.</font></div>
+					  <div class="span2"><font color="33CCFF">                Select the resources to be included in this lesson.</font></div>
 					  <div class="span10">
 	
 	<table class="table table-condensed table-hover table-bordered">
@@ -70,13 +71,18 @@
 				<tr>
 					<td>
 						<% unless standard.questions.blank? %>
-						<% standard.questions.each do |question| %>						
+						<% standard.questions.where(:user_id => 0).each do |question| %>						
 							<%= hidden_field_tag "select[question_ids][]", nil %>
 				     	   	<%= check_box_tag "select[question_ids][]", question.id, @select.question_ids.include?(question.id), id: dom_id(question) %> 
 							<%= question.content %>
 							<br />							
 						<% end %>
-						
+							<% standard.skills.where(:user_id => current_user.id).each do |question| %>
+							<%= hidden_field_tag "select[question_ids][]", nil %>
+				     	   	<%= check_box_tag "select[question_ids][]", question.id, @select.question_ids.include?(question.id), id: dom_id(question) %> 
+							<%= question.content %>
+							<br />
+						<% end %>
 						<% else %>
 							No preset questions exist for this standard. Submit your lesson and add custom questions on the next page.
 						<% end %>

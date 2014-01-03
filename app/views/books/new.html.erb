@@ -1,0 +1,13 @@
+<% if current_user.admin? %>
+
+<h1>New book</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', books_path %>
+
+<% else %>
+
+You do not have the rights to view this page.
+
+<% end %>

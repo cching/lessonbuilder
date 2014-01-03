@@ -1,0 +1,52 @@
+<% if current_user.admin? %>
+
+<table class="table-hover">
+    <thead>
+
+        <th>
+            <%= sort_link @search, :title, "Title" %>
+        </th>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+
+
+        <th>
+            <%= sort_link @search, :author, "Author" %>
+        </th>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <th>
+            Grade(s):
+        </th>
+    </thead>
+    
+    <tbody>
+        <tr>
+        <% @books.each do |book| %>
+
+
+                <td><%= link_to book.title, book, class: "btn btn-link" %>
+                
+            </td>
+             <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+
+            <td><%= book.author %></td>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    <% book.grades.each do |grade| %>
+            <td><%= grade.number %></td>
+            <% end %>
+        </tr>
+    </tbody>
+    <% end %>
+</table>
+
+
+<div align="right"><%= will_paginate @selects, :page_links => false %></div>
+<br />
+
+
+<%= link_to 'New Book', new_book_path, class: "btn btn-mini" %>
+
+<% else %>
+ You do not have the rights to view this page.
+
+ <% end %>
+

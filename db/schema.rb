@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140103174620) do
+ActiveRecord::Schema.define(:version => 20140103182934) do
 
   create_table "admin_notes", :force => true do |t|
     t.string   "resource_id",     :null => false
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(:version => 20140103174620) do
     t.text     "availability"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.text     "example"
   end
 
   create_table "clinks", :force => true do |t|

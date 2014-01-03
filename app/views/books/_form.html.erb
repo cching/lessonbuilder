@@ -5,6 +5,7 @@
     <%= f.input :author, input_html: {style: 'width:500px;'} %><br />
     <%= f.input :title, input_html: {style: 'width:500px;'} %><br />
     <%= f.input :publisher, input_html: {style: 'height:100px; width:500px'} %><br />
+        <%= f.input :example, label: "Example Text", input_html: {style: 'height:100px; width:500px'} %><br />
     <%= f.input :assess_questions, label: "Assessment Questions", input_html: {style: 'height:100px; width:500px'} %><br />
     <%= f.input :availability, input_html: {style: 'height:100px; width:500px'} %><br />
     <%= f.association :grades, as: :check_boxes, label_method: :number %><br />

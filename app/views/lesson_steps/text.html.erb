@@ -1,0 +1,81 @@
+<div class="page-header">
+  <h1>Select a Text <small>Text illustrating the complexity, quality, and range of student reading.</small></h1>
+</div>
+
+
+<%= form_for @select, :url => wizard_path(step, select_id: @select.id), :method => :put do |f| %>
+
+
+
+
+<% if @select.subject_id==1%>
+
+
+<% Book.where(:textcategory_id => [1, 2, 3, 4, 7]).each do |book| %>
+<%= f.radio_button :book_id, book.id %>
+<%= link_to book.title, book,:action => 'show',:id => @book , :remote =>:true %><br />
+<% end %>
+
+<% else %>
+
+<% Book.where(:textcategory_id => [5, 6, 8, 9, 10]).each do |book| %>
+<%= f.radio_button :book_id, book.id %>
+<%= link_to book.title, book, :item_wrapper_class => 'inline' %><br />
+<% end %>%nspb;<br />
+
+
+<% end %>
+<div align="center"><%= f.submit "Select Text and Continue", class: "btn" %></div><br />
+<% end %>
+
+
+
+
+ 
+<!-- Modal -->
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel"><a href="http://www.corestandards.org/assets/Appendix_B.pdf">Appendex B of the CCCSS</a></h3>
+  </div>
+  <div class="modal-body">
+
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+
+  </div>
+</div>
+
+
+<style type="text/css">
+a:link {color:#00BFFF;}      /* unvisited link */
+a:visited {color:#00BFFF;}  /* visited link */
+a:hover {background-color:#FFFFFF;}  /* mouse over link */
+a:active {color:#00BFFF;}
+
+body .modal {
+  width: 44%; /* desired relative width */
+  left: 28%; /* (100%-width)/2 */
+  /* place center */
+  margin-left:auto;
+  margin-right:auto; 
+}
+</style>
+
+<script>
+
+$(document).ready(function() {
+  $("a").click(function() {
+    link_host = this.href.split("/")[2];
+    document_host = document.location.href.split("/")[2];
+
+    if (link_host != document_host) {
+      window.open(this.href);
+      return false;
+    }
+  });
+});
+</script>
+
+

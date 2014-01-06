@@ -25,8 +25,6 @@
 					<%= f.text_area :description, :cols => "10", :rows => "1" %></td></tr>
 					<tr><td><%= f.label :objective %>
 					<%= f.text_area :objective, :cols => "10", :rows => "1" %></td></tr>
-					<tr><td><%= f.label :book, "Text" %>
-					<%= f.text_area :book, :cols => "10", :rows => "1" %></td></tr>
 					<tr><td><%= f.label :date %>
 <%= f.date_select :date %></td></tr></table>
 		        </div>
@@ -40,10 +38,10 @@
 				<% @standards.each do |standard| %>
 				<%= standard.id %>
 				<% end %></font>
-				<br />&nbsp;<br />&nbsp;<br /><br /></div></div></div>
+				<br />&nbsp;<br />&nbsp;<br /><br /></div></div>
 
 				<div class="row">
-					  <div class="span2"><font color="33CCFF">                Select the resources to be included in this lesson.</font></div>
+					  <div class="span2"><font color="33CCFF"> Select the resources to be included in this lesson.</font></div></font>
 					  <div class="span10">
 	
 	<table class="table table-condensed table-hover table-bordered">
@@ -71,16 +69,16 @@
 				<tr>
 					<td>
 						<% unless standard.questions.blank? %>
-						<% standard.questions.where(:user_id => 0).each do |question| %>						
+						<% standard.questions.where(:user_id => 0).each do |question| %>
 							<%= hidden_field_tag "select[question_ids][]", nil %>
-				     	   	<%= check_box_tag "select[question_ids][]", question.id, @select.question_ids.include?(question.id), id: dom_id(question) %> 
-							<%= question.content %>
-							<br />							
+				     	   	<%= check_box_tag "select[question_ids][]", question.id, @select.question_ids.include?(question.id), id: dom_id(question) %>
+				      	  	<%= question.content %>
+							<br />
 						<% end %>
-							<% standard.skills.where(:user_id => current_user.id).each do |question| %>
+												<% standard.questions.where(:user_id => current_user.id).each do |question| %>
 							<%= hidden_field_tag "select[question_ids][]", nil %>
-				     	   	<%= check_box_tag "select[question_ids][]", question.id, @select.question_ids.include?(question.id), id: dom_id(question) %> 
-							<%= question.content %>
+				     	   	<%= check_box_tag "select[question_ids][]", question.id, @select.question_ids.include?(question.id), id: dom_id(question) %>
+				      	  	<%= question.content %>
 							<br />
 						<% end %>
 						<% else %>

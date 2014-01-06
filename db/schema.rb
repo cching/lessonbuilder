@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140103230452) do
+ActiveRecord::Schema.define(:version => 20140106190350) do
 
   create_table "admin_notes", :force => true do |t|
     t.string   "resource_id",     :null => false
@@ -139,6 +139,13 @@ ActiveRecord::Schema.define(:version => 20140103230452) do
     t.integer  "text_id"
   end
 
+  create_table "select_grades", :force => true do |t|
+    t.integer  "grade_id"
+    t.integer  "select_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "select_links", :force => true do |t|
     t.integer  "select_id"
     t.integer  "link_id"
@@ -174,6 +181,13 @@ ActiveRecord::Schema.define(:version => 20140103230452) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "select_subjects", :force => true do |t|
+    t.integer  "select_id"
+    t.integer  "subsubject_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
   create_table "select_vocabs", :force => true do |t|
     t.integer  "select_id"
     t.integer  "vocab_id"
@@ -203,6 +217,7 @@ ActiveRecord::Schema.define(:version => 20140103230452) do
     t.text     "objective",     :default => ""
     t.string   "book",          :default => ""
     t.text     "notes"
+    t.integer  "book_id"
   end
 
   create_table "skills", :force => true do |t|
@@ -242,7 +257,8 @@ ActiveRecord::Schema.define(:version => 20140103230452) do
   end
 
   create_table "textcategories", :force => true do |t|
-    t.string "category"
+    t.string  "category"
+    t.integer "subject_id"
   end
 
   create_table "texts", :force => true do |t|

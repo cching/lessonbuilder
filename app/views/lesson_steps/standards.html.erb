@@ -1,0 +1,59 @@
+<div class="page-header">
+  <h1>Select Standards <small>The Common Core Standards of your lesson.</small></h1>
+</div>
+
+
+<div class="row">
+	  <div class="span4"><br /><font color="red">Select the Common Core Standard(s) for this lesson:</font>
+	  </div>
+	  <div class="span8">
+<table class="table table-hover">
+	<tr>
+		<th> &nbsp; &nbsp; &nbsp; &nbsp;</th>
+		<th>Standard ID</th>
+		<th>Subject</th>
+		<th>Standard</th>
+
+	</tr>
+
+<%= form_for @select, url: wizard_path do |f| %>
+
+		<%= hidden_field_tag "select[standard_ids][]", nil %>
+		<% @select.subsubjects.each do |subsubject| %>
+		<% @select.grades.each do |grade| %>
+		<% Standard.where(:subsubject_id => subsubject.id, :grade_id => grade.id).order("grade_id ASC").each do |standard| %>
+
+		<tr>
+    		<td><%= check_box_tag "select[standard_ids][]", standard.id, @select.standard_ids.include?(standard.id), id: dom_id(standard) %></td>
+			<td><%= standard.id %></td>
+			<td><%= standard.subsubject.name %></td>
+    		<td><%= standard.content %></td>
+    	</tr>
+		<% end %>
+   		<% end %>
+		<% end %> 	
+		<%= hidden_field_tag "select[standard_ids][]", nil %>	
+ 		<% @select.grades.each do |grade| %>
+		<% Standard.where(:subject_id => @select.subject.id, :grade_id => grade.id).order("grade_id ASC").each do |standard| %>
+		<tr>
+    		<td><%= check_box_tag "select[standard_ids][]", standard.id, @select.standard_ids.include?(standard.id), id: dom_id(standard) %></td>
+			<td><%= standard.id %></td>
+			<td><%= standard.subject.name %></td>
+    		<td><%= standard.content %></td>    		
+		<% end %> 
+		<% end %>
+		
+		</tr>
+
+
+		</table>
+		
+
+		<div class="actions", align="left">
+			<button type="submit" class="btn" data-loading-text="Saving..">Save and Continue</button>
+		</div>
+		</div>
+	<% end %>
+</div>
+
+		

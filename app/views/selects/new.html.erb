@@ -1,39 +1,24 @@
-<h1>Standards</h1>
+<% if signed_in? %>
 
-<table id="search">
-<%= search_form_for @search do |f| %>
-  <div class="field">
-      <tr>
-		  <td><%= f.label :grade_id_eq, "Grade:" %>
-	 		  <%= f.select :grade_id_eq, options_from_collection_for_select(Grade.all, "id", "number", @search.grade_id_eq) %>
-          </td>
-	  	  <td><%= f.label :subject_id_eq, "Subject:" %>
-  			  <%= f.select :subject_id_eq, options_from_collection_for_select(Subject.all, "id", "name", @search.subject_id_eq) %>
-  		  </td>
-		  <td>
-		  </td>
-	  </tr>
+<div class="page-header">
+  <h1>Lesson Setup <small>Lesson attributes:</small></h1>
+</div>
+
+
+<%= simple_form_for(@select) do |f| %>
+    <%= f.input :name, input_html: {style: 'width:100%;'} %><br />
+    <%= f.input :description, as: :text, input_html: {style: 'width:100%; height:50px'} %><br />
+    <%= f.input :objective, input_html: {style: 'width:100%; height:50px'} %><br />
+
+    <%= f.association :grades, label: "Grade:", as: :check_boxes, label_method: :number %><br />
+        <%= f.association :subject, as: :radio_buttons, label_method: :name, label: "Reading Subject" %><br />
+    <%= f.association :subsubjects, label: "Subject:", as: :check_boxes, label_method: :name %><br />
+  <div class="form-actions">
+    <%= f.button :submit, "Save and select text" %>
   </div>
-  <tr><td><div class="actions"><i class="icon-search"></i><%= f.submit "Search" %></div>
-<% end %></tr></td>
-</table>
-</ br>
-<table class="table table-hover">
-	<tr>
-		<th>Select</th>
-		<th><%= sort_link @search, :number, "ID" %></th>
-		<th><%= sort_link @search, :content, "Standard" %></th>
-	</tr>
-	<%= form_for(@select) do |f| %>
-		<% @standards.each do |standard| %>
-		<tr>
-    		<td><%= check_box_tag "select[standard_ids][]", standard.id, @select.standard_ids.include?(standard.id), id: dom_id(standard) %></td>
-			<td><%= standard.id %></td>
-    		<td><%= label_tag dom_id(standard), standard.content %></td>
-			</tr>
+<% end %>
+
+	
+	<% else %>
+	<center>Please sign in before continuing.<br /><%= link_to "Sign in", signin_path, class: "btn btn-link" %>
 		<% end %>
-		</table>
-		<div class="actions", align="left">
-		 	<%= f.submit "Select Standards" %>
-		</div>
-	<% end %>

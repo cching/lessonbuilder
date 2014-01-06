@@ -1,0 +1,40 @@
+<div id="modal-edit-fields"><p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @book.title %>
+</p>
+<p>
+  <b>Author:</b>
+  <%= @book.author %>
+</p>
+
+<p>
+  <b>Publisher:</b>
+  <%= simple_format(@book.publisher) %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @book.textcategory.category %>
+</p>
+
+
+
+<html id=style="white-space: pre-wrap;">
+<p>
+  <b>Example text:</b>
+  <%= raw simple_format h(@book.example) %>
+</p></html>
+
+<p>
+  <b>Assessment questions:</b>
+  <%= simple_format @book.assess_questions %>
+</p>
+
+<p>
+  <b>Availability:</b>
+  <%= simple_format @book.availability %>
+</p>
+
+</div>

@@ -208,6 +208,8 @@ GEM
       rack
       raindrops (~> 0.7)
     websocket (1.0.7)
+    wicked (1.0.2)
+      rails (>= 3.0.7)
     wicked_pdf (0.9.10)
       rails
     will_paginate (3.0.5)
@@ -247,6 +249,7 @@ DEPENDENCIES
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
   unicorn
+  wicked
   wicked_pdf
   will_paginate (~> 3.0)
   wkhtmltopdf-binary

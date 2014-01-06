@@ -27,6 +27,10 @@ Commoncore::Application.routes.draw do
   resources :cskills
   resources :skills
 
+  scope "selects/:select_id" do
+    resources :lesson_steps
+  end
+
 
   root to: 'static_pages#home'
   

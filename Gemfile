@@ -23,6 +23,7 @@ gem 'amoeba'
 gem 'best_in_place'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+gem 'wicked'
 
 group :development, :test do
   gem 'rspec-rails', '2.11.0'

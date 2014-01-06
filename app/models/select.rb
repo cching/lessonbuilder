@@ -4,12 +4,9 @@ class Select < ActiveRecord::Base
     Date.today
   end
   #Selects is the lesson model but is named 'select' for the ActiveRecord join association
-  attr_accessible :user_id, :standard_ids, :name, :grade_id, :text_id, :date, :objective, :notes, :description, :book, :subject_id, :subsubject_id, :private, :question_ids, :select_ids, :strategy_ids, :skill_ids, :vocab_ids, :link_ids, :cquestions_attributes, :cvocabs_attributes, :cskills_attributes, :cstrategies_attributes, :clinks_attributes
+  attr_accessible :user_id, :standard_ids, :name, :grade_ids, :text_id, :date, :objective, :notes, :description, :book, :subject_id, :subsubject_ids, :private, :question_ids, :select_ids, :strategy_ids, :skill_ids, :vocab_ids, :link_ids, :book_id, :cquestions_attributes, :cvocabs_attributes, :cskills_attributes, :cstrategies_attributes, :clinks_attributes
   belongs_to :user
-  belongs_to :grade
   belongs_to :subject
-  belongs_to :subsubject
-  belongs_to :text
   
 #selections made by the user for lessons  
   has_many :selections, :dependent => :destroy
@@ -29,6 +26,14 @@ class Select < ActiveRecord::Base
   
   has_many :select_links, :dependent => :destroy
   has_many :links, through: :select_links
+
+  has_many :select_subjects, :dependent => :destroy
+  has_many :subsubjects, through: :select_subjects
+
+  has_many :select_grades, :dependent => :destroy
+  has_many :grades, through: :select_grades
+
+  belongs_to :book
   
 
 

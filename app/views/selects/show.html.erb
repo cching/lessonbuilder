@@ -3,7 +3,6 @@
 
 <h4>Description: <%= best_in_place @select, :description, :type => :textarea, :nil => "Click here to add a description" %></h4>
 <h4>Objective: <%= best_in_place @select, :objective, :type => :textarea, :nil => "Click here to add an objective" %></h4>
-<h4>Text: <%= best_in_place @select, :text, :nil => "Click here to add text" %></h4>
 <h4><%= @select.date.to_time.strftime('%B %e, %Y') %></h4></center><br />
 
 <% else %>
@@ -219,7 +218,7 @@
 		</tr>
 </table>
 
-<br /><%= link_to "Edit Lesson", edit_select_path(@select), class: "btn" %><%= link_to "Download Lesson", select_path(@select, format: "pdf"), class: "btn" %>
+<br /><%= link_to "Edit Lesson", lesson_steps_path(:select_id => @select.id), class: "btn" %><%= link_to "Download Lesson", select_path(@select, format: "pdf"), class: "btn" %>
 
 <% else %>
 <strong>Created by <%= link_to @select.user.name, @select.user %></strong>

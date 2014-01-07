@@ -6,13 +6,14 @@
 
 
 <%= simple_form_for(@select) do |f| %>
-    <%= f.input :name, input_html: {style: 'width:100%;'} %><br />
-    <%= f.input :description, as: :text, input_html: {style: 'width:100%; height:50px'} %><br />
-    <%= f.input :objective, input_html: {style: 'width:100%; height:50px'} %><br />
 
-    <%= f.association :grades, label: "Grade:", as: :check_boxes, label_method: :number %><br />
-        <%= f.association :subject, as: :radio_buttons, label_method: :name, label: "Reading Subject" %><br />
-    <%= f.association :subsubjects, label: "Subject:", as: :check_boxes, label_method: :name %><br />
+    <%= f.input :name, input_html: {style: 'width:100%;'}, label: "Lesson name:" %><br />
+    <%= f.input :description, as: :text, input_html: {style: 'width:100%; height:50px'}, label: "Description:" %><br />
+    <%= f.input :objective, input_html: {style: 'width:100%; height:50px'}, label: "Objective:" %><br />
+
+    <%= f.association :grades, label: "Grade(s):", as: :check_boxes, label_method: :number %><br />
+        <%= f.association :subject, as: :radio_buttons, label_method: :name, label: "Reading Subject:" %><br />
+    <%= f.association :subsubjects, label: "Subject(s):", as: :check_boxes, label_method: :name %><br />
   <div class="form-actions">
  <button type="submit" class="btn" data-loading-text="Saving..">Save and Continue</button>
   </div>

@@ -1,26 +1,23 @@
-
-
 <%= form_for @select, :url => wizard_path(step, select_id: @select.id), :method => :put do |f| %>
 
-
-
-
 <% if @select.subject_id==1%>
+
 <div class="page-header">
-  <h1>Select a Text <small>Text illustrating the complexity, quality, and range of student reading.</small></h1><center><h3><small>Stories, Poetry, Read-Aloud Stories, Read-Aloud Poetry, Drama</h3></center></small>
+  <h1>Select a Text <small>Text illustrating the complexity, quality, and range of student reading.</small></h1>
 </div>
+<center><h3><small>Stories, Poetry, Read-Aloud Stories, Read-Aloud Poetry, Drama</h3></center></small><br />
 
-
-<% Book.where(:textcategory_id => [1, 2, 3, 4, 7]).each do |book| %>
+<% @select.grades.each do |grade| %>
+<% Book.where(:textcategory_id => [1, 2, 3, 4, 7], book.book_grades = grade).each do |book| %>
 <%= f.radio_button :book_id, book.id %>
 <%= link_to book.title, book,:action => 'show',:id => @book , :remote =>:true %><br />
 <% end %>
-
+<% end %>
 <% else %>
 <div class="page-header">
-  <h1>Select a Text <small>Text illustrating the complexity, quality, and range of student reading.</small></h1><center><h3><small>Informational Texts, Read-Aloud Informational Text, Informational Texts: English Language Arts, Informational Texts: History/Social Studies, Informational Texts: Science, Mathematics, and Technical Subjects</small></h3></center>
+  <h1>Select a Text <small>Text illustrating the complexity, quality, and range of student reading.</small></h1>
 </div>
-
+<center><h3><small>Informational Texts, Read-Aloud Informational Text, Informational Texts: English Language Arts, Informational Texts: History/Social Studies, Informational Texts: Science, Mathematics, and Technical Subjects</small></h3></center><br />
 <% Book.where(:textcategory_id => [5, 6, 8, 9, 10]).each do |book| %>
 <%= f.radio_button :book_id, book.id %>
 <%= link_to book.title, book,:action => 'show',:id => @book , :remote =>:true %><br />

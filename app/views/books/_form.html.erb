@@ -2,8 +2,9 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+      <%= f.input :title, input_html: {style: 'width:100%;'} %><br />
     <%= f.input :author, input_html: {style: 'width:100%;'} %><br />
-    <%= f.input :title, input_html: {style: 'width:100%;'} %><br />
+
     <%= f.input :publisher, input_html: {style: 'height:100px; width:100%'} %><br />
         <%= f.input :example, label: "Example Text", input_html: {style: 'height:100px; width:100%'} %><br />
     <%= f.input :assess_questions, label: "Assessment Questions", input_html: {style: 'height:100px; width:100%'} %><br />

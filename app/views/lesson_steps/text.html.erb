@@ -8,7 +8,7 @@
 <center><h3><small>Stories, Poetry, Read-Aloud Stories, Read-Aloud Poetry, Drama</h3></center></small><br />
 
 <% @select.grades.each do |grade| %>
-<% Book.where(:textcategory_id => [1, 2, 3, 4, 7], book.book_grades = grade).each do |book| %>
+<% Book.where(:textcategory_id => [1, 2, 3, 4, 7]).each do |book| %>
 <%= f.radio_button :book_id, book.id %>
 <%= link_to book.title, book,:action => 'show',:id => @book , :remote =>:true %><br />
 <% end %>

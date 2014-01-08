@@ -18,6 +18,19 @@
 
 <%= form_for @select, url: wizard_path do |f| %>
 
+		<%= hidden_field_tag "select[standard_ids][]", nil %>	
+ 		<% @select.grades.each do |grade| %>
+		<% Standard.where(:subject_id => @select.subject.id, :grade_id => grade.id).order("grade_id ASC").each do |standard| %>
+		<tr>
+    		<td><%= check_box_tag "select[standard_ids][]", standard.id, @select.standard_ids.include?(standard.id), id: dom_id(standard) %></td>
+			<td><%= standard.id %></td>
+			<td><%= standard.subject.name %></td>
+    		<td><%= standard.content %></td>    		
+		<% end %> 
+		<% end %>
+		
+		</tr>
+
 		<%= hidden_field_tag "select[standard_ids][]", nil %>
 		<% @select.subsubjects.each do |subsubject| %>
 		<% @select.grades.each do |grade| %>
@@ -32,18 +45,7 @@
 		<% end %>
    		<% end %>
 		<% end %> 	
-		<%= hidden_field_tag "select[standard_ids][]", nil %>	
- 		<% @select.grades.each do |grade| %>
-		<% Standard.where(:subject_id => @select.subject.id, :grade_id => grade.id).order("grade_id ASC").each do |standard| %>
-		<tr>
-    		<td><%= check_box_tag "select[standard_ids][]", standard.id, @select.standard_ids.include?(standard.id), id: dom_id(standard) %></td>
-			<td><%= standard.id %></td>
-			<td><%= standard.subject.name %></td>
-    		<td><%= standard.content %></td>    		
-		<% end %> 
-		<% end %>
-		
-		</tr>
+
 
 
 		</table>

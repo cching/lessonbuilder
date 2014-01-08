@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140106190350) do
+ActiveRecord::Schema.define(:version => 20140108083250) do
 
   create_table "admin_notes", :force => true do |t|
     t.string   "resource_id",     :null => false
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(:version => 20140106190350) do
     t.datetime "updated_at",       :null => false
     t.text     "example"
     t.integer  "textcategory_id"
+    t.string   "isbn"
   end
 
   create_table "clinks", :force => true do |t|
@@ -249,11 +250,6 @@ ActiveRecord::Schema.define(:version => 20140106190350) do
 
   create_table "subsubjects", :force => true do |t|
     t.string "name"
-  end
-
-  create_table "tests", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "textcategories", :force => true do |t|

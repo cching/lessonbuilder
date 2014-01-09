@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1>Select a Text <small>Text illustrating the complexity, quality, and range of student reading.</small></h1>
+  <h1>Select a Text</h1>
 </div>
 
 <%= form_for @select, :url => wizard_path(step, select_id: @select.id), :method => :put do |f| %>
@@ -8,7 +8,6 @@
 
 
 <center><h3><small>Stories, Poetry, Read-Aloud Stories, Read-Aloud Poetry, Drama</h3></center></small><br />
-
 <% Book.where(:textcategory_id => [1, 2, 3, 4, 7]).each do |book| %>
 <div class="row">
     <div class="span1"><%= f.radio_button :book_id, book.id %>
@@ -40,6 +39,17 @@
     <div class="span1">
     </div>
     <div class="span11">No example text available</div></div>
+    <% end %>
+            <% unless book.assess_questions.blank? %>
+        <div class="row">
+    <div class="span1">
+    </div>
+    <div class="span11"><%= link_to "View Performance Task", book,:action => 'show',:id => @book , :remote =>:true %></div></div>
+    <% else %>
+            <div class="row">
+    <div class="span1">
+    </div>
+    <div class="span11">No Performance Task Available</div></div>
     <% end %><br />
 
 <% end %>
@@ -70,12 +80,23 @@
         <div class="row">
     <div class="span1">
     </div>
-    <div class="span11"><%= link_to "Example Text", book,:action => 'show',:id => @book , :remote =>:true %></div></div>
+    <div class="span11"><%= link_to "View Example Text", book,:action => 'show',:id => @book , :remote =>:true %></div></div>
     <% else %>
             <div class="row">
     <div class="span1">
     </div>
-    <div class="span11">No example text available</div></div>
+    <div class="span11">No Example Text Available</div></div>
+    <% end %>
+        <% unless book.assess_questions.blank? %>
+        <div class="row">
+    <div class="span1">
+    </div>
+    <div class="span11"><%= link_to "View Performance Task", book,:action => 'show',:id => @book , :remote =>:true %></div></div>
+    <% else %>
+            <div class="row">
+    <div class="span1">
+    </div>
+    <div class="span11">No Performance Task Available</div></div>
     <% end %><br />
 <% end %>
 

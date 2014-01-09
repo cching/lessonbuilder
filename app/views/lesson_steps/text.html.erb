@@ -8,7 +8,8 @@
 
 
 <center><h3><small>Stories, Poetry, Read-Aloud Stories, Read-Aloud Poetry, Drama</h3></center></small><br />
-<% Book.where(:textcategory_id => [1, 2, 3, 4, 7]).each do |book| %>
+<% @select.grades.each do |grade| %>
+<% Book.where(:textcategory_id => [1, 2, 3, 4, 7]).includes(:grades).where(:grades => {:id => grade.id}).each do |book| %>
 <div class="row">
     <div class="span1"><%= f.radio_button :book_id, book.id %>
     </div>
@@ -53,9 +54,11 @@
     <% end %><br />
 
 <% end %>
+<% end %>
 <% else %>
 <center><h3><small>Informational Texts, Read-Aloud Informational Text, Informational Texts: English Language Arts, Informational Texts: History/Social Studies, Informational Texts: Science, Mathematics, and Technical Subjects</small></h3></center><br />
-<% Book.where(:textcategory_id => [5, 6, 8, 9, 10]).each do |book| %>
+<% @select.grades.each do |grade| %>
+<% Book.where(:textcategory_id => [1, 2, 3, 4, 7]).includes(:grades).where(:grades => {:id => grade.id}).each do |book| %>
 <div class="row">
     <div class="span1"><%= f.radio_button :book_id, book.id %>
     </div>

@@ -20,6 +20,10 @@ class BooksController < ApplicationController
       format.html # show.html.erb
               format.js # show.js.erb
       format.json { render json: @book }
+            format.pdf do
+    render :pdf => "#{@book.title}",
+    :save_to_file => Rails.root.join('pdfs', "#{@book.title}.pdf")
+      end
     end
   end
 

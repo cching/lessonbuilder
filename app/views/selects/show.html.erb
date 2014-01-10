@@ -185,7 +185,7 @@
 		      <div id="collapseTwo" class="accordion-body collapse">
 		        <div class="accordion-inner">
 						<% if current_user?(@select.user) %>
-					<%= best_in_place @select, :notes, :type => :textarea, :display_with => :simple_format %>
+					<%= best_in_place @select, :notes, :type => :textarea, :display_with => :simple_format, :class => "input_field" %>
 							<% else %>
 							<%= @select.notes %>
 							<% end %>
@@ -234,4 +234,17 @@ a:hover {background-color:#FFFFFF;}  /* mouse over link */
 a:active {color:#00BFFF;}
 </style>
 
+<script>
+$(document).ready(function() {
+  $("a").click(function() {
+    link_host = this.href.split("/")[2];
+    document_host = document.location.href.split("/")[2];
+
+    if (link_host != document_host) {
+      window.open(this.href);
+      return false;
+    }
+  });
+});
+</script>
 

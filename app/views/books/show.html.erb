@@ -12,7 +12,7 @@
 
 <p>
   <b>Publisher:</b>
-  <%= simple_format(@book.publisher) %>
+  <%= simple_format(@book.publisher).html_safe %>
 </p>
 
 <p>
@@ -44,4 +44,5 @@
 </p>
 
 </div><br /><div id="pdflink">
+<%= link_to "Edit", edit_book_path(@book), class: "btn btn-link" %>
 <%= link_to "Save as PDF", book_path(@book, format: "pdf"), class: "btn btn-link" %></div>

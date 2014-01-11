@@ -3,6 +3,7 @@ class Select < ActiveRecord::Base
     default_value_for :date do
     Date.today
   end
+
   #Selects is the lesson model but is named 'select' for the ActiveRecord join association
   attr_accessible :user_id, :standard_ids, :name, :grade_ids, :text_id, :date, :objective, :notes, :description, :book, :subject_id, :subsubject_ids, :private, :question_ids, :select_ids, :strategy_ids, :skill_ids, :vocab_ids, :link_ids, :book_id, :cquestions_attributes, :cvocabs_attributes, :cskills_attributes, :cstrategies_attributes, :clinks_attributes
   belongs_to :user

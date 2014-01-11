@@ -167,34 +167,25 @@
 					<% end %>
 
 				</td>
-			</tr>
+			</tr>	<% end %>
+			<tr>
+				<td colspan="2"><h4>Lesson Plan</h4></td></tr><tr>
 
-		</tbody>
-	<% end %>
-</table>
-<br />
-<div id="pdflink">
-		  <div class="accordion" id="accordion2">
 
-		    <div class="accordion-group">
-		      <div class="accordion-heading">
-		        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-		          Lesson Plan - click to expand
-		        </a>
-		      </div>
-		      <div id="collapseTwo" class="accordion-body collapse">
-		        <div class="accordion-inner">
-						<% if current_user?(@select.user) %>
+
+				<td colspan="2">
+										<% if current_user?(@select.user) %>
 					<%= best_in_place @select, :notes, :type => :textarea, :display_with => :simple_format, :class => "input_field" %>
 							<% else %>
 							<%= @select.notes %>
 							<% end %>
+        </td></tr>
+		</tbody>
 
+</table>
+<br />
 
-		        </div>
-		      </div>
-		    </div>
-			<br />
+<div id="pdflink">
 
 <% if current_user?(@select.user) %>
 

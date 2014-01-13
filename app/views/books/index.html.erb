@@ -1,5 +1,11 @@
 <% if current_user.admin? %>
 
+<%= search_form_for @search do |f| %>
+  <%= f.label :title_cont, "Name Contains:" %>
+  <%= f.text_field :title_cont %>
+  <%= f.submit %>
+<% end %>
+
 <table class="table-hover">
     <thead>
 

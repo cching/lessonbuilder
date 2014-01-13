@@ -1,5 +1,4 @@
 <div id="modal-edit-fields"><p id="notice"><%= notice %></p>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
 <p>
   <b>Title:</b>
@@ -30,7 +29,7 @@
 <html id=style="white-space: pre-wrap;">
 <p>
   <b>Example text:</b>
-  <%= raw simple_format h(@book.example) %>
+  <l1><%= simple_format(@book.example).html_safe %></l1>
 </p></html>
 
 <p>

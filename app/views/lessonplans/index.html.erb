@@ -1,0 +1,25 @@
+<h1>Listing Lesson Plans</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>District</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @lessonplans.each do |lessonplan| %>
+  <tr>
+    <td><%= lessonplan.name %></td>
+    <td><%= lessonplan.district.name %></td>
+    <td><%= link_to 'Show', lessonplan %></td>
+    <td><%= link_to 'Edit', edit_lessonplan_path(lessonplan) %></td>
+    <td><%= link_to 'Destroy', lessonplan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Lessonplan', new_lessonplan_path %>

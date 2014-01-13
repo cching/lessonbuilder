@@ -33,7 +33,7 @@ class Select < ActiveRecord::Base
 
   has_many :select_grades, :dependent => :destroy
   has_many :grades, through: :select_grades
-
+  has_many :lessonplans
   belongs_to :book
   
 

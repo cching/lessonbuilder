@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :name, :email, :password, :password_confirmation, :admin
+  attr_accessible :name, :email, :password, :password_confirmation, :admin, :district_id
   has_secure_password
   has_many :selects, dependent: :destroy
   has_many :standards, through: :selects
@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   has_many :vocabs, :dependent => :destroy
   has_many :strategies, :dependent => :destroy
   has_many :links, :dependent => :destroy
+  belongs_to :district
+
 
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token

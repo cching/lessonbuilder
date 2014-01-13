@@ -1,5 +1,11 @@
 Commoncore::Application.routes.draw do
   
+  resources :districts
+
+
+  resources :lessonplans
+
+
   resources :books
 
 

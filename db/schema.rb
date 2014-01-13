@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140108083250) do
+ActiveRecord::Schema.define(:version => 20140113064629) do
 
   create_table "admin_notes", :force => true do |t|
     t.string   "resource_id",     :null => false
@@ -102,8 +102,30 @@ ActiveRecord::Schema.define(:version => 20140108083250) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "disticts", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "districts", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "grades", :force => true do |t|
     t.string "number"
+  end
+
+  create_table "lessonplans", :force => true do |t|
+    t.text     "content"
+    t.integer  "select_id",   :default => 0
+    t.integer  "district_id"
+    t.boolean  "duplicate",   :default => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.string   "name"
   end
 
   create_table "lessons", :force => true do |t|
@@ -281,6 +303,7 @@ ActiveRecord::Schema.define(:version => 20140108083250) do
     t.string   "last_sign_in_ip"
     t.string   "encrypted_password",     :default => "",    :null => false
     t.boolean  "admin",                  :default => false
+    t.integer  "district_id",            :default => 1
   end
 
   create_table "vocabs", :force => true do |t|

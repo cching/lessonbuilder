@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @lessonplan.name %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= simple_format @lessonplan.content %>
+</p>
+
+<p>
+  <b>District:</b>
+  <%= @lessonplan.district.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_lessonplan_path(@lessonplan) %> |
+<%= link_to 'Back', lessonplans_path %>

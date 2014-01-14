@@ -1,8 +1,8 @@
 <% if current_user?(@select.user) %>
-<center><h4><%= best_in_place @select, :name, :nil => "Click here to add a lesson name" %></h4>
+<center><h4><%= best_in_place @select, :name, :nil => "Click here to add a lesson name", :html_attrs => { :style => 'width:100%;' } %></h4>
 
-<h4>Description: <%= best_in_place @select, :description, :type => :textarea, :nil => "Click here to add a description" %></h4>
-<h4>Objective: <%= best_in_place @select, :objective, :type => :textarea, :nil => "Click here to add an objective" %></h4>
+<h4>Description: <%= best_in_place @select, :description, :type => :textarea, :nil => "Click here to add a description", :html_attrs => { :style => 'width:100%;' } %></h4>
+<h4>Objective: <%= best_in_place @select, :objective, :type => :textarea, :nil => "Click here to add an objective", :html_attrs => { :style => 'width:100%;' } %></h4>
 <h4><%= @select.date.to_time.strftime('%B %e, %Y') %></h4></center><br />
 
 <% else %>
@@ -29,10 +29,10 @@
 			
 			<tr>
 					<td width="50%">
-					<h5>Questions</h5>
+					<h4>Questions</h4>
 				</td>
 					<td width="50%">
-					<h5>Skills</h5>
+					<h4>Skills</h4>
 				</td>
 			</tr>
 			
@@ -42,9 +42,9 @@
 						<ul type="disc">
 							<li>
 						<% if current_user?(@select.user) %>
-							<%= best_in_place squestion.question, :content, :nil => "Click here to add content" %>
+							<h4><%= best_in_place squestion.question, :content, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %>
 							<% else %>
-							<%= squestion.question.content %>
+							<%= squestion.question.content %></h4>
 							<% end %>
 							</li>
 						</ul>
@@ -54,7 +54,7 @@
 					<% standard.cquestions.where(:select_id => @select).each do |cquestion| %>
 					<ul type="disc">
 						<li>
-					<font color="red"><%= cquestion.content %></font>
+					<font color="red"><h4><%= cquestion.content %></h4></font>
 						</li>
 					</ul>
 					<% end %>
@@ -65,9 +65,9 @@
 					<ul type="disc">
 						<li>
 						<% if current_user?(@select.user) %>
-							<%= best_in_place sskill.skill, :content, :nil => "Click here to add content" %>
+							<h4><%= best_in_place sskill.skill, :content, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %>
 							<% else %>
-							<%= sskill.skill.content %>
+							<%= sskill.skill.content %></h4>
 							<% end %>
 						</li>
 					</ul>
@@ -76,7 +76,7 @@
 					<% standard.cskills.where(:select_id => @select).each do |cskill| %>
 					<ul type="disc">
 						<li>
-					<font color="red"><%= cskill.content %></font>
+					<font color="red"><h4><%= cskill.content %></h4></font>
 						</li>
 					</ul>
 						<% end %>
@@ -85,10 +85,10 @@
 
 			<tr>
 					<td width="50%">
-					<h5>Vocabulary</h5>
+					<h4>Vocabulary</h4>
 				</td>
 					<td width="50%">
-					<h5>Strategies</h5>
+					<h4>Strategies</h4>
 				</td>
 			</tr>	
 		
@@ -98,9 +98,9 @@
 					<ul type="disc">
 						<li>
 						<% if current_user?(@select.user) %>
-							<%= best_in_place svocab.vocab, :content_english, :nil => "Click here to add content" %>
+							<h4><%= best_in_place svocab.vocab, :content_english, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %>
 							<% else %>
-							<%= svocab.vocab.content_english %>
+							<%= svocab.vocab.content_english %></h4>
 							<% end %>
 						</li>
 					</ul>
@@ -109,7 +109,7 @@
 					<% standard.cvocabs.where(:select_id => @select).each do |cvocab| %>
 					<ul type="disc">
 						<li>
-					<font color="red"><%= best_in_place cvocab, :content %></font>
+					<font color="red"><h4><%= best_in_place cvocab, :content %></h4></font>
 						</li>
 					</ul>
 					<% end %>
@@ -120,9 +120,9 @@
 					<ul type="disc">
 						<li>
 						<% if current_user?(@select.user) %>
-							<%= best_in_place sstrategy.strategy, :content, :nil => "Click here to add content" %>
+							<h4><%= best_in_place sstrategy.strategy, :content, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %>
 							<% else %>
-							<%= sstrategy.strategy.content %>
+							<%= sstrategy.strategy.content %></h4>
 							<% end %>
 						</li>
 					</ul>
@@ -131,7 +131,7 @@
 					<% standard.cstrategies.where(:select_id => @select).each do |cstrategy| %>
 					<ul type="disc">
 						<li>
-					<font color="red"><%= best_in_place cstrategy, :content %></font>
+					<font color="red"><h4><%= best_in_place cstrategy, :content %></h4></font>
 						</li>
 					</ul>
 					<% end %>
@@ -149,9 +149,9 @@
 					<ul type="disc">
 						<li>
 						<% if current_user?(@select.user) %>
-							<%= best_in_place slink.link, :comment, :type => :textarea, :nil => "Click here to add content" %> <br /><%= truncate(Rinku.auto_link(slink.link.link), :length=>300).html_safe %>
+							<h4><%= best_in_place slink.link, :comment, :type => :textarea, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %> </h4><br /><%= truncate(Rinku.auto_link(slink.link.link), :length=>300).html_safe %>
 							<% else %>
-							<%= slink.link.comment %> <br /><%= truncate(Rinku.auto_link(slink.link.link), :length=>300).html_safe %>
+							<h4><%= slink.link.comment %></h4> <br /><%= truncate(Rinku.auto_link(slink.link.link), :length=>300).html_safe %>
 							<% end %>
 						</li>
 					</ul>
@@ -175,7 +175,8 @@
 
 				<td colspan="2">
 										<% if current_user?(@select.user) %>
-					<%= best_in_place @select, :notes, :classes => 'input_field', :type => :textarea, :display_with => :simple_format  %>
+					<%= best_in_place @select, :notes, :classes => 'input_field', :type => :textarea, :display_with => :simple_format,
+      :html_attrs => { :style => 'width:100%; height:500px;' } %>
 							<% else %>
 							<%= simple_format(@select.notes).html_safe %>
 							<% end %>
@@ -223,6 +224,7 @@ a:link {color:#00BFFF;}      /* unvisited link */
 a:visited {color:#00BFFF;}  /* visited link */
 a:hover {background-color:#FFFFFF;}  /* mouse over link */
 a:active {color:#00BFFF;}
+
 </style>
 
 <script>

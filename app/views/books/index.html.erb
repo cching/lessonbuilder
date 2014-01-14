@@ -2,13 +2,15 @@
 
 <%= search_form_for @search do |f| %>
   <%= f.label :title_cont, "Name Contains:" %>
-  <%= f.text_field :title_cont %>
-  <%= f.submit %>
+  <%= f.text_field :title_cont %><br />
+  <%= f.collection_select :grades_id_eq, Grade.order(:number), :id, :number %><br />
+  <%= f.submit %><br />
 <% end %>
 
 <table class="table-hover">
     <thead>
-
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
         <th>
             <%= sort_link @search, :title, "Title" %>
         </th>
@@ -20,15 +22,17 @@
         </th>
                 <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
         <th>
-            Grade(s):
+            <%= sort_link @search, :grades, "Grades" %>
         </th>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+
     </thead>
     
     <tbody>
         <tr>
+
         <% @books.each do |book| %>
+                        <td><%= link_to 'Edit', edit_book_path(book), class: "btn btn-mini" %></td>
+    <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-mini" %></td>
 
 
                 <td><%= link_to book.title, book, class: "btn btn-link" %>
@@ -39,10 +43,9 @@
             <td><%= book.author %></td>
                     <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
                     <% book.grades.each do |grade| %>
-            <td><%= grade.number %></td>
-            <% end %>
-                <td><%= link_to 'Edit', edit_book_path(book), class: "btn btn-mini" %></td>
-    <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-mini" %></td>
+            <td><%= grade.number %><% end %></td>
+            
+
         </tr>
     </tbody>
     <% end %>

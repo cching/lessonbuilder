@@ -177,7 +177,7 @@
 										<% if current_user?(@select.user) %>
 					<%= best_in_place @select, :notes, :type => :textarea, :display_with => :simple_format, :class => "input_field" %>
 							<% else %>
-							<%= @select.notes %>
+							<%= simple_format(@select.notes).html_safe %>
 							<% end %>
         </td></tr>
 		</tbody>

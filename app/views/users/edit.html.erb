@@ -1,5 +1,5 @@
-<% provide(:title, 'Sign up') %>
-<h1>Sign up</h1>
+<% if current_user?(@user) %>
+<h1>Edit User</h1>
 
 <div class="row">
   <div class="span6 offset3">
@@ -12,12 +12,6 @@
       <%= f.label :email %>
       <%= f.text_field :email %>
 
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-
-      <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation %><br />
-
       <%= f.label :district, "District" %>
       <%= f.collection_select :district, District.all, :id, :name, class: "form-control", prompt: "Select a category" %><br />
 
@@ -25,3 +19,4 @@
     <% end %>
   </div>
 </div>
+<% end %>

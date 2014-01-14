@@ -222,7 +222,7 @@
 		<% end %>
 	</table>
 	<%= f.label :notes, "Lesson Plan" %>
-	<%= f.text_area :notes, :cols => "30", :rows => "10"  %><br />
+	<%= f.text_area :notes, input_html: {style: 'width:100%;'}  %><br />
 	<%= f.check_box :private %> Keep my lesson private <br />
 
   <br />

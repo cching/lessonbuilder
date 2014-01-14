@@ -13,10 +13,12 @@
  *= require_tree
  */
 
+
 @media print {
         #pdflink {
                 display: none;
         }
 }
 
-.input_field input { width: 100%; }
+.input_field input { width: 100% }
+

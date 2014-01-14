@@ -5,7 +5,7 @@
     overflow: hidden;
 }
 
-
+.input_field input { width: 100%; }
 
 .thumbnail a p {
   position: absolute;
@@ -42,10 +42,6 @@ body {
 
 section {
   overflow: auto;
-}
-
-textarea {
-  resize: vertical;
 }
 
 .center {

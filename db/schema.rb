@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140115060141) do
+ActiveRecord::Schema.define(:version => 20140115060601) do
 
   create_table "admin_notes", :force => true do |t|
     t.string   "resource_id",     :null => false
@@ -174,8 +174,9 @@ ActiveRecord::Schema.define(:version => 20140115060141) do
     t.integer  "link_id"
     t.text     "comment"
     t.text     "link"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "initiate",   :default => false
   end
 
   create_table "select_questions", :force => true do |t|
@@ -191,8 +192,9 @@ ActiveRecord::Schema.define(:version => 20140115060141) do
     t.integer  "select_id"
     t.integer  "skill_id"
     t.string   "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "initiate",   :default => false
   end
 
   create_table "select_standards", :force => true do |t|
@@ -206,8 +208,9 @@ ActiveRecord::Schema.define(:version => 20140115060141) do
     t.integer  "select_id"
     t.integer  "strategy_id"
     t.string   "content"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.boolean  "initiate",    :default => false
   end
 
   create_table "select_subjects", :force => true do |t|
@@ -221,8 +224,9 @@ ActiveRecord::Schema.define(:version => 20140115060141) do
     t.integer  "select_id"
     t.integer  "vocab_id"
     t.string   "content_english"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.boolean  "initiate",        :default => false
   end
 
   create_table "selections", :force => true do |t|

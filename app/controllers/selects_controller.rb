@@ -81,7 +81,7 @@ class SelectsController < ApplicationController
 
       @select.strategies.each do |strategy|
           @select.select_strategies.where(:strategy_id => strategy.id).each do |sstrategy|
-            if sstrategy.initiate?
+            if sstrategy.initiates?
               sstrategy.content = sstrategy.content
             
           else

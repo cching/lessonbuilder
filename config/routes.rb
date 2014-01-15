@@ -1,5 +1,20 @@
 Commoncore::Application.routes.draw do
   
+  resources :select_links
+
+
+  resources :select_strategies
+
+
+  resources :select_vocabs
+
+
+  resources :select_skills
+
+
+  resources :select_questions
+
+
   resources :districts
 
 
@@ -28,7 +43,6 @@ Commoncore::Application.routes.draw do
 
 
   resources :cvocabs
-
 
   resources :cskills
   resources :skills

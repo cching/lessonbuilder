@@ -42,9 +42,9 @@
 						<ul type="disc">
 							<li>
 						<% if current_user?(@select.user) %>
-							<h4><%= best_in_place squestion.question, :content, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %>
+							<h4><%= best_in_place squestion, :content, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %></h4>
 							<% else %>
-							<%= squestion.question.content %></h4>
+							<h4><%= squestion.content %></h4>
 							<% end %>
 							</li>
 						</ul>
@@ -65,9 +65,9 @@
 					<ul type="disc">
 						<li>
 						<% if current_user?(@select.user) %>
-							<h4><%= best_in_place sskill.skill, :content, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %>
+							<h4><%= best_in_place sskill, :content, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %></h4>
 							<% else %>
-							<%= sskill.skill.content %></h4>
+							<h4><%= sskill.content %></h4>
 							<% end %>
 						</li>
 					</ul>
@@ -98,9 +98,9 @@
 					<ul type="disc">
 						<li>
 						<% if current_user?(@select.user) %>
-							<h4><%= best_in_place svocab.vocab, :content_english, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %>
+							<h4><%= best_in_place svocab, :content_english, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %></h4>
 							<% else %>
-							<%= svocab.vocab.content_english %></h4>
+							<h4><%= svocab.content_english %></h4>
 							<% end %>
 						</li>
 					</ul>
@@ -120,9 +120,9 @@
 					<ul type="disc">
 						<li>
 						<% if current_user?(@select.user) %>
-							<h4><%= best_in_place sstrategy.strategy, :content, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %>
+							<h4><%= best_in_place sstrategy, :content, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %></h4>
 							<% else %>
-							<%= sstrategy.strategy.content %></h4>
+							<h4><%= sstrategy.content %></h4>
 							<% end %>
 						</li>
 					</ul>
@@ -149,9 +149,9 @@
 					<ul type="disc">
 						<li>
 						<% if current_user?(@select.user) %>
-							<h4><%= best_in_place slink.link, :comment, :type => :textarea, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %> </h4><br /><%= truncate(Rinku.auto_link(slink.link.link), :length=>300).html_safe %>
+							<h4><%= best_in_place slink, :comment, :type => :textarea, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %> </h4><br /><%= truncate(Rinku.auto_link(slink.link.link), :length=>300).html_safe %>
 							<% else %>
-							<h4><%= slink.link.comment %></h4> <br /><%= truncate(Rinku.auto_link(slink.link.link), :length=>300).html_safe %>
+							<h4><%= slink.comment %></h4> <br /><%= truncate(Rinku.auto_link(slink.link.link), :length=>300).html_safe %>
 							<% end %>
 						</li>
 					</ul>

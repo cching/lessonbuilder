@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Select:</b>
+  <%= @select_vocab.select_id %>
+</p>
+
+<p>
+  <b>Vocab:</b>
+  <%= @select_vocab.vocab_id %>
+</p>
+
+<p>
+  <b>Content english:</b>
+  <%= @select_vocab.content_english %>
+</p>
+
+
+<%= link_to 'Edit', edit_select_vocab_path(@select_vocab) %> |
+<%= link_to 'Back', select_vocabs_path %>

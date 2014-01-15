@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140113064629) do
+ActiveRecord::Schema.define(:version => 20140115031916) do
 
   create_table "admin_notes", :force => true do |t|
     t.string   "resource_id",     :null => false
@@ -172,6 +172,8 @@ ActiveRecord::Schema.define(:version => 20140113064629) do
   create_table "select_links", :force => true do |t|
     t.integer  "select_id"
     t.integer  "link_id"
+    t.text     "comment"
+    t.text     "link"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -179,13 +181,15 @@ ActiveRecord::Schema.define(:version => 20140113064629) do
   create_table "select_questions", :force => true do |t|
     t.integer  "select_id"
     t.integer  "question_id"
+    t.string   "content"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
 
   create_table "select_skills", :force => true do |t|
-    t.integer  "skill_id"
     t.integer  "select_id"
+    t.integer  "skill_id"
+    t.string   "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -200,6 +204,7 @@ ActiveRecord::Schema.define(:version => 20140113064629) do
   create_table "select_strategies", :force => true do |t|
     t.integer  "select_id"
     t.integer  "strategy_id"
+    t.string   "content"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -214,8 +219,9 @@ ActiveRecord::Schema.define(:version => 20140113064629) do
   create_table "select_vocabs", :force => true do |t|
     t.integer  "select_id"
     t.integer  "vocab_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "content_english"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "selections", :force => true do |t|
@@ -272,6 +278,11 @@ ActiveRecord::Schema.define(:version => 20140113064629) do
 
   create_table "subsubjects", :force => true do |t|
     t.string "name"
+  end
+
+  create_table "tests", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "textcategories", :force => true do |t|

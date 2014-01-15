@@ -49,99 +49,65 @@ class SelectsController < ApplicationController
     @select = Select.find(params[:id])
 
     respond_to do |format|
+
       if @select.update_attributes(params[:select])
-            #duplicating skills for user
-            @select.skills.each do |skill|
-              if skill.duplicate 
-                skill.duplicate = TRUE
-                skill.save
 
-            else
-              skill.user_id = current_user.id
-              skill.duplicate = TRUE
-              skill.save
-              new_skill = skill.dup
-              new_skill.standard_id = skill.standard.id
-              new_skill.content = skill.content
-              new_skill.user_id = 0
-              new_skill.duplicate = FALSE
-              new_skill.save
-            end
-            end
-          #duplicating vocabulary for user
-            @select.vocabs.each do |vocab|
-              if vocab.duplicate 
-                vocab.duplicate = TRUE
-                vocab.save
 
-            else
-              vocab.user_id = current_user.id
-              vocab.duplicate = TRUE
-              vocab.save
-              new_vocab = vocab.dup
-              new_vocab.standard_id = vocab.standard.id
-              new_vocab.content_english = vocab.content_english
-              new_vocab.content_spanish = vocab.content_spanish
-              new_vocab.user_id = 0
-              new_vocab.duplicate = FALSE
-              new_vocab.save
-            end
-            end
-            #duplicating strategies for user
-            @select.strategies.each do |strategy|
-              if strategy.duplicate 
-                strategy.duplicate = TRUE
-                strategy.save
 
-            else
-              strategy.user_id = current_user.id
-              strategy.duplicate = TRUE
-              strategy.save
-              new_strategy = strategy.dup
-              new_strategy.standard_id = strategy.standard.id
-              new_strategy.content = strategy.content
-              new_strategy.user_id = 0
-              new_strategy.duplicate = FALSE
-              new_strategy.save
-            end
-            end
-            #duplicating resources for user
-            @select.links.each do |link|
-              if link.duplicate 
-                link.duplicate = TRUE
-                link.save
+        @select.questions.each do |question|
+          @select.select_questions.where(:question_id => question.id).each do |squestion|
+            if squestion.content.blank?
+            squestion.content = question.content
+            squestion.save
+          else
+            squestion.content = squestion.content
+          end
+        end
+      end
 
-            else
-              link.user_id = current_user.id
-              link.duplicate = TRUE
-              link.save
-              new_link = link.dup
-              new_link.standard_id = link.standard.id
-              new_link.comment = link.comment
-              new_link.link = link.link
-              new_link.user_id = 0
-              new_link.duplicate = FALSE
-              new_link.save
-            end
-            end
-            #duplicating questions for user
-            @select.questions.each do |question|
-              if question.duplicate 
-                question.duplicate = TRUE
-                question.save
+              @select.skills.each do |skill|
+          @select.select_skills.where(:skill_id => skill.id).each do |sskill|
+            if sskill.content.blank?
+            sskill.content = skill.content
+            sskill.save
+          else
+            sskill.content = sskill.content
+          end
+        end
+      end
 
-            else
-              question.user_id = current_user.id
-              question.duplicate = TRUE
-              question.save
-              new_question = question.dup
-              new_question.standard_id = question.standard.id
-              new_question.content = question.content
-              new_question.user_id = 0
-              new_question.duplicate = FALSE
-              new_question.save
-            end
-            end
+      @select.strategies.each do |strategy|
+          @select.select_strategies.where(:strategy_id => strategy.id).each do |sstrategy|
+            if sstrategy.content.blank?
+            sstrategy.content = strategy.content
+            sstrategy.save
+          else
+            sstrategy.content = sstrategy.content
+          end
+        end
+      end
+
+@select.vocabs.each do |vocab|
+          @select.select_vocabs.where(:vocab_id => vocab.id).each do |svocab|
+            if svocab.content_english.blank?
+            svocab.content_english = vocab.content_english
+            svocab.save
+          else
+            svocab.content_english = svocab.content_english
+          end
+        end
+      end
+
+      @select.links.each do |link|
+          @select.select_links.where(:link_id => link.id).each do |slink|
+            if slink.comment.blank?
+            slink.comment = link.comment
+            slink.save
+          else
+            slink.comment = slink.comment
+          end
+        end
+      end
 
         format.html { redirect_to @select, notice: 'Click on the resources to edit' }
         format.json { respond_with_bip(@select) }

@@ -3,6 +3,7 @@ class CreateSelectStrategies < ActiveRecord::Migration
     create_table :select_strategies do |t|
       t.integer :select_id
       t.integer :strategy_id
+      t.string :content
 
       t.timestamps
     end

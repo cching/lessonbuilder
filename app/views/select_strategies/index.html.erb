@@ -1,0 +1,27 @@
+<h1>Listing select_strategies</h1>
+
+<table>
+  <tr>
+    <th>Select</th>
+    <th>Strategy</th>
+    <th>Content</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @select_strategies.each do |select_strategy| %>
+  <tr>
+    <td><%= select_strategy.select_id %></td>
+    <td><%= select_strategy.strategy_id %></td>
+    <td><%= select_strategy.content %></td>
+    <td><%= link_to 'Show', select_strategy %></td>
+    <td><%= link_to 'Edit', edit_select_strategy_path(select_strategy) %></td>
+    <td><%= link_to 'Destroy', select_strategy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Select strategy', new_select_strategy_path %>

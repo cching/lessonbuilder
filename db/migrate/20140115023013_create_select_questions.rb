@@ -3,6 +3,7 @@ class CreateSelectQuestions < ActiveRecord::Migration
     create_table :select_questions do |t|
       t.integer :select_id
       t.integer :question_id
+      t.string :content
 
       t.timestamps
     end

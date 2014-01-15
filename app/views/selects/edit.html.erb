@@ -75,12 +75,7 @@
 				      	  	<%= question.content %>
 							<br />
 						<% end %>
-												<% standard.questions.where(:user_id => current_user.id).each do |question| %>
-							<%= hidden_field_tag "select[question_ids][]", nil %>
-				     	   	<%= check_box_tag "select[question_ids][]", question.id, @select.question_ids.include?(question.id), id: dom_id(question) %>
-				      	  	<%= question.content %>
-							<br />
-						<% end %>
+
 						<% else %>
 							No preset questions exist for this standard. Submit your lesson and add custom questions on the next page.
 						<% end %>
@@ -103,12 +98,7 @@
 				      	  	<%= skill.content %>
 							<br />
 						<% end %>
-												<% standard.skills.where(:user_id => current_user.id).each do |skill| %>
-							<%= hidden_field_tag "select[skill_ids][]", nil %>
-				     	   	<%= check_box_tag "select[skill_ids][]", skill.id, @select.skill_ids.include?(skill.id), id: dom_id(skill) %>
-				      	  	<%= skill.content %>
-							<br />
-						<% end %>
+
 						<% else %>
 							No preset skills exist for this standard. Submit your lesson and add custom skills on the next page.
 						<% end %>
@@ -142,12 +132,7 @@
 				      	  	<%= vocab.content_english %>
 							<br />
 						<% end %>
-							<% standard.vocabs.where(:user_id => current_user.id).each do |vocab| %>
-							<%= hidden_field_tag "select[vocab_ids][]", nil %>
-				     	   	<%= check_box_tag "select[vocab_ids][]", vocab.id, @select.vocab_ids.include?(vocab.id), id: dom_id(vocab) %>
-				      	  	<%= vocab.content_english %>
-							<br />
-						<% end %>
+
 						<% else %>
 						No preset vocabulary words exist for this standard. Submit your lesson and add custom words on the next page.
 						<% end %>
@@ -170,12 +155,7 @@
 				      	  	<%= strategy.content %>
 							<br />			
 						<% end %>
-							<% standard.strategies.where(:user_id => current_user.id).each do |strategy| %>
-							<%= hidden_field_tag "select[strategy_ids][]", nil %>
-				     	   	<%= check_box_tag "select[strategy_ids][]", strategy.id, @select.strategy_ids.include?(strategy.id), id: dom_id(strategy) %>
-				      	  	<%= strategy.content %>
-							<br />			
-						<% end %>
+
 						<% else %>
 						No preset strategies exist for this standard. Submit your lesson and add custom strategies on the next page.
 						<% end %>

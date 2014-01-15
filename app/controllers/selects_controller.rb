@@ -85,7 +85,7 @@ class SelectsController < ApplicationController
               sstrategy.content = sstrategy.content
             
           else
-            sstrategy.initiate = TRUE
+            sstrategy.initiates = TRUE
             sstrategy.content = strategy.content
             sstrategy.save
           end

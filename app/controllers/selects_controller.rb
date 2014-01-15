@@ -52,16 +52,12 @@ class SelectsController < ApplicationController
 
       if @select.update_attributes(params[:select])
 
-
-
         @select.questions.each do |question|
           @select.select_questions.where(:question_id => question.id).each do |squestion|
-            if squestion.content.blank?
+
             squestion.content = question.content
             squestion.save
-          else
-            squestion.content = squestion.content
-          end
+
         end
       end
 

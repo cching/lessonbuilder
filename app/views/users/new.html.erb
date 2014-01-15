@@ -19,7 +19,7 @@
       <%= f.password_field :password_confirmation %><br />
 
       <%= f.label :district, "District" %>
-      <%= f.collection_select :district, District.all, :id, :name, class: "form-control", prompt: "Select a category" %><br />
+      <%= f.collection_select :district_id, District.all, :id, :name, class: "form-control", prompt: "Select a category" %>
 
      <br /><p> <%= f.submit "Create my account", class: "btn" %></p>
     <% end %>

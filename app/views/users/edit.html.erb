@@ -11,9 +11,14 @@
 
       <%= f.label :email %>
       <%= f.text_field :email %>
+            <%= f.label :password %>
+      <%= f.password_field :password %>
 
-      <%= f.label :district, "District" %>
-      <%= f.collection_select :district, District.all, :id, :name, class: "form-control", prompt: "Select a category" %><br />
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation %><br />
+
+      <%= f.label :district_id, "District" %>
+      <%= f.collection_select :district_id, District.all, :id, :name, class: "form-control", prompt: "Select a category" %><br />
 
      <br /><p> <%= f.submit "Create my account", class: "btn" %></p>
     <% end %>

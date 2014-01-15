@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140115031916) do
+ActiveRecord::Schema.define(:version => 20140115060141) do
 
   create_table "admin_notes", :force => true do |t|
     t.string   "resource_id",     :null => false
@@ -182,8 +182,9 @@ ActiveRecord::Schema.define(:version => 20140115031916) do
     t.integer  "select_id"
     t.integer  "question_id"
     t.string   "content"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.boolean  "initiate",    :default => false
   end
 
   create_table "select_skills", :force => true do |t|

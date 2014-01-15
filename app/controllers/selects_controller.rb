@@ -54,53 +54,66 @@ class SelectsController < ApplicationController
 
         @select.questions.each do |question|
           @select.select_questions.where(:question_id => question.id).each do |squestion|
+            if squestion.initiate?
+                          squestion.content = squestion.content
 
+          else
             squestion.content = question.content
+            squestion.initiate = TRUE
             squestion.save
+          end
 
         end
       end
 
               @select.skills.each do |skill|
           @select.select_skills.where(:skill_id => skill.id).each do |sskill|
-            if sskill.content.blank?
+            if sskill.initiate?
+                          sskill.content = sskill.content
+
+          else
+            sskill.initiate = TRUE
             sskill.content = skill.content
             sskill.save
-          else
-            sskill.content = sskill.content
           end
         end
       end
 
       @select.strategies.each do |strategy|
           @select.select_strategies.where(:strategy_id => strategy.id).each do |sstrategy|
-            if sstrategy.content.blank?
+            if sstrategy.initiate?
+              sstrategy.content = sstrategy.content
+            
+          else
+            sstrategy.initiate = TRUE
             sstrategy.content = strategy.content
             sstrategy.save
-          else
-            sstrategy.content = sstrategy.content
           end
         end
       end
 
 @select.vocabs.each do |vocab|
           @select.select_vocabs.where(:vocab_id => vocab.id).each do |svocab|
-            if svocab.content_english.blank?
+            if svocab.initiate?
+              svocab.content_english = svocab.content_english
+            
+          else
+            svocab.initiate = TRUE
             svocab.content_english = vocab.content_english
             svocab.save
-          else
-            svocab.content_english = svocab.content_english
           end
         end
       end
 
       @select.links.each do |link|
           @select.select_links.where(:link_id => link.id).each do |slink|
-            if slink.comment.blank?
+            if slink.initiate?
+            slink.comment = slink.comment
+          else
+            slink.initiate = TRUE
             slink.comment = link.comment
             slink.save
-          else
-            slink.comment = slink.comment
+            
           end
         end
       end

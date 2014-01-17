@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140115062006) do
+ActiveRecord::Schema.define(:version => 20140117072255) do
 
   create_table "admin_notes", :force => true do |t|
     t.string   "resource_id",     :null => false
@@ -210,7 +210,6 @@ ActiveRecord::Schema.define(:version => 20140115062006) do
     t.string   "content"
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
-    t.boolean  "initiate",    :default => false
     t.boolean  "initiates",   :default => false
   end
 
@@ -253,6 +252,9 @@ ActiveRecord::Schema.define(:version => 20140115062006) do
     t.string   "book",          :default => ""
     t.text     "notes"
     t.integer  "book_id"
+    t.text     "vocabulary",    :default => ""
+    t.text     "writing",       :default => ""
+    t.text     "conclusion",    :default => ""
   end
 
   create_table "skills", :force => true do |t|

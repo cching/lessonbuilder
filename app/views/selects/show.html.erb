@@ -1,29 +1,33 @@
+<div class="alert alert-info"><font color="white"><font size="4"><div class="center">Lesson Name, Description, and Objective</div></font></font></div>
 <% if current_user?(@select.user) %>
-<center><h4><%= best_in_place @select, :name, :nil => "Click here to add a lesson name", :html_attrs => { :style => 'width:100%;' } %></h4>
+
+<h4>Title: <%= best_in_place @select, :name, :nil => "Click here to add a lesson name", :html_attrs => { :style => 'width:100%;' } %></h4>
 
 <h4>Description: <%= best_in_place @select, :description, :type => :textarea, :nil => "Click here to add a description", :html_attrs => { :style => 'width:100%;' } %></h4>
 <h4>Objective: <%= best_in_place @select, :objective, :type => :textarea, :nil => "Click here to add an objective", :html_attrs => { :style => 'width:100%;' } %></h4>
-<h4><%= @select.date.to_time.strftime('%B %e, %Y') %></h4></center><br />
+<h4>Date Created: <%= @select.date.to_time.strftime('%B %e, %Y') %></h4><br />
 
 <% else %>
 
-<center><h4>Description: <%= @select.description %></h4>
+<h4>Title: <%= @select.name %></h4>
+
+<h4>Description: <%= @select.description %></h4>
 <h4>Objective: <%= @select.objective %></h4>
-<h4><%= @select.date.to_time.strftime('%B %e, %Y') %></h4></center><br />
+<h4>Date Created: <%= @select.date.to_time.strftime('%B %e, %Y') %></h4><br />
+
 
 <% end %>
 
+<div class="alert alert-danger"><font color="white"><font size="4"><div class="center">Standards and Resources</div></font></font></div>
 		
-<table class="table table-condensed table-hover table-bordered">
+<table class="table table-condensed table-hover table">
 
-	<thead>
+
 	
 		<% @standards.each do |standard| %>
 		<th colspan="2">
 			<h4><strong><%= standard.id %>: <%= standard.content %></strong></h4>
 		</th>
-
-	</thead>
 
 		<tbody>
 			
@@ -149,9 +153,9 @@
 					<ul type="disc">
 						<li>
 						<% if current_user?(@select.user) %>
-							<h4><%= best_in_place slink, :comment, :type => :textarea, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %> </h4><br /><%= truncate(Rinku.auto_link(slink.link.link), :length=>300).html_safe %>
+							<h4><%= best_in_place slink, :comment, :type => :textarea, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %> </h4><%= truncate(Rinku.auto_link(slink.link.link), :length=>300).html_safe %>
 							<% else %>
-							<h4><%= slink.comment %></h4> <br /><%= truncate(Rinku.auto_link(slink.link.link), :length=>300).html_safe %>
+							<h4><%= slink.comment %></h4><%= truncate(Rinku.auto_link(slink.link.link), :length=>300).html_safe %>
 							<% end %>
 						</li>
 					</ul>
@@ -168,23 +172,44 @@
 
 				</td>
 			</tr>	<% end %>
-			<tr>
-				<td colspan="2"><h4>Lesson Plan</h4></td></tr><tr>
 
-
-
-				<td colspan="2">
-										<% if current_user?(@select.user) %>
-					<%= best_in_place @select, :notes, :classes => 'input_field', :type => :textarea, :display_with => :simple_format,
-      :html_attrs => { :style => 'width:100%; height:500px;' } %>
-							<% else %>
-							<%= simple_format(@select.notes).html_safe %>
-							<% end %>
-        </td></tr>
 		</tbody>
 
 </table>
 <br />
+<div class="alert alert-warning"><font size="4" color="black"><div class="center">Reading and Text-Dependent Questions</div></font></div><br />
+<% if current_user?(@select.user) %>
+ <%= best_in_place @select, :notes, :classes => 'input_field', :type => :textarea, :display_with => :simple_format,
+      :html_attrs => { :style => 'width:100%; height:500px;' } %>
+          <% else %>
+          <%= simple_format(@select.notes).html_safe %>
+          <% end %><br />
+
+<div class="alert alert-warning"><font size="4" color="black"><div class="center">Vocabulary</div></font></div><br />
+
+<% if current_user?(@select.user) %>
+ <%= best_in_place @select, :vocabulary, :classes => 'input_field', :type => :textarea, :display_with => :simple_format,
+      :html_attrs => { :style => 'width:100%; height:500px;' } %>
+          <% else %>
+          <%= simple_format(@select.vocabulary).html_safe %>
+          <% end %><br />
+<div class="alert alert-warning"><font size="4" color="black"><div class="center">Writing</div></font></div><br />
+
+<% if current_user?(@select.user) %>
+ <%= best_in_place @select, :writing, :classes => 'input_field', :type => :textarea, :display_with => :simple_format,
+      :html_attrs => { :style => 'width:100%; height:500px;' } %>
+          <% else %>
+          <%= simple_format(@select.writing).html_safe %>
+          <% end %><br />
+
+<div class="alert alert-warning"><font size="4" color="black"><div class="center">Conclusion</div></font></div><br />
+<% if current_user?(@select.user) %>
+ <%= best_in_place @select, :conclusion, :classes => 'input_field', :type => :textarea, :display_with => :simple_format,
+      :html_attrs => { :style => 'width:100%; height:500px;' } %>
+          <% else %>
+          <%= simple_format(@select.conclusion).html_safe %>
+          <% end %><br />
+
 
 <div id="pdflink">
 

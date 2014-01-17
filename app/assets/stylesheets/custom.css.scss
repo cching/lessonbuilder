@@ -1,5 +1,31 @@
 @import "bootstrap";
 
+.alert-info {
+color: #47cde5;
+background-color: #47cde5;
+border-color: #bce8f1;
+}
+
+.alert-danger,
+.alert-error {
+color: #DB7B7B;
+background-color: #DB7B7B;
+border-color: #DB7B7B;
+}
+
+.alert-warning,
+.alert-error {
+color: #7ED76A;
+background-color: #7ED76A;
+border-color: #7ED76A;
+}
+
+.table td, .table th, .table thead, .table tr, table .tr {
+    border: 2px solid black;
+    border-top: 2px solid black;
+}
+
+
 .thumbnails li {
     position: relative;
     overflow: hidden;

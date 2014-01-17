@@ -54,13 +54,15 @@ class SelectsController < ApplicationController
 
       if @select.update_attributes(params[:select])
         format.json { respond_with_bip(@select) }
+
         if @select.vocabulary.blank?
-          @select.vocabulary = @select.vocabulary
-        else
-        vocab = @select.vocabs.pluck(:content_english)
+                  vocab = @select.vocabs.pluck(:content_english)
 
           @select.vocabulary = vocab
           @select.save
+
+        else
+          @select.vocabulary = @select.vocabulary
       end
 
 

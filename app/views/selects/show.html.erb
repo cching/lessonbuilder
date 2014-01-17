@@ -1,3 +1,5 @@
+<body><div class="container">
+
 <div class="alert alert-info"><font color="white"><font size="4"><div class="center">Lesson Name, Description, and Objective</div></font></font></div>
 <% if current_user?(@select.user) %>
 
@@ -20,7 +22,7 @@
 
 <div class="alert alert-danger"><font color="white"><font size="4"><div class="center">Standards and Resources</div></font></font></div>
 		
-<table class="table table-condensed table-hover table">
+<table class="table table-condensed table-hover">
 
 
 	
@@ -243,7 +245,7 @@
 <% else %>
 <strong>Created by <%= link_to @select.user.name, @select.user %></strong>
 <% end %></div>
-
+</div></body>
 <style type="text/css">
 a:link {color:#00BFFF;}      /* unvisited link */
 a:visited {color:#00BFFF;}  /* visited link */
@@ -251,7 +253,9 @@ a:hover {background-color:#FFFFFF;}  /* mouse over link */
 a:active {color:#00BFFF;}
 
 </style>
-
+<script>
+$('.highlight_on_success').bind("ajax:success", function(){$(this).closest('tr').effect('highlight'));});
+</script>
 <script>
 $(document).ready(function() {
   $("a").click(function() {

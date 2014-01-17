@@ -34,6 +34,8 @@ class SelectsController < ApplicationController
     @select = current_user.selects.build(params[:select])
     lessonplan = Lessonplan.where(:district_id => current_user.district_id).last
     @select.notes = lessonplan.content
+    @select.writing = lessonplan.writing
+    @select.conclusion = lessonplan.conclusion
 
 
   if @select.save
@@ -51,6 +53,16 @@ class SelectsController < ApplicationController
     respond_to do |format|
 
       if @select.update_attributes(params[:select])
+        format.json { respond_with_bip(@select) }
+        if @select.vocabulary.blank?
+          @select.vocabulary = @select.vocabulary
+        else
+        vocab = @select.vocabs.pluck(:content_english)
+
+          @select.vocabulary = vocab
+          @select.save
+      end
+
 
         @select.questions.each do |question|
           @select.select_questions.where(:question_id => question.id).each do |squestion|

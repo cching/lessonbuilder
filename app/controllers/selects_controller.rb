@@ -36,8 +36,7 @@ class SelectsController < ApplicationController
     @select.notes = lessonplan.content
     @select.writing = lessonplan.writing
     @select.conclusion = lessonplan.conclusion
-    @select.questions = lessonplan.questions
-
+    @select.textdependent = lessonplan.questions
 
   if @select.save
     

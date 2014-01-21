@@ -22,7 +22,7 @@
 
 <div class="alert alert-danger"><font color="white"><font size="4"><div class="center">Standards and Resources</div></font></font></div>
 		
-<table class="table table-condensed table-hover">
+<table class="table table-condensed table-hover table-bordered">
 
 
 	
@@ -179,12 +179,28 @@
 
 </table>
 <br />
-<div class="alert alert-warning"><font size="4" color="black"><div class="center">Reading and Text-Dependent Questions</div></font></div><br />
+<div class="alert alert-warning"><font size="4" color="black"><div class="center">Overview</div></font></div><br />
 <% if current_user?(@select.user) %>
  <%= best_in_place @select, :notes, :classes => 'input_field', :type => :textarea, :display_with => :simple_format,
       :html_attrs => { :style => 'width:100%; height:500px;' } %>
           <% else %>
           <%= simple_format(@select.notes).html_safe %>
+          <% end %><br />
+
+<div class="alert alert-warning"><font size="4" color="black"><div class="center">Reading</div></font></div><br />
+<% if current_user?(@select.user) %>
+ <%= best_in_place @select, :writing, :classes => 'input_field', :type => :textarea, :display_with => :simple_format,
+      :html_attrs => { :style => 'width:100%; height:500px;' } %>
+          <% else %>
+          <%= simple_format(@select.writing).html_safe %>
+          <% end %><br />
+
+          <div class="alert alert-warning"><font size="4" color="black"><div class="center">Text-Dependent Questions</div></font></div><br />
+<% if current_user?(@select.user) %>
+ <%= best_in_place @select, :questions, :classes => 'input_field', :type => :textarea, :display_with => :simple_format,
+      :html_attrs => { :style => 'width:100%; height:500px;' } %>
+          <% else %>
+          <%= simple_format(@select.writing).html_safe %>
           <% end %><br />
 
 <div class="alert alert-warning"><font size="4" color="black"><div class="center">Vocabulary</div></font></div><br />
@@ -195,14 +211,9 @@
           <% else %>
           <%= simple_format(@select.vocabulary).html_safe %>
           <% end %><br />
-<div class="alert alert-warning"><font size="4" color="black"><div class="center">Writing</div></font></div><br />
 
-<% if current_user?(@select.user) %>
- <%= best_in_place @select, :writing, :classes => 'input_field', :type => :textarea, :display_with => :simple_format,
-      :html_attrs => { :style => 'width:100%; height:500px;' } %>
-          <% else %>
-          <%= simple_format(@select.writing).html_safe %>
-          <% end %><br />
+
+
 
 <div class="alert alert-warning"><font size="4" color="black"><div class="center">Conclusion</div></font></div><br />
 <% if current_user?(@select.user) %>

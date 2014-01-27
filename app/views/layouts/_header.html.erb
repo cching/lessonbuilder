@@ -1,7 +1,8 @@
 <% if signed_in? %>
-<div id="pdflink"><%= image_tag("Headers.jpg") %></div>
+<div id="pdflink">
+<img><%= image_tag("Headers.jpg") %></img></div>
 <% else %>
-<%= image_tag("Headers.jpg") %>
+
 <% end %>
 <body>
 
@@ -24,7 +25,7 @@
 
          <li><%= link_to "Lesson Builder", new_select_path %></li>
          <li><%= link_to "Browse Lessons", selects_path %></li>
-     <% end %>
+     
             <li><%= link_to "Help", help_path %></li>
       <li class="dropdown">
            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -35,16 +36,16 @@
              <li class="divider"></li>
              <li>
                <%= link_to "Sign out", signout_path, method: "delete" %>
+               <% end %>
              </li>        </ul>
-      </li>
+      
     </ul>
-
+</li></ul>
   </div><!-- /.navbar-collapse -->
 </nav>
 
 
 </body>
-
 
 <style type="text/css">   
 .navbar-default {
@@ -56,6 +57,14 @@
   background-image: linear-gradient(top, #47cde5, #47cde5);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#'47cde5, endColorstr='#'47cde5, GradientType=0);
 }
+
+img {  
+max-width: 100%;  
+max-height: 100%;  
+/* Resize the image for IE6 */  
+width: expression(this.width > 100 ? 100: true);  
+height: expression(this.height > 100 ? 100: true);  
+}  
 
 body { padding-top: 0px; }
 @media screen and (max-width: 768px) {

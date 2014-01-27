@@ -1,7 +1,6 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
-require 'wicked_pdf'
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
@@ -59,6 +58,7 @@ module Commoncore
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    config.assets.precompile += ['appliation.css']
     config.middleware.use WickedPdf::Middleware, :print_media_type => true
   end
 end

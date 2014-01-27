@@ -1,4 +1,6 @@
-<div id="modal-edit-fields"><p id="notice"><%= notice %></p>
+<div id="modal-edit-fields">
+
+<p id="notice"><%= notice %></p>
 
 <p>
   <b>Title:</b>
@@ -9,10 +11,10 @@
   <%= @book.author %>
 </p>
 
-<p>
+
   <b>Publisher:</b>
-  <%= simple_format(@book.publisher).html_safe %>
-</p>
+<%= simple_format(@book.publisher).html_safe %>
+
 
 <p>
   <b>ISBN Number:</b>
@@ -27,10 +29,10 @@
 
 
 <html id=style="white-space: pre-wrap;">
-<p>
+
   <b>Example text:</b>
-  <l1><%= simple_format(@book.example).html_safe %></l1>
-</p></html>
+  <div style="font-size: 90pt;"><%= simple_format(@book.example) %>
+</div></html>
 
 <p>
   <b>Performance task:</b>
@@ -45,3 +47,5 @@
 </div><br /><div id="pdflink">
 <%= link_to "Edit", edit_book_path(@book), class: "btn btn-link" %>
 <%= link_to "Save as PDF", book_path(@book, format: "pdf"), class: "btn btn-link" %></div>
+
+

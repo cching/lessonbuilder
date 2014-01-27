@@ -4,21 +4,21 @@
 <%= image_tag("gatherresources.jpg") %>
 &nbsp;&nbsp;&nbsp;<br />&nbsp;<br />&nbsp;<br />
 
-<div class="row">
-	  <div class="span2"> </div>
-	  <div class="span10">
-		  
-		  <div class="accordion" id="accordion2">
 
-		    <div class="accordion-group">
-		      <div class="accordion-heading">
-		        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-		          Lesson Attributes - click to expand
-		        </a>
-		      </div>
-		      <div id="collapseTwo" class="accordion-body collapse">
-		        <div class="accordion-inner">
-					<%= form_for(@select) do |f| %>
+
+	<font color="33CCFF">Standards: 
+				<% @standards.each do |standard| %>
+				<%= standard.id %>
+				<% end %></font>
+				<br />&nbsp;<br />&nbsp;<br /><br />
+
+<div class="row">
+
+<div class="col-md-2">
+
+</div>
+<div class="col-md-10">
+						<%= form_for(@select) do |f| %>
 					<table>
 						<tr>
 					<td><%= f.label :name, "Lesson Name" %>
@@ -29,24 +29,18 @@
 					<%= f.text_area :objective, :cols => "10", :rows => "1" %></td></tr>
 					<tr><td><%= f.label :date %>
 <%= f.date_select :date %></td></tr></table>
-		        </div>
-		      </div>
-		    </div>
-		  </div>
+</div><br /></div>
 
 
 
-	<font color="33CCFF">Standards: 
-				<% @standards.each do |standard| %>
-				<%= standard.id %>
-				<% end %></font>
-				<br />&nbsp;<br />&nbsp;<br /><br /></div></div>
+
+
 
 				<div class="row">
-					  <div class="span2"><font color="33CCFF"> Select the resources to be included in this lesson.</font></div></font>
-					  <div class="span10">
+					  <div class="col-md-2"><font color="33CCFF"> Select the resources to be included in this lesson.</font></div></font>
+					  <div class="col-md-10">
 	
-	<table class="table table-condensed table-hover table-bordered">
+	<table class="table table-condensed table-hover table-bordered" id="standards">
 
 		<thead>
 		
@@ -60,10 +54,10 @@
 			<tbody>
 				
 				<tr>
-					<td width="50%">
+					<td width="50%" class="resource">
 						<h4>Questions</h4>
 					</td>
-					<td width="50%">
+					<td width="50%" class="resource">
 						<h4>Skills</h4>
 					</td>
 				</tr>
@@ -117,10 +111,10 @@
 				</tr>
 
 				<tr>
-					<td width="50%">
+					<td width="50%" class="resource">
 						<h4>Vocabulary</h4>
 					</td>
-					<td width="50%">
+					<td width="50%" class="resource">
 						<h4>Strategies</h4>
 					</td>
 				</tr>	
@@ -173,7 +167,7 @@
 				    </td>
 				</tr>
 				<tr>
-					<td colspan="2"><h4>Resources</h4></td></tr><tr>
+					<td colspan="2" class="resource"><h4>Resources</h4></td></tr><tr>
 
 
 
@@ -204,17 +198,29 @@
 		<% end %>
 	</table>
 
-<div class="alert alert-warning"><font size="4" color="black"><div class="center">Overview</div></font></div><br />
+<div class="panel panel-danger">
+  <div class="panel-body">
+    <strong>Overview</strong>
+  </div></div><br />
 <%= f.text_area :notes, input_html: {style: 'width:100%;'}  %><br />
 
-<div class="alert alert-warning"><font size="4" color="black"><div class="center">Reading</div></font></div><br />
+<div class="panel panel-danger">
+  <div class="panel-body">
+    <strong>Reading</strong>
+  </div></div><br />
 <%= f.text_area :writing, input_html: {style: 'width:100%;'}  %><br />
 
-          <div class="alert alert-warning"><font size="4" color="black"><div class="center">Text-Dependent Questions</div></font></div><br />
+          <div class="panel panel-danger">
+  <div class="panel-body">
+    <strong>Text-Dependent Questions</strong>
+  </div></div><br />
 
 <%= f.text_area :textdependent, input_html: {style: 'width:100%;'}  %><br />
 
-<div class="alert alert-warning"><font size="4" color="black"><div class="center">Vocabulary</div></font></div><br />
+<div class="panel panel-danger">
+  <div class="panel-body">
+    <strong>Vocabulary</strong>
+  </div></div><br />
 
 
 <%= f.text_area :vocabulary, input_html: {style: 'width:100%;'}  %><br />
@@ -222,7 +228,10 @@
 
 
 
-<div class="alert alert-warning"><font size="4" color="black"><div class="center">Conclusion</div></font></div><br />
+<div class="panel panel-danger">
+  <div class="panel-body">
+    <strong>Conclusion</strong>
+  </div></div><br />
 <%= f.text_area :conclusion, input_html: {style: 'width:100%;'}  %><br />
 
 
@@ -230,7 +239,7 @@
 	<%= f.check_box :private %> Keep my lesson private <br />
 
   <br />
- <button type="submit" class="btn" data-loading-text="Saving..">Submit</button>
+ <button type="submit" class="btn btn-info" data-loading-text="Saving..">Submit</button>
 <div align="right"><%= link_to 'Delete lesson', @select, confirm: 'Are you sure you want to delete this lesson?', method: :delete, class: "btn btn-danger btn-mini" %></div>
 
 

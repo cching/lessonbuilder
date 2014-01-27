@@ -13,11 +13,8 @@ class SelectsController < ApplicationController
     @questions = @select.questions.all
     respond_to do |format|
       format.html
-      format.pdf do
-    render :pdf => "#{@select.name}",
-    :save_to_file => Rails.root.join('pdfs', "#{@select.name}.pdf")
+  
       end
-    end
   end
 
   def new

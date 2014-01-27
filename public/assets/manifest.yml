@@ -15,6 +15,8 @@ info.jpg: info-cd112d29f08e5db3bd8e9606bde217c2.jpg
 info/index.jpg: info-cd112d29f08e5db3bd8e9606bde217c2.jpg
 lesson.jpg: lesson-3e69aade5d0c2806441f86eae949818e.jpg
 lesson/index.jpg: lesson-3e69aade5d0c2806441f86eae949818e.jpg
+lessonname.jpg: lessonname-53d8f529b230227c6de81828b563f8d0.jpg
+lessonname/index.jpg: lessonname-53d8f529b230227c6de81828b563f8d0.jpg
 lessons.jpg: lessons-3e69aade5d0c2806441f86eae949818e.jpg
 lessons/index.jpg: lessons-3e69aade5d0c2806441f86eae949818e.jpg
 newinfo.jpg: newinfo-5030875c2318c6a7e7f35ff8cafd5cc2.jpg
@@ -37,8 +39,8 @@ application.js: application-6810765d463ec5af6218092513d4b4dd.js
 application/index.js: application-6810765d463ec5af6218092513d4b4dd.js
 images/rails.png: images/rails-a3386665c05a2d82f711a4aaa72d247c.png
 images/rails/index.png: images/rails-a3386665c05a2d82f711a4aaa72d247c.png
-application.css: application-39865cf0299a2d8bab85020c585c9f04.css
-application/index.css: application-39865cf0299a2d8bab85020c585c9f04.css
+application.css: application-24f5285ec0ac940684cd724aff9a75d8.css
+application/index.css: application-24f5285ec0ac940684cd724aff9a75d8.css
 fontawesome-webfont.eot: fontawesome-webfont-009f6d1f667cc42c25e712ab3429cbc7.eot
 fontawesome-webfont/index.eot: fontawesome-webfont-009f6d1f667cc42c25e712ab3429cbc7.eot
 fontawesome-webfont.svg: fontawesome-webfont-f1c2889911d212e1403b68eabc1a3a56.svg

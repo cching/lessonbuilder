@@ -13,46 +13,46 @@
 <% @select.grades.each do |grade| %>
 <% Book.where(:textcategory_id => [1, 2, 3, 4, 7]).includes(:grades).where(:grades => {:id => grade.id}).order("grade_id DESC").each do |book| %>
 <div class="row">
-    <div class="span1"><%= f.radio_button :book_id, book.id %>
+    <div class="col-md-1"><%= f.radio_button :book_id, book.id %>
     </div>
-    <div class="span11"><b>Title: </b><i><%= book.title %></i></div></div>
+    <div class="col-md-11"><b>Title: </b><i><%= book.title %></i></div></div>
     <div class="row">
-    <div class="span1">
+    <div class="col-md-1">
     </div>
-    <div class="span11"><b>Author: </b><%= book.author %></div></div>
+    <div class="col-md-11"><b>Author: </b><%= book.author %></div></div>
     <div class="row">
-    <div class="span1">
+    <div class="col-md-1">
     </div>
-    <div class="span11"><b>Publisher: </b><%= book.publisher %></div></div>
+    <div class="col-md-11"><b>Publisher: </b><%= book.publisher %></div></div>
         <div class="row">
-    <div class="span1">
+    <div class="col-md-1">
     </div>
-    <div class="span11"><b>ISBN: </b><%= book.isbn %></div></div>
+    <div class="col-md-11"><b>ISBN: </b><%= book.isbn %></div></div>
         <div class="row">
-    <div class="span1">
+    <div class="col-md-1">
     </div>
-    <div class="span11"><b>Availability: </b><%= book.availability %></div></div>
+    <div class="col-md-11"><b>Availability: </b><%= book.availability %></div></div>
     <% unless book.example.blank? %>
         <div class="row">
-    <div class="span1">
+    <div class="col-md-1">
     </div>
-    <div class="span11"><%= link_to "View Example Text", book,:action => 'show',:id => @book , :remote =>:true %></div></div>
+    <div class="col-md-11"><%= link_to "View Example Text", book,:action => 'show',:id => @book , :remote =>:true %></div></div>
     <% else %>
             <div class="row">
-    <div class="span1">
+    <div class="col-md-1">
     </div>
-    <div class="span11">No example text available</div></div>
+    <div class="col-md-11">No example text available</div></div>
     <% end %>
             <% unless book.assess_questions.blank? %>
         <div class="row">
-    <div class="span1">
+    <div class="col-md-1">
     </div>
-    <div class="span11"><%= link_to "View Performance Task", book,:action => 'show',:id => @book , :remote =>:true %></div></div>
+    <div class="col-md-11"><%= link_to "View Performance Task", book,:action => 'show',:id => @book , :remote =>:true %></div></div>
     <% else %>
             <div class="row">
-    <div class="span1">
+    <div class="col-md-1">
     </div>
-    <div class="span11">No Performance Task Available</div></div>
+    <div class="col-md-11">No Performance Task Available</div></div>
     <% end %><br />
 
 <% end %>
@@ -107,28 +107,34 @@
 <% end %>
 
 <% end %>
-<div align="center"> <button type="submit" class="btn" data-loading-text="Saving..">Save and Continue</button></div><br /></center>
+<div class="row">
+<div class="col-md-1"></div>
+<div class="col-md-11"> <button type="submit" class="btn btn-info" data-loading-text="Saving..">Save and Continue</button></div></div></div>
 <% end %>
 
 
 
 
  
-<!-- Modal -->
-<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3> id="myModalLabel"><a href="http://www.corestandards.org/assets/Appendix_B.pdf">Appendex B of the CCCSS</a></h3>
-  </div>
-  <div class="modal-body">
 
-  </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
 
-  </div>
-</div>
-</div></body>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel"><a href="http://www.corestandards.org/assets/Appendix_B.pdf">Appendex B of the CCCSS</a></h4>
+      </div>
+      <div class="modal-body">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+</body>
 
 <style type="text/css">
 a:link {color:#00BFFF;}      /* unvisited link */
@@ -137,8 +143,8 @@ a:hover {background-color:#FFFFFF;}  /* mouse over link */
 a:active {color:#00BFFF;}
 
 body .modal {
-  width: 44%; /* desired relative width */
-  left: 28%; /* (100%-width)/2 */
+  width: 50%; /* desired relative width */
+  left: 10%; /* (100%-width)/2 */
   /* place center */
   margin-left:auto;
   margin-right:auto; 

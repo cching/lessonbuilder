@@ -9,15 +9,56 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require bootstrap_and_overrides
- *= require_tree
+ *= require bootstrap
+ *= require_tree .
  */
+
+
+
+#standards th{
+ font-size: 24px;
+ color: #FFF;
+ background-color: 	 #009ACD;
+ padding: 1px 1px;
+ padding-bottom: 1px;
+ text-align: center;
+}
+
+#standards .resource {
+	font-size: 20px;
+ background-color: #ededed;
+ color: 	 #009ACD;
+  text-align: center;
+   padding: 1px 1px;
+ padding-bottom: 1px;
+}
+
+#standards .standard {
+ font-size: 20px;
+ padding: 4px 18px;
+}
+
+#table_list .even td {
+ background-color: #E3E6FF;
+}
+
+#table_list .odd td {
+ background-color: #D1D8F6;
+}
 
 
 @media print {
         #pdflink {
                 display: none;
         }
+
+
+
+      #line_items   
+table, tr, td, th, tbody, thead, tfoot {
+    page-break-inside: avoid !important;
+}
+
 }
 
 

@@ -287,6 +287,72 @@
 <% end %></div>
 </div></body>
 <style type="text/css">
+
+#standards th{
+    border: 1px solid black;
+ font-size: 24px;
+ color: #FFF;
+ background-color:   #009ACD;
+ padding: 1px 1px;
+ padding-bottom: 1px;
+ text-align: center;
+}
+
+#standards .resource {
+    border: 1px solid black;
+    font-size: 20px;
+ background-color: #ededed;
+ color:      #009ACD;
+  text-align: center;
+   padding: 1px 1px;
+ padding-bottom: 1px;
+}
+
+#standards .standard {
+    border: 1px solid black;
+ font-size: 20px;
+ padding: 4px 18px;
+}
+
+#table_list .even td {
+ background-color: #E3E6FF;
+}
+
+#table_list .odd td {
+ background-color: #D1D8F6;
+}
+
+.panel-danger,
+.panel-header {
+color: #FFF;
+background-color: #009ACD;
+border-color: #009ACD;
+ padding: 1px 1px;
+ padding-bottom: 1px;
+ text-align: center;
+ font-size: 24px;
+.panel-footer {
+  
+}
+}
+
+
+@media print {
+        #pdflink {
+                display: none;
+        }
+
+
+
+      #standards 
+table, tr, td, th, tbody, thead, tfoot {
+    page-break-inside: avoid !important;
+}
+
+}
+table, tr, td, th, tbody, thead, tfoot {
+    page-break-inside: avoid !important;
+}
 a:link {color:#00BFFF;}      /* unvisited link */
 a:visited {color:#00BFFF;}  /* visited link */
 a:hover {background-color:#FFFFFF;}  /* mouse over link */

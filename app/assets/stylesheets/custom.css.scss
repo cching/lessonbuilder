@@ -165,15 +165,21 @@ footer {
   }
 }
 
-#error_explanation {
-  color: #f00;
-  ul {
-    list-style: none;
-    margin: 0 0 18px 0;
-  }
+
+@media print {
+        #pdflink {
+                display: none;
+        }
+
+                #header {
+                display: none;
+        }
+
+
+
+      #line_items   
+table, tr, td, th, tbody, thead, tfoot {
+    page-break-inside: avoid !important;
 }
 
-.field_with_errors {
-  @extend .control-group;
-  @extend .error;
 }

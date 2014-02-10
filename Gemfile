@@ -18,7 +18,7 @@ gem 'will_paginate', '~> 3.0'
 gem 'unicorn'
 gem 'default_value_for'
 gem 'best_in_place'
-gem 'wicked_pdf'
+gem 'pdfkit'
 gem 'wkhtmltopdf-binary'
 gem 'wicked'
 

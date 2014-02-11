@@ -22,6 +22,7 @@ gem 'pdfkit'
 gem 'wkhtmltopdf-binary'
 gem 'wicked'
 
+
 group :development, :test do
   gem 'rspec-rails', '2.11.0'
   gem 'taps', :require => false

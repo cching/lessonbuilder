@@ -31,7 +31,7 @@
 <html id=style="white-space: pre-wrap;">
 
   <b>Example text:</b>
-  <div style="font-size: 90pt;"><%= simple_format(@book.example) %>
+  <div style="font-size: 25pt;"><%= simple_format(@book.example) %>
 </div></html>
 
 <p>
@@ -48,4 +48,10 @@
 <%= link_to "Edit", edit_book_path(@book), class: "btn btn-link" %>
 <%= link_to "Save as PDF", book_path(@book, format: "pdf"), class: "btn btn-link" %></div>
 
+<style type="text/css">
 
+@media print {
+        #pdflink {
+                display: none;
+        }
+        </style>

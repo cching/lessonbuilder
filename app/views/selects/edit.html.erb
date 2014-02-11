@@ -21,15 +21,15 @@
 						<%= form_for(@select) do |f| %>
 					<table>
 						<tr>
-					<td><%= f.label :name, "Lesson Name" %>
-					<%= f.text_area :name, :cols => "10", :rows => "1"  %></td></tr>
-					<tr><td><%= f.label :description %>
-					<%= f.text_area :description, :cols => "10", :rows => "1" %></td></tr>
-					<tr><td><%= f.label :objective %>
+					<td><%= f.label :name, "Lesson Name" %><br />
+					<%= f.text_area :name, :cols => 100, :rows => '1' %></td></tr>
+					<tr><td><%= f.label :description %><br />
+					<%= f.text_area :description, :cols => 100, :rows => '1' %></td></tr>
+					<tr><td><%= f.label :objective %><br />
 					<%= f.text_area :objective, :cols => "10", :rows => "1" %></td></tr>
-					<tr><td><%= f.label :date %>
+					<tr><td><%= f.label :date %><br />
 <%= f.date_select :date %></td></tr></table>
-</div><br /></div>
+</div><br /></div><br />
 
 
 
@@ -202,20 +202,20 @@
   <div class="panel-body">
     <strong>Overview</strong>
   </div></div><br />
-<%= f.text_area :notes, input_html: {style: 'width:100%;'}  %><br />
+<center><%= f.text_area :notes, :cols => 100, :rows => '10'  %></center><br />
 
 <div class="panel panel-danger">
   <div class="panel-body">
     <strong>Reading</strong>
   </div></div><br />
-<%= f.text_area :writing, input_html: {style: 'width:100%;'}  %><br />
+<center><%= f.text_area :writing, :cols => 100, :rows => '10'  %></center><br />
 
           <div class="panel panel-danger">
   <div class="panel-body">
     <strong>Text-Dependent Questions</strong>
   </div></div><br />
 
-<%= f.text_area :textdependent, input_html: {style: 'width:100%;'}  %><br />
+<center><%= f.text_area :textdependent, :cols => 100, :rows => '10'  %></center><br />
 
 <div class="panel panel-danger">
   <div class="panel-body">
@@ -223,7 +223,7 @@
   </div></div><br />
 
 
-<%= f.text_area :vocabulary, input_html: {style: 'width:100%;'}  %><br />
+<center><%= f.text_area :vocabulary, :cols => 100, :rows => '10'  %></center><br />
 
 
 
@@ -232,7 +232,7 @@
   <div class="panel-body">
     <strong>Conclusion</strong>
   </div></div><br />
-<%= f.text_area :conclusion, input_html: {style: 'width:100%;'}  %><br />
+<center><%= f.text_area :conclusion, :cols => 100, :rows => '10'  %></center><br />
 
 
 	

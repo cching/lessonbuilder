@@ -31,11 +31,21 @@
 
         
                 <% @standards.each do |standard| %>
+
                 <th colspan="2">
                         Standard and Resources
                 </th>
 
                 <tbody>
+
+                                    <tr>
+                                <td colspan="2" class="resource">Standard</td></tr>
+                        
+                        
+                        <tr>
+                                <td colspan="2" class="std">
+                                <ul type="disc">
+                                <li><h4><%= standard.id %>: <%= standard.content %></h4></li></ul></td></tr>
                         
                         <tr>
                                         <td width="50%" class="resource">
@@ -52,9 +62,9 @@
                                                 <ul type="disc">
                                                         <li>
                                                 <% if current_user?(@select.user) %>
-                                                        <h4><%= best_in_place squestion, :content, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %></h4>
+                                                        <%= best_in_place squestion, :content, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %>
                                                         <% else %>
-                                                        <h4><%= squestion.content %></h4>
+                                                        <%= squestion.content %>
                                                         <% end %>
                                                         </li>
                                                 </ul>
@@ -64,7 +74,7 @@
                                         <% standard.cquestions.where(:select_id => @select).each do |cquestion| %>
                                         <ul type="disc">
                                                 <li>
-                                        <font color="red"><h4><%= cquestion.content %></h4></font>
+                                        <font color="red"><%= cquestion.content %></font>
                                                 </li>
                                         </ul>
                                         <% end %>
@@ -75,9 +85,9 @@
                                         <ul type="disc">
                                                 <li>
                                                 <% if current_user?(@select.user) %>
-                                                        <h4><%= best_in_place sskill, :content, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %></h4>
+                                                        <%= best_in_place sskill, :content, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %>
                                                         <% else %>
-                                                        <h4><%= sskill.content %></h4>
+                                                        <%= sskill.content %>
                                                         <% end %>
                                                 </li>
                                         </ul>
@@ -86,7 +96,7 @@
                                         <% standard.cskills.where(:select_id => @select).each do |cskill| %>
                                         <ul type="disc">
                                                 <li>
-                                        <font color="red"><h4><%= cskill.content %></h4></font>
+                                        <font color="red"><%= cskill.content %></font>
                                                 </li>
                                         </ul>
                                                 <% end %>
@@ -108,9 +118,9 @@
                                         <ul type="disc">
                                                 <li>
                                                 <% if current_user?(@select.user) %>
-                                                        <h4><%= best_in_place svocab, :content_english, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %></h4>
+                                                        <%= best_in_place svocab, :content_english, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %>
                                                         <% else %>
-                                                    <h4><%= svocab.content_english %></h4>
+                                                    <%= svocab.content_english %>
                                                         <% end %>
                                                 </li>
                                         </ul>
@@ -119,7 +129,7 @@
                                         <% standard.cvocabs.where(:select_id => @select).each do |cvocab| %>
                                         <ul type="disc">
                                                 <li>
-                                        <font color="red"><h4><%= best_in_place cvocab, :content %></h4></font>
+                                        <font color="red"><%= best_in_place cvocab, :content %></font>
                                                 </li>
                                         </ul>
                                         <% end %>
@@ -130,9 +140,9 @@
                                         <ul type="disc">
                                                 <li>
                                                 <% if current_user?(@select.user) %>
-                                                        <h4><%= best_in_place sstrategy, :content, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %></h4>
+                                                        <%= best_in_place sstrategy, :content, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %>
                                                         <% else %>
-                                                        <h4><%= sstrategy.content %></h4>
+                                                        <%= sstrategy.content %>
                                                         <% end %>
                                                 </li>
                                         </ul>
@@ -141,7 +151,7 @@
                                         <% standard.cstrategies.where(:select_id => @select).each do |cstrategy| %>
                                         <ul type="disc">
                                                 <li>
-                                        <font color="red"><h4><%= best_in_place cstrategy, :content %></h4></font>
+                                        <font color="red"><%= best_in_place cstrategy, :content %></font>
                                                 </li>
                                         </ul>
                                         <% end %>
@@ -149,7 +159,8 @@
                         </tr>
                         
                         <tr>
-                                <td colspan="2" class="resource">Resources</td></tr><tr>
+                                <td colspan="2" class="resource">Resources</td></tr>
+                                <tr>
 
 
 
@@ -159,9 +170,9 @@
                                         <ul type="disc">
                                                 <li>
                                                 <% if current_user?(@select.user) %>
-                                                        <h4><%= best_in_place slink, :comment, :type => :textarea, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %> <br /><%= truncate(Rinku.auto_link(slink.link.link), :length=>300).html_safe %></h4>
+                                                        <%= best_in_place slink, :comment, :type => :textarea, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %> <br /><%= truncate(Rinku.auto_link(slink.link.link), :length=>300).html_safe %>
                                                         <% else %>
-                                                        <h4><%= slink.comment %><br /><%= truncate(Rinku.auto_link(slink.link.link), :length=>300).html_safe %></h4>
+                                                        <%= slink.comment %><br /><%= truncate(Rinku.auto_link(slink.link.link), :length=>300).html_safe %>
                                                         <% end %>
                                                 </li>
                                         </ul>
@@ -170,26 +181,19 @@
                                         <% standard.clinks.where(:select_id => @select).each do |clink| %>
                                         <ul type="disc">
                                                 <li>
-                                        <font color="red"><h4><%= clink.comment %></h4><%= truncate(Rinku.auto_link(clink.link), :length=>300).html_safe %></font>
+                                        <font color="red"><%= clink.comment %></h4><%= truncate(Rinku.auto_link(clink.link), :length=>300).html_safe %></font>
                                                 </li>
                                         </ul>
 
                                         <% end %>
 
                                 </td>
-                        </tr>                        <tr>
-                                <td colspan="2" class="resource">Standard</td></tr><tr>
-                        
-                        <tr>
-                        <tr>
-                                <td colspan="2" class="standard">
-                                <ul type="disc">
-                                <li><h4><%= standard.id %>: <%= standard.content %></h4></li></ul></td></tr><tr>
+                        </tr>    
 <% end %>
 
                 </tbody>
 
-</table><brr />
+</table><br />
 <div class="panel panel-danger">
   <div class="panel-body">
     <strong>Overview</strong>
@@ -289,6 +293,7 @@
 <style type="text/css">
 
 #standards th{
+
     border: 1px solid black;
  font-size: 24px;
  color: #FFF;
@@ -299,6 +304,7 @@
 }
 
 #standards .resource {
+  page-break-inside: avoid !important;
     border: 1px solid black;
     font-size: 20px;
  background-color: #ededed;
@@ -308,7 +314,16 @@
  padding-bottom: 1px;
 }
 
+#standards .std {
+
+    border: 1px solid black;
+ font-size: 22px;
+ font-style: bold;
+ padding: 4px 18px;
+}
+
 #standards .standard {
+  page-break-inside: avoid !important;
     border: 1px solid black;
  font-size: 20px;
  padding: 4px 18px;
@@ -320,6 +335,12 @@
 
 #table_list .odd td {
  background-color: #D1D8F6;
+}
+
+.page-break { 
+  clear: both !important;
+  display: block !important;
+  page-break-before: always !important;
 }
 
 .panel-danger,
@@ -337,12 +358,18 @@ border-color: #009ACD;
 }
 
 
+
+
 @media print {
         #pdflink {
                 display: none;
         }
 
+#standards
+th {
+  page-break-before: always !important;
 
+}
 
       #standards 
 table, tr, td, th, tbody, thead, tfoot {

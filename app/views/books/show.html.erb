@@ -1,7 +1,9 @@
 <div id="modal-edit-fields">
 
 <p id="notice"><%= notice %></p>
-
+<center>
+<%= image_tag @book.image.url(:medium) %>
+</center>
 <p>
   <b>Title:</b>
   <%= @book.title %>

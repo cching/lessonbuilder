@@ -3,7 +3,7 @@
 <%= search_form_for @search do |f| %>
   <%= f.label :title_cont, "Name Contains:" %>
   <%= f.text_field :title_cont %><br />
-  <%= f.collection_select :grades_id_eq, Grade.order(:number), :id, :number %><br />
+  <%= f.collection_select :grades_id_eq, Grade.order(:number), :id, :number, label: "Grade:" %><br />
   <%= f.submit %><br />
 <% end %>
 

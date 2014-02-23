@@ -21,6 +21,7 @@ gem 'best_in_place'
 gem 'pdfkit'
 gem 'wkhtmltopdf-binary'
 gem 'wicked'
+gem "paperclip", "~> 4.1"
 
 
 group :development, :test do

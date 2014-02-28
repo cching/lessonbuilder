@@ -1,5 +1,10 @@
 <% if signed_in? %>
 
+<% if params[:controller] != "static_pages_controller" %>
+  <!--[if lt IE 7]>
+  <meta HTTP-EQUIV="REFRESH" content="0; url=<%= about_url %>">
+  <![endif]--> 
+<% end %>
 <h4><font color="#00BFFF">Common Core: English Language Arts and Mathematics</h4></font>
 <p>Rich, complex text is the CORE of Common Core.  Standards by themselves cannot raise achievement (David Coleman).
 The strength of Common Core is in the abundant opportunities it provides for students to engage in close reading of

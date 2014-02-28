@@ -12,9 +12,9 @@
 <h4>Description: <%= best_in_place @select, :description, :type => :textarea, :nil => "Click here to add a description", :html_attrs => { :style => 'width:100%;' } %></h4>
 <h4>Objective: <%= best_in_place @select, :objective, :type => :textarea, :nil => "Click here to add an objective", :html_attrs => { :style => 'width:100%;' } %></h4>
 <h4>Title: <%= best_in_place @select, :name, :nil => "Click here to add a lesson name", :html_attrs => { :style => 'width:100%;' } %> - Date Created: <%= @select.date.to_time.strftime('%B %e, %Y') %></h4><br />
+<%= @select.book.image.url %>
+<%= @select.book.image.path %>
 
-
-<%= image_tag @select.book.image.url(:medium) %>
 
 </center><br />
 <% else %>
@@ -24,8 +24,9 @@
 <h4>Description: <%= @select.description %></h4>
 <h4>Objective: <%= @select.objective %></h4>
 <h4>Date Created: <%= @select.date.to_time.strftime('%B %e, %Y') %></h4><br />
-<%= image_tag @select.book.image.url(:medium) %>
-</center><br />
+
+
+<%= image_tag @select.book.image.url(:medium) %></center><br />
 <% end %>
 
 

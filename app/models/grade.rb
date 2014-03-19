@@ -9,4 +9,7 @@ class Grade < ActiveRecord::Base
 
   has_many :select_grades
   has_many :selects, through: :select_grades
+
+  has_many :document_grades
+  has_many :documents, through: :document_grades
 end

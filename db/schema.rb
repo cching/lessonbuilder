@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140223015635) do
+ActiveRecord::Schema.define(:version => 20140319005728) do
 
   create_table "admin_notes", :force => true do |t|
     t.string   "resource_id",     :null => false
@@ -54,8 +54,8 @@ ActiveRecord::Schema.define(:version => 20140223015635) do
     t.string   "title"
     t.text     "assess_questions"
     t.text     "availability"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
     t.text     "example"
     t.integer  "textcategory_id"
     t.string   "isbn"
@@ -63,6 +63,14 @@ ActiveRecord::Schema.define(:version => 20140223015635) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.boolean  "pdf",                :default => false
+  end
+
+  create_table "booksources", :force => true do |t|
+    t.integer  "book_id"
+    t.integer  "source_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "clinks", :force => true do |t|
@@ -116,6 +124,36 @@ ActiveRecord::Schema.define(:version => 20140223015635) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "document_grades", :force => true do |t|
+    t.integer  "document_id"
+    t.integer  "grade_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "documents", :force => true do |t|
+    t.string   "author"
+    t.text     "publisher"
+    t.string   "title"
+    t.text     "assess_questions"
+    t.text     "availability"
+    t.text     "example"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.string   "pdf_file_name"
+    t.string   "pdf_content_type"
+    t.integer  "pdf_file_size"
+    t.datetime "pdf_updated_at"
+    t.integer  "textcategory_id"
+  end
+
+  create_table "documentsources", :force => true do |t|
+    t.integer  "source_id"
+    t.integer  "document_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "grades", :force => true do |t|
@@ -206,6 +244,13 @@ ActiveRecord::Schema.define(:version => 20140223015635) do
     t.boolean  "initiate",   :default => false
   end
 
+  create_table "select_sources", :force => true do |t|
+    t.integer  "source_id"
+    t.integer  "select_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "select_standards", :force => true do |t|
     t.integer  "standard_id"
     t.integer  "user_id"
@@ -267,6 +312,7 @@ ActiveRecord::Schema.define(:version => 20140223015635) do
     t.text     "view",          :default => ""
     t.text     "questions",     :default => ""
     t.text     "textdependent", :default => ""
+    t.integer  "document_id"
   end
 
   create_table "skills", :force => true do |t|
@@ -274,6 +320,12 @@ ActiveRecord::Schema.define(:version => 20140223015635) do
     t.string  "content"
     t.integer "user_id",     :default => 0
     t.boolean "duplicate",   :default => false
+  end
+
+  create_table "sources", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "standards", :id => false, :force => true do |t|

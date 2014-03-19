@@ -27,7 +27,14 @@
         <div class="row">
     <div class="col-md-1">
     </div>
+
+    <% unless book.pdf?  %>
+    
     <div class="col-md-11"><b>ISBN: </b><%= book.isbn %></div></div>
+    <% else %>
+    <div class="col-md-11"><b>PDF Link: <%= link_to 'View PDF', book.image.url %></div></div>
+    
+    <% end %>
         <div class="row">
     <div class="col-md-1">
     </div>

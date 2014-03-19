@@ -32,7 +32,7 @@
     
     <div class="col-md-11"><b>ISBN: </b><%= book.isbn %></div></div>
     <% else %>
-    <div class="col-md-11"><b>PDF Link: <%= link_to 'View PDF', book.image.url %></div></div>
+    <div class="col-md-11"><b>PDF Link: <%= link_to 'View PDF', book.image.url %></b></div></div>
     
     <% end %>
         <div class="row">
@@ -43,7 +43,7 @@
         <div class="row">
     <div class="col-md-1">
     </div>
-    <div class="col-md-11"><%= link_to "View Example Text", book,:action => 'show',:id => @book , :remote =>:true %></div></div>
+    <div class="col-md-11"><b><%= link_to "View Example Text", book,:action => 'show',:id => @book , :remote =>:true %></b></div></div>
     <% else %>
             <div class="row">
     <div class="col-md-1">
@@ -54,7 +54,7 @@
         <div class="row">
     <div class="col-md-1">
     </div>
-    <div class="col-md-11"><%= link_to "View Performance Task", book,:action => 'show',:id => @book , :remote =>:true %></div></div>
+    <div class="col-md-11"><b><%= link_to "View Performance Task", book,:action => 'show',:id => @book , :remote =>:true %></b></div></div>
     <% else %>
             <div class="row">
     <div class="col-md-1">
@@ -69,46 +69,53 @@
 <% @select.grades.each do |grade| %>
 <% Book.where(:textcategory_id => [5, 6, 8, 9, 10]).includes(:grades).where(:grades => {:id => grade.id}).order("grade_id DESC").each do |book| %>
 <div class="row">
-    <div class="span1"><%= f.radio_button :book_id, book.id %>
+    <div class="col-md-1"><%= f.radio_button :book_id, book.id %>
     </div>
-    <div class="span11"><b>Title: </b><i><%= book.title %></i></div></div>
+    <div class="col-md-11"><b>Title: </b><i><%= book.title %></i></div></div>
     <div class="row">
-    <div class="span1">
+    <div class="col-md-1">
     </div>
-    <div class="span11"><b>Author: </b><%= book.author %></div></div>
+    <div class="col-md-11"><b>Author: </b><%= book.author %></div></div>
     <div class="row">
-    <div class="span1">
+    <div class="col-md-1">
     </div>
-    <div class="span11"><b>Publisher: </b><%= book.publisher %></div></div>
+    <div class="col-md-11"><b>Publisher: </b><%= book.publisher %></div></div>
         <div class="row">
-    <div class="span1">
+    <div class="col-md-1">
     </div>
-    <div class="span11"><b>ISBN: </b><%= book.isbn %></div></div>
+
+    <% unless book.pdf?  %>
+    
+    <div class="col-md-11"><b>ISBN: </b><%= book.isbn %></div></div>
+    <% else %>
+    <div class="col-md-11"><b>PDF Link: <%= link_to 'View PDF', book.image.url %></b></div></div>
+    
+    <% end %>
         <div class="row">
-    <div class="span1">
+    <div class="col-md-1">
     </div>
-    <div class="span11"><b>Availability: </b><%= book.availability %></div></div>
+    <div class="col-md-11"><b>Availability: </b><%= book.availability %></div></div>
     <% unless book.example.blank? %>
         <div class="row">
-    <div class="span1">
+    <div class="col-md-1">
     </div>
-    <div class="span11"><%= link_to "View Example Text", book,:action => 'show',:id => @book , :remote =>:true %></div></div>
+    <div class="col-md-11"><b><%= link_to "View Example Text", book,:action => 'show',:id => @book , :remote =>:true %></b></div></div>
     <% else %>
             <div class="row">
-    <div class="span1">
+    <div class="col-md-1">
     </div>
-    <div class="span11">No Example Text Available</div></div>
+    <div class="col-md-11">No example text available</div></div>
     <% end %>
-        <% unless book.assess_questions.blank? %>
+            <% unless book.assess_questions.blank? %>
         <div class="row">
-    <div class="span1">
+    <div class="col-md-1">
     </div>
-    <div class="span11"><%= link_to "View Performance Task", book,:action => 'show',:id => @book , :remote =>:true %></div></div>
+    <div class="col-md-11"><b><%= link_to "View Performance Task", book,:action => 'show',:id => @book , :remote =>:true %></b></div></div>
     <% else %>
             <div class="row">
-    <div class="span1">
+    <div class="col-md-1">
     </div>
-    <div class="span11">No Performance Task Available</div></div>
+    <div class="col-md-11">No Performance Task Available</div></div>
     <% end %><br />
 <% end %>
 <% end %>

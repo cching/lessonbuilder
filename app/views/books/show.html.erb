@@ -2,7 +2,7 @@
 
 <p id="notice"><%= notice %></p>
 <center>
-<% unless book.pdf?  %>
+<% unless @book.pdf?  %>
     <%= image_tag @book.image.url(:medium) %>
 
     <% else %>

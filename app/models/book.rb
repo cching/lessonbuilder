@@ -3,7 +3,11 @@ class Book < ActiveRecord::Base
   
 
   has_attached_file :image, :default_url => "/images/:style/missing.png"
-  validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/, :content_type => "application/pdf"
+  validates_attachment_content_type :image, :content_type => ["application/pdf","application/vnd.ms-excel",     
+             "image/jpeg",
+             "image/gif", 
+             "image/jpg", 
+             "image/png"]
   has_many :book_grades, :dependent => :destroy
   has_many :grades, through: :book_grades
   belongs_to :textcategory

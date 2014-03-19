@@ -6,7 +6,7 @@
     <%= image_tag @book.image.url(:medium) %>
 
     <% else %>
-    <b>PDF Link: <%= link_to 'View PDF', book.image.url %></b>
+    <b>PDF Link: <%= link_to 'View PDF', @book.image.url %></b>
     
     <% end %>
 

@@ -3,7 +3,7 @@
 <p id="notice"><%= notice %></p>
 <center>
 <% unless @book.pdf?  %>
-    <%= image_tag @book.image.url(:medium) %>
+    <%= image_tag @book.image.url %>
 
     <% else %>
     <b>PDF Link: <%= link_to 'View PDF', @book.image.url %></b>

@@ -2,7 +2,7 @@ class Book < ActiveRecord::Base
   attr_accessible :assess_questions, :author, :availability, :publisher, :title, :grade_ids, :example, :textcategory_id, :isbn, :image, :source_ids, :pdf
   
 
-  has_attached_file :image, :default_url => "/images/:style/missing.png"
+  has_attached_file :image, :styles => { :medium => "200x200>" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :image, :content_type => ["application/pdf","application/vnd.ms-excel",     
              "image/jpeg",
              "image/gif", 

@@ -220,9 +220,6 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
-    unicorn-rails (1.1.0)
-      rack
-      unicorn
     uuidtools (2.1.4)
     websocket (1.0.7)
     wicked (1.0.2)
@@ -266,7 +263,6 @@ DEPENDENCIES
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
   unicorn
-  unicorn-rails
   wicked
   will_paginate (~> 3.0)
   wkhtmltopdf-binary

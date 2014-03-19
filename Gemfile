@@ -23,7 +23,7 @@ gem 'wkhtmltopdf-binary'
 gem 'wicked'
 gem "paperclip", "~> 4.1"
 gem 'aws-sdk', '~> 1.0'
-gem 'unicorn-rails'
+
 
 group :development, :test do
   gem 'rspec-rails', '2.11.0'

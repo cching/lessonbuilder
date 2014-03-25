@@ -11,7 +11,9 @@
 
 <center><h3><small>Stories, Poetry, Read-Aloud Stories, Read-Aloud Poetry, Drama</h3></center></small><br />
 <% @select.grades.each do |grade| %>
+
 <% Book.where(:textcategory_id => [1, 2, 3, 4, 7]).includes(:grades).where(:grades => {:id => grade.id}).order("grade_id DESC").each do |book| %>
+
 <div class="row">
     <div class="col-md-1"><%= f.radio_button :book_id, book.id %>
     </div>
@@ -61,8 +63,8 @@
     </div>
     <div class="col-md-11">No Performance Task Available</div></div>
     <% end %><br />
-
 <% end %>
+
 <% end %>
 <% else %>
 <center><h3><small>Informational Texts, Read-Aloud Informational Text, Informational Texts: English Language Arts, Informational Texts: History/Social Studies, Informational Texts: Science, Mathematics, and Technical Subjects</small></h3></center><br />

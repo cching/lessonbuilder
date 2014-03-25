@@ -1,7 +1,7 @@
 <div id="modal-edit-fields">
 
 <p id="notice"><%= notice %></p>
-
+<%= render 'info' %>
 <p>
   <b>Title:</b>
   <%= @book.title %>
@@ -31,7 +31,7 @@
 <html id=style="white-space: pre-wrap;">
 
   <b>Example text:</b>
-  <div style="font-size: 25pt;"><%= simple_format(@book.example) %>
+  <div style="font-size: 13pt;"><%= simple_format(@book.example) %>
 </div></html>
 
 <p>

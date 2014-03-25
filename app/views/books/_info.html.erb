@@ -1,6 +1,6 @@
 <% unless @book.pdf?  %>
     
-    <p><%= image_tag(@book.image.url) %></p>
+    <b><p>IMG link: <%= @book.image.url %></p></b>
     <% else %>
     <p><b>PDF Link: <%= link_to 'View PDF', @book.image.url %></b>
     

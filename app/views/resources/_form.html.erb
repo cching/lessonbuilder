@@ -1,0 +1,14 @@
+<%= simple_form_for(@resource) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+  <%= f.input :title, input_html: {style: 'height:100px; width:100%'} %>
+    <%= f.input :content, input_html: {style: 'height:100px; width:100%'} %>
+    <%= f.input :media, input_html: {style: 'height:100px; width:100%'} %>
+    
+  </div>
+<br />
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

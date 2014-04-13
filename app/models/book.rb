@@ -1,5 +1,5 @@
 class Book < ActiveRecord::Base
-  attr_accessible :assess_questions, :author, :availability, :publisher, :title, :grade_ids, :example, :textcategory_id, :isbn, :image, :source_ids, :pdf
+  attr_accessible :assess_questions, :author, :availability, :publisher, :title, :grade_ids, :example, :textcategory_id, :isbn, :image, :source_ids, :pdf, :comments
   
 
   has_attached_file :image, :styles => { :medium => "200x200>" }, :default_url => "/images/:style/missing.png"

@@ -1,5 +1,8 @@
 Commoncore::Application.routes.draw do
   
+  resources :resources
+
+
   resources :sources
 
 

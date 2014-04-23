@@ -5,7 +5,7 @@ class Select < ActiveRecord::Base
   end
 
   #Selects is the lesson model but is named 'select' for the ActiveRecord join association
-  attr_accessible :user_id, :standard_ids, :textdependent, :name, :grade_ids, :text_id, :date, :vocabulary, :writing, :conclusion, :objective, :notes, :description, :book, :subject_id, :subsubject_ids, :private, :question_ids, :select_ids, :strategy_ids, :skill_ids, :vocab_ids, :link_ids, :book_id, :cquestions_attributes, :cvocabs_attributes, :cskills_attributes, :cstrategies_attributes, :clinks_attributes, :source_ids
+  attr_accessible :user_id, :standard_ids, :textdependent, :name, :grade_ids, :text_id, :date, :vocabulary, :writing, :conclusion, :objective, :notes, :description, :book, :subject_id, :subsubject_ids, :private, :question_ids, :select_ids, :strategy_ids, :skill_ids, :vocab_ids, :link_ids, :book_id, :cquestions_attributes, :cvocabs_attributes, :cskills_attributes, :cstrategies_attributes, :clinks_attributes, :source_ids, :aquestion_ids
   belongs_to :user
   belongs_to :subject
   
@@ -25,6 +25,9 @@ class Select < ActiveRecord::Base
   has_many :select_vocabs, :dependent => :destroy
   has_many :vocabs, through: :select_vocabs
   
+  has_many :select_aquestions, :dependent => :destroy
+  has_many :aquestions, through: :select_aquestions
+
   has_many :select_links, :dependent => :destroy
   has_many :links, through: :select_links
 

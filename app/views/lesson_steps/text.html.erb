@@ -14,7 +14,7 @@
 <% @select.grades.each do |grade| %>
 <% @select.sources.each do |source| %>
 
-<% (Book.where(:textcategory_id => [1, 2, 3, 4, 7]).includes(:grades).where(:grades => {:id => grade.id}) && Book.where(:textcategory_id => [1, 2, 3, 4, 7]).includes(:sources).where(:sources => {:id => source.id})).order("title ASC").each do |book| %>
+<% (Book.where(:textcategory_id => [1, 2, 3, 4, 7]).includes(:grades).where(:grades => {:id => grade.id}).order("title ASC") & Book.where(:textcategory_id => [1, 2, 3, 4, 7]).includes(:sources).where(:sources => {:id => source.id}).order("title ASC")).each do |book| %>
 
 
 <div class="row">
@@ -81,7 +81,7 @@
 <% end %></h3></center></small><br />
 <% @select.grades.each do |grade| %>
 <% @select.sources.each do |source| %>
-<% (Book.where(:textcategory_id => [5, 6, 8, 9, 10]).includes(:grades).where(:grades => {:id => grade.id}) && Book.where(:textcategory_id => [5, 6, 8, 9, 10]).includes(:sources).where(:sources => {:id => source.id})).order("title ASC").each do |book| %>
+<% (Book.where(:textcategory_id => [5, 6, 8, 9, 10]).includes(:grades).where(:grades => {:id => grade.id}).order("title ASC") & Book.where(:textcategory_id => [5, 6, 8, 9, 10]).includes(:sources).where(:sources => {:id => source.id}).order("title ASC")).each do |book| %>
 <div class="row">
     <div class="col-md-1"><%= f.radio_button :book_id, book.id %>
     </div>

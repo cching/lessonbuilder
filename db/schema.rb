@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140413181835) do
+ActiveRecord::Schema.define(:version => 20140423063305) do
 
   create_table "admin_notes", :force => true do |t|
     t.string   "resource_id",     :null => false
@@ -39,6 +39,13 @@ ActiveRecord::Schema.define(:version => 20140413181835) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+  end
+
+  create_table "aquestions", :force => true do |t|
+    t.text     "content"
+    t.string   "standard_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "book_grades", :force => true do |t|
@@ -216,6 +223,15 @@ ActiveRecord::Schema.define(:version => 20140413181835) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "text_id"
+  end
+
+  create_table "select_aquestions", :force => true do |t|
+    t.integer  "aquestion_id"
+    t.integer  "select_id"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.boolean  "initiate",     :default => false
+    t.text     "content",      :default => ""
   end
 
   create_table "select_grades", :force => true do |t|

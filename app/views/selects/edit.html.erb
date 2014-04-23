@@ -165,6 +165,27 @@
 						<% end %>
 				    </td>
 				</tr>
+
+<tr>
+					<td colspan="2" class="resource"><h4>Assessment Questions</h4></td></tr><tr>
+
+
+
+					<td colspan="2">
+						<% unless standard.aquestions.blank? %>
+						<% standard.aquestions.each do |aquestion| %>						
+							<h4><%= hidden_field_tag "select[aquestion_ids][]", nil %>
+				     	   	<%= check_box_tag "select[aquestion_ids][]", aquestion.id, @select.aquestion_ids.include?(aquestion.id), id: dom_id(aquestion) %>
+				      	  	<%= aquestion.content %></h4>
+										
+						<% end %>
+						<% else %>
+						No preset assessment questions exist for this standard. Submit your lesson and add custom questions on the next page.
+						<% end %>
+						
+					</td>
+				</tr>
+
 				<tr>
 					<td colspan="2" class="resource"><h4>Resources</h4></td></tr><tr>
 

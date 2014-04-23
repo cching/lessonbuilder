@@ -1,6 +1,8 @@
 ---
 Headers.jpg: Headers-5e2710bac351e2f5f9461bbda5844862.jpg
 Headers/index.jpg: Headers-5e2710bac351e2f5f9461bbda5844862.jpg
+Lesson Setup Screen.jpg: Lesson Setup Screen-854f0f68b58606b531f8cc597553fdf1.jpg
+Lesson Setup Screen/index.jpg: Lesson Setup Screen-854f0f68b58606b531f8cc597553fdf1.jpg
 aftersignin.jpg: aftersignin-8d58bed76d30f6ac3258fe7664536483.jpg
 aftersignin/index.jpg: aftersignin-8d58bed76d30f6ac3258fe7664536483.jpg
 favicon.ico: favicon-6101c49ba49bf0af1afa3b34e207874e.ico
@@ -11,6 +13,8 @@ header.png: header-6d316fa061b0e6abaf25f8f5e878726d.png
 header/index.png: header-6d316fa061b0e6abaf25f8f5e878726d.png
 home.jpg: home-1e01424a35615813ce03e882af0d6200.jpg
 home/index.jpg: home-1e01424a35615813ce03e882af0d6200.jpg
+ie7.jpg: ie7-1966015e8711863f1621ba80b8057c9f.jpg
+ie7/index.jpg: ie7-1966015e8711863f1621ba80b8057c9f.jpg
 info.jpg: info-cd112d29f08e5db3bd8e9606bde217c2.jpg
 info/index.jpg: info-cd112d29f08e5db3bd8e9606bde217c2.jpg
 lesson.jpg: lesson-3e69aade5d0c2806441f86eae949818e.jpg
@@ -19,8 +23,8 @@ lessonname.jpg: lessonname-53d8f529b230227c6de81828b563f8d0.jpg
 lessonname/index.jpg: lessonname-53d8f529b230227c6de81828b563f8d0.jpg
 lessons.jpg: lessons-3e69aade5d0c2806441f86eae949818e.jpg
 lessons/index.jpg: lessons-3e69aade5d0c2806441f86eae949818e.jpg
-newinfo.jpg: newinfo-5030875c2318c6a7e7f35ff8cafd5cc2.jpg
-newinfo/index.jpg: newinfo-5030875c2318c6a7e7f35ff8cafd5cc2.jpg
+newhome.jpg: newhome-93334647830c3689a870d4f39bef61b5.jpg
+newhome/index.jpg: newhome-93334647830c3689a870d4f39bef61b5.jpg
 rails.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
 rails/index.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
 search.jpg: search-d89dbee7d85e0b0652c7d60bc814f5fa.jpg
@@ -35,12 +39,12 @@ standard.jpg: standard-40fc40ad3e3da770ab787750b0a4a086.jpg
 standard/index.jpg: standard-40fc40ad3e3da770ab787750b0a4a086.jpg
 standards.jpg: standards-40fc40ad3e3da770ab787750b0a4a086.jpg
 standards/index.jpg: standards-40fc40ad3e3da770ab787750b0a4a086.jpg
-application.js: application-6a103b89a9714c37e908cbce50f00e82.js
-application/index.js: application-6a103b89a9714c37e908cbce50f00e82.js
+application.js: application-cffce0c2e034b415b92a55abadf80216.js
+application/index.js: application-cffce0c2e034b415b92a55abadf80216.js
 images/rails.png: images/rails-a3386665c05a2d82f711a4aaa72d247c.png
 images/rails/index.png: images/rails-a3386665c05a2d82f711a4aaa72d247c.png
-application.css: application-38a6abf1129a52cfc6d0b5d4b6741dde.css
-application/index.css: application-38a6abf1129a52cfc6d0b5d4b6741dde.css
+application.css: application-756e33fc6fb24eaa8f5843b05d8733e7.css
+application/index.css: application-756e33fc6fb24eaa8f5843b05d8733e7.css
 fontawesome-webfont.eot: fontawesome-webfont-009f6d1f667cc42c25e712ab3429cbc7.eot
 fontawesome-webfont/index.eot: fontawesome-webfont-009f6d1f667cc42c25e712ab3429cbc7.eot
 fontawesome-webfont.svg: fontawesome-webfont-f1c2889911d212e1403b68eabc1a3a56.svg

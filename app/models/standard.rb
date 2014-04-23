@@ -16,11 +16,14 @@ class Standard < ActiveRecord::Base
   has_many :select_vocabs, through: :vocabs
   has_many :links
   has_many :select_links, through: :links
+  has_many :aquestions
+  has_many :select_aquestions, through: :aquestions
   
   has_many :cquestions
   has_many :cskills
   has_many :cvocabs
   has_many :cstrategies
   has_many :clinks
+  has_many :aquestions
 end
 

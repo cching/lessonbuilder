@@ -77,6 +77,20 @@ class SelectsController < ApplicationController
         end
       end
 
+              @select.aquestions.each do |aquestion|
+          @select.select_aquestions.where(:aquestion_id => aquestion.id).each do |saquestion|
+            if saquestion.initiate?
+                          saquestion.content = saquestion.content
+
+          else
+            saquestion.content = aquestion.content
+            saquestion.initiate = TRUE
+            saquestion.save
+          end
+
+        end
+      end
+
               @select.skills.each do |skill|
           @select.select_skills.where(:skill_id => skill.id).each do |sskill|
             if sskill.initiate?

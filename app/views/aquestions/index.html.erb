@@ -1,6 +1,6 @@
 <% if current_user.admin? %>
 
-<h1>Assessment Questions</h1>
+<h1>Questions</h1>
 <table id="search">
 <%= search_form_for @search do |f| %>
   <div class="field">
@@ -15,7 +15,7 @@
 <% end %></tr></td>
 </table>
 
-<%= link_to 'Add new assessment question', new_question_path, class: "btn" %><div align="right"><%= will_paginate @questions %></div>
+<%= link_to 'Add new question', new_aquestion_path, class: "btn" %><div align="right"><%= will_paginate @aquestions %></div>
 <table class="table table-hover">
   <thead>
     <th>Standard ID</th>
@@ -25,11 +25,11 @@
 
 </thead>
 <tbody>
-<% @questions.each do |question| %>
+<% @aquestions.each do |question| %>
   <tr>
   <td><%= question.standard.id %></td>
     <td><%= question.content %></td>
-    <td><%= link_to 'Edit', edit_question_path(question), class: "btn btn-mini" %></td>
+    <td><%= link_to 'Edit', edit_aquestion_path(question), class: "btn btn-mini" %></td>
     <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-mini" %></td>
   </tr>
 </tbody>

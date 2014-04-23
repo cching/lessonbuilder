@@ -160,6 +160,32 @@
                                         <% end %>
                             </td>
                         </tr>
+
+
+                        <tr>
+                                <td colspan="2" class="resource">Assessment Questions</td></tr>
+                                <tr>
+
+
+
+                                <td colspan="2" class="standard">
+
+                                        <% standard.select_aquestions.where(:select_id => @select).each do |saquestion| %>
+                                        <ul type="disc">
+                                                <li>
+                                                <% if current_user?(@select.user) %>
+                                                        <%= best_in_place saquestion, :content, :type => :textarea, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %>
+                                                        <% else %>
+                                                        <%= saquestion.content %>
+                                                        <% end %>
+                                                </li>
+                                        </ul>
+                                                                        <% end %>
+                                        
+                                        
+
+                                </td>
+                        </tr>    
                         
                         <tr>
                                 <td colspan="2" class="resource">Resources</td></tr>

@@ -13,8 +13,8 @@
 <% end %></h3></center></small><br />
 <% @select.grades.each do |grade| %>
 <% @select.sources.each do |source| %>
-
 <% (Book.where(:textcategory_id => [1, 2, 3, 4, 7]).includes(:grades).where(:grades => {:id => grade.id}).order("title ASC") & Book.where(:textcategory_id => [1, 2, 3, 4, 7]).includes(:sources).where(:sources => {:id => source.id}).order("title ASC")).each do |book| %>
+
 
 
 <div class="row">
@@ -71,8 +71,8 @@
     <div class="col-md-11">No Performance Task Available</div></div>
     <% end %><br />
 <% end %>
-
 <% end %>
+
 <% end %>
 <% else %>
 <center><h3><small>

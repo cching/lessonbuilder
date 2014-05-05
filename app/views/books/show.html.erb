@@ -26,10 +26,16 @@
   <%= @book.textcategory.category %>
 </p>
 
+
 <p>
   <b>Source:</b>
-  <%= @book.sources.name %>
+<% @book.sources.each do |source| %>
+
+  <%= source.name %>
+
+  <% end %>
 </p>
+
 
 <p>
   <b>Comment:</b>

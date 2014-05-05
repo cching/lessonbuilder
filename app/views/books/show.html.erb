@@ -28,12 +28,12 @@
 
 <p>
   <b>Source:</b>
-  <%= @book.sources %>
+  <%= @book.sources.source %>
 </p>
 
 <p>
   <b>Comment:</b>
-  <%= @book.comments %>
+  <%= simple_format(@book.comments) %>
 </p>
 
 

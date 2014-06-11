@@ -12,6 +12,31 @@
 <%= source.name %> |
 <% end %></h3></center></small><br />
 
+<div class="well well-sm">
+<b>Legend </b>
+<table>
+<tr>
+<td>
+<span class="label label-primary">
+                   <span class="glyphicon glyphicon-cloud-upload"></span> PDF Example Available
+                   </span>
+                   </td>
+                   <td>
+<span class="label label-success">
+                   <span class="glyphicon glyphicon-book"></span>Example text available
+                   </span>
+                   </td>
+                   <td>
+                   <span class="label label-info">
+                   <span class="glyphicon glyphicon-pencil"></span>Assessment available</span>
+                   </td>
+                   </tr>
+                   </table>
+
+
+
+
+                   </div>
 
 
 
@@ -30,14 +55,42 @@
                 <table>
                 <tr>
                 <td>
+                &nbsp;
+                </td>
+                <td>
                 <%= f.radio_button :book_id, book.id %>
                 </td>
                 <td>
                 &nbsp;
                 </td>
                 <td>
-                    <%= link_to book.title, book, class: "list-group-item", remote: :true %>
-                   
+                    <%= link_to book.title, book, class: "list-group-item", remote: :true %></td>
+                    <td>
+                    &nbsp; &nbsp;
+                    </td>
+                    <td>
+                   <% if book.pdf? %>
+                   <span class="label label-primary">
+                   <span class="glyphicon glyphicon-cloud-upload"></span>
+                   </span>
+                   <% end %>
+                   </td>
+                   <td>
+                   <% unless book.example == nil %>
+                   <span class="label label-success">
+                   <span class="glyphicon glyphicon-book"></span>
+                   </span>
+                   <% end %>
+                   </td>
+                   <td>
+                   <% unless book.assess_questions == nil %>
+                   <span class="label label-info">
+                   <span class="glyphicon glyphicon-pencil"></span>
+                   </span>
+                   <% end %>
+
+
+
                     </td>
                     </tr></table>
                 </div>

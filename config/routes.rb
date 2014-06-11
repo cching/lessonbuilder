@@ -1,5 +1,8 @@
 Commoncore::Application.routes.draw do
   
+  resources :select_aquestions
+
+
   resources :aquestions
 
 

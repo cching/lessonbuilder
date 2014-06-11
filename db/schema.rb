@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140423063305) do
+ActiveRecord::Schema.define(:version => 20140611061038) do
 
   create_table "admin_notes", :force => true do |t|
     t.string   "resource_id",     :null => false
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20140423063305) do
     t.string   "standard_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "level"
   end
 
   create_table "book_grades", :force => true do |t|

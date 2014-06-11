@@ -3,7 +3,7 @@ class BooksController < ApplicationController
   # GET /books.json
   def index
     @search = Book.search(params[:q])
-    @books = @search.result.paginate(:page => params[:page], :per_page => 30)
+    @books = @search.result.order(:title)
 
     respond_to do |format|
       format.html # index.html.erb

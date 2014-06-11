@@ -1,6 +1,1 @@
-$modal = $('.modal'),
-$modalBody = $('.modal .modal-body'),
-$modalHeading = $('.modal .modal-heading');
-$modalHeading.html("<%= @book.title %>");
-$modalBody.html("<%= escape_javascript(render @book) %>");
-$modal.modal();
+$('#book').html('<%= escape_javascript(render(:partial => 'book', :locals => {:book => @book})) %>');

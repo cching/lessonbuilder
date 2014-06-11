@@ -1,7 +1,14 @@
 <div id="modal-edit-fields">
 
 <p id="notice"><%= notice %></p>
-<div id="pdflink"><%= render 'info' %></div>
+
+<% else %>
+<div id="pdflink"><% unless @book.pdf?  %>
+<p>
+<b>View example PDF: <%= link_to 'View PDF', @book.image.url %></b>
+</p>
+<% end %></div>
+
 <p>
   <b>Title:</b>
   <%= @book.title %>
@@ -61,7 +68,9 @@
 </p>
 
 </div><br /><div id="pdflink">
+<% if current_user.admin? %>
 <%= link_to "Edit", edit_book_path(@book), class: "btn btn-link" %>
+<% end %>
 <%= link_to "Save as PDF", book_path(@book, format: "pdf"), class: "btn btn-link" %></div>
 
 <style type="text/css">

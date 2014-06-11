@@ -1,27 +1,38 @@
 <div id="modal-edit-fields"><p id="notice"><%= notice %></p>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
-<center>
-<%= image_tag @book.image.url(:medium) %>
-</center>
-
+<h3><%= @book.title %> <small><%= @book.author %></small></h3>
+<hr>
+<% unless @book.pdf?  %>
 <p>
-  <b>Title:</b>
-  <%= @book.title %>
+<b>PDF Link: <%= link_to 'View PDF', @book.image.url %></b>
 </p>
-<p>
-  <b>Author:</b>
-  <%= @book.author %>
-</p>
-
-<p>
+<% end %>
   <b>Publisher:</b>
-  <%= simple_format(@book.publisher) %>
-</p>
+<%= simple_format(@book.publisher).html_safe %>
+
 
 <p>
   <b>ISBN Number:</b>
   <%= @book.isbn %>
+</p>
+
+<p>
+  <b>Grade:</b>
+<% @book.grades.each do |grade| %>
+
+  <%= grade.number %>
+
+  <% end %>
+</p>
+
+<p>
+  <b>Source:</b>
+<% @book.sources.each do |source| %>
+
+  <%= source.name %>
+
+  <% end %>
 </p>
 
 <p>
@@ -30,11 +41,20 @@
 </p>
 
 
+
+
+
+
+
+
+
+
+
 <html id=style="white-space: pre-wrap;">
-<p>
+
   <b>Example text:</b>
-  <%= raw simple_format h(@book.example) %>
-</p></html>
+  <div style="font-size: 13pt;"><%= simple_format(@book.example) %>
+</div></html>
 
 <p>
   <b>Performance task:</b>
@@ -45,6 +65,12 @@
   <b>Availability:</b>
   <%= simple_format @book.availability %>
 </p>
+<p>
+  <b>Comment:</b>
+  <%= simple_format(@book.comments) %>
+</p>
+
+
 
 </div><br /><div id="pdflink">
 

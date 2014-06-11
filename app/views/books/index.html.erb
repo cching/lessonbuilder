@@ -1,11 +1,14 @@
 <% if current_user.admin? %>
 
-<%= search_form_for @search do |f| %>
-  <%= f.label :title_cont, "Name Contains:" %>
-  <%= f.text_field :title_cont %><br />
-  <%= f.collection_select :grades_id_eq, Grade.order(:number), :id, :number, label: "Grade:" %><br />
-  <%= f.submit %><br />
-<% end %>
+<%= search_form_for @search, html: { class: 'form-horizontal' } do |f| %>
+  <%= f.label :title_cont, "Search by title:" %>
+  <%= f.text_field :title_cont, class: "form-control" %><br />
+  <%= f.label :author_cont, "Search by author:" %>
+  <%= f.text_field :author_cont, class: "form-control" %><br />
+  <%= f.collection_select :grades_id_eq, Grade.order(:number), :id, :number, {prompt: "Search by grade"}, {class: "form-control"} %><br />
+  <%= f.collection_select :sources_id_eq, Source.order(:name), :id, :name, {prompt: "Search by source"}, {class: "form-control"} %><br />
+  <div align="right"><button type="submit" class="btn" data-loading-text="Saving..">Save and Continue</button></div>
+<br /><% end %><br />
 
 <table class="table-hover">
     <thead>
@@ -52,14 +55,13 @@
 </table>
 
 
-<div align="right"><%= will_paginate @selects, :page_links => false %></div>
 <br />
 
 
 <%= link_to 'New Book', new_book_path, class: "btn btn-mini" %>
 
 <% else %>
- You do not have the rights to view this page.
+<%= render 'booktable' %>
 
  <% end %>
 

@@ -2,18 +2,31 @@
 
 <h1>Add Assessment Question</h1>
 
-<%= form_for @aquestion do |f| %>
 
-<div class="field">
-  <%= f.label :standard_id, "Standard" %>
-  <%= f.collection_select :standard_id, Standard.all, :id, :id %>
-</div>
 
-<div class="field">
-	<%= f.label :content %>
-	<%= f.text_area :content, :size => "90x10" %></div><br />
 
-	<%= f.submit "Add Assessment Question", class: "btn" %>
+
+
+<%= simple_form_for(@aquestion) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+  <%= f.association :standard, label_method: :id, include_blank: false %>
+  </div>
+
+    <div class="form-inputs">
+  <%= f.input :content %>
+  </div>
+
+<%= f.input :level, collection: 1..10, include_blank: false %>
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+
+
 <% end %>
+
 <%= link_to 'Back', questions_path %>
+
 <% end %>
+

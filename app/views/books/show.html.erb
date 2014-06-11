@@ -3,7 +3,7 @@
 <p id="notice"><%= notice %></p>
 
 <% else %>
-<div id="pdflink"><% unless @book.pdf?  %>
+<div id="pdflink"><% if @book.pdf?  %>
 <p>
 <b>View example PDF: <%= link_to 'View PDF', @book.image.url %></b>
 </p>

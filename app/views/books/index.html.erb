@@ -59,6 +59,7 @@
 
 
 <%= link_to 'New Book', new_book_path, class: "btn btn-mini" %>
+<%= will_paginate @books %>
 
 <% else %>
 <%= render 'booktable' %>

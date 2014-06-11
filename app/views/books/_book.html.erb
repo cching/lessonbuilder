@@ -3,7 +3,7 @@
 
 <h3><%= @book.title %> <small><%= @book.author %></small></h3>
 <hr>
-<% unless @book.pdf?  %>
+<% if @book.pdf?  %>
 <p>
 <b>PDF Link: <%= link_to 'View PDF', @book.image.url %></b>
 </p>
@@ -18,7 +18,7 @@
 </p>
 
 <p>
-  <b>Grade:</b>
+  <b>Grade(s):</b>
 <% @book.grades.each do |grade| %>
 
   <%= grade.number %>
@@ -27,7 +27,7 @@
 </p>
 
 <p>
-  <b>Source:</b>
+  <b>Source(s):</b>
 <% @book.sources.each do |source| %>
 
   <%= source.name %>
@@ -66,7 +66,7 @@
   <%= simple_format @book.availability %>
 </p>
 <p>
-  <b>Comment:</b>
+  <b>Comments:</b>
   <%= simple_format(@book.comments) %>
 </p>
 

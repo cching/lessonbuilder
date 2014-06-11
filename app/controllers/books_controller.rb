@@ -3,7 +3,12 @@ class BooksController < ApplicationController
   # GET /books.json
   def index
     @search = Book.search(params[:q])
+    if current_user.admin?
+    @books = @search.result.order(:title).paginate(:page => params[:page], :per_page => 50)
+
+    else
     @books = @search.result.order(:title)
+   end 
 
     respond_to do |format|
       format.html # index.html.erb

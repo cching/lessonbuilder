@@ -1,16 +1,14 @@
 <body><div class="container">
 
-<div class="page-header">
   <h1>Select a Text</h1>
-</div>
 
 <%= form_for @select, :url => wizard_path(step, select_id: @select.id), :method => :put do |f| %>
 
 <% if @select.subject_id==1%>
-<center><h3><small>
-<% @select.sources.each do |source| %>
-<%= source.name %> |
-<% end %></h3></center></small><br />
+  <center><h3><small>
+    <% @select.sources.each do |source| %>
+    <%= source.name %> |
+    <% end %></h3></center></small><br />
 
 <div class="well well-sm">
 <b>Legend </b>
@@ -36,7 +34,7 @@
 
 
 
-                   </div>
+               </div>
 
 
 
@@ -76,14 +74,14 @@
                    <% end %>
                    </td>
                    <td>
-                   <% unless book.example == nil %>
+                   <% unless book.example == nil || book.example == "" %>
                    <span class="label label-success">
                    <span class="glyphicon glyphicon-book"></span>
                    </span>
                    <% end %>
                    </td>
                    <td>
-                   <% unless book.assess_questions == nil %>
+                   <% unless book.assess_questions == nil || book.assess_questions == "" %>
                    <span class="label label-info">
                    <span class="glyphicon glyphicon-pencil"></span>
                    </span>
@@ -188,14 +186,14 @@
                    <% end %>
                    </td>
                    <td>
-                   <% unless book.example == nil %>
+                   <% unless book.example == nil || book.example == "" %>
                    <span class="label label-success">
                    <span class="glyphicon glyphicon-book"></span>
                    </span>
                    <% end %>
                    </td>
                    <td>
-                   <% unless book.assess_questions == nil %>
+                   <% unless book.assess_questions == nil || book.assess_questions == "" %>
                    <span class="label label-info">
                    <span class="glyphicon glyphicon-pencil"></span>
                    </span>

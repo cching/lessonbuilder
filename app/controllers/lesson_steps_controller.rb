@@ -8,14 +8,14 @@ class LessonStepsController < ApplicationController
   end
 
   def update
-  @select = Select.find(params[:select_id])
-  @select.update_attributes(params[:select])
-  render_wizard @select
+    @select = Select.find(params[:select_id])
+    @select.update_attributes(params[:select])
+    render_wizard @select
   end
 
-def finish_wizard_path
+  def finish_wizard_path
     @select = Select.find(params[:select_id])
-  edit_select_path(@select)
-end
+    edit_select_path(@select)
+  end
 
 end

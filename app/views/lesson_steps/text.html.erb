@@ -163,9 +163,12 @@
 <% @select.sources.each do |source| %>
 <% (Book.where(:textcategory_id => [5, 6, 8, 9, 10]).includes(:grades).where(:grades => {:id => grade.id}).order("title ASC") & Book.where(:textcategory_id => [5, 6, 8, 9, 10]).includes(:sources).where(:sources => {:id => source.id}).order("title ASC")).each do |book| %>
 
-                <div class="list-group">
+                               <div class="list-group">
                 <table>
                 <tr>
+                <td>
+                &nbsp;
+                </td>
                 <td>
                 <%= f.radio_button :book_id, book.id %>
                 </td>
@@ -173,7 +176,33 @@
                 &nbsp;
                 </td>
                 <td>
-                    <%= link_to book.title, book, class: "list-group-item", remote: :true %>
+                    <%= link_to book.title, book, class: "list-group-item", remote: :true %></td>
+                    <td>
+                    &nbsp; &nbsp;
+                    </td>
+                    <td>
+                   <% if book.pdf? %>
+                   <span class="label label-primary">
+                   <span class="glyphicon glyphicon-cloud-upload"></span>
+                   </span>
+                   <% end %>
+                   </td>
+                   <td>
+                   <% unless book.example == nil %>
+                   <span class="label label-success">
+                   <span class="glyphicon glyphicon-book"></span>
+                   </span>
+                   <% end %>
+                   </td>
+                   <td>
+                   <% unless book.assess_questions == nil %>
+                   <span class="label label-info">
+                   <span class="glyphicon glyphicon-pencil"></span>
+                   </span>
+                   <% end %>
+
+
+
                     </td>
                     </tr></table>
                 </div>

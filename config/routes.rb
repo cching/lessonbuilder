@@ -1,5 +1,11 @@
 Commoncore::Application.routes.draw do
   
+  resources :headers
+
+
+  resources :plans
+
+
   resources :select_aquestions
 
 

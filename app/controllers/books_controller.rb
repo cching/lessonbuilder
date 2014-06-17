@@ -26,10 +26,10 @@ class BooksController < ApplicationController
               format.js # show.js.erb
       format.json { render json: @book }
             format.pdf do
-   
-  send_data @pdf, :filename => "#{@book.title}",
-            :type => "application/pdf",
-            :disposition  => "attachment"
+        pdf = BookPdf.new(@book)
+        send_data pdf.render, filename: "book_#{@book.title}",
+                              type: "application/pdf"
+
       end
     end
   end

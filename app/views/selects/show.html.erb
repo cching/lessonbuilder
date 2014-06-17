@@ -34,7 +34,7 @@
 
 
         
-                <% @standards.each do |standard| %>
+               
 
                 <th colspan="2">
                         Standard and Resources
@@ -43,13 +43,19 @@
                 <tbody>
 
                            
+                                                <tr>
+
                         
-                        
-                        <tr>
                                 <td colspan="2" class="std">
+                                 <% @standards.each do |standard| %>
                                 <ul type="disc">
-                                <li><h4><%= standard.id %>: <%= standard.content %></h4></li></ul></td></tr>
-                        
+                                <li><h4><%= standard.id %>: <%= standard.content %></h4></li></ul>
+                        <% end %>
+
+                                </td>
+
+
+                                </tr>
                         <tr>
                                         <td width="50%" class="resource">
                                         Questions
@@ -61,45 +67,45 @@
                         
                         <tr>
                                 <td class="standard">
-                                        <% standard.select_questions.where(:select_id => @select).each do |squestion| %>
+                                        <% SelectQuestion.where(:select_id => @select).each do |squestion| %>
                                                 <ul type="disc">
                                                         <li>
                                                 <% if current_user?(@select.user) %>
-                                                        <%= best_in_place squestion, :content, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %>
+                                                        <font size="3"><%= best_in_place squestion, :content, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %></font>
                                                         <% else %>
-                                                        <%= squestion.content %>
+                                                        <font size="3"><%= squestion.content %></font>
                                                         <% end %>
                                                         </li>
                                                 </ul>
                                                 
                                         <% end %>
                                         
-                                        <% standard.cquestions.where(:select_id => @select).each do |cquestion| %>
+                                        <% Cquestion.where(:select_id => @select).each do |cquestion| %>
                                         <ul type="disc">
                                                 <li>
-                                        <font color="red"><%= cquestion.content %></font>
+                                        <font color="red"><font size="3"><%= cquestion.content %></font></font>
                                                 </li>
                                         </ul>
                                         <% end %>
                             </td>
 
                                 <td class="standard">
-                                        <% standard.select_skills.where(:select_id => @select).each do |sskill| %>
+                                        <% SelectSkill.where(:select_id => @select).each do |sskill| %>
                                         <ul type="disc">
                                                 <li>
                                                 <% if current_user?(@select.user) %>
-                                                        <%= best_in_place sskill, :content, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %>
+                                                        <font size="3"><%= best_in_place sskill, :content, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %></font>
                                                         <% else %>
-                                                        <%= sskill.content %>
+                                                        <font size="3"><%= sskill.content %></font>
                                                         <% end %>
                                                 </li>
                                         </ul>
                                         <% end %>
                                         
-                                        <% standard.cskills.where(:select_id => @select).each do |cskill| %>
+                                        <% Cskill.where(:select_id => @select).each do |cskill| %>
                                         <ul type="disc">
                                                 <li>
-                                        <font color="red"><%= cskill.content %></font>
+                                        <font color="red"><font size="3"><%= cskill.content %></font></font>
                                                 </li>
                                         </ul>
                                                 <% end %>
@@ -117,44 +123,44 @@
                 
                         <tr>
                                 <td class="standard">
-                                        <% standard.select_vocabs.where(:select_id => @select).each do |svocab| %>
+                                        <% SelectVocab.where(:select_id => @select).each do |svocab| %>
                                         <ul type="disc">
                                                 <li>
                                                 <% if current_user?(@select.user) %>
-                                                        <%= best_in_place svocab, :content_english, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %>
+                                                        <font size="3"><%= best_in_place svocab, :content_english, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %></font>
                                                         <% else %>
-                                                    <%= svocab.content_english %>
+                                                    <font size="3"><%= svocab.content_english %></font>
                                                         <% end %>
                                                 </li>
                                         </ul>
                                         <% end %>
                                         
-                                        <% standard.cvocabs.where(:select_id => @select).each do |cvocab| %>
+                                        <% Cvocab.where(:select_id => @select).each do |cvocab| %>
                                         <ul type="disc">
                                                 <li>
-                                        <font color="red"><%= best_in_place cvocab, :content %></font>
+                                        <font color="red"><font size="3"><%= best_in_place cvocab, :content %></font></font>
                                                 </li>
                                         </ul>
                                         <% end %>
                             </td>
                                 
                                 <td class="standard">
-                                        <% standard.select_strategies.where(:select_id => @select).each do |sstrategy| %>
+                                        <% SelectStrategy.where(:select_id => @select).each do |sstrategy| %>
                                         <ul type="disc">
                                                 <li>
                                                 <% if current_user?(@select.user) %>
-                                                        <%= best_in_place sstrategy, :content, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %>
+                                                       <font size="3"> <%= best_in_place sstrategy, :content, :type => :textarea, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %></font>
                                                         <% else %>
-                                                        <%= sstrategy.content %>
+                                                        <font size="3"><%= sstrategy.content %></font>
                                                         <% end %>
                                                 </li>
                                         </ul>
                                         <% end %>
                                         
-                                        <% standard.cstrategies.where(:select_id => @select).each do |cstrategy| %>
+                                        <% Cstrategy.where(:select_id => @select).each do |cstrategy| %>
                                         <ul type="disc">
                                                 <li>
-                                        <font color="red"><%= best_in_place cstrategy, :content %></font>
+                                        <font color="red"><font size="3"><%= best_in_place cstrategy, :content %></font></font>
                                                 </li>
                                         </ul>
                                         <% end %>
@@ -170,13 +176,13 @@
 
                                 <td colspan="2" class="standard">
 
-                                        <% standard.select_aquestions.where(:select_id => @select).each do |saquestion| %>
+                                        <% SelectAquestion.where(:select_id => @select).each do |saquestion| %>
                                         <ul type="disc">
                                                 <li>
                                                 <% if current_user?(@select.user) %>
-                                                        <%= best_in_place saquestion, :content, :type => :textarea, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %>
+                                                        <font size="3"><%= best_in_place saquestion, :content, :type => :textarea, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %></font>
                                                         <% else %>
-                                                        <%= saquestion.content %>
+                                                        <font size="3"><%= saquestion.content %></font>
                                                         <% end %>
                                                 </li>
                                         </ul>
@@ -195,22 +201,22 @@
 
                                 <td colspan="2" class="standard">
 
-                                        <% standard.select_links.where(:select_id => @select).each do |slink| %>
+                                        <% SelectLink.where(:select_id => @select).each do |slink| %>
                                         <ul type="disc">
                                                 <li>
                                                 <% if current_user?(@select.user) %>
-                                                        <%= best_in_place slink, :comment, :type => :textarea, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %> <br /><%= truncate(Rinku.auto_link(slink.link.link), :length=>300).html_safe %>
+                                                       <font size="3"> <%= best_in_place slink, :comment, :type => :textarea, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %></font> <br /><%= truncate(Rinku.auto_link(slink.link.link), :length=>300).html_safe %>
                                                         <% else %>
-                                                        <%= slink.comment %><br /><%= truncate(Rinku.auto_link(slink.link.link), :length=>300).html_safe %>
+                                                        <font size="3"><%= slink.comment %></font><br /><%= truncate(Rinku.auto_link(slink.link.link), :length=>300).html_safe %>
                                                         <% end %>
                                                 </li>
                                         </ul>
                                                                         <% end %>
                                         
-                                        <% standard.clinks.where(:select_id => @select).each do |clink| %>
+                                        <% Clink.where(:select_id => @select).each do |clink| %>
                                         <ul type="disc">
                                                 <li>
-                                        <font color="red"><%= clink.comment %></h4><%= truncate(Rinku.auto_link(clink.link), :length=>300).html_safe %></font>
+                                        <font color="red"><font size="3"><%= clink.comment %></font></h4><%= truncate(Rinku.auto_link(clink.link), :length=>300).html_safe %></font>
                                                 </li>
                                         </ul>
 
@@ -218,7 +224,7 @@
 
                                 </td>
                         </tr>    
-<% end %>
+
 
                 </tbody>
 
@@ -321,94 +327,6 @@
 </div></body>
 <style type="text/css">
 
-#standards th{
-
-    border: 1px solid black;
- font-size: 24px;
- color: #FFF;
- background-color:   #009ACD;
- padding: 1px 1px;
- padding-bottom: 1px;
- text-align: center;
-}
-
-#standards .resource {
-  page-break-inside: avoid !important;
-    border: 1px solid black;
-    font-size: 20px;
- background-color: #ededed;
- color:      #009ACD;
-  text-align: center;
-   padding: 1px 1px;
- padding-bottom: 1px;
-}
-
-#standards .std {
-
-    border: 1px solid black;
- font-size: 22px;
- font-style: bold;
- padding: 4px 18px;
-}
-
-#standards .standard {
-  page-break-inside: avoid !important;
-    border: 1px solid black;
- font-size: 20px;
- padding: 4px 18px;
-}
-
-#table_list .even td {
- background-color: #E3E6FF;
-}
-
-#table_list .odd td {
- background-color: #D1D8F6;
-}
-
-.page-break { 
-  clear: both !important;
-  display: block !important;
-  page-break-before: always !important;
-}
-
-.panel-danger,
-.panel-header {
-color: #FFF;
-background-color: #009ACD;
-border-color: #009ACD;
- padding: 1px 1px;
- padding-bottom: 1px;
- text-align: center;
- font-size: 24px;
-.panel-footer {
-  
-}
-}
-
-
-
-
-@media print {
-        #pdflink {
-                display: none;
-        }
-
-#standards
-th {
-  page-break-before: always !important;
-
-}
-
-      #standards 
-table, tr, td, th, tbody, thead, tfoot {
-    page-break-inside: avoid !important;
-}
-
-}
-table, tr, td, th, tbody, thead, tfoot {
-    page-break-inside: avoid !important;
-}
 a:link {color:#00BFFF;}      /* unvisited link */
 a:visited {color:#00BFFF;}  /* visited link */
 a:hover {background-color:#FFFFFF;}  /* mouse over link */

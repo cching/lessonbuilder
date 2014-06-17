@@ -11,12 +11,14 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require bootstrap
 //= require jquery.purr
 //= require_tree .
 //= require best_in_place
+//= require turbolinks
 
 $(document).ready(function() {
   $('.best_in_place').best_in_place();

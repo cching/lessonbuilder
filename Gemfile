@@ -19,11 +19,14 @@ gem 'will_paginate', '~> 3.0'
 gem 'unicorn'
 gem 'default_value_for'
 gem 'best_in_place'
-gem 'pdfkit'
 gem 'wkhtmltopdf-binary'
 gem 'wicked'
 gem "paperclip", "~> 4.1"
 gem 'aws-sdk', '~> 1.0'
+gem 'prawn'
+gem 'jquery-turbolinks'
+gem 'turbolinks'
+
 
 
 group :development, :test do

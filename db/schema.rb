@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140611061038) do
+ActiveRecord::Schema.define(:version => 20140617065314) do
 
   create_table "admin_notes", :force => true do |t|
     t.string   "resource_id",     :null => false
@@ -135,38 +135,16 @@ ActiveRecord::Schema.define(:version => 20140611061038) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "document_grades", :force => true do |t|
-    t.integer  "document_id"
-    t.integer  "grade_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  create_table "documents", :force => true do |t|
-    t.string   "author"
-    t.text     "publisher"
-    t.string   "title"
-    t.text     "assess_questions"
-    t.text     "availability"
-    t.text     "example"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-    t.string   "pdf_file_name"
-    t.string   "pdf_content_type"
-    t.integer  "pdf_file_size"
-    t.datetime "pdf_updated_at"
-    t.integer  "textcategory_id"
-  end
-
-  create_table "documentsources", :force => true do |t|
-    t.integer  "source_id"
-    t.integer  "document_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
   create_table "grades", :force => true do |t|
     t.string "number"
+  end
+
+  create_table "headers", :force => true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "plan_id"
   end
 
   create_table "lessonplans", :force => true do |t|
@@ -179,8 +157,6 @@ ActiveRecord::Schema.define(:version => 20140611061038) do
     t.string   "name"
     t.text     "writing",     :default => ""
     t.text     "conclusion",  :default => ""
-    t.text     "overview",    :default => ""
-    t.text     "view",        :default => ""
     t.text     "questions",   :default => ""
   end
 
@@ -200,6 +176,15 @@ ActiveRecord::Schema.define(:version => 20140611061038) do
 
   create_table "math_subsubjects", :force => true do |t|
     t.string "name"
+  end
+
+  create_table "plans", :force => true do |t|
+    t.string   "name"
+    t.integer  "district_id"
+    t.integer  "select_id"
+    t.boolean  "initiate"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "questions", :force => true do |t|
@@ -335,10 +320,8 @@ ActiveRecord::Schema.define(:version => 20140611061038) do
     t.text     "vocabulary",    :default => ""
     t.text     "writing",       :default => ""
     t.text     "conclusion",    :default => ""
-    t.text     "view",          :default => ""
     t.text     "questions",     :default => ""
     t.text     "textdependent", :default => ""
-    t.integer  "document_id"
   end
 
   create_table "skills", :force => true do |t|

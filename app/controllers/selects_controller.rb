@@ -13,8 +13,13 @@ class SelectsController < ApplicationController
     @questions = @select.questions.all
     respond_to do |format|
       format.html
-  
+      format.pdf do
+        pdf = SelectPdf.new(@select)
+        send_data pdf.render, filename: "lesson_#{@select.name}",
+                              type: "application/pdf"
+
       end
+    end
   end
 
   def new

@@ -7,7 +7,7 @@
   <%= f.text_field :author_cont, class: "form-control" %><br />
   <%= f.collection_select :grades_id_eq, Grade.order(:number), :id, :number, {prompt: "Search by grade"}, {class: "form-control"} %><br />
   <%= f.collection_select :sources_id_eq, Source.order(:name), :id, :name, {prompt: "Search by source"}, {class: "form-control"} %><br />
-  <div align="right"><button type="submit" class="btn" data-loading-text="Saving..">Save and Continue</button></div>
+  <div align="right"><button type="submit" class="btn" data-loading-text="Saving..">Search</button></div>
 <br /><% end %><br />
 
 <table class="table-hover">
@@ -45,8 +45,8 @@
 
             <td><%= book.author %></td>
                     <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                    <% book.grades.each do |grade| %>
-            <td><%= grade.number %><% end %></td>
+                   <td> <% book.grades.each do |grade| %>
+            <%= grade.number %><% end %></td>
             
 
         </tr>

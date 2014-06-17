@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @plan.name %>
+</p>
+
+<p>
+  <b>District:</b>
+  <%= @plan.district_id %>
+</p>
+
+<% @plan.headers.each do |header| %>
+
+<b>Title: <%= header.title %></b> <br/>
+Body: <%= simple_format(header.content) %>
+<% end %>
+
+<%= link_to 'Edit', edit_plan_path(@plan) %> |
+<%= link_to 'Back', plans_path %>

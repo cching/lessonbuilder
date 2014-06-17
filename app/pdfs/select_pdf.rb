@@ -15,20 +15,46 @@ class SelectPdf < Prawn::Document
     text "Objective: #{@select.objective}", :align => :center
 
     move_down 20
-    
     standard_table_content
+
+    if SelectQuestion.where(:select_id => @select.id).any?
     move_down 20
     question_table_content
+  else
+  end
+
+
+if SelectSkill.where(:select_id => @select.id).any?
     move_down 20
     skill_table_content
+  else
+  end
+
+
+if SelectStrategy.where(:select_id => @select.id).any?
     move_down 20
     strategy_table_content
+  else
+  end
+
+if SelectVocab.where(:select_id => @select.id).any?
     move_down 20
     vocab_table_content
+  else
+  end
+
+
+if SelectLink.where(:select_id => @select.id).any?
     move_down 20
     link_table_content
+  else
+  end
+
     move_down 20
+    if SelectAquestion.where(:select_id => @select.id).any?
     aquestion_table_content
+  else
+  end
   end
 
  

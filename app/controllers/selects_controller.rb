@@ -2,9 +2,89 @@ class SelectsController < ApplicationController
 
   def index
     @search = Select.search(params[:q])
-    @selects = @search.result.paginate(:page => params[:page], :per_page => 30)
+    @selects = @search.result.includes(:grades).where(:grades => {:id => 1}).paginate(:page => params[:page], :per_page => 30)
   end
 
+  def grade0
+    @search = Select.search(params[:q])
+    @selects0 = @search.result.includes(:grades).where(:grades => {:id => 1}).paginate(:page => params[:page], :per_page => 30)
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def grade1
+    @search = Select.search(params[:q])
+    @selects1 = @search.result.includes(:grades).where(:grades => {:id => 2}).paginate(:page => params[:page], :per_page => 30)
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def grade2
+    @search = Select.search(params[:q])
+    @selects2 = @search.result.includes(:grades).where(:grades => {:id => 3}).paginate(:page => params[:page], :per_page => 30)
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def grade3
+    @search = Select.search(params[:q])
+    @selects3 = @search.result.includes(:grades).where(:grades => {:id => 4}).paginate(:page => params[:page], :per_page => 30)
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def grade4
+    @search = Select.search(params[:q])
+    @selects4 = @search.result.includes(:grades).where(:grades => {:id => 5}).paginate(:page => params[:page], :per_page => 30)
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def grade5
+    @search = Select.search(params[:q])
+    @selects5 = @search.result.includes(:grades).where(:grades => {:id => 6}).paginate(:page => params[:page], :per_page => 30)
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def grade6
+    @search = Select.search(params[:q])
+    @selects6 = @search.result.includes(:grades).where(:grades => {:id => 7}).paginate(:page => params[:page], :per_page => 30)
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def grade7
+    @search = Select.search(params[:q])
+    @selects7 = @search.result.includes(:grades).where(:grades => {:id => 8}).paginate(:page => params[:page], :per_page => 30)
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def grade8
+    @search = Select.search(params[:q])
+    @selects8 = @search.result.includes(:grades).where(:grades => {:id => 9}).paginate(:page => params[:page], :per_page => 30)
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
 
   def show
     @select = Select.find(params[:id])

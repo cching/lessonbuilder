@@ -1,14 +1,17 @@
 <body><div class="container">
 
-  <h1>Select a Text</h1>
 
 <%= form_for @select, :url => wizard_path(step, select_id: @select.id), :method => :put do |f| %>
+<div class="page-header">
+  <h1>Select a Text <small>
 
-<% if @select.subject_id==1%>
-  <center><h3><small>
-    <% @select.sources.each do |source| %>
+  <% @select.sources.each do |source| %>
     <%= source.name %> |
-    <% end %></h3></center></small><br />
+    <% end %></small></h1>
+</div>
+<% if @select.subject_id==1%>
+
+    <br />
 
 <div class="well well-sm">
 <b><font size="6">Legend</font> </b><br/><br/>
@@ -115,10 +118,7 @@
 
 
 <% else %>
-<center><h3><small>
-<% @select.sources.each do |source| %>
-<%= source.name %> |
-<% end %></h3></center></small><br />
+<br />
 
 
 

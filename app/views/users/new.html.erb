@@ -17,17 +17,17 @@
 <%= f.input :email, placeholder: 'user@domain.com', label: false %></div>
 <div class="col-md-2"><strong>Password:</strong></div>
 <div class="col-md-10">
-<%= f.input :password, placeholder: '********', label: false %></div>
+<%= f.input :password, placeholder: '******', label: false %></div>
 <div class="col-md-2"><strong>Password Confirmation:</strong></div>
 <div class="col-md-10">
-<%= f.input :password_confirmation, placeholder: '********', label: false %></div></div>
+<%= f.input :password_confirmation, placeholder: '******', label: false %></div></div>
 <div class="col-md-2"><strong>District:</strong></div>
 <div class="col-md-10">
 <%= f.association :district, label: false %></div></div>
 
   <div class="form-actions">
   <div align="right">
-  <%= f.submit "Sign up", class: "btn btn-primary" %></div>
+			<button type="submit" class="btn btn-info" data-loading-text="Saving..">Save and Continue</button>
   </div></fieldset>
 <% end %>
 </div>

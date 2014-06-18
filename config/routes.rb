@@ -78,6 +78,13 @@ Commoncore::Application.routes.draw do
     resources :cvocabs
     resources :cstrategies
     resources :clinks
+
+    collection do
+      get :popular_confessions
+      get :top_confessions
+      get :controversial_confessions
+      get :new_confessions
+    end
   end
   
   resources :cquestions
@@ -88,11 +95,23 @@ Commoncore::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   
   resources :standards 
-  match 'lessons',  to: 'lessons#search'
+  match 'lessons',  to: 'selects#index'
   match 'lesson',  to: 'selects#edit'
   match 'signup',  to: 'users#new'
   match 'signin',  to: 'sessions#new'
   match 'signout', to: 'sessions#destroy', via: :delete
+
+  match 'gradek',  to: 'selects#grade0'
+  match 'grade1',  to: 'selects#grade1'
+  match 'grade2',  to: 'selects#grade2'
+  match 'grade3',  to: 'selects#grade3'
+  match 'grade4',  to: 'selects#grade4'
+  match 'grade5',  to: 'selects#grade5'
+  match 'grade6',  to: 'selects#grade6'
+  match 'grade7',  to: 'selects#grade7'
+  match 'grade8',  to: 'selects#grade8'
+
+
   
   match '/home',    to: 'static_pages#home'
   match '/help',    to: 'static_pages#help'

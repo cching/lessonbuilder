@@ -2,7 +2,7 @@ class SelectsController < ApplicationController
 
   def index
     @search = Select.search(params[:q])
-    @selects = @search.result.includes(:grades).where(:grades => {:id => 1}).paginate(:page => params[:page], :per_page => 30)
+    @selects = @search.result.paginate(:page => params[:page], :per_page => 30)
   end
 
   def grade0
@@ -95,7 +95,7 @@ class SelectsController < ApplicationController
       format.html
       format.pdf do
         pdf = SelectPdf.new(@select)
-        send_data pdf.render, filename: "lesson_#{@select.name}",
+        send_data pdf.render, filename: "#{@select.name}",
                               type: "application/pdf"
 
       end

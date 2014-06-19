@@ -2,19 +2,14 @@
 
 <h1>Search Lessons</h1>
 
-<%= search_form_for @search, html: { class: 'form-horizontal' } do |f| %>
-  <%= f.label :name_cont, "Search by name:" %>
-  <%= f.text_field :name_cont, class: "form-control" %><br />
-  <%= f.collection_select :standards_id_eq, Standard.order(:id), :id, :id, {prompt: "Search by standard"}, {class: "form-control"} %><br />
-  <div align="right"><button type="submit" class="btn btn-primary" data-loading-text="Saving..">Search</button></div>
-<br /><% end %>
+
 <h4>Toggle by grade:</h4>
 <div id="index">
 
 <ul class="nav nav-pills">
 
   
-<li class="active"><a href="#">K</a></li>
+  <li><%= link_to "K", gradek_path, remote: :true %></li>
   <li><%= link_to "1", grade1_path, remote: :true %></li>
   <li><%= link_to "2", grade2_path, remote: :true %></li>
   <li><%= link_to "3", grade3_path, remote: :true %></li>
@@ -25,6 +20,13 @@
   <li><%= link_to "8", grade8_path, remote: :true %></li>
 
 </ul>
+<br/>
+
+<%= search_form_for @search, html: { class: 'form-horizontal' } do |f| %>
+  <%= f.label :name_cont, "Search by name:" %>
+  <%= f.text_field :name_cont, class: "form-control" %><br />
+  <%= f.collection_select :standards_id_eq, Standard.order(:id), :id, :id, {prompt: "Search by standard"}, {class: "form-control"} %><br />
+  <div align="right"><button type="submit" class="btn btn-primary" data-loading-text="Saving..">Search</button></div><% end %>
 <hr>
 
 

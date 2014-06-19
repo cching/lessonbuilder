@@ -11,6 +11,15 @@
   <li><%= link_to "8", grade8_path, remote: :true %></li>
 
 </ul>
+
+<br/>
+
+<%= search_form_for @search, html: { class: 'form-horizontal' } do |f| %>
+  <%= f.label :name_cont, "Search by name:" %>
+  <%= f.text_field :name_cont, class: "form-control" %><br />
+  <%= f.collection_select :standards_id_eq, Standard.where(:grade_id => 5).order(:id), :id, :id, {prompt: "Search by standard"}, {class: "form-control"} %><br />
+  <div align="right"><button type="submit" class="btn btn-primary" data-loading-text="Saving..">Search</button></div>
+<% end %>
 <hr>
 
 

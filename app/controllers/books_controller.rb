@@ -27,7 +27,7 @@ class BooksController < ApplicationController
       format.json { render json: @book }
             format.pdf do
         pdf = BookPdf.new(@book)
-        send_data pdf.render, filename: "book_#{@book.title}",
+        send_data pdf.render, filename: "#{@book.title}",
                               type: "application/pdf"
 
       end

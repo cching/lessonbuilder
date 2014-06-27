@@ -1,0 +1,35 @@
+<% if current_user?(@select.user) %>
+
+        <table table-hover>
+                <tr>
+                        <td>
+                                <%= link_to "Add Question", new_select_cquestion_path(@select),  class: "btn btn"  %><br />
+                        </td>
+
+                        <td>        
+                                <%= link_to "Add Skill", new_select_cskill_path(@select), class: "btn" %><br />
+                        </td>
+                        
+                        <td>        
+                                <%= link_to "Add Vocabulary Word", new_select_cvocab_path(@select), class: "btn" %><br />
+                        </td>
+                        
+                        <td>        
+                                <%= link_to "Add Strategy", new_select_cstrategy_path(@select), class: "btn" %><br />
+                        </td>
+                        <td>        
+                                <%= link_to "Add Resource", new_select_clink_path(@select), class: "btn" %><br />
+                        </td>
+                </tr>
+        </table>
+
+<br />
+
+<%= link_to "Edit Lesson", lesson_steps_path(:select_id => @select.id), class: "btn" %>
+<%= link_to "Save as PDF", select_path(@select, format: "pdf"), class: "btn" %>
+
+<% else %>
+
+<strong>Created by <%= link_to @select.user.name, @select.user %></strong>
+
+<% end %>

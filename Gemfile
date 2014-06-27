@@ -32,7 +32,6 @@ gem 'turbolinks'
 group :development, :test do
   gem 'rspec-rails', '2.11.0'
   gem 'taps', :require => false
-  gem 'sqlite3'
 end
 
 group :assets do

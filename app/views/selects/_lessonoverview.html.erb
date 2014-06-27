@@ -1,0 +1,69 @@
+<div class="panel panel-danger">
+  <div class="panel-body">
+    <strong>Overview</strong>
+  </div>
+</div>
+
+<% if current_user?(@select.user) %>
+  <%= best_in_place @select, :notes, :classes => 'input_field', :type => :textarea, :display_with => :simple_format,
+      :html_attrs => { :style => 'width:100%; height:100px;' } %>
+<% else %>
+  <%= simple_format(@select.notes).html_safe %>
+<% end %>
+<br />
+
+<div class="panel panel-danger">
+  <div class="panel-body">
+    <strong>Reading</strong>
+  </div>
+</div>
+
+<% if current_user?(@select.user) %>
+  <%= best_in_place @select, :writing, :classes => 'input_field', :type => :textarea, :display_with => :simple_format,
+      :html_attrs => { :style => 'width:100%; height:100px;' } %>
+<% else %>
+  <%= simple_format(@select.writing).html_safe %>
+<% end %>
+<br />
+
+<div class="panel panel-danger">
+  <div class="panel-body">
+    <strong>Text-Dependent Questions</strong>
+  </div>
+</div>
+
+<% if current_user?(@select.user) %>
+  <%= best_in_place @select, :textdependent, :classes => 'input_field', :type => :textarea, :display_with => :simple_format,
+      :html_attrs => { :style => 'width:100%; height:100px;' } %>
+<% else %>
+  <%= simple_format(@select.textdependent).html_safe %>
+<% end %>
+<br />
+
+<div class="panel panel-danger">
+  <div class="panel-body">
+    <strong>Vocabulary</strong>
+  </div>
+</div>
+
+<% if current_user?(@select.user) %>
+  <%= best_in_place @select, :vocabulary, :classes => 'input_field', :type => :textarea, :display_with => :simple_format,
+      :html_attrs => { :style => 'width:100%; height:100px;' } %>
+<% else %>
+  <%= simple_format(@select.vocabulary).html_safe %>
+<% end %>
+<br />
+
+<div class="panel panel-danger">
+  <div class="panel-body">
+    <strong>Conclusion</strong>
+  </div>
+</div>
+
+<% if current_user?(@select.user) %>
+  <%= best_in_place @select, :conclusion, :classes => 'input_field', :type => :textarea, :display_with => :simple_format,
+      :html_attrs => { :style => 'width:100%; height:500px;' } %>
+<% else %>
+  <%= simple_format(@select.conclusion).html_safe %>
+<% end %>
+<br />

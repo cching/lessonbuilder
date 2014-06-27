@@ -1,0 +1,233 @@
+<%= simple_form_for(@select, :html => { :class => 'form-horizontal' }) do |f| %>
+
+    <%= f.input :name, input_html: {style: 'width:100%;'}, label: "Lesson name:", autofocus: true %>
+    <%= f.input :description, as: :text, input_html: {style: 'width:100%; height:50px'}, label: "Description:" %>
+    <%= f.input :objective, input_html: {style: 'width:100%; height:50px'}, label: "Objective:" %>
+    <%= f.input :date, as: :date %>
+
+
+	
+	<table class="table table-condensed table-hover table-bordered" id="standards">
+
+		<thead>
+		
+			<% @standards.each do |standard| %>
+			<th colspan="2">
+				<h4><strong><%= standard.id %>: <%= standard.content %></strong></h4>
+			</th>
+
+		</thead>
+
+			<tbody>
+				
+				<tr>
+					<td width="50%" class="resource">
+						<h4>Questions</h4>
+					</td>
+					<td width="50%" class="resource">
+						<h4>Skills</h4>
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
+						<% unless standard.questions.blank? %>
+						<% standard.questions.where(:user_id => 0).each do |question| %>
+							<h4><%= hidden_field_tag "select[question_ids][]", nil %>
+				     	   	<%= check_box_tag "select[question_ids][]", question.id, @select.question_ids.include?(question.id), id: dom_id(question) %>
+				      	  	<%= question.content %></h4>
+
+						<% end %>
+
+						<% else %>
+							No preset questions exist for this standard. Submit your lesson and add custom questions on the next page.
+						<% end %>
+						
+						<% standard.cquestions.where(:select_id => @select).each do |cquestion| %>
+						<br /><ul type="disc">
+							<li>
+						<font color="red"><h4><%= cquestion.content %></h4></font> <%= link_to 'Edit', edit_select_cquestion_path(@select, cquestion), class: "btn btn-mini" %> <%= link_to 'Delete', [@select, cquestion], confirm: 'Are you sure you want to delete this question?', method: :delete, class: "btn btn-mini" %>
+							</li>
+						</ul>
+			
+						<% end %>
+				    </td>
+
+					<td>
+						<% unless standard.skills.blank? %>
+						<% standard.skills.where(:user_id => 0).each do |skill| %>
+							<h4><%= hidden_field_tag "select[skill_ids][]", nil %>
+				     	   	<%= check_box_tag "select[skill_ids][]", skill.id, @select.skill_ids.include?(skill.id), id: dom_id(skill) %>
+				      	  	<%= skill.content %></h4>
+			
+						<% end %>
+
+						<% else %>
+							No preset skills exist for this standard. Submit your lesson and add custom skills on the next page.
+						<% end %>
+						
+						<% standard.cskills.where(:select_id => @select).each do |cskill| %>
+						<br /><ul type="disc">
+							<li>
+						<font color="red"><h4><%= cskill.content %></h4></font> <%= link_to 'Edit', edit_select_cskill_path(@select, cskill), class: "btn btn-mini" %> <%= link_to 'Delete', [@select, cskill], confirm: 'Are you sure you want to delete this skill?', method: :delete, class: "btn btn-mini" %>
+							</li>
+						</ul>
+			
+						<% end %>
+				    </td>
+				</tr>
+
+				<tr>
+					<td width="50%" class="resource">
+						<h4>Vocabulary</h4>
+					</td>
+					<td width="50%" class="resource">
+						<h4>Strategies</h4>
+					</td>
+				</tr>	
+			
+				<tr>
+					<td>
+						<% unless standard.vocabs.blank? %>
+						<% standard.vocabs.where(:user_id => 0).each do |vocab| %>
+							<h4><%= hidden_field_tag "select[vocab_ids][]", nil %>
+				     	   	<%= check_box_tag "select[vocab_ids][]", vocab.id, @select.vocab_ids.include?(vocab.id), id: dom_id(vocab) %>
+				      	  	<%= vocab.content_english %></h4>
+					
+						<% end %>
+
+						<% else %>
+						No preset vocabulary words exist for this standard. Submit your lesson and add custom words on the next page.
+						<% end %>
+						
+						<% standard.cvocabs.where(:select_id => @select).each do |cvocab| %>
+						<br /><ul type="disc">
+							<li>
+						<font color="red"><h4><%= cvocab.content %></h4></font> <%= link_to 'Edit', edit_select_cvocab_path(@select, cvocab), class: "btn btn-mini" %> <%= link_to 'Delete', [@select, cvocab], confirm: 'Are you sure you want to delete this vocabulary word?', method: :delete, class: "btn btn-mini" %>
+							</li>
+						</ul>
+											<% end %>
+				    </td>
+					
+					<td>
+						<% unless standard.strategies.blank? %>
+						<% standard.strategies.where(:user_id => 0).each do |strategy| %>
+							<h4><%= hidden_field_tag "select[strategy_ids][]", nil %>
+				     	   	<%= check_box_tag "select[strategy_ids][]", strategy.id, @select.strategy_ids.include?(strategy.id), id: dom_id(strategy) %>
+				      	  	<%= strategy.content %></h4>
+								
+						<% end %>
+
+						<% else %>
+						No preset strategies exist for this standard. Submit your lesson and add custom strategies on the next page.
+						<% end %>
+						
+						<% standard.cstrategies.where(:select_id => @select).each do |cstrategy| %>
+						<br /><ul type="disc">
+							<li>
+						<font color="red"><h4><%= cstrategy.content %></h4></font> <%= link_to 'Edit', edit_select_cstrategy_path(@select, cstrategy), class: "btn btn-mini" %> <%= link_to 'Delete', [@select, cstrategy], confirm: 'Are you sure you want to delete this strategy?', method: :delete, class: "btn btn-mini" %>
+							</li>
+						</ul>
+				
+						<% end %>
+				    </td>
+				</tr>
+
+<tr>
+					<td colspan="2" class="resource"><h4>Assessment Questions</h4></td></tr><tr>
+
+
+
+					<td colspan="2">
+						<% unless standard.aquestions.blank? %>
+						<% standard.aquestions.each do |aquestion| %>						
+							<h4><%= hidden_field_tag "select[aquestion_ids][]", nil %>
+				     	   	<%= check_box_tag "select[aquestion_ids][]", aquestion.id, @select.aquestion_ids.include?(aquestion.id), id: dom_id(aquestion) %>
+				      	  	<%= aquestion.content %></h4>
+										
+						<% end %>
+						<% else %>
+						No preset assessment questions exist for this standard. Submit your lesson and add custom questions on the next page.
+						<% end %>
+						
+					</td>
+				</tr>
+
+				<tr>
+					<td colspan="2" class="resource"><h4>Resources</h4></td></tr><tr>
+
+
+
+					<td colspan="2">
+						<% unless standard.links.blank? %>
+						<% standard.links.each do |link| %>						
+							<h4><%= hidden_field_tag "select[link_ids][]", nil %>
+				     	   	<%= check_box_tag "select[link_ids][]", link.id, @select.link_ids.include?(link.id), id: dom_id(link) %>
+				      	  	<%= link.comment %></h4><%= truncate(Rinku.auto_link(link.link), :length=>400).html_safe %><br />
+										
+						<% end %>
+						<% else %>
+						No preset resources exist for this standard. Submit your lesson and add custom resources on the next page.
+						<% end %>
+						
+						<% standard.clinks.where(:select_id => @select).each do |clink| %>
+						<br /><ul type="disc">
+							<li>
+						<font color="red"><%= clink.comment %>:<br/><%= truncate(Rinku.auto_link(clink.link), :length=>400).html_safe %></font> <%= link_to 'Edit', edit_select_clink_path(@select, clink), class: "btn btn-mini" %> <%= link_to 'Delete', [@select, clink], confirm: 'Are you sure you want to delete this resource?', method: :delete, class: "btn btn-mini" %>
+							</li>
+						</ul>
+						<br />	
+						<% end %>
+					</td>
+				</tr>
+
+			</tbody>
+		<% end %>
+	</table>
+
+<div class="panel panel-danger">
+  <div class="panel-body">
+    <strong>Overview</strong>
+  </div></div><br />
+<center><%= f.text_area :notes, :cols => '100', :rows => '10'  %></center><br />
+
+<div class="panel panel-danger">
+  <div class="panel-body">
+    <strong>Reading</strong>
+  </div></div><br />
+<center><%= f.text_area :writing, :cols => 100, :rows => '10'  %></center><br />
+
+          <div class="panel panel-danger">
+  <div class="panel-body">
+    <strong>Text-Dependent Questions</strong>
+  </div></div><br />
+
+<center><%= f.text_area :textdependent, :cols => 100, :rows => '10'  %></center><br />
+
+<div class="panel panel-danger">
+  <div class="panel-body">
+    <strong>Vocabulary</strong>
+  </div></div><br />
+
+
+<center><%= f.text_area :vocabulary, :cols => 100, :rows => '10'  %></center><br />
+
+
+
+
+<div class="panel panel-danger">
+  <div class="panel-body">
+    <strong>Conclusion</strong>
+  </div></div><br />
+<center><%= f.text_area :conclusion, :cols => 100, :rows => '10'  %></center><br />
+
+
+	
+	<%= f.check_box :private %> Keep my lesson private <br />
+
+  <br />
+ <button type="submit" class="btn btn-info" data-loading-text="Saving..">Submit</button>
+<div align="right"><%= link_to 'Delete lesson', @select, confirm: 'Are you sure you want to delete this lesson?', method: :delete, class: "btn btn-danger btn-mini" %></div>
+
+
+<% end %>

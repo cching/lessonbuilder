@@ -1,12 +1,5 @@
-
 <div id="standards"></div><div id="search">
-<%= search_form_for @search, html: { class: 'form-horizontal' } do |f| %>
-  <%= f.label :id_cont, "Search by ID:" %>
-  <%= f.text_field :id_cont, class: "form-control" %><br />
-  <%= f.collection_select :grade_id_eq, Grade.order(:id), :id, :number, {prompt: "Search by grade"}, {class: "form-control"} %><br />
-  <%= f.collection_select :subject_id_eq, Subject.order(:id), :id, :name, {prompt: "Search by main subject"}, {class: "form-control"} %><br />
-  <%= f.collection_select :subsubject_id_eq, Subsubject.order(:id), :id, :name, {prompt: "Search by subject"}, {class: "form-control"} %><br />
-  <div align="right"><button type="submit" class="btn btn-primary" data-loading-text="Saving..">Search</button></div><% end %>
+
   <hr>
 <br/>
 

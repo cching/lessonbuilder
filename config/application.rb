@@ -35,7 +35,6 @@ module Commoncore
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
-    config.assets.paths << "#{Rails.root}/vendor/assets/fonts"
 
 
     # Configure sensitive parameters which will be filtered from the log file.

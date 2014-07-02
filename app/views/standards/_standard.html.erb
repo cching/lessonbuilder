@@ -1,5 +1,11 @@
 <div id="standard">
-<%= link_to '<i class="glyphicon glyphicon-chevron-left"></i> '.html_safe, standards_path, remote: :true, class: "btn btn-default btn-sm" %><br/><br />
+<%= link_to '<i class="glyphicon glyphicon-chevron-left"></i> '.html_safe, standards_path, remote: :true, class: "btn btn-default btn-sm" %>
+<% if current_user.admin? %>
+<div align="right"><%= link_to "Edit", edit_standard_path(@standard), class: "btn btn" %></div>
+<% end %>
+
+<br/><br />
+
 
 <div class="panel panel-default"><br/>
   <div class="panel-body">
@@ -19,11 +25,21 @@
 <ul class="nav nav-pills nav-justified">
 <% @successive.each do |successive| %>
 
-  <li class="<%= 'active' if @standard.id == successive.id %>"><%= link_to successive.id, standard_successive_path(standard), remote: :true %>
+  <li class="<%= 'active' if @standard.id == successive.id %>"><%= link_to successive.id, standard_path(standard), remote: :true %>
   </li>
   <% end %> 
 </ul></div></div>
 
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Anchor Standards</h3>
+  </div>
+  <div class="panel-body">
+    <ul>
+    <% @anchors.each do |anchor| %>
+      <li><%= anchor.content %></li>
+      <% end %></ul>
+  </div></div>
 
 <div class="panel panel-default">
   <div class="panel-heading">
@@ -31,7 +47,9 @@
   </div>
   <div class="panel-body">
     <ul>
-</ul>
+    <% @icans.each do |ican| %>
+      <li><%= ican.content %></li>
+      <% end %></ul>
   </div></div>
 
 <div class="row">
@@ -125,3 +143,4 @@
 </div>
 
 </div>
+

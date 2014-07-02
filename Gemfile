@@ -8,7 +8,6 @@ gem 'jquery-rails'
 gem 'ransack'
 gem 'activerecord-postgresql-adapter'
 gem 'rspec'
-gem 'bootstrap-sass', '2.3.2.0'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'less-rails'
 gem 'rake', '>=0.9.2'
@@ -28,8 +27,6 @@ gem 'turbolinks'
 gem 'bootstrap-will_paginate'
 
 
-
-
 group :development, :test do
   gem 'rspec-rails', '2.11.0'
   gem 'taps', :require => false
@@ -38,6 +35,7 @@ end
 group :assets do
   gem 'therubyracer'
   gem 'sass-rails',   '~> 3.2.3'
+  gem 'bootstrap-sass', '2.3.2.0'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'twitter-bootstrap-rails'
   gem 'uglifier', '>= 1.0.3'

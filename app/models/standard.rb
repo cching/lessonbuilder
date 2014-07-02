@@ -1,5 +1,5 @@
 class Standard < ActiveRecord::Base
-  attr_accessible :content, :grade_id, :subject_id, :subsubject, :subsubject_id, :standard_id, :successive_standard_id, :similar_standard_id, :questions_attributes, :strategies_attributes, :vocabs_attributes, :skills_attributes, :links_attributes, :aquestions_attributes
+  attr_accessible :content, :grade_id, :subject_id, :subsubject, :subsubject_id, :standard_id, :successive_standard_id, :similar_standard_id, :questions_attributes, :strategies_attributes, :vocabs_attributes, :skills_attributes, :links_attributes, :aquestions_attributes, :anchor_standards_attributes, :i_cans_attributes
   belongs_to :subject
   belongs_to :subsubject
   belongs_to :grade
@@ -18,6 +18,9 @@ class Standard < ActiveRecord::Base
   has_many :select_links, through: :links
   has_many :aquestions
   has_many :select_aquestions, through: :aquestions
+  has_many :anchor_standards
+  has_many :i_cans
+
   
   has_many :cquestions
   has_many :cskills
@@ -32,6 +35,8 @@ class Standard < ActiveRecord::Base
   accepts_nested_attributes_for :vocabs, allow_destroy: true
   accepts_nested_attributes_for :aquestions, allow_destroy: true
   accepts_nested_attributes_for :links, allow_destroy: true
+  accepts_nested_attributes_for :anchor_standards, allow_destroy: true
+  accepts_nested_attributes_for :i_cans, allow_destroy: true
 
 def to_param
   standard_id  

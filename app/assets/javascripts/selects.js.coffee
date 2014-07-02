@@ -5,3 +5,14 @@
 jQuery ->
   $('.best_in_place').best_in_place()
 
+$('.checkbox').checkbox('toggle');
+
+$.ajax({
+    url: "/selects/new",
+    type: "POST",
+    data: param,
+    dataType: 'json',
+    success: function(res){
+        $("#table").append(res).find(":checkbox").checkbox();
+    }
+});

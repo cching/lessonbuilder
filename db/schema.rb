@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140701045142) do
+ActiveRecord::Schema.define(:version => 20140702190656) do
 
   create_table "admin_notes", :force => true do |t|
     t.string   "resource_id",     :null => false
@@ -39,6 +39,17 @@ ActiveRecord::Schema.define(:version => 20140701045142) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+  end
+
+  create_table "anchor_standards", :force => true do |t|
+    t.integer  "standard_id"
+    t.integer  "new_id"
+    t.string   "amsubj_ord"
+    t.string   "assubj_ord"
+    t.string   "tsubject"
+    t.text     "content"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "aquestions", :force => true do |t|
@@ -145,6 +156,13 @@ ActiveRecord::Schema.define(:version => 20140701045142) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "plan_id"
+  end
+
+  create_table "i_cans", :force => true do |t|
+    t.integer  "standard_id"
+    t.text     "content"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "lessonplans", :force => true do |t|

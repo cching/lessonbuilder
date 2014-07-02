@@ -1,0 +1,144 @@
+<div id="standard">
+<%= simple_form_for(@standard) do |f| %>
+  <%= f.error_notification %>
+
+
+<div class="panel panel-default"><br/>
+  <div class="panel-body">
+    <h1>Standard <%= @standard.id %></h1>
+  </div>
+</div>
+
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <center><%= @standard.content %></center>
+  </div>
+</div>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Anchor Standards</h3>
+  </div>
+  <div class="panel-body">
+  <%= f.fields_for :anchor_standards do |builder| %>
+  <%= render 'anchor_standard_fields', f: builder %>
+
+  <% end %>
+  <%= link_to_add_fields "Add Anchor Standard", f, :anchor_standards %>
+  </div></div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">"I can..." Statements</h3>
+  </div>
+  <div class="panel-body">
+  <%= f.fields_for :i_cans do |builder| %>
+  <%= render 'i_can_fields', f: builder %>
+
+  <% end %>
+  <%= link_to_add_fields "Add 'I Can' Statement", f, :i_cans %>
+  </div></div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Question Stems</h3>
+  </div>
+  <div class="panel-body">
+    
+
+  <%= f.fields_for :questions do |builder| %>
+  <%= render 'question_fields', f: builder %>
+
+  <% end %>
+  <%= link_to_add_fields "Add Questions", f, :questions %>
+
+  </div>
+</div>
+    
+  </div>
+  <div class="col-md-6">
+      <div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Skills</h3>
+  </div>
+  <div class="panel-body">
+    
+
+  <%= f.fields_for :skills do |builder| %>
+  <%= render 'skill_fields', f: builder %>
+
+  <% end %>
+  <%= link_to_add_fields "Add Skills", f, :skills %>
+  </div>
+</div>
+
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Strategies</h3>
+  </div>
+  <div class="panel-body">
+    
+
+  <%= f.fields_for :strategies do |builder| %>
+  <%= render 'strategy_fields', f: builder %>
+
+  <% end %>
+  <%= link_to_add_fields "Add Strategies", f, :strategies %>
+  </div>
+</div>
+    
+  </div>
+  <div class="col-md-6">
+      <div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Vocabulary</h3>
+  </div>
+  <div class="panel-body">
+    
+
+  <%= f.fields_for :vocabs do |builder| %>
+  <%= render 'vocab_fields', f: builder %>
+
+  <% end %>
+  <%= link_to_add_fields "Add Vocabulary", f, :vocabs %>
+       </div>
+</div>
+
+
+  </div>
+</div>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Resources</h3>
+  </div>
+  <div class="panel-body">
+    
+    
+
+  <%= f.fields_for :links do |builder| %>
+  <%= render 'link_fields', f: builder %>
+
+  <% end %>
+  <%= link_to_add_fields "Add Resources", f, :links %>
+  </div>
+</div>
+
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+  <% end %>
+</div>
+

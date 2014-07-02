@@ -1,0 +1,9 @@
+$('#standard').addClass('animated bounceOutLeft');
+setTimeout(function() {
+    $('#standard').fadeOut('fast');
+}, 700);
+setTimeout(function() {
+	$('#standard').html('<%= escape_javascript(render(:partial => 'standard', :locals => {:standard => @standard})) %>')
+	$('#standard').addClass('animated bounceInLeft')
+
+}, 700);

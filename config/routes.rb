@@ -94,7 +94,10 @@ Commoncore::Application.routes.draw do
   
   resources :sessions, only: [:new, :create, :destroy]
   
-  resources :standards 
+  resources :standards do
+    get :successive
+  end
+
   match 'lessons',  to: 'selects#index'
   match 'lesson',  to: 'selects#edit'
   match 'signup',  to: 'users#new'

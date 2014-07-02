@@ -2,16 +2,37 @@ class StandardsController < ApplicationController
     
   def index
     @search = Standard.search(params[:q])
-    @standards = @search.result.paginate(:page => params[:page], :per_page => 150)
-    @select = Select.new
+    @standards = @search.result.paginate(:page => params[:page], :per_page => 10)
+    
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
   
   def show
-    @standard = Standard.find(params[:id])
+    @standard = Standard.find_by_standard_id(params[:id])
+    @successive = Standard.where(:successive_standard_id => @standard.successive_standard_id)
+    @related = Standard.where(:similar_standard_id => @standard.similar_standard_id)
+    @questions = @standard.questions.all
+    @skills = @standard.skills.all
+    @strategies = @standard.strategies.all
+    @links = @standard.links.all
+    @vocabs = @standard.vocabs.all
+    @aquestions = @standard.aquestions.all
 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @standard }
+      format.js
+    end
+  end
+
+  def successive
+    @standard = Standard.find_by_standard_id(params[:id])
+
+    respond_to do |format|
+      format.js
     end
   end
   

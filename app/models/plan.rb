@@ -4,3 +4,4 @@ class Plan < ActiveRecord::Base
   belongs_to :district
   accepts_nested_attributes_for :headers, allow_destroy: true
 end
+

@@ -10,7 +10,6 @@ gem 'activerecord-postgresql-adapter'
 gem 'rspec'
 gem 'bootstrap-sass', '2.3.2.0'
 gem 'bcrypt-ruby', '3.0.1'
-gem 'therubyracer'
 gem 'less-rails'
 gem 'rake', '>=0.9.2'
 gem 'simple_form'
@@ -26,6 +25,8 @@ gem 'aws-sdk', '~> 1.0'
 gem 'prawn'
 gem 'jquery-turbolinks'
 gem 'turbolinks'
+gem 'bootstrap-will_paginate'
+
 
 
 
@@ -35,6 +36,7 @@ group :development, :test do
 end
 
 group :assets do
+  gem 'therubyracer'
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'twitter-bootstrap-rails'

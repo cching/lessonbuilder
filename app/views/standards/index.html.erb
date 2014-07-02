@@ -1,148 +1,36 @@
-<% if signed_in? %>
 
-<%= image_tag("selectstandards.jpg") %>&nbsp;<br />&nbsp;<br />&nbsp;<br />
+<div id="standards"></div><div id="search">
+<%= search_form_for @search, html: { class: 'form-horizontal' } do |f| %>
+  <%= f.label :id_cont, "Search by ID:" %>
+  <%= f.text_field :id_cont, class: "form-control" %><br />
+  <%= f.collection_select :grade_id_eq, Grade.order(:id), :id, :number, {prompt: "Search by grade"}, {class: "form-control"} %><br />
+  <%= f.collection_select :subject_id_eq, Subject.order(:id), :id, :name, {prompt: "Search by main subject"}, {class: "form-control"} %><br />
+  <%= f.collection_select :subsubject_id_eq, Subsubject.order(:id), :id, :name, {prompt: "Search by subject"}, {class: "form-control"} %><br />
+  <div align="right"><button type="submit" class="btn btn-primary" data-loading-text="Saving..">Search</button></div><% end %>
+  <hr>
+<br/>
 
-<div class="row">
-	  <div class="span4"><font color="red">Lesson attributes:</font>
-	  </div>
-	  <div class="span8">
+<% @standards.each do |standard| %>
 
-
-
-	<%= form_for(@select) do |f| %>
-	<font color="red">
-	<table>
-		<tr>
-			<td>
-				<%= f.label :name, "Lesson Name" %>
-				<%= f.text_area :name, :cols => "10", :rows => "1"  %>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<%= f.label :description %>
-				<%= f.text_area :description, :cols => "10", :rows => "1" %>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<%= f.label :objective %>
-				<%= f.text_area :objective, :cols => "10", :rows => "1" %>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<%= f.label :book, "Text" %>
-				<%= f.text_area :book, :cols => "10", :rows => "1" %><!-- Button to trigger modal -->
-<a href="#myModal" role="button" class="btn btn-mini btn-info" data-toggle="modal">Appendix B of the CCCSS</a>
- 
-<!-- Modal -->
-<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel"><a href="http://www.corestandards.org/assets/Appendix_B.pdf">Appendex B of the CCCSS</a></h3>
+<div class="animated fadeInUp">
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+    <div align="left"><%= standard.id %></div></h3>
   </div>
-  <div class="modal-body">
-    <p><iframe src="http://docs.google.com/viewer?url=http%3A%2F%2Fwww.corestandards.org%2Fassets%2FAppendix_B.pdf&embedded=true" width="600" height="780" style="border: none;"></iframe></p>
+  <div class="panel-body">
+    <%= standard.content %>
+    <div align="right">
+    <%= link_to "View Standard", standard_path(standard), remote: true, class: "btn btn-default btn-xs" %>
+    </div>
   </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
 
-  </div>
 </div>
-			</td>
-		</tr>
-	</table>
-	</font>
 </div>
 
-<div class="row">
-	  <div class="span4"><br /><font color="red">Select the Common Core Standard(s) for this lesson:</font>
-	  </div>
-	  <div class="span8">
-<table class="table table-hover">
-	<tr>
-		<th> &nbsp; &nbsp; &nbsp; &nbsp;</th>
-		<th><%= sort_link @search, :number, "Standard ID" %></th>
-		<th><%= sort_link @search, :subsubject, "Subject" %></th>
-		<th><%= sort_link @search, :content, "Standard" %></th>
 
-	</tr>
-
-		<%= hidden_field_tag "select[standard_ids][]", nil %>
-		<% @standards.where(:subject_id => 1).each do |standard| %>
-		<tr>
-    		<td><%= check_box_tag "select[standard_ids][]", standard.id, @select.standard_ids.include?(standard.id), id: dom_id(standard) %></td>
-			<td><%= standard.id %></td>
-			<td><%= standard.subsubject.name %></td>
-    		<td><%= standard.content %></td>
-		</tr>
-		<% end %>
-		</table>
-		
-		<div align="right"><%= will_paginate @standards, :page_links => false %></div>
-		<div class="actions", align="left">
-			<button type="submit" class="btn" data-loading-text="Saving..">Save and Continue</button>
-		</div>
-		</div>
-	<% end %>
+<% end %>
+<div align="right">
+<%= will_paginate @standards %>
 </div>
-
-	
-	<% else %>
-	<center>Please sign in before continuing.<br /><%= link_to "Sign in", signin_path, class: "btn btn-link" %>
-		<% end %>
-		
-<style type="text/css">
-
-
-	input[type="text"],
-	textarea {
-    width:600px;
-    padding: 0;
-    border: 1px solid #ccc;
-    }
-	
-	body .modal {
-	  width: 44%; /* desired relative width */
-	  left: 28%; /* (100%-width)/2 */
-	  /* place center */
-	  margin-left:auto;
-	  margin-right:auto; 
-	}
-</style>
-<style type="text/css">
-a:link {color:#DB2929;}      /* unvisited link */
-a:visited {color:#DB2929;}  /* visited link */
-
-a:active {color:#DB2929;}
-
-input[type="text"],
-textarea {
-    width:775px;
-    padding: 0;
-    border: 1px solid #ccc;
-    }
-</style>
-
-<script>
-$(document).ready(function() {
-  $("a").click(function() {
-    link_host = this.href.split("/")[2];
-    document_host = document.location.href.split("/")[2];
-
-    if (link_host != document_host) {
-      window.open(this.href);
-      return false;
-    }
-  });
-});
-</script>
-		
-<script>
-$('button[data-loading-text]').click(function () {
-    $(this).button('loading');
-});
-</script>
-
-
+</div>

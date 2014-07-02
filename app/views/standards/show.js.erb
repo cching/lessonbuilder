@@ -1,0 +1,9 @@
+$('#search').addClass('animated bounceOutLeft');
+setTimeout(function() {
+    $('#search').hide();
+}, 500);
+setTimeout(function() {
+	$('#standards').html('<%= escape_javascript(render(:partial => 'standard', :locals => {:standard => @standard})) %>')
+	$('#standard').addClass('animated bounceInUp')
+
+}, 500);

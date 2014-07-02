@@ -1,1 +1,127 @@
+<div id="standard">
+<%= link_to '<i class="glyphicon glyphicon-chevron-left"></i> '.html_safe, standards_path, remote: :true, class: "btn btn-default btn-sm" %><br/><br />
 
+<div class="panel panel-default"><br/>
+  <div class="panel-body">
+  	<h1>Standard <%= @standard.id %></h1>
+  </div>
+</div>
+
+
+<div class="panel panel-default">
+  <div class="panel-body">
+  	<center><%= @standard.content %></center>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+<ul class="nav nav-pills nav-justified">
+<% @successive.each do |successive| %>
+
+  <li class="<%= 'active' if @standard.id == successive.id %>"><%= link_to successive.id, standard_successive_path(standard), remote: :true %>
+  </li>
+  <% end %> 
+</ul></div></div>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">"I can..." Statements</h3>
+  </div>
+  <div class="panel-body">
+    <ul>
+</ul>
+  </div></div>
+
+<div class="row">
+  <div class="col-md-6">
+  	<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Question Stems</h3>
+  </div>
+  <div class="panel-body">
+    <ul>
+    <% @questions.each do |question| %>
+    	<li><%= question.content %></li>
+    	<% end %></ul>
+  </div>
+</div>
+  	
+  </div>
+  <div class="col-md-6">
+  		<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Skills</h3>
+  </div>
+  <div class="panel-body">
+    <ul>
+    <% @skills.each do |skill| %>
+    	<li><%= skill.content %></li>
+    	<% end %></ul>
+  </div>
+</div>
+
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+  	<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Strategies</h3>
+  </div>
+  <div class="panel-body">
+    <ul>
+    <% @strategies.each do |strategy| %>
+    	<li><%= strategy.content %></li>
+    	<% end %></ul>
+  </div>
+</div>
+  	
+  </div>
+  <div class="col-md-6">
+  		<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Vocabulary</h3>
+  </div>
+  <div class="panel-body">
+<ul>
+    <% @vocabs.each do |vocab| %>
+    	<li><%= vocab.content_english %></li>
+    	<% end %></ul>  </div>
+</div>
+
+
+  </div>
+</div>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Resources</h3>
+  </div>
+  <div class="panel-body">
+    <ul>
+    <% @links.each do |link| %>
+    	<li><%= link.comment %><br/> <%= link.link %></li>
+    	<% end %></ul>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Related Standards</h3>
+  </div>
+  <div class="panel-body">
+    <ul>
+    <% @related.each do |related| %>
+    	<li><%= related.id %></li>
+    	<% end %></ul>
+  </div></div>
+
+</div>
+</div>
+
+</div>

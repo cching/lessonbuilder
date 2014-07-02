@@ -39,7 +39,7 @@ class Standard < ActiveRecord::Base
   accepts_nested_attributes_for :i_cans, allow_destroy: true
 
 def to_param
-  standard_id  
+  standardid  
 end
 end
 

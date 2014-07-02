@@ -1,8 +1,10 @@
 class ChangeColumnName < ActiveRecord::Migration
-  def up
-    rename_column :selections, :standard_id, :standard_number
-  end
+  def change
+    create_table :selections do |t|
+      t.integer :standard_id
+      t.integer :select_id
 
-  def down
+      t.timestamps
+    end
   end
 end

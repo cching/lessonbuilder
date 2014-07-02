@@ -1,10 +1,8 @@
 class CreateSelections < ActiveRecord::Migration
-  def change
-    create_table :selections do |t|
-      t.integer :standard_id
-      t.integer :select_id
+  def up
+    rename_column :selections, :standard_id, :standard_number
+  end
 
-      t.timestamps
-    end
+  def down
   end
 end

@@ -1,8 +1,7 @@
 class CreateStandards < ActiveRecord::Migration
   def up
-    create_table(:standards, :id => false) do |t|
-      t.string :standard_id, :options => 'PRIMARY KEY'
-      t.string :standard_id
+    create_table :standards do |t|
+      t.string :id
       t.integer :subject_id
       t.integer :grade_id
       t.integer :subsubject_id

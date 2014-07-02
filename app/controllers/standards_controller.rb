@@ -11,7 +11,7 @@ class StandardsController < ApplicationController
   end
   
   def show
-    @standard = Standard.find_by_standardid(params[:id])
+    @standard = Standard.find_by_standard_id(params[:id])
     @successive = Standard.where(:successive_standard_id => @standard.successive_standard_id)
     @related = Standard.where(:similar_standard_id => @standard.similar_standard_id)
     @questions = @standard.questions.all
@@ -41,7 +41,7 @@ class StandardsController < ApplicationController
   end
 
   def edit
-    @standard = Standard.find_by_standardid(params[:id])
+    @standard = Standard.find_by_standard_id(params[:id])
   end
 
   def create
@@ -60,7 +60,7 @@ class StandardsController < ApplicationController
 
 
   def update
-    @standard = Standard.find_by_standardid(params[:id])
+    @standard = Standard.find_by_standard_id(params[:id])
 
     respond_to do |format|
       if @standard.update_attributes(params[:standard])

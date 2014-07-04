@@ -1,7 +1,7 @@
 <div id="standard">
 <%= link_to '<i class="glyphicon glyphicon-chevron-left"></i> '.html_safe, standards_path, remote: :true, class: "btn btn-default btn-sm" %>
 <% if current_user.admin? %>
-<div align="right"><%= link_to "Edit", edit_standard_path(@standard), class: "btn btn" %></div>
+<div align="right"><%= link_to "Edit", edit_standard_path(@standard), class: "btn btn-default", remote: :true %></div>
 <% end %>
 
 <br/><br />
@@ -25,7 +25,7 @@
 <ul class="nav nav-pills nav-justified">
 <% @successive.each do |successive| %>
 
-  <li class="<%= 'active' if @standard.id == successive.id %>"><%= link_to successive.id, standard_path(standard), remote: :true %>
+  <li class="<%= 'active' if @standard.id == successive.id %>"><%= link_to successive.id, standard_path(successive), remote: :true %>
   </li>
   <% end %> 
 </ul></div></div>
@@ -137,7 +137,3 @@
   </div></div>
 
 </div>
-</div>
-
-</div>
-

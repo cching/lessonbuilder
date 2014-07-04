@@ -13,23 +13,10 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
-//= require twitter/bootstrap
-//= require bootstrap
+//= require bootstrap.min
 //= require prettify
-//= require application
-//= require bootstrap-select
-//= require bootstrap-switch
 //= require flatui-checkbox
 //= require flatui-radio
-//= require jquery-1.8.3.min
-//= require jquery-1.10.2.min
-//= require jquery-2.0.3.min
-//= require jquery-ui-1.10.3.custom.min
-//= require jquery.placeholder
-//= require jquery.tagsinput
-//= require jquery.ui.touch-punch.min
-//= require respond.min
-//= require typeahead
 //= require jquery.purr
 //= require_tree .
 //= require best_in_place
@@ -38,8 +25,6 @@
 $(document).ready(function() {
   $('.best_in_place').best_in_place();
 })
-
-$('.dropdown-toggle').dropdown()  
 
 $(document).ready(function() {
   $("a").click(function() {
@@ -52,4 +37,6 @@ $(document).ready(function() {
     }
   });
 });
+
+
 

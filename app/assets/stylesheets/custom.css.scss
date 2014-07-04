@@ -1,22 +1,5 @@
 @import "bootstrap";
 
-.alert-info {
-color: #2F81D7;
-background-color: #2F81D7;
-border-color: #2F81D7;
-}
-
-td div, th div{
-    page-break-inside: avoid;
-}
-
-.alert-warning,
-.alert-error {
-color: #2F81D7;
-background-color: #2F81D7;
-border-color: #2F81D7;
-}
-
 .panel-danger,
 .panel-header {
 color: #FFF;
@@ -31,9 +14,6 @@ border-color: #2F81D7;
 }
 }
 
-table, tr, td, th, tbody, thead, tfoot {
-    page-break-inside: avoid !important;
-}
 
 .thumbnails li {
     position: relative;
@@ -166,20 +146,3 @@ footer {
 }
 
 
-@media print {
-        #pdflink {
-                display: none;
-        }
-
-                #header {
-                display: none;
-        }
-
-
-
-      #line_items   
-table, tr, td, th, tbody, thead, tfoot {
-    page-break-inside: avoid !important;
-}
-
-}

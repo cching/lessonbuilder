@@ -1,37 +1,14 @@
+<div class="row">
+  <div class="col-md-3">
+  <div class="animated slideInLeft">
+<%= render 'sidebar' %></div></div>
+  <div class="col-md-9">
 <div id="standards"></div><div id="search">
-
-<div id="standards"></div><div id="search">
-<%= search_form_for @search, html: { class: 'form-horizontal' } do |f| %>
-  <%= f.label :id_cont, "Search by ID:" %>
-  <%= f.text_field :id_cont, class: "form-control" %><br />
-  <%= f.collection_select :grade_id_eq, Grade.order(:id), :id, :number, {prompt: "Search by grade"}, {class: "form-control"} %><br />
-  <%= f.collection_select :subject_id_eq, Subject.order(:id), :id, :name, {prompt: "Search by main subject"}, {class: "form-control"} %><br />
-  <%= f.collection_select :subsubject_id_eq, Subsubject.order(:id), :id, :name, {prompt: "Search by subject"}, {class: "form-control"} %><br />
-  <div align="right"><button type="submit" class="btn btn-primary" data-loading-text="Saving..">Search</button></div><% end %>
-  <hr>
-<br/>
-
-<% @standards.each do |standard| %>
-
-<div class="animated fadeInUp">
-<div class="panel panel-primary">
-  <div class="panel-heading">
-    <h3 class="panel-title">
-    <div align="left"><%= standard.id %></div></h3>
-  </div>
-  <div class="panel-body">
-    <%= standard.content %>
-    <div align="right">
-    <%= link_to "View Standard", standard_path(standard), remote: true, class: "btn btn-default btn-xs" %>
-    </div>
-  </div>
-
+<div class="animated bounceInLeft">
+<center>
+<div class="well" id="standards">Select Common Core standards from the left to view content.</p>
+</center>
 </div>
 </div>
-
-
-<% end %>
-<div align="right">
-<%= will_paginate @standards %>
 </div>
 </div>

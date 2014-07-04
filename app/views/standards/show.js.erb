@@ -1,9 +1,20 @@
-$('#search').addClass('animated bounceOutLeft');
+$('#search').addClass('animated bounceOutRight');
 setTimeout(function() {
     $('#search').hide();
 }, 600);
+
+if ($('#standards').length > 0) {
+	setTimeout(function() {
+	$('#standards').html('<%= escape_javascript(render(:partial => 'standard', :locals => {:standard => @standard})) %>')
+	$('#standard').addClass('animated bounceInRight')
+
+}, 600);
+
+} else {
+
 setTimeout(function() {
 	$('#standards').html('<%= escape_javascript(render(:partial => 'standard', :locals => {:standard => @standard})) %>')
 	$('#standard').addClass('animated bounceInUp')
 
 }, 600);
+}

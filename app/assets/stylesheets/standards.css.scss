@@ -2,3 +2,28 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "bootstrap";
+
+.panel-body {
+   background-color: rgba(245, 245, 245, 0.4);
+}
+
+#subject.list-group-item {
+	background-color: #2F81D7;
+	color: #FFF;
+	border-color: #FFF;
+
+
+}
+
+#standards.well {
+	   background-color: rgba(245, 245, 245, 0.4);
+	
+}
+
+#grade.list-group-item {
+	background-color: #82b3e7;
+	color: #FFF;
+	border-color: #FFF;
+
+}

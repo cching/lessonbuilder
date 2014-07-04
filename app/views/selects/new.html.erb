@@ -1,5 +1,4 @@
 <% if signed_in? %>
-
 <div class="animated fadeInDown">
 <div class="page-header">
   <h1>Lesson Setup</h1>
@@ -21,11 +20,11 @@
    <div class="animated bounceInLeft">
   <div class="col-md-2"><%= f.association :grades, label: "Grade(s):", as: :check_boxes, label_method: :number, input_html: {:data => {:toggle => "checkbox"}} %><br /><br /></div></div>
   <div class="animated bounceInUp">
-  <div class="col-md-3"><%= f.association :subject, as: :radio_buttons, label_method: :name, label: "Reading Subject:" %><br /></div></div>
+  <div class="col-md-3"><%= f.association :subject, as: :radio_buttons, label_method: :name, label: "Reading Subject:", input_html: {:data => {:toggle => "radio"}} %><br /></div></div>
   <div class="animated bounceInUp">
-<div class="col-md-3"><%= f.association :subsubjects, label: "Subject(s):", as: :check_boxes, label_method: :name %><br /><br /></div></div>
+<div class="col-md-3"><%= f.association :subsubjects, label: "Subject(s):", as: :check_boxes, label_method: :name, input_html: {:data => {:toggle => "checkbox"}} %><br /><br /></div></div>
 <div class="animated bounceInRight">
-<div class="col-md-4"><%= f.association :sources, label: "Source(s):", as: :check_boxes, label_method: :name %><br /><br /></div>
+<div class="col-md-4"><%= f.association :sources, label: "Source(s):", as: :check_boxes, label_method: :name, input_html: {:data => {:toggle => "checkbox"}} %><br /><br /></div>
 </div></div>
 
         

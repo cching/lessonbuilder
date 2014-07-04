@@ -1,0 +1,91 @@
+<div id="accordion">
+
+	<div class="list-group">
+	   <% @subject.each do |subject| %>
+		<h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse_<%= subject.id %>" class="list-group-item" id="subject">
+          <%= subject.name %> 
+        </a>
+      	</h4>
+    	<div id="collapse_<%= subject.id %>" class="panel-collapse collapse">
+      
+       
+      		<div id="accordion">
+				<div class="list-group">
+				<% @grade.each do |grade| %>
+				<% if Standard.where(:subject_id => subject.id).where(:grade_id => grade.id).any? %>   
+		 			<h4 class="panel-title">
+		 		
+        				<a data-toggle="collapse" data-parent="#accordion2" href="#collapse_<%= grade.id %>_<%= subject.id %>" class="list-group-item" id="grade">
+          				<%= grade.number %>
+        				</a>
+      				</h4>
+    			
+
+    				<div id="collapse_<%= grade.id %>_<%= subject.id %>" class="panel-collapse collapse">
+    				<div class="panel-body">
+        			<div class="list-group">
+					<% Standard.where(:subject_id => subject.id).where(:grade_id => grade.id).order("standard_id ASC").each do |standard| %>
+					
+							<%= link_to standard.id, standard_path(standard), class: "list-group-item", remote: :true %>
+						
+					<% end %>
+    				</div>
+    				</div>
+    				</div>
+    			<% end %>
+    			<% end %>
+
+				</div>	
+			</div>
+		</div>
+		<% end %>
+
+	   <% @subject2.each do |subject| %>
+		<h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2_<%= subject.id %>" class="list-group-item" id="subject">
+          <%= subject.name %> 
+        </a>
+      	</h4>
+ 
+
+    	<div id="collapse2_<%= subject.id %>" class="panel-collapse collapse">
+      
+       
+      		<div id="accordion">
+				<div class="list-group">
+				<% @grade.each do |grade| %> 
+				<% if Standard.where(:subsubject_id => subject.id).where(:grade_id => grade.id).any? %>    
+		 			<h4 class="panel-title">
+		 		
+        				<a data-toggle="collapse" data-parent="#accordion2" href="#collapse2_<%= grade.id %>_<%= subject.id %>" class="list-group-item" id="grade">
+          				<%= grade.number %>
+        				</a>
+      				</h4>
+    			
+
+    				<div id="collapse2_<%= grade.id %>_<%= subject.id %>" class="panel-collapse collapse">
+    				<div class="panel-body">
+        			<div class="list-group">
+					<% Standard.where(:subsubject_id => subject.id).where(:grade_id => grade.id).order("standard_id ASC").each do |standard| %>
+					
+							<%= link_to standard.id, standard_path(standard), class: "list-group-item", remote: :true %>
+						
+					<% end %>
+    				</div>
+    				</div>
+    				</div>
+    			<% end %>
+    			<% end %>
+
+				</div>	
+			</div>
+		</div>
+		<% end %>
+
+
+
+	</div>
+
+
+</div>

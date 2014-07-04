@@ -1,18 +1,18 @@
 class StandardsController < ApplicationController
     
   def index
-    @search = Standard.search(params[:q])
-    @standards = @search.result.paginate(:page => params[:page], :per_page => 10)
-    
+    @subject = Subject.all
+    @subject2 = Subsubject.all
+    @grade = Grade.all    
     respond_to do |format|
       format.js
       format.html
     end
   end
-  
+
   def show
     @standard = Standard.find_by_standard_id(params[:id])
-    @successive = Standard.where(:successive_standard_id => @standard.successive_standard_id)
+    @successive = Standard.where(:successive_standard_id => @standard.successive_standard_id).order("standard_id ASC")
     @related = Standard.where(:similar_standard_id => @standard.similar_standard_id)
     @questions = @standard.questions.all
     @anchors = @standard.anchor_standards.all
@@ -42,6 +42,11 @@ class StandardsController < ApplicationController
 
   def edit
     @standard = Standard.find_by_standard_id(params[:id])
+
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   def create

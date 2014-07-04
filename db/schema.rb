@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140702190656) do
+ActiveRecord::Schema.define(:version => 20140704071337) do
 
   create_table "admin_notes", :force => true do |t|
     t.string   "resource_id",     :null => false
@@ -362,9 +362,9 @@ ActiveRecord::Schema.define(:version => 20140702190656) do
     t.integer "subsubject_id"
     t.string  "subsubject"
     t.text    "content"
-    t.integer "successive_standard_id"
+    t.string  "successive_standard_id"
     t.integer "similar_standard_id"
-    t.integer "standard_id"
+    t.string  "standard_id"
   end
 
   create_table "strategies", :force => true do |t|

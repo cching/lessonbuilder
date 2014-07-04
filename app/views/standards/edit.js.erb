@@ -1,0 +1,9 @@
+$('#standard').addClass('animated bounceOutRight');
+setTimeout(function() {
+	$('#standard').removeClass('animated bounceOutRight');
+	$('#standard').html('<%= escape_javascript(render(:partial => 'form', :locals => {:standard => @standard})) %>')
+	$('#edit').addClass('animated bounceInRight');
+
+
+}, 600);
+

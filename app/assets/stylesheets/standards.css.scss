@@ -4,8 +4,8 @@
 
 @import "bootstrap";
 
-.panel-body {
-   background-color: rgba(245, 245, 245, 0.4);
+#sidebar.panel-body {
+   background-color: rgba(245, 245, 245, 1);
 }
 
 #subject.list-group-item {
@@ -26,4 +26,8 @@
 	color: #FFF;
 	border-color: #FFF;
 
+}
+
+.list-group-item:hover {
+  background-color: #0e2640 !important;
 }

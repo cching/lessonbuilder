@@ -1,4 +1,13 @@
-            <div class="div-table-content">
+<div id="standard">
+<div id="standard-options">
+
+<%= link_to '<i class="glyphicon glyphicon-chevron-left"></i>'.html_safe, books_path, remote: :true, class: "btn btn-info btn-sm back", id: "back" %>
+<% if current_user.admin? %>
+<div align="right"><%= link_to "Edit", edit_book_path(@book), class: "btn btn-default", remote: :true %></div>
+<% end %>
+</div>
+<br/>
+
 
 <div id="modal-edit-fields"><p id="notice"><%= notice %></p>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -65,6 +74,6 @@
 
 
 
-</div><br /><div id="pdflink">
+</div><br />
 
-<%= link_to "Save as PDF", book_path(@book, format: "pdf"), class: "btn btn-link" %></div></div>
+<%= link_to "Save as PDF", book_path(@book, format: "pdf"), class: "btn btn-link" %></div>

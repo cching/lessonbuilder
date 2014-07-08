@@ -1,0 +1,48 @@
+<div id="accordion">
+	<div class="list-group">
+	   <% @grade.each do |grade| %>
+		<h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse_<%= grade.number %>" class="list-group-item" id="subject">
+          <%= grade.number %> 
+        </a>
+      	</h4>
+    	<div id="collapse_<%= grade.number %>" class="panel-collapse collapse">
+      
+       
+      <div id="accordion">
+				<div class="list-group">
+				<% @category.each do |category| %>
+				<% if Book.where(:textcategory_id => category.id).includes(:grades).where(:grades => {:id => grade.id}).any? %>   
+		 			<h4 class="panel-title">
+		 		
+        				<a data-toggle="collapse" data-parent="#accordion2" href="#collapse_<%= grade.id %>_<%= category.id %>" class="list-group-item" id="grade">
+          				<%= category.category %>
+        				</a>
+      				</h4>
+    			
+
+    				<div id="collapse_<%= grade.id %>_<%= category.id %>" class="panel-collapse collapse">
+    				<div class="panel-body">
+        			<div class="list-group">
+					<% Book.where(:textcategory_id => category.id).includes(:grades).where(:grades => {:id => grade.id}).order("title ASC").each do |book| %>
+					
+							<small><%= link_to book.title, book_path(book), class: "list-group-item", id: "standard-hover", remote: :true %></small>
+						
+					<% end %>
+    				</div>
+    				</div>
+    				</div>
+    			<% end %>
+    			<% end %>
+
+
+				</div>	
+			</div>
+		</div>
+		<% end %>
+
+	</div>
+
+
+</div>
+

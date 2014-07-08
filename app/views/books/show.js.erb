@@ -1,1 +1,28 @@
-$('#book').html('<%= escape_javascript(render(:partial => 'book', :locals => {:book => @book})) %>');
+$('#search').addClass('animated bounceOutRight');
+setTimeout(function() {
+    $('#search').hide();
+}, 600);
+
+if ($('#standard').hasClass('animated bounceInRight')) {
+	$('#standard').removeClass('animated bounceInRight')
+	$('#standard').addClass('animated bounceOutRight')
+
+	setTimeout(function() {
+	$('#standards').html('<%= escape_javascript(render(:partial => 'book', :locals => {:book => @book})) %>')
+	$('#standard').removeClass('animated bounceOutRight')
+	$('#standard').addClass('animated bounceInRight')
+
+}, 600);
+
+} else {
+
+setTimeout(function() {
+	setTimeout(function() {
+	$('#standards').html('<%= escape_javascript(render(:partial => 'book', :locals => {:book => @book})) %>')
+	$('#standard').addClass('animated bounceInRight')
+
+}, 600);
+
+
+}, 600);
+}

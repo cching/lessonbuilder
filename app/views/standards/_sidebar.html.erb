@@ -44,12 +44,12 @@
                 </a>
               </h4>
           
-
+              
             <div id="collapse_<%= grade.id %>_<%= subject.id %>" class="panel-collapse collapse">
             <div class="panel-body">
               <div class="list-group">
           <% Standard.where(:subsubject_id => subject.id).where(:grade_id => grade.id).order("standard_id ASC").each do |standard| %>
-          
+
               <%= link_to standard.id, standard_path(standard), class: "list-group-item", id: "standard-hover", remote: :true %>
             
           <% end %>

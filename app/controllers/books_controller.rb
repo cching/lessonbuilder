@@ -3,6 +3,8 @@ class BooksController < ApplicationController
   # GET /books.json
   def index
     @search = Book.search(params[:q])
+    @category = Textcategory.all
+    @grade = Grade.all
     if current_user.admin?
     @books = @search.result.order(:title).paginate(:page => params[:page], :per_page => 50)
 
@@ -11,6 +13,7 @@ class BooksController < ApplicationController
    end 
 
     respond_to do |format|
+      format.js
       format.html # index.html.erb
       format.json { render json: @books }
     end
@@ -23,7 +26,7 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-              format.js # show.js.erb
+      format.js # show.js.erb
       format.json { render json: @book }
             format.pdf do
         pdf = BookPdf.new(@book)
@@ -48,6 +51,9 @@ class BooksController < ApplicationController
   # GET /books/1/edit
   def edit
     @book = Book.find(params[:id])
+    respond_to do |format|
+      format.js
+    end
   end
 
   # POST /books

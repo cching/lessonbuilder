@@ -1,68 +1,15 @@
-<% if current_user.admin? %>
-
-<%= search_form_for @search, html: { class: 'form-horizontal' } do |f| %>
-  <%= f.label :title_cont, "Search by title:" %>
-  <%= f.text_field :title_cont, class: "form-control" %><br />
-  <%= f.label :author_cont, "Search by author:" %>
-  <%= f.text_field :author_cont, class: "form-control" %><br />
-  <%= f.collection_select :grades_id_eq, Grade.order(:number), :id, :number, {prompt: "Search by grade"}, {class: "form-control", id: "select"} %><br />
-  <%= f.collection_select :sources_id_eq, Source.order(:name), :id, :name, {prompt: "Search by source"}, {class: "form-control"} %><br />
-  <div align="right"><button type="submit" class="btn" data-loading-text="Saving..">Search</button></div>
-<br /><% end %><br />
-
-<table class="table-hover">
-    <thead>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-        <th>
-            <%= sort_link @search, :title, "Title" %>
-        </th>
-                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-
-
-        <th>
-            <%= sort_link @search, :author, "Author" %>
-        </th>
-                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-        <th>
-            <%= sort_link @search, :grades, "Grades" %>
-        </th>
-
-    </thead>
-    
-    <tbody>
-        <tr>
-
-        <% @books.each do |book| %>
-                        <td><%= link_to 'Edit', edit_book_path(book), class: "btn btn-mini" %></td>
-    <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-mini" %></td>
-
-
-                <td><%= link_to book.title, book, class: "btn btn-link" %>
-                
-            </td>
-             <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-
-            <td><%= book.author %></td>
-                    <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                   <td> <% book.grades.each do |grade| %>
-            <%= grade.number %><% end %></td>
-            
-
-        </tr>
-    </tbody>
-    <% end %>
-</table>
-
-
-<br />
-
-
-<%= link_to 'New Book', new_book_path, class: "btn btn-mini" %>
-<%= will_paginate @books %>
-
-<% else %>
-<%= render 'booktable' %>
-
- <% end %>
+<div class="row">
+  <div class="col-md-3">
+  <div class="animated slideInLeft">
+<%= render 'sidebar' %></div></div>
+  <div class="col-md-9">
+<div id="standards"></div><div id="search">
+<div class="animated bounceInLeft">
+<center>
+<div class="well" id="standards"><p>Select a text from the left to view content.</p>
+</center>
+</div>
+</div>
+</div>
+</div>
 

@@ -38,8 +38,15 @@ class Standard < ActiveRecord::Base
   accepts_nested_attributes_for :anchor_standards, allow_destroy: true
   accepts_nested_attributes_for :i_cans, allow_destroy: true
 
+
+
+def next
+  Standard.where(["id > ?", id]).first
+end
+
 def to_param
   standard_id  
 end
+
 end
 

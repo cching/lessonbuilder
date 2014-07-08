@@ -14,7 +14,6 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require bootstrap.min
-//= require prettify
 //= require flatui-checkbox
 //= require flatui-radio
 //= require jquery.purr

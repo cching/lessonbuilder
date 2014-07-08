@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-@import "bootstrap";
+@import "flat-ui";
 
 #sidebar.panel-body {
    background-color: rgba(245, 245, 245, 1);
@@ -28,6 +28,57 @@
 
 }
 
-.list-group-item:hover {
+#subject.list-group-item:hover {
   background-color: #0e2640 !important;
+  color: #FFF !important;
 }
+
+#grade.list-group-item:hover {
+  background-color: #2F81D7 !important;
+  color: #FFF !important;
+}
+
+#standard-hover.list-group-item:hover {
+  background-color: #82b3e7 !important;
+  color: #FFF !important;
+}
+
+#succ_standard{
+.active a {
+	background-color: #82b3e7 !important;
+	color: #FFF;
+}
+
+.active {
+	background-color: #82b3e7 !important;
+	color: #FFF;
+}
+
+
+ li {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #82b3e7;
+
+
+}
+
+h4 {
+	text-align: center;
+
+}
+}
+
+#standard-attributes{
+.panel-default {
+	.panel-heading{
+ background-color: #82b3e7 !important;
+  color: #FFF !important;
+  }
+  .active a {
+	background-color: #82b3e7 !important;
+	color: #FFF;
+}
+  }
+}
+

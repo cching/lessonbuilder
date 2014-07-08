@@ -5,7 +5,7 @@
   <%= f.text_field :title_cont, class: "form-control" %><br />
   <%= f.label :author_cont, "Search by author:" %>
   <%= f.text_field :author_cont, class: "form-control" %><br />
-  <%= f.collection_select :grades_id_eq, Grade.order(:number), :id, :number, {prompt: "Search by grade"}, {class: "form-control"} %><br />
+  <%= f.collection_select :grades_id_eq, Grade.order(:number), :id, :number, {prompt: "Search by grade"}, {class: "form-control", id: "select"} %><br />
   <%= f.collection_select :sources_id_eq, Source.order(:name), :id, :name, {prompt: "Search by source"}, {class: "form-control"} %><br />
   <div align="right"><button type="submit" class="btn" data-loading-text="Saving..">Search</button></div>
 <br /><% end %><br />

@@ -13,6 +13,8 @@ class StandardsController < ApplicationController
   def show
     @standard = Standard.find_by_standard_id(params[:id])
     @successive = Standard.where(:successive_standard_id => @standard.successive_standard_id).order("standard_id ASC")
+    @successive_prev = Standard.where(:successive_standard_id => @standard.successive_standard_id).where("standard_id < ?", @standard.standard_id).order("standard_id ASC").last
+    @successive_next = Standard.where(:successive_standard_id => @standard.successive_standard_id).where("standard_id > ?", @standard.standard_id).order("standard_id ASC").first
     @related = Standard.where(:similar_standard_id => @standard.similar_standard_id)
     @questions = @standard.questions.all
     @anchors = @standard.anchor_standards.all

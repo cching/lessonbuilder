@@ -28,6 +28,16 @@ class BooksController < ApplicationController
       format.html # show.html.erb
       format.js # show.js.erb
       format.json { render json: @book }
+    end
+  end
+
+  def show2
+    @book = Book.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.js # show.js.erb
+      format.json { render json: @book }
             format.pdf do
         pdf = BookPdf.new(@book)
         send_data pdf.render, filename: "#{@book.title}",

@@ -17,14 +17,9 @@
 <b><font size="6">Legend</font> </b><br/><br/>
 <table>
 <tr>
-<td>
-<span class="label label-primary">
-                   <span class="glyphicon glyphicon-cloud-upload"></span> <font size="2">PDF example available</font>
-                   </span>
-                   </td>
                    <td>
-<span class="label label-success">
-                   <span class="glyphicon glyphicon-book"></span> <font size="2">Example text available</font>
+<span class="label label-danger">
+                   <span class="glyphicon glyphicon-book"></span> <font size="2">No example text available</font>
                    </span>
                    </td>
                    <td>
@@ -65,20 +60,13 @@
                 &nbsp;
                 </td>
                 <td>
-                    <font size="4"><%= link_to book.title, book, class: "list-group-item", remote: :true %></font></td>
+                    <font size="4"><%= link_to book.title, show2_books_path(:id => book.id), class: "list-group-item", remote: :true %></font></td>
                     <td>
                     &nbsp; &nbsp;
                     </td>
-                    <td>
-                   <% if book.pdf? %>
-                   <span class="label label-primary">
-                   <span class="glyphicon glyphicon-cloud-upload"></span>
-                   </span>
-                   <% end %>
-                   </td>
                    <td>
-                   <% unless book.example == nil || book.example == "" %>
-                   <span class="label label-success">
+                   <% if book.example == nil || book.example == "" %>
+                   <span class="label label-danger">
                    <span class="glyphicon glyphicon-book"></span>
                    </span>
                    <% end %>
@@ -126,14 +114,9 @@
 <b><font size="6">Legend</font> </b><br/><br/>
 <table>
 <tr>
-<td>
-<span class="label label-primary">
-                   <span class="glyphicon glyphicon-cloud-upload"></span> <font size="2">PDF example available</font>
-                   </span>
-                   </td>
                    <td>
-<span class="label label-success">
-                   <span class="glyphicon glyphicon-book"></span> <font size="2">Example text available</font>
+<span class="label label-danger">
+                   <span class="glyphicon glyphicon-book"></span> <font size="2">No example text available</font>
                    </span>
                    </td>
                    <td>
@@ -174,20 +157,13 @@
                 &nbsp;
                 </td>
                 <td>
-                    <font size="4"><%= link_to book.title, book, class: "list-group-item", remote: :true %></font></td>
+                    <font size="4"><%= link_to book.title, books_show2_path(:id => book.id), class: "list-group-item", remote: :true %></font></td>
                     <td>
                     &nbsp; &nbsp;
                     </td>
-                    <td>
-                   <% if book.pdf? %>
-                   <span class="label label-primary">
-                   <span class="glyphicon glyphicon-cloud-upload"></span>
-                   </span>
-                   <% end %>
-                   </td>
                    <td>
                    <% unless book.example == nil || book.example == "" %>
-                   <span class="label label-success">
+                   <span class="label label-danger">
                    <span class="glyphicon glyphicon-book"></span>
                    </span>
                    <% end %>
@@ -229,35 +205,9 @@
 </body>
 </div>
 
-<style type="text/css">
-a:link {color:#00BFFF;}      /* unvisited link */
-a:visited {color:#00BFFF;}  /* visited link */
-a:hover {background-color:#FFFFFF;}  /* mouse over link */
-a:active {color:#00BFFF;}
 
-body .modal {
-  width: 50%; /* desired relative width */
-  left: 10%; /* (100%-width)/2 */
-  /* place center */
-  margin-left:auto;
-  margin-right:auto; 
-}
-</style>
 
-<script>
 
-$(document).ready(function() {
-  $("a").click(function() {
-    link_host = this.href.split("/")[2];
-    document_host = document.location.href.split("/")[2];
-
-    if (link_host != document_host) {
-      window.open(this.href);
-      return false;
-    }
-  });
-});
-</script>
 <script>
 	$('button[data-loading-text]').click(function () {
     $(this).button('loading');

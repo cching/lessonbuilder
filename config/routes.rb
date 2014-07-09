@@ -39,7 +39,11 @@ Commoncore::Application.routes.draw do
   resources :lessonplans
 
 
-  resources :books
+  resources :books do 
+    collection do
+      get :show2
+    end
+  end
 
 
   resources :links
@@ -79,12 +83,6 @@ Commoncore::Application.routes.draw do
     resources :cstrategies
     resources :clinks
 
-    collection do
-      get :popular_confessions
-      get :top_confessions
-      get :controversial_confessions
-      get :new_confessions
-    end
   end
   
   resources :cquestions

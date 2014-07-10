@@ -13,9 +13,11 @@ class SelectPdf < Prawn::Document
 
     move_down 10
     text "Objective: #{@select.objective}", :align => :center
-
+    if SelectQuestion.where(:select_id => @select.id).any?
     move_down 20
     standard_table_content
+  else
+  end
 
     if SelectQuestion.where(:select_id => @select.id).any?
     move_down 20

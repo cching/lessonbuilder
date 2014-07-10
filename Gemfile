@@ -18,10 +18,12 @@ gem 'best_in_place'
 gem 'wicked'
 gem "paperclip", "~> 4.1"
 gem 'aws-sdk', '~> 1.0'
-gem 'prawn'
+gem 'prawn', :git => "https://github.com/prawnpdf/prawn.git", :ref => '8028ca0cd2'
 gem 'jquery-turbolinks'
 gem 'turbolinks'
 gem 'bootstrap-will_paginate'
+gem 'nprogress-rails'
+
 
 group :development, :test do
   gem 'rspec-rails', '2.11.0'

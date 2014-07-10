@@ -90,4 +90,18 @@ class StandardsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def hide
+    @grade = Grade.find(params[:grade])
+
+    if params[:subject] != nil
+      @subject = Subject.find(params[:subject])  
+
+    else
+      @subject2 = Subsubject.find(params[:subsubject])
+    end
+    respond_to do |format|
+      format.js
+    end
+  end
 end

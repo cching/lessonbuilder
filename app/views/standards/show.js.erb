@@ -16,13 +16,9 @@ if ($('#standard').hasClass('animated bounceInRight')) {
 
 } else {
 
-setTimeout(function() {
-	setTimeout(function() {
+
 	$('#standards').html('<%= escape_javascript(render(:partial => 'standard', :locals => {:standard => @standard})) %>')
 	$('#standard').addClass('animated bounceInRight')
 
-}, 600);
 
-
-}, 600);
 }

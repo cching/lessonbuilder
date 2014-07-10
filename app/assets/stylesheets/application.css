@@ -11,11 +11,11 @@
  *= require bootstrap.min
  *= require flat-ui
  *= require animate
+ *= require nprogress
+ *= require nprogress-bootstrap
  *= require_self
  *= require_tree .
  */
-
-
 
 #standards th{
  font-size: 24px;

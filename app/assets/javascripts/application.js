@@ -12,14 +12,16 @@
 //
 //= require jquery
 //= require jquery.turbolinks
+//= require turbolinks
 //= require jquery_ujs
 //= require bootstrap.min
 //= require flatui-checkbox
 //= require flatui-radio
 //= require jquery.purr
+//= require nprogress
+//= require nprogress-ajax
 //= require_tree .
 //= require best_in_place
-//= require turbolinks
 
 $(document).ready(function() {
   $('.best_in_place').best_in_place();
@@ -36,6 +38,7 @@ $(document).ready(function() {
     }
   });
 });
+
 
 
 

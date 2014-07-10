@@ -1,6 +1,5 @@
 <div id="standard">
 <div id="standard-options">
-<%= link_to '<i class="glyphicon glyphicon-chevron-left"></i> '.html_safe, standards_path, remote: :true, class: "btn btn-info btn-sm" %>
 <% if current_user.admin? %>
 <div align="right"><%= link_to "Edit", edit_standard_path(@standard), class: "btn btn-default", remote: :true %></div>
 <% end %></div>

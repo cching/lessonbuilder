@@ -1,3 +1,6 @@
+<div id="sidebar">
+</div>
+<div id="panel">
 <div id="accordion">
 	<div class="list-group">
 	   <% @grade.each do |grade| %>
@@ -13,49 +16,16 @@
 				<div class="list-group">
 				<% @subject.each do |subject| %>
 				<% if Standard.where(:subject_id => subject.id).where(:grade_id => grade.id).any? %>   
-		 			<h4 class="panel-title">
-		 		
-        				<a data-toggle="collapse" data-parent="#accordion2" href="#collapse_<%= grade.id %>_<%= subject.id %>" class="list-group-item" id="grade">
-          				<%= subject.name %>
-        				</a>
-      				</h4>
-    			
-
-    				<div id="collapse_<%= grade.id %>_<%= subject.id %>" class="panel-collapse collapse">
-    				<div class="panel-body">
-        			<div class="list-group">
-					<% Standard.where(:subject_id => subject.id).where(:grade_id => grade.id).order("standard_id ASC").each do |standard| %>
-					
-							<%= link_to standard.id, standard_path(standard), class: "list-group-item", id: "standard-hover", remote: :true %>
-						
-					<% end %>
-    				</div>
-    				</div>
-    				</div>
+		 			         				
+        	  <%= link_to subject.name, hide_standards_path(:subject => subject.id, :grade => grade.id), remote: true, class: "list-group-item", id: "grade" %>
+     						
     			<% end %>
     			<% end %>
 
-                  <% @subject2.each do |subject| %>
+        <% @subject2.each do |subject| %>
         <% if Standard.where(:subsubject_id => subject.id).where(:grade_id => grade.id).any? %>   
-          <h4 class="panel-title">
-        
-                <a data-toggle="collapse" data-parent="#accordion2" href="#collapse_<%= grade.id %>_<%= subject.id %>" class="list-group-item" id="grade">
-                  <%= subject.name %>
-                </a>
-              </h4>
-          
-              
-            <div id="collapse_<%= grade.id %>_<%= subject.id %>" class="panel-collapse collapse">
-            <div class="panel-body">
-              <div class="list-group">
-          <% Standard.where(:subsubject_id => subject.id).where(:grade_id => grade.id).order("standard_id ASC").each do |standard| %>
-
-              <%= link_to standard.id, standard_path(standard), class: "list-group-item", id: "standard-hover", remote: :true %>
-            
-          <% end %>
-            </div>
-            </div>
-            </div>
+            <%= link_to subject.name, hide_standards_path(:subsubject => subject.id, :grade => grade.id), remote: true, class: "list-group-item", id: "grade" %>
+                
           <% end %>
           <% end %>
 
@@ -72,4 +42,4 @@
 
 
 </div>
-
+</div>

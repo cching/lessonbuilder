@@ -3,13 +3,29 @@
   <div class="animated slideInLeft">
 <%= render 'sidebar' %></div></div>
   <div class="col-md-9">
-<div id="standards"></div><div id="search">
-<div class="animated bounceInLeft">
-<center>
-<div class="well" id="standards"><p>Select Common Core standards from the left to view content.</p>
-</center>
-</div>
-</div>
+<div id="standards"></div>
 </div>
 </div>
 
+<script>
+
+
+
+    // Show the progress bar 
+    NProgress.start();
+
+    // Increase randomly
+    var interval = setInterval(function() { NProgress.inc(); }, 1000);        
+
+    // Trigger finish when page fully loaded
+    jQuery(window).load(function () {
+        clearInterval(interval);
+        NProgress.done();
+    });
+
+    // Trigger bar when exiting the page
+    jQuery(window).unload(function () {
+        NProgress.start();
+    });
+
+</script>

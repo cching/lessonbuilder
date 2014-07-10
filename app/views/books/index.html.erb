@@ -13,25 +13,21 @@
 </div>
 </div>
 
-<script>
 
 
+<script type='text/javascript'>
 
-    // Show the progress bar 
-    NProgress.start();
+// Shows progress bar when loading a page 
+ $('body').show();
+  NProgress.start();
+  setTimeout(function() { NProgress.done(); $('.fade').removeClass('out'); }, 1000);
 
-    // Increase randomly
-    var interval = setInterval(function() { NProgress.inc(); }, 1000);        
 
-    // Trigger finish when page fully loaded
-    jQuery(window).load(function () {
-        clearInterval(interval);
-        NProgress.done();
-    });
-
-    // Trigger bar when exiting the page
-    jQuery(window).unload(function () {
-        NProgress.start();
-    });
-
-</script>
+// Shows progress bar  when submitting form via ajax
+$(document).ajaxStart(function() {
+               NProgress.start();
+              });
+$(document).ajaxStop(function() {
+               NProgress.done();
+             });
+</script> 

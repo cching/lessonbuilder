@@ -3,6 +3,12 @@ jQuery ->
   $("a[rel~=tooltip], .has-tooltip").tooltip()
 
 NProgress.configure
-  showSpinner: false
-  ease: 'ease'
-  speed: 500
+    minimum: 0.2,
+    easing: 'ease',
+    positionUsing: '',
+    speed: 800
+    trickle: true,
+    trickleRate: 0.5,
+    trickleSpeed: 800,
+    showSpinner: true,
+    parent: 'body'

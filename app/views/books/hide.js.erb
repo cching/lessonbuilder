@@ -1,0 +1,18 @@
+$('#panel').addClass('animated bounceOutLeft');
+
+setTimeout(function() {
+	$('#panel').removeClass('animated bounceOutLeft');
+	$('#panel').hide();
+
+    if ($('#sidebar').is(':hidden')) {
+        $('#sidebar').show();
+     } 
+
+
+	$('#sidebar').addClass('animated bounceInLeft');
+	$('#sidebar').html("<%= escape_javascript(render :partial  => "book_list", :locals   => {:grade => @grade, :category => @category}) %>" );
+
+
+
+}, 600);
+

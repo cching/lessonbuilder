@@ -1,0 +1,19 @@
+<div id="standard-options">
+<h4 class="panel-title">
+<%= link_to '<i class="glyphicon glyphicon-chevron-left"></i> '.html_safe, standards_path, remote: :true, class: "btn btn-info btn-sm" %>
+</div>
+
+<div class="panel-body">
+   <div class="list-group">
+
+
+<% Book.where(:textcategory_id => @category.id).includes(:grades).where(:grades => {:id => @grade.id}).order("title ASC").each do |book| %>
+<i><%= link_to book.title, book_path(book), class: "list-group-item", id: "standard-hover", remote: :true %></i>
+<% end %>
+
+
+
+
+</div>
+</div>
+</h4>

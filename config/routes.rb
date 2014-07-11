@@ -42,6 +42,7 @@ Commoncore::Application.routes.draw do
   resources :books do 
     collection do
       get :show2
+      get :hide
     end
   end
 

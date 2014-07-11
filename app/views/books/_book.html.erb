@@ -1,27 +1,25 @@
 <div id="standard">
 <div id="standard-options">
-
-<%= link_to '<i class="glyphicon glyphicon-chevron-left"></i>'.html_safe, books_path, remote: :true, class: "btn btn-info btn-sm back", id: "back" %>
 <% if current_user.admin? %>
 <div align="right"><%= link_to "Edit", edit_book_path(@book), class: "btn btn-default", remote: :true %></div>
 <% end %>
 </div>
-<br/>
 
 
 <div id="modal-edit-fields"><p id="notice"><%= notice %></p>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
-<h3><i><%= @book.title %></i> <small><%= @book.author %></small></h3>
+<h3><i><%= @book.title %></i> <br/><small>By <%= @book.author %></small></h3>
 <hr>
 <% if @book.pdf?  %>
 <p>
 <b>PDF Link: <%= link_to 'View PDF', @book.image.url %></b>
 </p>
 <% end %>
-  <b>Publisher:</b>
-<%= simple_format(@book.publisher).html_safe %>
 
+<p>  <b>Publisher:</b>
+<%= simple_format(@book.publisher).html_safe %>
+</p>
 
 <p>
   <b>ISBN Number:</b>

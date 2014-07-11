@@ -115,4 +115,13 @@ class BooksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def hide
+    @grade = Grade.find(params[:grade])
+
+    @category = Textcategory.find(params[:category])
+    respond_to do |format|
+      format.js
+    end
+  end
 end

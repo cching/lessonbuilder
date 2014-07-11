@@ -1,9 +1,11 @@
-$('#standard').addClass('animated bounceOutRight');
+$('#sidebar').addClass('animated bounceOutLeft');
 setTimeout(function() {
-    $('#standard').hide();
+	$('#sidebar').removeClass('animated bounceOutLeft');
+
+    $('#sidebar').hide();
 }, 700);
 setTimeout(function() {
-	$('#search').show();
-	$('#search').removeClass("animated bounceOutRight").addClass('animated bounceInLeft')
+	$('#panel').show();
+	$('#panel').addClass('animated bounceInLeft')
 
 }, 700);

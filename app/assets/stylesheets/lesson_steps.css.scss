@@ -1,3 +1,164 @@
 // Place all the styles related to the lesson_steps controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#lesson-setup.progress-bar-warning {
+	background-color: #1CBC9A;
+	
+}
+
+#edit.progress-bar-info {
+	background-color: #ff8000;
+	
+}
+
+#edit.panel-warning {
+	background-color: #2F81D7;
+	color: #FFF;
+	padding-bottom: 0px;
+	border-color: #2F81D7;
+	font-size: 25px;
+	text-align: center;
+}
+
+#standards.panel-warning {
+	background-color: #ff8000;
+	color: #FFF;
+	padding-bottom: 0px;
+	border-color: #ff8000;
+	font-size: 25px;
+	text-align: center;
+}
+
+#standard.col-md-2 {
+	
+	color: #FFF;
+	background-color: #ff8000;
+	padding-bottom: 0px;
+
+	font-size: 20px;
+}
+
+#standard.col-md-10 {
+	
+	color: #FFF;
+	background-color: #ff8000;
+	padding-bottom: 0px;
+
+	font-size: 20px;
+}
+
+#reading_1.col-md-10 {
+
+    border-left: thick solid #6A6AFF;
+    border-bottom: thick solid #6A6AFF;
+}
+
+#reading_1.col-md-2 {
+	color: #FFF;
+	background-color: #6A6AFF;
+	border-left: thick solid #6A6AFF;
+
+}
+
+#reading2_1.col-md-2 {
+	color: #FFF;
+	border-left: thick solid #6A6AFF;
+
+}
+
+
+
+
+
+#subject_5.col-md-10 {
+	
+    border-left: thick solid #FF4848;
+    border-bottom: thick solid #FF4848;
+}
+
+#subject_5.col-md-2 {
+	color: #FFF;
+	background-color: #FF4848;
+	border-left: thick solid #FF4848;
+
+}
+
+#subject2_5.col-md-2{
+	color: #FFF;
+	border-left: thick solid #FF4848;
+
+}
+
+
+
+
+#subject_6.col-md-10 {
+
+    border-left: thick solid #01F33E;
+    border-bottom: thick solid #01F33E;
+}
+
+#subject_6.col-md-2 {
+	color: #FFF;
+	background-color: #01F33E;
+	border-left: thick solid #01F33E;
+
+}
+
+#subject2_6.col-md-2 {
+	color: #FFF;
+	border-left: thick solid #01F33E;
+
+}
+
+#subject_3.col-md-10 {
+
+    border-left: thick solid #06DCFB;
+    border-bottom: thick solid #06DCFB;
+}
+
+#subject_3.col-md-2 {
+color: #FFF;
+	background-color: #06DCFB;
+	border-left: thick solid #06DCFB;
+
+}
+
+#subject2_3.col-md-2 {
+	color: #FFF;
+	border-left: thick solid #06DCFB;
+
+}
+
+
+#subject_4.col-md-10 {
+
+    border-left: thick solid #FF62B0;
+    border-bottom: thick solid #FF62B0;
+}
+
+#subject_4.col-md-2 {
+color: #FFF;
+	background-color: #FF62B0;
+	border-left: thick solid #FF62B0;
+
+}
+
+#subject2_4.col-md-2 {
+	color: #FFF;
+	border-left: thick solid #FF62B0;
+
+}
+
+
+#standards.btn-info {
+	background-color: #ff8000;
+	color: #FFF;
+}
+
+
+#standards.btn-info:hover {
+	background-color: #ff9d3b;
+	color: #FFF;
+}

@@ -9,8 +9,8 @@ setTimeout(function() {
      } 
 
 
-	$('#sidebar').addClass('animated bounceInLeft');
-	$('#sidebar').html("<%= escape_javascript(render :partial  => "book_list", :locals   => {:grade => @grade, :category => @category}) %>" );
+	$('#main').addClass('animated bounceInLeft');
+	$('#main').html("<%= escape_javascript(render :partial  => "book_list", :locals   => {:grade => @grade, :category => @category}) %>" );
 
 
 

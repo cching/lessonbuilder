@@ -1,13 +1,9 @@
 <%= simple_form_for(@select, :html => { :class => 'form-horizontal' }) do |f| %>
 
-    <%= f.input :name, input_html: {style: 'width:100%;'}, label: "Lesson name:", autofocus: true %>
-    <%= f.input :description, as: :text, input_html: {style: 'width:100%; height:50px'}, label: "Description:" %>
-    <%= f.input :objective, input_html: {style: 'width:100%; height:50px'}, label: "Objective:" %>
-    <%= f.input :date, as: :date %>
 
 
 	
-	<table class="table table-condensed table-hover table-bordered" id="standards">
+	<table class="table table-condensed table-bordered" id="standards">
 
 		<thead>
 		
@@ -32,6 +28,7 @@
 				<tr>
 					<td>
 						<% unless standard.questions.blank? %>
+						
 						<% standard.questions.where(:user_id => 0).each do |question| %>
 							<h4><%= hidden_field_tag "select[question_ids][]", nil %>
 				     	   	<%= check_box_tag "select[question_ids][]", question.id, @select.question_ids.include?(question.id), id: dom_id(question) %>

@@ -11,9 +11,10 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery-ui
+//= require jquery_ujs
 //= require jquery.turbolinks
 //= require turbolinks
-//= require jquery_ujs
 //= require bootstrap.min
 //= require flatui-checkbox
 //= require flatui-radio
@@ -38,6 +39,8 @@ $(document).ready(function() {
     }
   });
 });
+
+
 
 
 

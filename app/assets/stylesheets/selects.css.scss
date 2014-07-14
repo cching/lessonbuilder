@@ -2,3 +2,56 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#lesson-setup.panel-warning {
+	color: #FFF;
+	background-color: #82b3e7;
+	padding-bottom: 0px;
+	border-color: #82b3e7;
+	font-size: 25px;
+	text-align: center;
+
+}
+
+#select-text.panel-warning {
+	color: #FFF;
+	background-color: #1CBC9A;
+	padding-bottom: 0px;
+	border-color: #1CBC9A;
+	font-size: 25px;
+	text-align: center;
+
+}
+
+#tooltip {
+	color: #FFF;
+
+}
+
+#tooltip:hover {
+color: #000;
+		background-color: #d9534f;
+
+}
+
+#tooltip2 {
+	color: #FFF;
+
+}
+
+#tooltip2:hover {
+color: #000;
+		background-color: #5bc0de;
+
+}
+
+#tooltip3 {
+	color: #FFF;
+
+}
+
+#tooltip3:hover {
+color: #000;
+		background-color: #428bca;
+
+}
+

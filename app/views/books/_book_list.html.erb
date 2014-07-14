@@ -1,19 +1,90 @@
 <div id="standard-options">
-<h4 class="panel-title">
-<%= link_to '<i class="glyphicon glyphicon-chevron-left"></i> '.html_safe, standards_path, remote: :true, class: "btn btn-info btn-sm" %>
+<div align="center">
+<div class="animated fadeInRight">
+<span class="label label-info">
+                   <span class="glyphicon glyphicon-pencil"></span> <a href="#" data-html="true" rel="tooltip" title="The text has a <br/> specific performance task" data-placement="left" id="tooltip2"> Performace task available </a></span>
+                   &nbsp;
+<span class="label label-primary">
+                   <span class="glyphicon glyphicon-cloud-upload"></span> <a href="#" data-html="true" rel="tooltip" title="The text has additional<br/> resouces, including <br/> attached PDFs and videos" data-placement="top" id="tooltip3"> Additional resources available </a></span>
+                   &nbsp;
+                   <span class="label label-danger">
+                   <span class="glyphicon glyphicon-book"></span> <a href="#" data-html="true" rel="tooltip" title="The text does not <br/> currently have any <br/> attached snippets" data-placement="right" id="tooltip"> No example text available </a>
+                   </span>
+                   </div>
+                   </div>
+
+                   <br />
+
+
+<div class="animated fadeInUp">
+<div class="row"> 
+
+        <div class="col-md-4">
+        <div class="verticalLine">
+            <div class="div-table-content">
+
+                
+                <% (Book.where(:textcategory_id => @category.id).includes(:grades).where(:grades => {:id => @grade.id}).order("title ASC") & Book.where(:textcategory_id => @category.id).includes(:sources).where(:sources => {:id => @source.id}).order("title ASC")).each do |book| %>
+                <div class="animated fadeInUpBig">
+                <div class="list-group">
+                  <div class="row">
+
+  <div class="col-md-8">
+                  
+                    <font size="4">
+                    <i><%= link_to book.title, show2_books_path(:id => book.id), class: "list-group-item", remote: :true, id: "title" %></i></font>
+
+                    
+                    </div>
+
+                     <div class="col-md-1">
+
+                   <% unless book.assess_questions == nil || book.assess_questions == "" %>
+                   
+                   <span class="glyphicon glyphicon-pencil" id="pencil"></span>
+                   
+                   <% end %>
+                   </div>
+                  <div class="col-md-1">
+
+                   <% if book.pdf? %>
+                   <div align="center">
+                  
+                   <span class="glyphicon glyphicon-cloud-upload" id="upload"></span>
+                   
+                   </div>
+                   <% end %>
+                   </div>
+
+                    <div class="col-md-1">
+                    <% if book.example == nil || book.example == "" %>
+                  
+                   <span class="glyphicon glyphicon-book" id="book-icon"></span>
+                   
+                   <% end %>
+                   </div>
+                </div>
+                </div>
 </div>
-
-<div class="panel-body">
-   <div class="list-group">
-
-
-<% Book.where(:textcategory_id => @category.id).includes(:grades).where(:grades => {:id => @grade.id}).order("title ASC").each do |book| %>
-<i><%= link_to book.title, book_path(book), class: "list-group-item", id: "standard-hover", remote: :true %></i>
 <% end %>
+          
+             </div>
+        </div>
+</div>
+        <div class="col-md-8">
+        <div class="div-table-content">
+                <div id="book">
+                  
+                            Click on a book to see a preview
+                  </div>
+                  </div>
+        </div>
+</div>
+
+
 
 
 
 
 </div>
 </div>
-</h4>

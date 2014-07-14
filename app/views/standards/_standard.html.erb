@@ -70,21 +70,25 @@
 </div>
   	
   </div>
+
+
   <div class="col-md-6">
-  		<div class="panel panel-default">
+      <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Skills</h3>
+    <h3 class="panel-title">Vocabulary</h3>
   </div>
   <div class="panel-body">
-    <ul>
-    <% @skills.each do |skill| %>
-    	<li><%= skill.content %></li>
-    	<% end %></ul>
-  </div>
+<ul>
+    <% @vocabs.each do |vocab| %>
+      <li><%= vocab.content_english %></li>
+      <% end %></ul>  </div>
 </div>
 
 
   </div>
+
+
+
 </div>
 
 <div class="row">
@@ -102,20 +106,22 @@
 </div>
   	
   </div>
-  <div class="col-md-6">
-  		<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Vocabulary</h3>
-  </div>
+    <div class="col-md-6">
+      <div class="panel panel-default">
+      <div class="panel-heading">
+    <h3 class="panel-title">Skills</h3>
+    </div>
   <div class="panel-body">
-<ul>
-    <% @vocabs.each do |vocab| %>
-    	<li><%= vocab.content_english %></li>
-    	<% end %></ul>  </div>
+    <ul>
+    <% @skills.each do |skill| %>
+      <li><%= skill.content %></li>
+      <% end %></ul>
+  </div>
 </div>
 
 
   </div>
+
 </div>
 
 

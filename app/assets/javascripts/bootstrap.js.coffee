@@ -6,9 +6,9 @@ NProgress.configure
     minimum: 0.2,
     easing: 'ease',
     positionUsing: '',
-    speed: 800
+    speed: 600,
     trickle: true,
-    trickleRate: 0.5,
+    trickleRate: 0.2,
     trickleSpeed: 800,
     showSpinner: true,
     parent: 'body'

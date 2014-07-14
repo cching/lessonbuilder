@@ -1,1 +1,17 @@
-$('#book').html('<%= escape_javascript(render(:partial => 'book', :locals => {:book => @book})) %>');
+
+if ($('#book').hasClass('animated fadeInRightBig')) {
+	$('#book').removeClass('animated fadeInRightBig')
+	$('#book').addClass('animated fadeOutRightBig')
+	setTimeout(function() {
+	$('#book').html('<%= escape_javascript(render(:partial => 'book', :locals => {:book => @book})) %>');
+	$('#book').removeClass('animated fadeOutRightBig')
+	$('#book').addClass('animated fadeInRightBig')
+
+}, 400);
+
+} else {
+	$('#book').html('<%= escape_javascript(render(:partial => 'book', :locals => {:book => @book})) %>');
+
+	$('#book').addClass('animated fadeInRightBig')
+
+}

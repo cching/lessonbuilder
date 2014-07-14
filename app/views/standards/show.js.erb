@@ -1,4 +1,7 @@
 $('#search').addClass('animated bounceOutRight');
+
+$('#standard_<%= @standard.id %>').addClass('standard-list-group-item');
+
 setTimeout(function() {
     $('#search').hide();
 }, 600);
@@ -13,6 +16,18 @@ if ($('#standard').hasClass('animated bounceInRight')) {
 	$('#standard').addClass('animated bounceInRight')
 
 }, 600);
+
+} else if ($('#standard').hasClass('animated bounceOutRight')) {
+	$('#standard').removeClass('animated bounceOutRight')
+	$('#standard').addClass('animated bounceOutRight')
+
+	setTimeout(function() {
+	$('#standards').html('<%= escape_javascript(render(:partial => 'standard', :locals => {:standard => @standard})) %>')
+	$('#standard').removeClass('animated bounceOutRight')
+	$('#standard').addClass('animated bounceInRight')
+
+}, 100);
+
 
 } else {
 

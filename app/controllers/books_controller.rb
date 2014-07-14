@@ -2,15 +2,10 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
-    @search = Book.search(params[:q])
+    @book = Book.all
     @category = Textcategory.all
     @grade = Grade.all
-    if current_user.admin?
-    @books = @search.result.order(:title).paginate(:page => params[:page], :per_page => 50)
-
-    else
-    @books = @search.result.order(:title)
-   end 
+    @sources = Source.all
 
     respond_to do |format|
       format.js
@@ -120,6 +115,7 @@ class BooksController < ApplicationController
     @grade = Grade.find(params[:grade])
 
     @category = Textcategory.find(params[:category])
+    @source = Source.find(params[:source])
     respond_to do |format|
       format.js
     end

@@ -300,7 +300,7 @@ h3,
 }
 h4,
 .h4 {
-  font-size: 29px;
+  font-size: 20px;
 }
 h5,
 .h5 {
@@ -1722,8 +1722,8 @@ fieldset[disabled] .input-group-btn .btn-default.active {
   padding-left: 32px;
   position: relative;
   -webkit-transition: color 0.25s linear;
-  transition: color 0.25s linear;
-  font-size: 14px;
+  transition: color 0.5s linear;
+  font-size: 16px;
   line-height: 1.5;
 }
 .checkbox input,

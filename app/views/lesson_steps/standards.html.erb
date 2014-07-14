@@ -1,92 +1,95 @@
-<body><div class="container">
-
-<div class="page-header">
-  <h1>Select Standards</h1>
+<div class="animated fadeInDown">
+<div class="panel panel-warning" id="standards">Select Standards</div>
 </div>
 
+<div class="animated fadeInRight">
+<div class="progress" id="lesson-setup">
+  <div class="progress-bar" style="width: 33%;"></div>
+  <div class="progress-bar progress-bar-warning" id="lesson-setup" style="width: 33%;"></div>
+</div>
+</div>
+<br/>
+<%= simple_form_for @select, url: wizard_path do |f| %>
+<div class="animated fadeInLeft">
 
+		<div class="row">
+	   		<div class="col-md-2" id="standard">Subject</div>
+	   		<div class="col-md-10" id="standard">Standard</div>
+	   	</div>
+	   	</div>
+	   	<br/>
+	<% @grades.each do |grade| %>
+		<div class="row animated fadeInUpBig">
+	   		<div class="col-md-2" id="reading_1">
+		    <%= @reading_subject.name %>
+		    </div>
+		    <div class="col-md-2" id="reading2_1"><%= @reading_subject.name %>
+		    </div>
+		    <div class="col-md-8"></div>
+		</div>
+
+		<div class="row animated fadeInRightBig">
+			<div class="col-md-2 standards-select"></div>
+		    
+		    <div class="col-md-10" id="reading_1">
+			<%= f.association :standards, as: :check_boxes, collection: Standard.where(:subject_id => @reading_subject, :grade_id => grade.id).order("standard_id ASC"), :label_method => lambda { |standard| "#{standard.id}:  #{standard.content}" }, label: false, input_html: {:data => {:toggle => "checkbox"}}, id: "standards-checkbox" %>    	
+		   	</div>
+
+
+		 </div>
+		   	
+		 
+	<% end %>
+	<br/>
+
+	<% @subjects.each do |subject| %>
+		<% @grades.each do |grade| %>
+
+		<div class="row animated fadeInUpBig">
+	   		<div class="col-md-2" id="subject_<%= subject.id %>">
+		    <%= subject.name %>
+		    </div>
+		    <div class="col-md-2" id="subject2_<%= subject.id %>"><%= subject.name %>
+		    </div>
+		
+		<div class="col-md-8"></div>
+		</div>
+
+
+		<div class="animated fadeInRightBig">
+		<div class="row">
+			<div class="col-md-2 standards-select"></div>
+		    
+		    <div class="col-md-10" id="subject_<%= subject.id %>">
+			<%= f.association :standards, as: :check_boxes, collection: Standard.where(:subsubject_id => subject.id, :grade_id => grade.id).order("standard_id ASC"), :label_method => lambda { |standard| "#{standard.id}:  #{standard.content}" }, label: false, input_html: {:data => {:toggle => "checkbox"}} %>    	
+		   	</div>
+
+
+		 </div>
+		 </div>
+		   	
+		 <br/>
+	<% end %>
+	<% end %>
+	
+
+<div class="actions animated fadeInRight">
 <div class="row">
-	  <div class="col-md-2"><br /><font color="red">Select the Common Core Standard(s) for this lesson:</font>
-	  </div>
-	  <div class="col-md-10">
-<table class="table table-hover">
-	<tr>
-		<th> &nbsp; &nbsp; &nbsp; &nbsp;</th>
-		<th>Standard ID</th>
-		<th>Subject</th>
-		<th>Standard</th>
+<div class="col-md-6">
+<%= link_to "Back", previous_wizard_path, :class => "btn btn-info", id: "text-select" %>
+</div>
+<div class="col-md-6" align="right">
 
-	</tr>
-
-<%= form_for @select, url: wizard_path do |f| %>
-
-		<%= hidden_field_tag "select[standard_ids][]", nil %>	
- 		<% @select.grades.each do |grade| %>
-		<% Standard.where(:subject_id => @select.subject.id, :grade_id => grade.id).order("grade_id ASC").each do |standard| %>
-		<tr>
-    		<td><%= check_box_tag "select[standard_ids][]", standard.id, @select.standard_ids.include?(standard.id), id: dom_id(standard) %></td>
-			<td><%= standard.id %></td>
-			<td><%= standard.subject.name %></td>
-    		<td><%= standard.content %></td>    		
-		<% end %> 
-		<% end %>
 		
-		</tr>
-
-		<%= hidden_field_tag "select[standard_ids][]", nil %>
-		<% @select.subsubjects.each do |subsubject| %>
-		<% @select.grades.each do |grade| %>
-		<% Standard.where(:subsubject_id => subsubject.id, :grade_id => grade.id).order("grade_id ASC").each do |standard| %>
-
-		<tr>
-    		<td><%= check_box_tag "select[standard_ids][]", standard.id, @select.standard_ids.include?(standard.id), id: dom_id(standard) %></td>
-			<td><%= standard.id %></td>
-			<td><%= standard.subsubject.name %></td>
-    		<td><%= standard.content %></td>
-    	</tr>
-		<% end %>
-   		<% end %>
-		<% end %> 	
-
-
-
-		</table>
-		
-
-		<div class="actions", align="left">
-			<button type="submit" class="btn btn-info" data-loading-text="Saving..">Save and Continue</button>
+			<button type="submit" class="btn btn-info" id="standards" data-loading-text="Saving..">Save and Continue</button>
+			</div>
+			</div>
 		</div>
 		</div>
 	<% end %>
-</div></div></body>
 
-			<style type="text/css">
-a:link {color:#00BFFF;}      /* unvisited link */
-a:visited {color:#00BFFF;}  /* visited link */
-a:hover {background-color:#FFFFFF;}  /* mouse over link */
-a:active {color:#00BFFF;}
 
-input[type="text"],
-textarea {
-    width:775px;
-    padding: 0;
-    border: 1px solid #ccc;
-    }
-</style>
 
-<script>
-$(document).ready(function() {
-  $("a").click(function() {
-    link_host = this.href.split("/")[2];
-    document_host = document.location.href.split("/")[2];
-
-    if (link_host != document_host) {
-      window.open(this.href);
-      return false;
-    }
-  });
-});
-</script>
 <script>
 	$('button[data-loading-text]').click(function () {
     $(this).button('loading');

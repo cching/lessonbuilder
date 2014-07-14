@@ -9,12 +9,12 @@
 <% if @subject.try(:id) != nil %>
 
 <% Standard.where(:subject_id => @subject.id).where(:grade_id => @grade.id).order("standard_id ASC").each do |standard| %>
-<%= link_to standard.id, standard_path(standard), class: "list-group-item", id: "standard-hover", remote: :true %>
+<%= link_to standard.id, standard_path(standard), class: "list-group-item", id: "standard-hover", remote: :true, :locals => {:standard => standard} %>
 <% end %>
 
 <% else %>
 <% Standard.where(:subsubject_id => @subject2.id).where(:grade_id => @grade.id).order("standard_id ASC").each do |standard| %>
-<%= link_to standard.id, standard_path(standard), class: "list-group-item", id: "standard-hover", remote: :true %>
+<%= link_to standard.id, standard_path(standard), class: "list-group-item", id: "standard-hover", remote: :true, :locals => {:standard => standard} %>
 <% end %>
 
 

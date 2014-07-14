@@ -1,13 +1,4 @@
 <div id="standard">
-<div id="standard-options">
-<% if current_user.admin? %>
-<div align="right"><%= link_to "Edit", edit_book_path(@book), class: "btn btn-default", remote: :true %></div>
-<% end %>
-</div>
-
-
-<div id="modal-edit-fields"><p id="notice"><%= notice %></p>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
 <h3><i><%= @book.title %></i> <br/><small>By <%= @book.author %></small></h3>
 <hr>
@@ -16,16 +7,23 @@
 <b>PDF Link: <%= link_to 'View PDF', @book.image.url %></b>
 </p>
 <% end %>
+<div class="row">
+<div class="col-md-6">
 
 <p>  <b>Publisher:</b>
 <%= simple_format(@book.publisher).html_safe %>
 </p>
+</div>
+<div class="col-md-6">
 
 <p>
-  <b>ISBN Number:</b>
-  <%= @book.isbn %>
+  <b>Category:</b>
+  <%= @book.textcategory.category %>
 </p>
+</div></div>
 
+<div class="row">
+<div class="col-md-6">
 <p>
   <b>Grade(s):</b>
 <% @book.grades.each do |grade| %>
@@ -34,7 +32,8 @@
 
   <% end %>
 </p>
-
+</div>
+<div class="col-md-6">
 <p>
   <b>Source:</b>
 <% @book.sources.each do |source| %>
@@ -43,32 +42,34 @@
 
   <% end %>
 </p>
-
-<p>
-  <b>Category:</b>
-  <%= @book.textcategory.category %>
-</p>
-
+</div></div>
 
 <html id=style="white-space: pre-wrap;">
-
+<p>
   <b>Example text:</b>
   <div style="font-size: 13pt;"><%= simple_format(@book.example) %>
-</div></html>
+</div></p></html>
 
+<% unless @book.assess_questions.blank? %>
 <p>
   <b>Performance task:</b>
   <%= simple_format @book.assess_questions %>
 </p>
+<% end %>
 
+<% unless @book.availability.blank? %>
 <p>
   <b>Availability:</b>
   <%= simple_format @book.availability %>
 </p>
+<% end %>
+
+<% unless @book.comments.blank? %>
 <p>
   <b>Comments:</b>
   <%= simple_format(@book.comments) %>
 </p>
+<% end %>
 
 
 

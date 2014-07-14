@@ -1,7 +1,14 @@
 <% if current_user?(@select.user) %>
-<div class="page-header">
-  <h1>Lesson Resources</h1>
+<div class="animated fadeInDown">
+<div class="panel panel-warning" id="edit">Select Standard Resources</div>
 </div>
+
+<div class="progress" id="lesson-setup">
+  <div class="progress-bar" style="width: 33%;"></div>
+  <div class="progress-bar progress-bar-warning" id="lesson-setup" style="width: 33%;"></div>
+  <div class="progress-bar progress-bar-info" id="edit" style="width: 34%;"></div>
+</div>
+<br/>
 <%= render 'form' %>
 
 <% else %>
@@ -22,7 +29,6 @@ textarea {
     border: 1px solid #ccc;
     }
 </style>
-
 
 
 

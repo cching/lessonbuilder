@@ -3,8 +3,47 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .div-table-content {
-  height:400px;
+  height:420px;
   overflow-y:auto;
     width:100%;
-  overflow-x:auto;
+  overflow-x:hidden;
+}
+
+#pencil {
+	color: #5bc0de;
+}
+
+#book-icon {
+	color: #d9534f;	
+}
+
+#upload {
+	color: #428bca;
+}
+
+#text-select.btn-info {
+	background-color: #1CBC9A;
+	color: #FFF;
+}
+
+#text-select.btn-info:hover {
+
+	background-color: #42e3c1;
+}
+
+#title.list-group-item {
+	background-color: #1CBC9A;
+	color: #FFF;
+	border-color: #FFF;
+
+}
+
+
+#title.list-group-item:hover {
+  background-color: #42e3c1 !important;
+  color: #FFF !important;
+}
+
+.verticalLine {
+    border-right: thick solid #1CBC9A;
 }

@@ -2,8 +2,11 @@ class LessonStepsController < ApplicationController
   include Wicked::Wizard
   steps :text, :standards
 
-   def show
+  def show
     @select = Select.find(params[:select_id])
+    @grades = @select.grades.all
+    @reading_subject = @select.subject
+    @subjects = @select.subsubjects.order("id ASC") .all
     render_wizard
   end
 

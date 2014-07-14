@@ -3,12 +3,17 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .div-table-content-books {
-  height:440px;
+  height:460px;
   overflow-y:auto;
     width:100%;
   overflow-x:hidden;
 }
-
+.div-table-content {
+  height:420px;
+  overflow-y:auto;
+    width:100%;
+  overflow-x:hidden;
+}
 #pencil {
 	color: #5bc0de;
 }

@@ -110,6 +110,7 @@ class SelectsController < ApplicationController
   def edit
     @select = Select.find(params[:id])
     @standards = @select.standards.all
+    @ids = @standards.map{|standard| standard.id}
   end
 
   def create

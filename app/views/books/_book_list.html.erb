@@ -21,7 +21,7 @@
 
         <div class="col-md-4">
         <div class="verticalLine">
-            <div class="div-table-content">
+            <div class="div-table-content-books">
 
                 
                 <% (Book.where(:textcategory_id => @category.id).includes(:grades).where(:grades => {:id => @grade.id}).order("title ASC") & Book.where(:textcategory_id => @category.id).includes(:sources).where(:sources => {:id => @source.id}).order("title ASC")).each do |book| %>
@@ -72,7 +72,7 @@
         </div>
 </div>
         <div class="col-md-8">
-        <div class="div-table-content">
+        <div class="div-table-content-books">
                 <div id="book">
                   
                             Click on a book to see a preview

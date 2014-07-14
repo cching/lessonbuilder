@@ -2,13 +2,13 @@
 <ul class="nav nav-pills nav-justified" id="succ_standard">
 
 <% @standards.each do |standard| %>
-    <li class="border"><h4><%= standard.id %></h4><br/><%= link_to standard.content, '#', remote: :true %>  </li>
+    <li class="border animated fadeInLeftBig"><h4><%= standard.id %></h4><br/><%= link_to standard.content, '#', remote: :true %>  </li>
     <% end %>
 
 </ul>
 <br/><br/>
 
-<div id="standard-attributes">
+<div id="standard-attributes" class="animated fadeInUpBig">
 
 
 

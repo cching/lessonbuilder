@@ -19,8 +19,8 @@
   </div>
   <div class="panel-body table-content">
                   <% if (SelectQuestion.where(:select_id => @select) || Cquestion.where(:select_id => @select)).empty? %>
-                    <div id="custom_cquestions">
-                    <%= render 'custom_cquestions' %>
+                    <div id="custom_questions">
+                    <%= render 'custom_questions' %>
                     </div>
                     <%= link_to "Add Question Stem", new_select_cquestion_path(@select), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', 'class' => 'btn btn-link'}  %>
                      <% else %>

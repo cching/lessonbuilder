@@ -93,14 +93,19 @@
     
 <div class="col-md-1"></div>
   <div class="col-md-10">
-<%= f.association :links, collection: Link.where(:user_id => 0).where(:standard_id => @ids), as: :check_boxes, label_method: :link, input_html: {:data => {:toggle => "checkbox"}}, label: false %>
+<%= f.association :links, collection: Link.where(:user_id => 0).where(:standard_id => @ids), as: :check_boxes, :label_method => lambda { |link| "#{link.comment} #{link.link}" }, input_html: {:data => {:toggle => "checkbox"}}, label: false %>
 </div><div class="col-md-1"></div>
     </div>
 
   </div>
-
+ 
 <%= render 'accordion', :f => f %>
-<%= f.input :private, inline_label: 'Keep my lesson private', input_html: {:data => {:toggle => "checkbox"}}, label: false %> 
+<div class="row">
+<div class="col-md-10">
+ <%= f.text_field :date, id: "selects_date" %>
+ </div>
+ <div class="col-md-2">
+<%= f.input :private, inline_label: 'Keep my lesson private', input_html: {:data => {:toggle => "checkbox"}}, label: false %></div></div> 
 <div class="row">
 <div class="col-md-6">	<%= link_to 'Delete lesson', @select, confirm: 'Are you sure you want to delete this lesson?', method: :delete, class: "btn btn-danger btn-mini" %></div>
 <div class="col-md-6" align="right">

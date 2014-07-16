@@ -85,6 +85,8 @@ GEM
     jquery-turbolinks (2.0.2)
       railties (>= 3.1.0)
       turbolinks
+    jquery-ui-rails (4.1.2)
+      railties (>= 3.1.0)
     json (1.8.1)
     kgio (2.9.2)
     libv8 (3.16.14.3)
@@ -224,8 +226,9 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   default_value_for
   dotenv-rails
-  jquery-rails (~> 2.3.0)
+  jquery-rails
   jquery-turbolinks
+  jquery-ui-rails
   nprogress-rails
   paperclip (~> 4.1)
   pg

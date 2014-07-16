@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140710015510) do
+ActiveRecord::Schema.define(:version => 20140715090856) do
 
   create_table "admin_notes", :force => true do |t|
     t.string   "resource_id",     :null => false
@@ -350,6 +350,8 @@ ActiveRecord::Schema.define(:version => 20140710015510) do
     t.text     "conclusion",    :default => ""
     t.text     "questions",     :default => ""
     t.text     "textdependent", :default => ""
+    t.datetime "starts_at"
+    t.datetime "ends_at"
   end
 
   create_table "skills", :force => true do |t|

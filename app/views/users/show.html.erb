@@ -1,7 +1,4 @@
 <% provide(:title, @user.name) %>
-<div class="row">
-  <aside class="span4">
-    <section>
       <h1>
 		  <% if current_user.admin? && current_user?(@user) %>
 		  Administrator <%= @user.name %>
@@ -9,50 +6,34 @@
       		  		<%= @user.name %>
 				<% end %>
       </h1>
-    </section>
-	
-	<% if current_user?(@user) %>
-
-	<table class="table-hover">
-		<% @select.each do |select| %>
-
-		<tr>
-			<td>
-				<% unless select.name.blank? %>
-					<%= link_to select.name, select, class: "btn btn-link" %>
-				<% else %>
-					No lesson name specified!
-				<% end %>
-			</td>
-			<td>
-				<%= link_to "Edit", edit_select_path(select), class: "btn btn-mini" %>
-			</td>
-			<td>
-				<%= link_to 'Delete', select, confirm: 'Are you sure you want to delete this lesson?', method: :delete, class: "btn btn-danger btn-mini" %>
-			</td>
-		</tr>
-		<% end %>
-		
-	</table><br />
-		
-		
-<table>	<tr><td>
-   <%= link_to "Build new lesson", new_select_path, class: "btn" %></td></tr></table>
-  </aside>
+<div id="lessons">
+  <h2 id="month">
+    <%= link_to "<", date: @date.prev_month %>
+    <%= @date.strftime("%B %Y") %>
+    <%= link_to ">", date: @date.next_month %>
+  </h2>
+  <%= calendar @date do |date| %>
+    <%= date.day %>
+    <% if @selects_by_date[date] %>
+      <ul class="nav nav-pills nav-stacked">
+        <% @selects_by_date[date].each do |select| %>
+          <li><%= link_to select.name, select %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  <% end %>
 </div>
 
-<% else%>
+
+
+		
+
+   <%= link_to "Build new lesson", new_select_path, class: "btn" %><br/>
 
 
 
-<table class="table-hover">
-	<% @select.each do |select| %>
-	<tr>
-<td><%= link_to select.name, select, class: "btn btn-link" %></td>
-</tr><% end %>
-	
-	</table><br />
-<% end %><br />
+
+
 
 <% if current_user.admin? && current_user?(@user) %>
 <strong>Administrator Settings</strong><br />

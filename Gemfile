@@ -4,7 +4,7 @@ ruby "1.9.3"
 
 gem 'rails', '3.2.13'
 gem 'dotenv-rails', :groups => [:development, :test]
-gem 'jquery-rails', "~> 2.3.0"
+gem 'jquery-rails'
 gem 'ransack'
 gem 'activerecord-postgresql-adapter'
 gem 'bcrypt-ruby', '3.0.1'
@@ -24,13 +24,13 @@ gem 'turbolinks'
 gem 'bootstrap-will_paginate'
 gem 'nprogress-rails'
 
-
 group :development, :test do
   gem 'rspec-rails', '2.11.0'
   gem 'taps', :require => false
 end
 
 group :assets do
+  gem 'jquery-ui-rails'
   gem 'therubyracer'
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'

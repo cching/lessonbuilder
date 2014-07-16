@@ -16,6 +16,7 @@
 //= require jquery.turbolinks
 //= require turbolinks
 //= require bootstrap.min
+//= require jquery.ui.datepicker
 //= require flatui-checkbox
 //= require flatui-radio
 //= require jquery.purr

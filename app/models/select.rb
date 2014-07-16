@@ -5,7 +5,7 @@ class Select < ActiveRecord::Base
   end
 
   #Selects is the lesson model but is named 'select' for the ActiveRecord join association
-  attr_accessible :user_id, :standard_ids, :textdependent, :name, :grade_ids, :text_id, :date, :vocabulary, :writing, :conclusion, :objective, :notes, :description, :book, :subject_id, :subsubject_ids, :private, :question_ids, :select_ids, :strategy_ids, :skill_ids, :vocab_ids, :link_ids, :book_id, :cquestions_attributes, :cvocabs_attributes, :cskills_attributes, :cstrategies_attributes, :clinks_attributes, :source_ids, :aquestion_ids, :headers_attributes
+  attr_accessible :user_id, :standard_ids, :textdependent, :name, :grade_ids, :text_id, :date, :vocabulary, :writing, :conclusion, :objective, :notes, :description, :book, :subject_id, :subsubject_ids, :private, :question_ids, :select_ids, :strategy_ids, :skill_ids, :vocab_ids, :link_ids, :book_id, :cquestions_attributes, :cvocabs_attributes, :cskills_attributes, :cstrategies_attributes, :clinks_attributes, :source_ids, :aquestion_ids, :headers_attributes, :starts_at, :ends_at
   belongs_to :user
   belongs_to :subject
   
@@ -59,6 +59,32 @@ class Select < ActiveRecord::Base
   accepts_nested_attributes_for :cskills, allow_destroy: true
   accepts_nested_attributes_for :cstrategies, allow_destroy: true
   accepts_nested_attributes_for :clinks, allow_destroy: true
+
+    scope :between, lambda {|start_time, end_time|
+    {:conditions => [
+  "starts_at > ? and starts_at < ?",
+  Select.format_date(start_time), Select.format_date(end_time)
+] }
+  }
+
+  # need to override the json view to return what full_calendar is expecting.
+  # http://arshaw.com/fullcalendar/docs/event_data/Event_Object/
+  def as_json(options = {})
+    {
+      :id => self.id,
+      :title => self.name,
+      :description => self.description || "",
+      :start => starts_at.rfc822,
+      :end => ends_at.rfc822,
+      :url => Rails.application.routes.url_helpers.select_path(id),
+      #:color => "red"
+    }
+
+  end
+
+  def self.format_date(date_time)
+    Time.at(date_time.to_i).to_formatted_s(:db)
+  end
 
 
 end

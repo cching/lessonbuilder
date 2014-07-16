@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @select = Select.where(:user_id => @user)
-    @selects = Select.all
+    @selects = Select.where(:user_id => @user.id)
     @selects_by_date = @selects.group_by(&:date)
     @date = params[:date] ? Date.parse(params[:date]) : Date.today
 

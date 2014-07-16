@@ -25,9 +25,9 @@
                         <ul type="disc">
                             <li>
                                 <% if current_user?(@select.user) %>
-                                    <font size="3"><%= best_in_place squestion, :content, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' }, :type => :textarea %></font>
+                                    <font size="3"><%= cquestion.standard_id %>: <%= best_in_place squestion, :content, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' }, :type => :textarea %></font>
                                 <% else %>
-                                    <font size="3"><%= squestion.content %></font>
+                                    <font size="3"><%= squestion.standard_id %>: <%= squestion.content %></font>
                                 <% end %>
                             </li>
                         </ul>
@@ -56,9 +56,9 @@
                         <ul type="disc">
                             <li>
                                 <% if current_user?(@select.user) %>
-                                    <font size="3"><%= best_in_place svocab, :content_english, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %></font>
+                                    <font size="3"><%= svocab.standard_id %>: <%= best_in_place svocab, :content_english, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %></font>
                                 <% else %>
-                                    <font size="3"><%= svocab.content_english %></font>
+                                    <font size="3"><%= svocab.standard_id %>: <%= svocab.content_english %></font>
                                 <% end %>
                             </li>
                         </ul>
@@ -86,9 +86,9 @@
                         <ul type="disc">
                             <li>
                                 <% if current_user?(@select.user) %>
-                                    <font size="3"> <%= best_in_place sstrategy, :content, :type => :textarea, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %></font>
+                                    <font size="3"><%= sstrategy.standard_id %>: <%= best_in_place sstrategy, :content, :type => :textarea, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %></font>
                                 <% else %>
-                                    <font size="3"><%= sstrategy.content %></font>
+                                    <font size="3"><%= sstrategy.standard_id %>: <%= sstrategy.content %></font>
                                 <% end %>
                             </li>
                         </ul>
@@ -115,9 +115,9 @@
                         <ul type="disc">
                             <li>
                                 <% if current_user?(@select.user) %>
-                                    <font size="3"><%= best_in_place sskill, :content, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' }, :type => :textarea %></font>
+                                    <font size="3"><%= sskill.standard_id %>: <%= best_in_place sskill, :content, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' }, :type => :textarea %></font>
                                 <% else %>
-                                    <font size="3"><%= sskill.content %></font>
+                                    <font size="3"><%= sskill.standard_id %>: <%= sskill.content %></font>
                                 <% end %>
                             </li>
                         </ul>
@@ -150,11 +150,11 @@
                         <ul type="disc">
                             <li>
                                 <% if current_user?(@select.user) %>
-                                    <font size="3"> <%= best_in_place slink, :comment, :type => :textarea, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %></font> 
+                                    <font size="3"><%= slink.standard_id %>: <%= best_in_place slink, :comment, :type => :textarea, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %></font> 
                                     <br />
                                     <%= truncate(Rinku.auto_link(slink.link.link), :length=>300).html_safe %>
                                 <% else %>
-                                    <font size="3"><%= slink.comment %></font><br /><%= truncate(Rinku.auto_link(slink.link.link), :length=>300).html_safe %>
+                                    <font size="3"><%= slink.standard_id %>: <%= slink.comment %></font><br /><%= truncate(Rinku.auto_link(slink.link.link), :length=>300).html_safe %>
                                 <% end %>
                             </li>
                         </ul>
@@ -181,9 +181,9 @@
                         <ul type="disc">
                             <li>
                                 <% if current_user?(@select.user) %>
-                                    <font size="3"><%= best_in_place saquestion, :content, :type => :textarea, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %></font>
+                                    <font size="3"><%= saquestion.standard_id %>: <%= best_in_place saquestion, :content, :type => :textarea, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %></font>
                                 <% else %>
-                                    <font size="3"><%= saquestion.content %></font>
+                                    <font size="3"><%= saquestion.standard_id %>: <%= saquestion.content %></font>
                                 <% end %>
                             </li>
                         </ul>

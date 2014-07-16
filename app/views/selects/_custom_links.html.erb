@@ -2,11 +2,11 @@
                         <ul type="disc">
                             <li>
                                 <% if current_user?(@select.user) %>
-                                    <font size="3" color="red"> <%= best_in_place clink, :comment, :type => :textarea, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %></font> 
+                                    <font size="3" color="red"><%= clink.standard_id %>: <%= best_in_place clink, :comment, :type => :textarea, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %></font> 
                                     <br />
                                     <%= truncate(Rinku.auto_link(clink.link), :length=>300).html_safe %>
                                 <% else %>
-                                    <font size="3" color="red"><%= clink.comment %></font><br /><%= truncate(Rinku.auto_link(slink.link.link), :length=>300).html_safe %>
+                                    <font size="3" color="red"<%= clink.standard_id %>: ><%= clink.comment %></font><br /><%= truncate(Rinku.auto_link(slink.link.link), :length=>300).html_safe %>
                                 <% end %>
                             </li>
                         </ul>

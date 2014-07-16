@@ -19,6 +19,9 @@
   </div>
   <div class="panel-body table-content">
                   <% if (SelectQuestion.where(:select_id => @select) || Cquestion.where(:select_id => @select)).empty? %>
+                    <div id="custom_cquestions">
+                    <%= render 'custom_cquestions' %>
+                    </div>
                     <%= link_to "Add Question Stem", new_select_cquestion_path(@select), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', 'class' => 'btn btn-link'}  %>
                      <% else %>
                     <% SelectQuestion.where(:select_id => @select).each do |squestion| %>
@@ -51,6 +54,9 @@
   </div>
   <div class="panel-body table-content">
 <% if (SelectVocab.where(:select_id => @select) || Cvocab.where(:select_id => @select)).empty? %>
+                    <div id="custom_vocabs">
+                    <%= render 'custom_vocabs' %>
+                    </div>
                     <%= link_to "Add Vocabulary Word", new_select_cvocab_path(@select), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', 'class' => 'btn btn-link'}  %>
                      <% else %>
                     <% SelectVocab.where(:select_id => @select).each do |svocab| %>
@@ -82,6 +88,9 @@
   </div>
   <div class="panel-body table-content">
 <% if (SelectStrategy.where(:select_id => @select) || Cstrategy.where(:select_id => @select)).empty? %>
+                    <div id="custom_strategies">
+                    <%= render 'custom_strategies' %>
+                    </div>
                     <%= link_to "Add Strategy", new_select_cstrategy_path(@select), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', 'class' => 'btn btn-link'}  %>
                      <% else %>
                     <% SelectStrategy.where(:select_id => @select).each do |sstrategy| %>
@@ -112,6 +121,9 @@
     </div>
   <div class="panel-body table-content">
 <% if (SelectSkill.where(:select_id => @select) || Cskill.where(:select_id => @select)).empty? %>
+                    <div id="custom_skills">
+                    <%= render 'custom_skills' %>
+                    </div>
                     <%= link_to "Add Skill", new_select_cskill_path(@select), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', 'class' => 'btn btn-link'}  %>
                      <% else %>
                     <% SelectSkill.where(:select_id => @select).each do |sskill| %>
@@ -148,6 +160,9 @@
   <div class="panel-body">
     
                     <% if (SelectLink.where(:select_id => @select) || Clink.where(:select_id => @select)).empty? %>
+                   <div id="custom_links">
+                    <%= render 'custom_links' %>
+                    </div>
                     <%= link_to "Add Resource", new_select_clink_path(@select), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', 'class' => 'btn btn-link'}  %>
                      <% else %>
                     <% SelectLink.where(:select_id => @select).each do |slink| %>
@@ -180,6 +195,9 @@
   </div>
   <div class="panel-body">
                     <% if (SelectAquestion.where(:select_id => @select) || Caquestion.where(:select_id => @select)).empty? %>
+                    <div id="custom_caquestions">
+                    <%= render 'custom_caquestions' %>
+                    </div>
                     <%= link_to "Add Assessment Question", new_select_caquestion_path(@select), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', 'class' => 'btn btn-link'}  %>
                      <% else %>
                     <% SelectAquestion.where(:select_id => @select).each do |saquestion| %>

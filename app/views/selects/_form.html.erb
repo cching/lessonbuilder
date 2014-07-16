@@ -21,7 +21,7 @@
   <div class="panel-body table-content">
 <div class="col-md-1"></div>
   <div class="col-md-10">
-  <% if Question.where(:user_id => 0).where(:standard_id => @ids).empty? %>
+  <% if Question.where(:standard_id => @ids).empty? %>
   No preset question stems exist for this standard. Continue to the next page to add them.
   <% else %>
   <%= f.association :questions, collection: Question.where(:user_id => 0).where(:standard_id => @ids), as: :check_boxes, :label_method => lambda { |question| "#{question.standard_id}: #{question.content}" }, input_html: {:data => {:toggle => "checkbox"}}, label: false %>
@@ -41,7 +41,7 @@
   <div class="panel-body table-content">
   <div class="col-md-1"></div>
   <div class="col-md-10">
-  <% if Vocab.where(:user_id => 0).where(:standard_id => @ids).empty? %>
+  <% if Vocab.where(:standard_id => @ids).empty? %>
   No preset vocabulary words exist for this standard. Continue to the next page to add them.
   <% else %>
 <%= f.association :vocabs, collection: Vocab.where(:user_id => 0).where(:standard_id => @ids), as: :check_boxes, :label_method => lambda { |vocab| "#{vocab.standard_id}: #{vocab.content_english}" }, input_html: {:data => {:toggle => "checkbox"}}, label: false %>
@@ -64,7 +64,7 @@
   <div class="row">
   <div class="col-md-1"></div>
   <div class="col-md-10">
-  <% if Strategy.where(:user_id => 0).where(:standard_id => @ids).empty? %>
+  <% if Strategy.where(:standard_id => @ids).empty? %>
   No preset strategies exist for this standard. Continue to the next page to add them.
   <% else %>
 <%= f.association :strategies, collection: Strategy.where(:user_id => 0).where(:standard_id => @ids), as: :check_boxes, :label_method => lambda { |strategy| "#{strategy.standard_id}: #{strategy.content}" }, input_html: {:data => {:toggle => "checkbox"}}, label: false %>
@@ -84,7 +84,7 @@
   <div class="panel-body table-content">
 <div class="col-md-1"></div>
   <div class="col-md-10">
-  <% if Skill.where(:user_id => 0).where(:standard_id => @ids).empty? %>
+  <% if Skill.where(:standard_id => @ids).empty? %>
   No preset skills exist for this standard. Continue to the next page to add them.
   <% else %>
 <%= f.association :skills, collection: Skill.where(:user_id => 0).where(:standard_id => @ids), as: :check_boxes, :label_method => lambda { |skill| "#{skill.standard_id}: #{skill.content}" }, input_html: {:data => {:toggle => "checkbox"}}, label: false %>
@@ -109,7 +109,7 @@
     
 <div class="col-md-1"></div>
   <div class="col-md-10">
-<% if Link.where(:user_id => 0).where(:standard_id => @ids).empty? %>
+<% if Link.where(:standard_id => @ids).empty? %>
   No preset resources exist for this standard. Continue to the next page to add them.
   <% else %>
 <%= f.association :links, collection: Link.where(:user_id => 0).where(:standard_id => @ids), as: :check_boxes, :label_method => lambda { |link| "#{link.standard_id}: #{link.comment} #{link.link}" }, input_html: {:data => {:toggle => "checkbox"}}, label: false %>
@@ -128,7 +128,7 @@
     
 <div class="col-md-1"></div>
   <div class="col-md-10">
-<% if Aquestion.where(:user_id => 0).where(:standard_id => @ids).empty? %>
+<% if Aquestion.where(:standard_id => @ids).empty? %>
   No preset assessments exist for this standard. Continue to the next page to add them.
   <% else %>
 <%= f.association :aquestions, collection: Aquestion.where(:user_id => 0).where(:standard_id => @ids), as: :check_boxes, :label_method => lambda { |aquestion| "#{aquestion.standard_id}: #{aquestion.content}" }, input_html: {:data => {:toggle => "checkbox"}}, label: false %>

@@ -1,12 +1,11 @@
-<div class="panel panel-danger">
-  <div class="panel-body">
-    <strong>Lesson Name, Description, and Objective</strong>
-  </div>
+<div class="animated fadeInDown">
+<div class="panel panel-warning" id="edit"><%= best_in_place @select, :name, :nil => "Click here to add a lesson name", :html_attrs => { :style => 'width:100%;' } %></div>
 </div>
 
 <% if current_user?(@select.user) %>
 
 <center>
+<div class="animated fadeInRightBig">
 <% unless @select.book.title.empty? %>
 
 	<h4>Close Reading of <i><%= @select.book.title %></i>
@@ -20,16 +19,16 @@
 	<h4>Objective: <%= best_in_place @select, :objective, :type => :textarea, :nil => "Click here to add an objective", :html_attrs => { :style => 'width:100%;' } %>
 	</h4>
 
-	<h4>Title: <%= best_in_place @select, :name, :nil => "Click here to add a lesson name", :html_attrs => { :style => 'width:100%;' } %> - Date Created: <%= @select.date.to_time.strftime('%B %e, %Y') %>
+	<h4>Teaching Date: <%= @select.date.to_time.strftime('%B %e, %Y') %>
 	</h4>
 	<br />
-
+</div>
 </center>
-<br />
 
 <% else %>
 
 <center>
+<div class="animated fadeInRightBig">
 
 <% unless @select.book.title.empty? %>
 
@@ -48,10 +47,9 @@
 
 	<h4>Date Created: <%= @select.date.to_time.strftime('%B %e, %Y') %>
 	</h4>
-	<br />
 
-
+</div>
 </center>
-<br />
+
 
 <% end %>

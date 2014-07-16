@@ -1,0 +1,27 @@
+<h1>Listing caquestions</h1>
+
+<table>
+  <tr>
+    <th>Standard</th>
+    <th>Select</th>
+    <th>Content</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @caquestions.each do |caquestion| %>
+  <tr>
+    <td><%= caquestion.standard_id %></td>
+    <td><%= caquestion.select_id %></td>
+    <td><%= caquestion.content %></td>
+    <td><%= link_to 'Show', caquestion %></td>
+    <td><%= link_to 'Edit', edit_caquestion_path(caquestion) %></td>
+    <td><%= link_to 'Destroy', caquestion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Caquestion', new_caquestion_path %>

@@ -1,0 +1,2 @@
+module CaquestionsHelper
+end

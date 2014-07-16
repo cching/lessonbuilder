@@ -15,13 +15,13 @@
     <%= f.input :comments, input_html: {style: 'height:100px; width:100%'} %><br />
     <%= f.association :textcategory, label_method: :category, :include_blank => false, label: "Category" %><br />
     <div class="row">
-  <div class="col-md-6"><%= f.association :grades, as: :check_boxes, label_method: :number %><br /></div>
-  <div class="col-md-6"><%= f.association :sources, as: :check_boxes, label_method: :name %><br /></div>
+  <div class="col-md-6"><%= f.association :grades, as: :check_boxes, label_method: :number, input_html: {:data => {:toggle => "checkbox"}} %><br /></div>
+  <div class="col-md-6"><%= f.association :sources, as: :check_boxes, label_method: :name, input_html: {:data => {:toggle => "checkbox"}} %><br /></div>
 
 </div>
     
         <%= f.input :image, label: "Image" %>
-        <%= f.input :pdf, label: 'Select for PDF Input', :as => :boolean %>
+        <%= f.input :pdf, label: 'Select for PDF Input', :as => :boolean, input_html: {:data => {:toggle => "checkbox"}} %>
   </div>
 
   <div class="form-actions">

@@ -118,7 +118,7 @@
 <% @select.grades.each do |grade| %>
 <% @select.sources.each do |source| %>
 <% (Book.where(:textcategory_id => [5, 6, 8, 9, 10]).includes(:grades).where(:grades => {:id => grade.id}).order("title ASC") & Book.where(:textcategory_id => [5, 6, 8, 9, 10]).includes(:sources).where(:sources => {:id => source.id}).order("title ASC")).each do |book| %>
-
+<div class="animated fadeInUpBig">
                 <div class="list-group">
                   <div class="row">
   <div class="col-md-1">
@@ -163,7 +163,7 @@
                    </div>
                 </div>
                 </div>
-
+                </div>
 <% end %>
                 <% end %><% end %>
              </div>

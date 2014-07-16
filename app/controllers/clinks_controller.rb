@@ -3,17 +3,23 @@ class ClinksController < ApplicationController
     def create
       @select = Select.find(params[:select_id])
       @clink = @select.clinks.build(params[:clink])
-    
+      respond_to do |format|
         if @clink.save
-          redirect_to select_path(@select)
+          
+            format.js { render action: "create" }
+
         else
           render :action => 'new'
+        end
         end
       end
   
       def new
         @select = Select.find(params[:select_id])
         @clink = @select.clinks.build
+        respond_to do |format|
+          format.js
+        end
       end
   
     def update

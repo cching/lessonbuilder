@@ -6,6 +6,9 @@
   <div class="col-md-9">
 <div id="standards"></div><div id="search">
 <div class="animated bounceInLeft">
+<% if current_user.try(:admin) %>
+<%= link_to "New Book", new_book_path, class: "btn btn-primary" %>
+<% end %>
 </div>
 </div>
 </div>

@@ -3,18 +3,23 @@ class CquestionsController < ApplicationController
     def create
       @select = Select.find(params[:select_id])
       @cquestion = @select.cquestions.build(params[:cquestion])
-    
+      respond_to do |format|
         if @cquestion.save
-          redirect_to select_path(@select)
+          
+            format.js { render action: "create" }
+
         else
           render :action => 'new'
+        end
         end
       end
   
       def new
         @select = Select.find(params[:select_id])
         @cquestion = @select.cquestions.build
-
+        respond_to do |format|
+          format.js
+        end
       end
   
     def update

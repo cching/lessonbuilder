@@ -65,3 +65,14 @@ color: #000;
 #standard-attributes.btn-danger btn-mini {
 	color: #FFF;
 }
+
+#navigation.nav a {
+	border-color: #FFF;
+	color: #FFF;
+	background-color: #1CBC9A;
+}
+
+#navigation.nav a:hover {
+  	background-color: #43e3c1;
+  	color: #FFF;
+}

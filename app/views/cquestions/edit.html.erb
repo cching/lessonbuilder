@@ -2,7 +2,7 @@
 <center><h3>for <%= @cquestion.standard_id %></h3></center><br />
 	
 
-<%= form_for([@select,@cquestion]) do |f| %>
+<%= form_for[@select,@cquestion], :remote => true do |f| %>
 
 <div class="field">
   <%= f.label :standard_id, "Standard" %>

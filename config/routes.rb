@@ -1,5 +1,7 @@
 Commoncore::Application.routes.draw do
-  
+ 
+
+
   resources :headers
 
 
@@ -69,7 +71,7 @@ Commoncore::Application.routes.draw do
 
   resources :cskills
   resources :skills
-
+  resources :caquestions
   scope "selects/:select_id" do
     resources :lesson_steps
   end
@@ -83,7 +85,7 @@ Commoncore::Application.routes.draw do
     resources :cvocabs
     resources :cstrategies
     resources :clinks
-
+    resources :caquestions
   end
   
   resources :cquestions

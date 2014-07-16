@@ -3,17 +3,23 @@ class CstrategiesController < ApplicationController
     def create
       @select = Select.find(params[:select_id])
       @cstrategy = @select.cstrategies.build(params[:cstrategy])
-  
+    respond_to do |format|
         if @cstrategy.save
-          redirect_to select_path(@select)
+          
+            format.js { render action: "create" }
+
         else
           render :action => 'new'
+        end
         end
       end
 
       def new
         @select = Select.find(params[:select_id])
         @cstrategy = @select.cstrategies.build
+        respond_to do |format|
+          format.js
+        end
       end
 
     

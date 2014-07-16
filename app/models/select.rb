@@ -54,11 +54,13 @@ class Select < ActiveRecord::Base
   has_many :cvocabs, :dependent => :destroy
   has_many :cstrategies, :dependent => :destroy
   has_many :clinks, :dependent => :destroy
+  has_many :caquestions, :dependent => :destroy
   accepts_nested_attributes_for :cquestions, allow_destroy: true
   accepts_nested_attributes_for :cvocabs, allow_destroy: true
   accepts_nested_attributes_for :cskills, allow_destroy: true
   accepts_nested_attributes_for :cstrategies, allow_destroy: true
   accepts_nested_attributes_for :clinks, allow_destroy: true
+  accepts_nested_attributes_for :caquestions, allow_destroy: true
 
     scope :between, lambda {|start_time, end_time|
     {:conditions => [

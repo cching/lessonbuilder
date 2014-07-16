@@ -1,0 +1,11 @@
+                    <% Caquestion.where(:select_id => @select).each do |caquestion| %>
+                        <ul type="disc">
+                            <li>
+                                <% if current_user?(@select.user) %>
+                                    <font size="3" color="red"><%= best_in_place caquestion, :content, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' }, :type => :textarea %></font>
+                                <% else %>
+                                    <font size="3"><%= caquestion.content %></font>
+                                <% end %>
+                            </li>
+                        </ul>
+                    <% end %>

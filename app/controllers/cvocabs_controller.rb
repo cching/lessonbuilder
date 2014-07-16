@@ -3,36 +3,40 @@ class CvocabsController < ApplicationController
     def create
       @select = Select.find(params[:select_id])
       @cvocab = @select.cvocabs.build(params[:cvocab])
-  
+      respond_to do |format|
         if @cvocab.save
-          redirect_to select_path(@select)
+          
+            format.js { render action: "create" }
+
         else
           render :action => 'new'
         end
+        end
       end
-
+  
       def new
         @select = Select.find(params[:select_id])
         @cvocab = @select.cvocabs.build
+        respond_to do |format|
+          format.js
+        end
       end
-
-    
+  
     def update
-      @cvocab = Cvocab.find(params[:id])
+      @vocab = Cvocab.find(params[:id])
       @select = Select.find(params[:select_id])
       
-      if @cvocab.update_attributes(params[:cvocab])
-        redirect_to edit_select_path(@select)
-      else
-        render :action => 'edit'
+        if @cvocab.update_attributes(params[:cvocab])
+          redirect_to edit_select_path(@select)
+        else
+          render :action => 'edit'
       end
-
     end
     
     def destroy
       @cvocab = Cvocab.find(params[:id])
       @select = Select.find(params[:select_id])
-      @cvocab.destroy
+      @clink.destroy
       
       redirect_to edit_select_path(@select)
     end
@@ -49,5 +53,5 @@ class CvocabsController < ApplicationController
     
     def index
     end
-    
+
 end

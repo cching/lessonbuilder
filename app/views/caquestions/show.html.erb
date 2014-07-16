@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Standard:</b>
+  <%= @caquestion.standard_id %>
+</p>
+
+<p>
+  <b>Select:</b>
+  <%= @caquestion.select_id %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @caquestion.content %>
+</p>
+
+
+<%= link_to 'Edit', edit_caquestion_path(@caquestion) %> |
+<%= link_to 'Back', caquestions_path %>

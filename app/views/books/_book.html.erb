@@ -48,7 +48,7 @@
 <p>
   <b>Example text:</b>
   <div style="font-size: 13pt;"><%= simple_format(@book.example) %>
-</div></p></html>
+</p></html>
 
 <% unless @book.assess_questions.blank? %>
 <p>
@@ -71,8 +71,8 @@
 </p>
 <% end %>
 
-
-
-</div><br />
-
-<%= link_to "Save as PDF", book_path(@book, format: "pdf"), class: "btn btn-link" %></div>
+<%= link_to "Save as PDF", book_path(@book, format: "pdf"), class: "btn btn-primary" %></div>
+<br />
+<% if current_user.try(:admin) %>
+  <%= link_to "Edit", edit_book_path(@book), class: "btn btn-default", remote: :true %>
+  <% end %></div>

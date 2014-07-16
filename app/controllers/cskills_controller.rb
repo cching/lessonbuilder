@@ -3,17 +3,23 @@ class CskillsController < ApplicationController
     def create
       @select = Select.find(params[:select_id])
       @cskill = @select.cskills.build(params[:cskill])
-      
+      respond_to do |format|
         if @cskill.save
-          redirect_to select_path(@select)
+          
+            format.js { render action: "create" }
+
         else
           render :action => 'new'
+        end
         end
     end
     
     def new
       @select = Select.find(params[:select_id])
       @cskill = @select.cskills.build
+        respond_to do |format|
+          format.js
+        end
     end
     
     def update

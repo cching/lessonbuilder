@@ -1,27 +1,13 @@
 <% if current_user?(@select.user) %>
 
-        <table table-hover>
-                <tr>
-                        <td>
-                                <%= link_to "Add Question", new_select_cquestion_path(@select),  class: "btn btn"  %><br />
-                        </td>
-
-                        <td>        
-                                <%= link_to "Add Skill", new_select_cskill_path(@select), class: "btn" %><br />
-                        </td>
-                        
-                        <td>        
-                                <%= link_to "Add Vocabulary Word", new_select_cvocab_path(@select), class: "btn" %><br />
-                        </td>
-                        
-                        <td>        
-                                <%= link_to "Add Strategy", new_select_cstrategy_path(@select), class: "btn" %><br />
-                        </td>
-                        <td>        
-                                <%= link_to "Add Resource", new_select_clink_path(@select), class: "btn" %><br />
-                        </td>
-                </tr>
-        </table>
+<ul class="nav nav-tabs nav-justified" role="tablist" id="navigation">
+  <li><%= link_to "Add Question", new_select_cquestion_path(@select), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', 'class' => 'btn btn-primary'}  %></li>
+  <li><%= link_to "Add Vocabulary Word", new_select_cvocab_path(@select), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', 'class' => 'btn btn-primary'}  %></li>
+  <li><%= link_to "Add Skill", new_select_cskill_path(@select), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', 'class' => 'btn btn-primary'}  %></li>
+  <li><%= link_to "Add Strategy", new_select_cstrategy_path(@select), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', 'class' => 'btn btn-primary'}  %></li>
+  <li><%= link_to "Add Resource", new_select_clink_path(@select), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', 'class' => 'btn btn-primary'}  %></li>
+  <li><%= link_to "Add Assessment Question", new_select_caquestion_path(@select), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', 'class' => 'btn btn-primary'}  %></li>
+</ul>
 
 <br />
 
@@ -33,3 +19,4 @@
 <strong>Created by <%= link_to @select.user.name, @select.user %></strong>
 
 <% end %>
+

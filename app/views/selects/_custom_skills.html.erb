@@ -1,0 +1,11 @@
+                    <% Cskill.where(:select_id => @select).each do |cskill| %>
+                        <ul type="disc">
+                            <li>
+                            <% if current_user?(@select.user) %>
+                                    <font size="3" color="red"><%= best_in_place cskill, :content, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' }, :type => :textarea %></font>
+                                <% else %>
+                                    <font size="3" color="red"><%= cskill.content %></font>
+                                <% end %>
+                            </li>
+                        </ul>
+                     <% end %>

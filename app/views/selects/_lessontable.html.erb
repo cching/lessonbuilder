@@ -18,24 +18,25 @@
     <h3 class="panel-title">Question Stems</h3>
   </div>
   <div class="panel-body table-content">
-                  <% if (SelectQuestion.where(:select_id => @select) && Cquestion.where(:select_id => @select)).empty? %>
+                  <% if (SelectQuestion.where(:select_id => @select) || Cquestion.where(:select_id => @select)).empty? %>
                     <%= link_to "Add Question Stem", new_select_cquestion_path(@select), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', 'class' => 'btn btn-link'}  %>
                      <% else %>
                     <% SelectQuestion.where(:select_id => @select).each do |squestion| %>
                         <ul type="disc">
                             <li>
                                 <% if current_user?(@select.user) %>
-                                    <font size="3"><%= cquestion.standard_id %>: <%= best_in_place squestion, :content, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' }, :type => :textarea %></font>
+                                    <font size="3"><%= squestion.question.standard.id %>: <%= best_in_place squestion, :content, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' }, :type => :textarea %></font>
                                 <% else %>
-                                    <font size="3"><%= squestion.standard_id %>: <%= squestion.content %></font>
+                                    <font size="3"><%= squestion.question.standard.id %>: <%= squestion.content %></font>
                                 <% end %>
                             </li>
                         </ul>
-                    <% end %>                 
-                    <% end %>
+                    <% end %>   
                     <div id="custom_questions">          
                     <%= render 'custom_questions' %>
-                    </div>
+                    </div>              
+                    <% end %>
+
 
   </div>
 </div>
@@ -49,24 +50,25 @@
     <h3 class="panel-title">Vocabulary</h3>
   </div>
   <div class="panel-body table-content">
-<% if (SelectVocab.where(:select_id => @select) && Cvocab.where(:select_id => @select)).empty? %>
+<% if (SelectVocab.where(:select_id => @select) || Cvocab.where(:select_id => @select)).empty? %>
                     <%= link_to "Add Vocabulary Word", new_select_cvocab_path(@select), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', 'class' => 'btn btn-link'}  %>
                      <% else %>
                     <% SelectVocab.where(:select_id => @select).each do |svocab| %>
                         <ul type="disc">
                             <li>
                                 <% if current_user?(@select.user) %>
-                                    <font size="3"><%= svocab.standard_id %>: <%= best_in_place svocab, :content_english, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %></font>
+                                    <font size="3"><%= svocab.vocab.standard.id %>: <%= best_in_place svocab, :content_english, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %></font>
                                 <% else %>
-                                    <font size="3"><%= svocab.standard_id %>: <%= svocab.content_english %></font>
+                                    <font size="3"><%= svocab.vocab.standard.id %>: <%= svocab.content_english %></font>
                                 <% end %>
                             </li>
                         </ul>
                     <% end %>
-                    <% end %>           
                     <div id="custom_vocabs">
                     <%= render 'custom_vocabs' %>
                     </div>
+                    <% end %>           
+                    
 </div>
 </div>
 
@@ -79,24 +81,25 @@
     <h3 class="panel-title">Strategies</h3>
   </div>
   <div class="panel-body table-content">
-<% if (SelectStrategy.where(:select_id => @select) && Cstrategy.where(:select_id => @select)).empty? %>
+<% if (SelectStrategy.where(:select_id => @select) || Cstrategy.where(:select_id => @select)).empty? %>
                     <%= link_to "Add Strategy", new_select_cstrategy_path(@select), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', 'class' => 'btn btn-link'}  %>
                      <% else %>
                     <% SelectStrategy.where(:select_id => @select).each do |sstrategy| %>
                         <ul type="disc">
                             <li>
                                 <% if current_user?(@select.user) %>
-                                    <font size="3"><%= sstrategy.standard_id %>: <%= best_in_place sstrategy, :content, :type => :textarea, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %></font>
+                                    <font size="3"><%= sstrategy.strategy.standard.id %>: <%= best_in_place sstrategy, :content, :type => :textarea, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %></font>
                                 <% else %>
-                                    <font size="3"><%= sstrategy.standard_id %>: <%= sstrategy.content %></font>
+                                    <font size="3"><%= sstrategy.strategy.standard.id %>: <%= sstrategy.content %></font>
                                 <% end %>
                             </li>
                         </ul>
                     <% end %>
-                    <% end %>        
                     <div id="custom_strategies">
                     <%= render 'custom_strategies' %>
                     </div>
+                    <% end %>        
+                    
 
   </div>
 </div>
@@ -108,24 +111,25 @@
     <h3 class="panel-title">Skills</h3>
     </div>
   <div class="panel-body table-content">
-<% if (SelectSkill.where(:select_id => @select) && Cskill.where(:select_id => @select)).empty? %>
+<% if (SelectSkill.where(:select_id => @select) || Cskill.where(:select_id => @select)).empty? %>
                     <%= link_to "Add Skill", new_select_cskill_path(@select), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', 'class' => 'btn btn-link'}  %>
                      <% else %>
                     <% SelectSkill.where(:select_id => @select).each do |sskill| %>
                         <ul type="disc">
                             <li>
                                 <% if current_user?(@select.user) %>
-                                    <font size="3"><%= sskill.standard_id %>: <%= best_in_place sskill, :content, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' }, :type => :textarea %></font>
+                                    <font size="3"><%= sskill.skill.standard.id %>: <%= best_in_place sskill, :content, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' }, :type => :textarea %></font>
                                 <% else %>
-                                    <font size="3"><%= sskill.standard_id %>: <%= sskill.content %></font>
+                                    <font size="3"><%= sskill.skill.standard.id %>: <%= sskill.content %></font>
                                 <% end %>
                             </li>
                         </ul>
                     <% end %> 
-                    <% end %>            
-                    <div id="custom_skills">
+                     <div id="custom_skills">
                     <%= render 'custom_skills' %>
                     </div>
+                    <% end %>            
+                   
     </div>
 
 
@@ -143,26 +147,27 @@
   </div>
   <div class="panel-body">
     
-                    <% if (SelectLink.where(:select_id => @select) && Clink.where(:select_id => @select)).empty? %>
+                    <% if (SelectLink.where(:select_id => @select) || Clink.where(:select_id => @select)).empty? %>
                     <%= link_to "Add Resource", new_select_clink_path(@select), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', 'class' => 'btn btn-link'}  %>
                      <% else %>
                     <% SelectLink.where(:select_id => @select).each do |slink| %>
                         <ul type="disc">
                             <li>
                                 <% if current_user?(@select.user) %>
-                                    <font size="3"><%= slink.standard_id %>: <%= best_in_place slink, :comment, :type => :textarea, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %></font> 
+                                    <font size="3"><%= slink.link.standard.id %>: <%= best_in_place slink, :comment, :type => :textarea, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %></font> 
                                     <br />
                                     <%= truncate(Rinku.auto_link(slink.link.link), :length=>300).html_safe %>
                                 <% else %>
-                                    <font size="3"><%= slink.standard_id %>: <%= slink.comment %></font><br /><%= truncate(Rinku.auto_link(slink.link.link), :length=>300).html_safe %>
+                                    <font size="3"><%= slink.link.standard.id %>: <%= slink.comment %></font><br /><%= truncate(Rinku.auto_link(slink.link.link), :length=>300).html_safe %>
                                 <% end %>
                             </li>
                         </ul>
                     <% end %>
-                    <% end %>           
                     <div id="custom_links">
                     <%= render 'custom_links' %>
                     </div>
+                    <% end %>           
+                    
 
     </div>
 
@@ -174,27 +179,27 @@
     <h3 class="panel-title">Assessment Questions</h3>
   </div>
   <div class="panel-body">
-                    <% if (SelectAquestion.where(:select_id => @select) && Caquestion.where(:select_id => @select)).empty? %>
+                    <% if (SelectAquestion.where(:select_id => @select) || Caquestion.where(:select_id => @select)).empty? %>
                     <%= link_to "Add Assessment Question", new_select_caquestion_path(@select), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', 'class' => 'btn btn-link'}  %>
                      <% else %>
                     <% SelectAquestion.where(:select_id => @select).each do |saquestion| %>
                         <ul type="disc">
                             <li>
                                 <% if current_user?(@select.user) %>
-                                    <font size="3"><%= saquestion.standard_id %>: <%= best_in_place saquestion, :content, :type => :textarea, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %></font>
+                                    <font size="3"><%= saquestion.aquestion.standard.id %>: <%= best_in_place saquestion, :content, :type => :textarea, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %></font>
                                 <% else %>
-                                    <font size="3"><%= saquestion.standard_id %>: <%= saquestion.content %></font>
+                                    <font size="3"><%= saquestion.aquestion.standard.id %>: <%= saquestion.content %></font>
                                 <% end %>
                             </li>
                         </ul>
                          <% end %>
-                       
+                       <div id="custom_caquestions">
+                    <%= render 'custom_caquestions' %>
+                    </div>
                         
                         <% end %>
                    
-                    <div id="custom_caquestions">
-                    <%= render 'custom_caquestions' %>
-                    </div>
+                    
 
 </div>
 </div>

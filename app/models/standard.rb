@@ -28,6 +28,7 @@ class Standard < ActiveRecord::Base
   has_many :cstrategies
   has_many :clinks
   has_many :aquestions
+  has_many :caquestions
 
   accepts_nested_attributes_for :questions, allow_destroy: true
   accepts_nested_attributes_for :skills, allow_destroy: true

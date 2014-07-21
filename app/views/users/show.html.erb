@@ -1,6 +1,6 @@
 <% provide(:title, @user.name) %>
       <h1>
-		  <% if current_user.try(:admin) %>
+		  <% if current_user.try(:admin?) %>
 		  Administrator <%= @user.name %>
 				<% else %>
       		  		<%= @user.name %>
@@ -35,7 +35,7 @@
 
 
 
-<% if current_user.try(:admin) %>
+<% if current_user.try(:admin?) %>
 <strong>Administrator Settings</strong><br />
 
 <table>

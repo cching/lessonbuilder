@@ -1,7 +1,7 @@
                     <% Clink.where(:select_id => @select).each do |clink| %>
                         <ul type="disc">
                             <li>
-                                <% if current_user?(@select.user) %>
+                                <% if current_user == (@select.user) %>
                                     <font size="3" color="red"><%= clink.standard_id %>: <%= best_in_place clink, :comment, :type => :textarea, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %></font> 
                                     <br />
                                     <%= truncate(Rinku.auto_link(clink.link), :length=>300).html_safe %>

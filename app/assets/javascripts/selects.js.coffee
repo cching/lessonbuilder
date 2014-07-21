@@ -9,3 +9,4 @@ jQuery ->
 jQuery ->
   $('#selects_date').datepicker
     dateFormat: 'yy-mm-dd'
+

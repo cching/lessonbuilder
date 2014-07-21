@@ -1,0 +1,99 @@
+<div class="animated fadeInDown">
+<div class="panel panel-warning" id="standards">Select Standards</div>
+</div>
+
+<div class="animated fadeInRight">
+<div class="progress" id="lesson-setup">
+  <div class="progress-bar" style="width: 33%;"></div>
+  <div class="progress-bar progress-bar-warning" id="lesson-setup" style="width: 33%;"></div>
+</div>
+</div>
+
+<%= simple_form_for @select, url: wizard_path do |f| %>
+<div class="animated fadeInLeft">
+
+		<div class="row">
+	   		<div class="col-md-2" id="standard">Subject</div>
+	   		<div class="col-md-10" id="standard">Standard</div>
+	   	</div>
+	   	</div>
+	   	<br/>
+	<% @grades.each do |grade| %>
+		<div class="row animated fadeInUpBig">
+	   		<div class="col-md-2" id="reading_1">
+		    <%= @reading_subject.name %>
+		    </div>
+		    <div class="col-md-2" id="reading2_1"><%= @reading_subject.name %>
+		    </div>
+		    <div class="col-md-8"></div>
+		</div>
+
+		<div class="row animated fadeInRightBig">
+			<div class="col-md-2 standards-select"></div>
+		    
+		    <div class="col-md-10" id="reading_1">
+			<%= f.association :standards, as: :check_boxes, collection: Standard.where(:subject_id => @reading_subject, :grade_id => grade.id).order("standard_id ASC"), :label_method => lambda { |standard| "#{standard.id}:  #{standard.content}" }, label: false, input_html: {:data => {:toggle => "checkbox"}}, id: "standards-checkbox" %>    	
+		   	</div>
+
+
+		 </div>
+		   	
+		 
+	<% end %>
+	<br/>
+
+	<% @subjects.each do |subject| %>
+		<% @grades.each do |grade| %>
+
+		<div class="row animated fadeInUpBig">
+	   		<div class="col-md-2" id="subject_<%= subject.id %>">
+		    <%= subject.name %>
+		    </div>
+		    <div class="col-md-2" id="subject2_<%= subject.id %>"><%= subject.name %>
+		    </div>
+		
+		<div class="col-md-8"></div>
+		</div>
+
+
+		<div class="animated fadeInRightBig">
+		<div class="row">
+			<div class="col-md-2 standards-select"></div>
+		    
+		    <div class="col-md-10" id="subject_<%= subject.id %>">
+			<%= f.association :standards, as: :check_boxes, collection: Standard.where(:subsubject_id => subject.id, :grade_id => grade.id).order("standard_id ASC"), :label_method => lambda { |standard| "#{standard.id}:  #{standard.content}" }, label: false, input_html: {:data => {:toggle => "checkbox"}} %>    	
+		   	</div>
+
+
+		 </div>
+		 </div>
+		   	
+		 <br/>
+	<% end %>
+	<% end %>
+	
+
+<div class="actions animated fadeInRight">
+<div class="row">
+<div class="col-md-6">
+<%= link_to "Back", previous_wizard_path, :class => "btn btn-info", id: "text-select" %>
+</div>
+<div class="col-md-6" align="right">
+
+		
+			<button type="submit" class="btn btn-info" id="standards" data-loading-text="Saving..">Save and Continue</button>
+			</div>
+			</div>
+		</div>
+		</div>
+	<% end %>
+
+
+
+<script>
+	$('button[data-loading-text]').click(function () {
+    $(this).button('loading');
+});
+</script>	
+
+

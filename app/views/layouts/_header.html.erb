@@ -1,12 +1,7 @@
 <div id="header">
-<% if signed_in? %>
-<% else %>
-
-<% end %>
-<body>
 
 <nav class="navbar navbar-default" role="navigation">
-  <!-- Brand and toggle get grouped for better mobile display -->
+ <div class="container-fluid">
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
       <span class="icon-bar"></span>
@@ -16,41 +11,64 @@
 
   </div>
 
-  <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    <ul class="nav navbar-nav">
-       <li><%= link_to "Home", root_path %></li>
-       <% if signed_in? %>
-                   <li><%= link_to "Standards", standards_path %></li>
+
+
+
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        
+       
+      </ul>
+      <% if signed_in? %>  
+      <ul class="nav navbar-nav">
+      <li><%= link_to "Home", root_path %></li>
+       
+       <li><%= link_to "Standards", standards_path %></li>
                    <li><%= link_to "Text Resources", books_path %></li>
              <li><%= link_to "Build a Lesson", new_select_path %></li>
-             
-
-               
-             
-
-         <li><%= link_to "Browse Lessons", lessons_path %></li>
+               <li><%= link_to "Browse Lessons", lessons_path %></li>
      <li><%= link_to "Resources", resources_path %></li>
+     </ul>
+     <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Signed in as <%= current_user.name %></a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span></b></a>
+          <ul class="dropdown-menu">
+          <li><%= link_to 'View profile <i class="glyphicon glyphicon-tasks"></i>'.html_safe, user_path(current_user), class: "btn btn-link" %></li>
+ 
+           <li class="divider"></li>
+           <li><%= link_to 'Sign out <i class="glyphicon glyphicon-new-window"></i>'.html_safe, destroy_user_session_path, method: :delete, class: "btn btn-link" %></li>
+          </ul>
+        </li>
+      </ul>
 
-      <li class="dropdown">
-           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-             Account <b class="caret"></b>
-           </a>
-           <ul class="dropdown-menu">
-             <li><%= link_to "Profile", current_user %></li>
-             <li class="divider"></li>
-             <li>
-               <%= link_to "Sign out", signout_path, method: "delete" %>
-               <% end %>
-             </li>        </ul>
-      
-    </ul>
-</li></ul>
-  </div><!-- /.navbar-collapse -->
+
+<% else %>
+<ul class="nav navbar-nav">
+      <li><%= link_to "Home", root_path %></li>
+      </ul>
+<ul class="nav navbar-nav navbar-right">
+
+        <li><%= link_to 'Log in <i class="glyphicon glyphicon-log-in"></i>'.html_safe, new_user_session_path, class: "btn btn-link" %></li>
+
+      </ul>
+
+<% end %>
+        </li>
+    
+    </div><!-- /.navbar-collapse -->
+
+
+
+
+
+
+  </div>
 </nav>
 
 
-</body></div>
+</div>
 
 <style type="text/css">   
 .navbar-default {
@@ -89,9 +107,5 @@ body { padding-top: 0px; }
   color: #ffffff;
 }
 
-@media print {
-        #header {
-                display: none;
-        }
-        }
+
 </style>

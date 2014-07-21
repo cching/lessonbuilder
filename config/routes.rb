@@ -1,6 +1,5 @@
 Commoncore::Application.routes.draw do
- 
-
+  devise_for :users, :path => '', :path_names => { :sign_up => "register", :sign_in => 'login', :sign_out => 'logout' }
 
   resources :headers
 
@@ -93,7 +92,6 @@ Commoncore::Application.routes.draw do
   resources :users 
 
   
-  resources :sessions, only: [:new, :create, :destroy]
   
   resources :standards do
     collection do
@@ -103,9 +101,6 @@ Commoncore::Application.routes.draw do
 
   match 'lessons',  to: 'selects#index'
   match 'lesson',  to: 'selects#edit'
-  match 'signup',  to: 'users#new'
-  match 'signin',  to: 'sessions#new'
-  match 'signout', to: 'sessions#destroy', via: :delete
 
   match 'gradek',  to: 'selects#grade0'
   match 'grade1',  to: 'selects#grade1'

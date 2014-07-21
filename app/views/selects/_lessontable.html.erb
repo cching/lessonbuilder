@@ -27,7 +27,7 @@
                     <% SelectQuestion.where(:select_id => @select).each do |squestion| %>
                         <ul type="disc">
                             <li>
-                                <% if current_user?(@select.user) %>
+                                <% if current_user == (@select.user) %>
                                     <font size="3"><%= squestion.question.standard.id %>: <%= best_in_place squestion, :content, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' }, :type => :textarea %></font>
                                 <% else %>
                                     <font size="3"><%= squestion.question.standard.id %>: <%= squestion.content %></font>
@@ -62,7 +62,7 @@
                     <% SelectVocab.where(:select_id => @select).each do |svocab| %>
                         <ul type="disc">
                             <li>
-                                <% if current_user?(@select.user) %>
+                                <% if current_user == (@select.user) %>
                                     <font size="3"><%= svocab.vocab.standard.id %>: <%= best_in_place svocab, :content_english, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %></font>
                                 <% else %>
                                     <font size="3"><%= svocab.vocab.standard.id %>: <%= svocab.content_english %></font>
@@ -96,7 +96,7 @@
                     <% SelectStrategy.where(:select_id => @select).each do |sstrategy| %>
                         <ul type="disc">
                             <li>
-                                <% if current_user?(@select.user) %>
+                                <% if current_user == (@select.user) %>
                                     <font size="3"><%= sstrategy.strategy.standard.id %>: <%= best_in_place sstrategy, :content, :type => :textarea, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %></font>
                                 <% else %>
                                     <font size="3"><%= sstrategy.strategy.standard.id %>: <%= sstrategy.content %></font>
@@ -129,7 +129,7 @@
                     <% SelectSkill.where(:select_id => @select).each do |sskill| %>
                         <ul type="disc">
                             <li>
-                                <% if current_user?(@select.user) %>
+                                <% if current_user == (@select.user) %>
                                     <font size="3"><%= sskill.skill.standard.id %>: <%= best_in_place sskill, :content, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' }, :type => :textarea %></font>
                                 <% else %>
                                     <font size="3"><%= sskill.skill.standard.id %>: <%= sskill.content %></font>
@@ -168,7 +168,7 @@
                     <% SelectLink.where(:select_id => @select).each do |slink| %>
                         <ul type="disc">
                             <li>
-                                <% if current_user?(@select.user) %>
+                                <% if current_user == (@select.user) %>
                                     <font size="3"><%= slink.link.standard.id %>: <%= best_in_place slink, :comment, :type => :textarea, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %></font> 
                                     <br />
                                     <%= truncate(Rinku.auto_link(slink.link.link), :length=>300).html_safe %>
@@ -203,7 +203,7 @@
                     <% SelectAquestion.where(:select_id => @select).each do |saquestion| %>
                         <ul type="disc">
                             <li>
-                                <% if current_user?(@select.user) %>
+                                <% if current_user == (@select.user) %>
                                     <font size="3"><%= saquestion.aquestion.standard.id %>: <%= best_in_place saquestion, :content, :type => :textarea, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %></font>
                                 <% else %>
                                     <font size="3"><%= saquestion.aquestion.standard.id %>: <%= saquestion.content %></font>

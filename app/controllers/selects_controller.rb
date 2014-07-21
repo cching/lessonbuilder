@@ -115,11 +115,6 @@ class SelectsController < ApplicationController
 
   def create
     @select = current_user.selects.build(params[:select])
-    lessonplan = Lessonplan.where(:district_id => current_user.district_id).last
-    @select.notes = lessonplan.content
-    @select.writing = lessonplan.writing
-    @select.conclusion = lessonplan.conclusion
-    @select.textdependent = lessonplan.questions
 
   if @select.save
     

@@ -27,7 +27,7 @@
     <div class="container">
 		<div class="container">
 		  <% flash.each do |name, msg| %>
-		    <div class="alert alert-<%= name == :notice ? "success" : "error" %>  alert-dismissable animated bounceIn">
+		    <div class="alert alert-<%= name == :notice ? "success" : "error" %>  alert-dismissable animated fadeIn">
 		      <a class="close" data-dismiss="alert" href="#">&times;</a>
 		      <%= msg  %>
 		    </div>

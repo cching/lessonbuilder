@@ -23,6 +23,7 @@ gem 'jquery-turbolinks'
 gem 'turbolinks'
 gem 'bootstrap-will_paginate'
 gem 'nprogress-rails'
+gem 'devise'
 
 group :development, :test do
   gem 'rspec-rails', '2.11.0'

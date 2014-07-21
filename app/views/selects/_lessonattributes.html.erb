@@ -2,7 +2,7 @@
 <div class="panel panel-warning" id="edit"><%= best_in_place @select, :name, :nil => "Click here to add a lesson name", :html_attrs => { :style => 'width:100%;' } %></div>
 </div>
 
-<% if current_user?(@select.user) %>
+<% if current_user == (@select.user) %>
 
 <center>
 <div class="animated fadeInRightBig">

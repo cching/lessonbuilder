@@ -1,7 +1,7 @@
                     <% Cvocab.where(:select_id => @select).each do |cvocab| %>
                         <ul type="disc">
                              <li>
-                                <% if current_user?(@select.user) %>
+                                <% if current_user == (@select.user) %>
                                     <font size="3" color="red"><%= cvocab.standard_id %>: <%= best_in_place cvocab, :content, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %></font>
                                 <% else %>
                                     <font size="3" color="red"><%= cvocab.standard_id %>: <%= cvocab.content %></font>

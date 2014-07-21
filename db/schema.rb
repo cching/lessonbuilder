@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140716104204) do
+ActiveRecord::Schema.define(:version => 20140721035139) do
 
   create_table "admin_notes", :force => true do |t|
     t.string   "resource_id",     :null => false
@@ -360,6 +360,7 @@ ActiveRecord::Schema.define(:version => 20140716104204) do
     t.text     "textdependent", :default => ""
     t.datetime "starts_at"
     t.datetime "ends_at"
+    t.string   "status"
   end
 
   create_table "skills", :force => true do |t|
@@ -438,6 +439,9 @@ ActiveRecord::Schema.define(:version => 20140716104204) do
     t.boolean  "admin",                  :default => false
     t.integer  "district_id",            :default => 1
   end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
   create_table "vocabs", :force => true do |t|
     t.string  "standard_id"

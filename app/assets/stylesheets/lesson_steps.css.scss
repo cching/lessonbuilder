@@ -162,3 +162,31 @@ color: #FFF;
 	background-color: #ff9d3b;
 	color: #FFF;
 }
+
+#lesson_sidebar.list-group {
+	.list-group-item {
+	background-color: #FF8243;
+	color: #FFF;
+	}
+	.active.list-group-item {
+	background-color: #4391ff !important;
+	color: #FFF;
+	}
+	.active {
+	background-color: #4391ff !important;
+	color: #FFF;
+	}
+	.list-group-item.active:hover {
+	background-color: #4391ff;
+	color: #FFF;
+	}
+	.list-group-item:hover {
+	background-color: #ffb143;
+	color: #FFF;
+	}
+}
+
+	#new.list-group-item {
+	background-color: #4391ff;
+	color: #FFF;
+	}

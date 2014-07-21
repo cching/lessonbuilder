@@ -1,4 +1,4 @@
-<%= simple_form_for(@select, :html => { :class => 'form-horizontal' }) do |f| %>
+<%= simple_form_for(@select, :html => { :class => 'form-horizontal' }, url: wizard_path) do |f| %>
 <ul class="nav nav-pills nav-justified" id="succ_standard">
 
 <% @standards.each do |standard| %>
@@ -6,7 +6,7 @@
     <% end %>
 
 </ul>
-<br/><br/>
+<br/>
 
 <div id="standard-attributes" class="animated fadeInUpBig">
 
@@ -19,126 +19,195 @@
     <h3 class="panel-title">Question Stems</h3>
   </div>
   <div class="panel-body table-content">
-<div class="col-md-1"></div>
-  <div class="col-md-10">
-  <% if Question.where(:standard_id => @ids).empty? %>
+  <% @select.standards.each do |standard| %>
+  <div class="row">
+  <div class="col-md-3"><%= standard.id %></div><div class="col-md-9"></div>
+  </div>
+
+  <div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-9">
+  <% if Question.where(:standard_id => standard.id).empty? %>
   No preset question stems exist for this standard. Continue to the next page to add them.
   <% else %>
-  <%= f.association :questions, collection: Question.where(:user_id => 0).where(:standard_id => @ids), as: :check_boxes, :label_method => lambda { |question| "#{question.standard_id}: #{question.content}" }, input_html: {:data => {:toggle => "checkbox"}}, label: false %>
+
+  
+  <%= f.association :questions, collection: Question.where(:user_id => 0).where(:standard_id => standard.id), as: :check_boxes, :label_method => lambda { |question| "#{question.content}" }, input_html: {:data => {:toggle => "checkbox"}}, label: false %>
+  
   <% end %>
-  <div class="col-md-1"></div></div>
+  </div>
+  
+  </div>
+<% end %>
+  
+  </div>
   </div>
 </div>
-  	
-  </div>
-
 
   <div class="col-md-6">
-      <div class="panel panel-default">
+    <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">Vocabulary</h3>
   </div>
   <div class="panel-body table-content">
-  <div class="col-md-1"></div>
-  <div class="col-md-10">
-  <% if Vocab.where(:standard_id => @ids).empty? %>
-  No preset vocabulary words exist for this standard. Continue to the next page to add them.
+  <% @select.standards.each do |standard| %>
+  <div class="row">
+  <div class="col-md-3"><%= standard.id %></div><div class="col-md-9"></div>
+  </div>
+
+  <div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-9">
+  <% if Vocab.where(:standard_id => standard.id).empty? %>
+  No preset vocabulary exist for this standard. Continue to the next page to add them.
   <% else %>
-<%= f.association :vocabs, collection: Vocab.where(:user_id => 0).where(:standard_id => @ids), as: :check_boxes, :label_method => lambda { |vocab| "#{vocab.standard_id}: #{vocab.content_english}" }, input_html: {:data => {:toggle => "checkbox"}}, label: false %>
+
+  
+  <%= f.association :vocabs, collection: Vocab.where(:user_id => 0).where(:standard_id => standard.id), as: :check_boxes, :label_method => lambda { |vocab| "#{vocab.content_english}" }, input_html: {:data => {:toggle => "checkbox"}}, label: false %>
+  
+  <% end %>
+  </div>
+  
+  </div>
 <% end %>
-	</div>
-	<div class="col-md-1"></div>
- </div>
+  
+  </div>
+  </div>
 </div>
-</div>
+
 
 </div>
 
 <div class="row">
-  <div class="col-md-6">
-  	<div class="panel panel-default">
+    <div class="col-md-6">
+    <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">Strategies</h3>
   </div>
   <div class="panel-body table-content">
+  <% @select.standards.each do |standard| %>
   <div class="row">
-  <div class="col-md-1"></div>
-  <div class="col-md-10">
-  <% if Strategy.where(:standard_id => @ids).empty? %>
+  <div class="col-md-3"><%= standard.id %></div><div class="col-md-9"></div>
+  </div>
+
+  <div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-9">
+  <% if Strategy.where(:standard_id => standard.id).empty? %>
   No preset strategies exist for this standard. Continue to the next page to add them.
   <% else %>
-<%= f.association :strategies, collection: Strategy.where(:user_id => 0).where(:standard_id => @ids), as: :check_boxes, :label_method => lambda { |strategy| "#{strategy.standard_id}: #{strategy.content}" }, input_html: {:data => {:toggle => "checkbox"}}, label: false %>
+
+  
+  <%= f.association :strategies, collection: Strategy.where(:user_id => 0).where(:standard_id => standard.id), as: :check_boxes, :label_method => lambda { |strategy| "#{strategy.content}" }, input_html: {:data => {:toggle => "checkbox"}}, label: false %>
+  
+  <% end %>
+  </div>
+  
+  </div>
 <% end %>
-</div>
-	<div class="col-md-1"></div>
-</div>
+  
+  </div>
   </div>
 </div>
-  	
-  </div>
-    <div class="col-md-6">
-      <div class="panel panel-default">
-      <div class="panel-heading">
+
+  <div class="col-md-6">
+    <div class="panel panel-default">
+  <div class="panel-heading">
     <h3 class="panel-title">Skills</h3>
-    </div>
+  </div>
   <div class="panel-body table-content">
-<div class="col-md-1"></div>
-  <div class="col-md-10">
-  <% if Skill.where(:standard_id => @ids).empty? %>
+  <% @select.standards.each do |standard| %>
+  <div class="row">
+  <div class="col-md-3"><%= standard.id %></div><div class="col-md-9"></div>
+  </div>
+
+  <div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-9">
+  <% if Skill.where(:standard_id => standard.id).empty? %>
   No preset skills exist for this standard. Continue to the next page to add them.
   <% else %>
-<%= f.association :skills, collection: Skill.where(:user_id => 0).where(:standard_id => @ids), as: :check_boxes, :label_method => lambda { |skill| "#{skill.standard_id}: #{skill.content}" }, input_html: {:data => {:toggle => "checkbox"}}, label: false %>
+
+  
+  <%= f.association :skills, collection: Skill.where(:user_id => 0).where(:standard_id => standard.id), as: :check_boxes, :label_method => lambda { |skill| "#{skill.content}" }, input_html: {:data => {:toggle => "checkbox"}}, label: false %>
+  
+  <% end %>
+  </div>
+  
+  </div>
 <% end %>
-</div><div class="col-md-1"></div>
-    </div>
-
-
+  
+  </div>
   </div>
 </div>
 
 
+
   </div>
 
 
-
-<div class="panel panel-default">
+  
+    <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">Resources</h3>
   </div>
-  <div class="panel-body">
-    
-<div class="col-md-1"></div>
-  <div class="col-md-10">
-<% if Link.where(:standard_id => @ids).empty? %>
+  <div class="panel-body table-content-links">
+  <% @select.standards.each do |standard| %>
+  <div class="row">
+  <div class="col-md-3"><%= standard.id %></div><div class="col-md-9"></div>
+  </div>
+
+  <div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-9">
+  <% if Link.where(:standard_id => standard.id).empty? %>
   No preset resources exist for this standard. Continue to the next page to add them.
   <% else %>
-<%= f.association :links, collection: Link.where(:user_id => 0).where(:standard_id => @ids), as: :check_boxes, :label_method => lambda { |link| "#{link.standard_id}: #{link.comment} #{link.link}" }, input_html: {:data => {:toggle => "checkbox"}}, label: false %>
-<% end %>
-</div><div class="col-md-1"></div>
-    </div>
 
+  
+  <%= f.association :links, collection: Link.where(:user_id => 0).where(:standard_id => standard.id), as: :check_boxes, :label_method => lambda { |link| "#{link.standard_id}: #{link.comment} #{link.link}" }, input_html: {:data => {:toggle => "checkbox"}}, label: false %>
+  
+  <% end %>
+  </div>
+  
+  </div>
+<% end %>
+  
+  </div>
   </div>
 
 
-  <div class="panel panel-default">
+
+
+    <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">Assessment Questions</h3>
   </div>
-  <div class="panel-body">
-    
-<div class="col-md-1"></div>
-  <div class="col-md-10">
-<% if Aquestion.where(:standard_id => @ids).empty? %>
-  No preset assessments exist for this standard. Continue to the next page to add them.
-  <% else %>
-<%= f.association :aquestions, collection: Aquestion.where(:user_id => 0).where(:standard_id => @ids), as: :check_boxes, :label_method => lambda { |aquestion| "#{aquestion.standard_id}: #{aquestion.content}" }, input_html: {:data => {:toggle => "checkbox"}}, label: false %>
-<% end %>
-</div><div class="col-md-1"></div>
-    </div>
+  <div class="panel-body table-content-links">
+  <% @select.standards.each do |standard| %>
+  <div class="row">
+  <div class="col-md-3"><%= standard.id %></div><div class="col-md-9"></div>
+  </div>
 
+  <div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-9">
+  <% if Aquestion.where(:standard_id => standard.id).empty? %>
+  No assessment questions exist for this standard. Continue to the next page to add them.
+  <% else %>
+
+  
+  <%= f.association :aquestions, collection: Aquestion.where(:user_id => 0).where(:standard_id => standard.id), as: :check_boxes, :label_method => lambda { |aquestion| "#{aquestion.content}"}, input_html: {:data => {:toggle => "checkbox"}}, label: false %>
+  
+  <% end %>
+  </div>
+  
+  </div>
+<% end %>
+  
+  </div>
   </div>
  
-<%= render 'accordion', :f => f %>
 <div class="row">
 <div class="col-md-2">Teaching on:
  <%= f.text_field :date, id: "selects_date", type: "text", class: "form-control" %></div>

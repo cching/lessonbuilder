@@ -10,26 +10,7 @@
     <div class="animated bounceInLeft">
     <%= f.input :name, input_html: {style: 'width:100%;'}, label: "Lesson name:", autofocus: true %>
     </div>
-    <div class="animated bounceInRight">
-    <%= f.input :description, as: :text, input_html: {style: 'width:100%; height:50px'}, label: "Description:" %>
-    </div>
-    <div class="animated bounceInLeft">
-    <%= f.input :objective, input_html: {style: 'width:100%; height:50px'}, label: "Objective:" %>
-    </div>
-   
-   <div class="row">
-   <div class="animated bounceInLeft">
-  <div class="col-md-2"><%= f.association :grades, label: "Grade(s):", as: :check_boxes, label_method: :number, input_html: {:data => {:toggle => "checkbox"}} %></div></div>
-  <div class="animated bounceInUp">
-  <div class="col-md-3"><%= f.association :subject, as: :radio_buttons, label_method: :name, label: "Reading Subject:", input_html: {:data => {:toggle => "radio"}} %></div></div>
-  <div class="animated bounceInUp">
-<div class="col-md-3"><%= f.association :subsubjects, label: "Subject(s):", as: :check_boxes, label_method: :name, input_html: {:data => {:toggle => "checkbox"}} %></div></div>
-<div class="animated bounceInRight">
-<div class="col-md-4"><%= f.association :sources, label: "Source(s):", as: :check_boxes, label_method: :name, input_html: {:data => {:toggle => "checkbox"}} %></div>
-</div></div>
-
-        
-    
+            
   <div class="form-actions animated fadeInUp" align="right">
 
  <button type="submit" class="btn btn-primary" data-loading-text="Saving..">Save and Continue</button>

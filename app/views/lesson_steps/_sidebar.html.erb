@@ -1,0 +1,32 @@
+<div class="list-group" id="lesson_sidebar">
+  <div class="list-group-item">Lesson Steps</div><br/>
+  <% if params[:id] == 'setup' %>
+  <%= link_to "Lesson Setup", '#', class: "list-group-item active" %>
+  <% else %>
+  <%= link_to "Lesson Setup", wizard_path(:setup), class: "list-group-item" %>
+  <% end %>
+
+  <% if params[:id] == 'text' %>
+  <%= link_to "Text", '#', class: "list-group-item active" %>
+  <% else %>
+  <%= link_to "Text", wizard_path(:text), class: "list-group-item" %>
+  <% end %>
+
+  <% if params[:id] == 'standards' %>
+  <%= link_to "Standards", '#', class: "list-group-item active" %>
+  <% else %>
+  <%= link_to "Standards", wizard_path(:standards), class: "list-group-item" %>
+  <% end %>
+
+  <% if params[:id] == 'standard_resources' %>
+  <%= link_to "Standard Resources", '#', class: "list-group-item active" %>
+  <% else %>
+  <%= link_to "Standard Resources", wizard_path(:standard_resources), class: "list-group-item" %>
+  <% end %>
+
+  <% if params[:id] == 'note_resources' %>
+  <%= link_to "Lesson Notes", '#', class: "list-group-item active" %>
+  <% else %>
+  <%= link_to "Lesson Notes", wizard_path(:note_resources), class: "list-group-item" %>
+  <% end %>
+</div>

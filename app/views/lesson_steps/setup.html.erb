@@ -1,0 +1,36 @@
+<% if signed_in? %>
+
+<div class="row">
+	<div class="col-md-2">
+	<div class="animated fadeInLeftBig">
+	<%= render 'sidebar' %>
+	</div>
+	</div>
+
+	<div class="col-md-10">
+
+
+<div class="animated fadeInDown">
+<div class="panel panel-warning" id="lesson-setup">Lesson Setup</div>
+<div class="progress" id="lesson-setup">
+  <div class="progress-bar" style="width: 0%;"></div>
+</div>
+</div>
+
+
+<%= render 'setup' %>
+
+</div>
+</div>
+
+	
+	<% else %>
+	<center>Please sign in before continuing.<br /><%= link_to "Sign in", signin_path, class: "btn btn-link" %>
+		<% end %>
+
+
+<script>
+	$('button[data-loading-text]').click(function () {
+    $(this).button('loading');
+});
+</script>

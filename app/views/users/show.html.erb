@@ -35,7 +35,7 @@
 
 
 
-<% if current_user.admin? && current_user?(@user) %>
+<% if current_user.try(:admin) %>
 <strong>Administrator Settings</strong><br />
 
 <table>

@@ -197,7 +197,7 @@
   <% else %>
 
   
-  <%= f.association :aquestions, collection: Aquestion.where(:user_id => 0).where(:standard_id => standard.id), as: :check_boxes, :label_method => lambda { |aquestion| "#{aquestion.content}"}, input_html: {:data => {:toggle => "checkbox"}}, label: false %>
+  <%= f.association :aquestions, collection: Aquestion.where(:standard_id => standard.id), as: :check_boxes, :label_method => lambda { |aquestion| "#{aquestion.content}"}, input_html: {:data => {:toggle => "checkbox"}}, label: false %>
   
   <% end %>
   </div>

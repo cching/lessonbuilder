@@ -24,6 +24,7 @@ gem 'turbolinks'
 gem 'bootstrap-will_paginate'
 gem 'nprogress-rails'
 gem 'devise'
+gem "ckeditor"
 
 group :development, :test do
   gem 'rspec-rails', '2.11.0'

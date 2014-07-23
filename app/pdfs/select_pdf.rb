@@ -3,11 +3,12 @@ class SelectPdf < Prawn::Document
     super(top_margin: 70)
     @select = select
     text "#{@select.name}", :align => :center, :style => :bold
-
+    if @select.book.try(:title) != nil 
     move_down 10
     text "Close Reading of", :align => :center
+    
     text "#{@select.book.title}", :align => :center, :style => :italic
-
+    end
     move_down 10
     text "Description: #{@select.description}", :align => :center
 
@@ -57,7 +58,11 @@ if SelectLink.where(:select_id => @select.id).any?
     aquestion_table_content
   else
   end
+
+  move_down 20
+  header_table_content
   end
+
 
  
   def standard_table_content
@@ -66,8 +71,8 @@ if SelectLink.where(:select_id => @select.id).any?
 
     	]) do 
       row(0).font_style = :bold
+      row(0).background_color = '82b3e7'
       self.header = true
-      self.row_colors = ['DDDDDD', 'FFFFFF']
     end
   end
 
@@ -77,7 +82,7 @@ if SelectLink.where(:select_id => @select.id).any?
     	]) do 
       row(0).font_style = :bold
       self.header = true
-      self.row_colors = ['DDDDDD', 'FFFFFF']
+      row(0).background_color = '82b3e7'
   end
 end
 
@@ -87,7 +92,7 @@ end
     	]) do 
       row(0).font_style = :bold
       self.header = true
-      self.row_colors = ['DDDDDD', 'FFFFFF']
+      row(0).background_color = '82b3e7'
   end
 
 
@@ -99,7 +104,7 @@ end
     	]) do 
       row(0).font_style = :bold
       self.header = true
-      self.row_colors = ['DDDDDD', 'FFFFFF']
+      row(0).background_color = '82b3e7'
   end
 
 
@@ -111,7 +116,7 @@ end
     	]) do 
       row(0).font_style = :bold
       self.header = true
-      self.row_colors = ['DDDDDD', 'FFFFFF']
+      row(0).background_color = '82b3e7'
   end
 
 
@@ -123,7 +128,7 @@ end
     	]) do 
       row(0).font_style = :bold
       self.header = true
-      self.row_colors = ['DDDDDD', 'FFFFFF']
+      row(0).background_color = '82b3e7'
   end
 
 
@@ -135,10 +140,21 @@ end
     	]) do 
       row(0).font_style = :bold
       self.header = true
-      self.row_colors = ['DDDDDD', 'FFFFFF']
+      row(0).background_color = '82b3e7'
   end
+end
 
-
+  def header_table_content
+    @select.headers.map do |header|
+    table([[header.title],
+        [header.content]
+      ]) do 
+      row(0).font_style = :bold
+      self.header = true
+      row(0).background_color = '82b3e7'
+  end
+  move_down 5
+end
   end
 
   def standards
@@ -186,5 +202,7 @@ def aquestions
   		[aquestion.aquestion.standard_id, aquestion.content]
   	end
   end
+
+
 
 end

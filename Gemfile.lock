@@ -55,6 +55,9 @@ GEM
     bootstrap-will_paginate (0.0.10)
       will_paginate
     builder (3.0.4)
+    ckeditor (4.1.0)
+      mime-types
+      orm_adapter (~> 0.5.0)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.4)
@@ -234,6 +237,7 @@ DEPENDENCIES
   bcrypt-ruby (= 3.0.1)
   best_in_place
   bootstrap-will_paginate
+  ckeditor
   coffee-rails (~> 3.2.1)
   default_value_for
   devise

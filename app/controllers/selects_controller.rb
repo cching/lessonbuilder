@@ -115,9 +115,18 @@ class SelectsController < ApplicationController
 
   def create
     @select = current_user.selects.build(params[:select])
-
+    @plan = Plan.where(:district_id => current_user.district_id).last
+    @resource = LessonResource.new
   if @select.save
-    
+    @plan.headers.where(:initiate => false).each do |header|
+    header2 = header.dup
+    header2.plan_id = 0
+    header2.select_id = @select.id
+    header2.initiate = true
+    header2.save
+    @resource.select_id = @select.id
+    @resource.save
+    end
         redirect_to lesson_steps_path(:select_id => @select.id)
 
   else

@@ -1,4 +1,7 @@
 $('#panel').addClass('animated bounceOutLeft');
+     if ($('#standards').hasClass('animated bounceInRight')) {
+        $('#standards').removeClass('animated bounceInRight');
+     } 
 
 setTimeout(function() {
 	$('#panel').removeClass('animated bounceOutLeft');
@@ -6,13 +9,15 @@ setTimeout(function() {
 
     if ($('#sidebar').is(':hidden')) {
         $('#sidebar').show();
-     } 
-
-
+     }
+     
 	$('#sidebar').addClass('animated bounceInLeft');
 	$('#sidebar').html("<%= escape_javascript(render :partial  => "standard_list", :locals   => {:grade => @grade, :subject => @subject}) %>" );
+	$('#standards').addClass('animated bounceInRight');
+	$('#standards').html("<%= escape_javascript(render :partial  => "standard_content", :locals   => {:grade => @grade, :subject => @subject}) %>" );
 
-
-
+if ($('#standards').is(':hidden')) {
+        $('#standards').show();
+     }
 }, 600);
 

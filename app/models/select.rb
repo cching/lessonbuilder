@@ -1,11 +1,12 @@
 class Select < ActiveRecord::Base
   #default value to prevent nil object
-    default_value_for :date do
+  default_value_for :date do
     Date.today
   end
 
+
   #Selects is the lesson model but is named 'select' for the ActiveRecord join association
-  attr_accessible :user_id, :standard_ids, :textdependent, :name, :grade_ids, :text_id, :date, :vocabulary, :writing, :conclusion, :objective, :notes, :description, :book, :subject_id, :subsubject_ids, :private, :question_ids, :select_ids, :strategy_ids, :skill_ids, :vocab_ids, :link_ids, :book_id, :cquestions_attributes, :cvocabs_attributes, :cskills_attributes, :cstrategies_attributes, :clinks_attributes, :caquestions_attributes, :source_ids, :aquestion_ids, :headers_attributes, :starts_at, :ends_at, :status
+  attr_accessible :user_id, :standard_ids, :textdependent, :name, :grade_ids, :text_id, :date, :vocabulary, :writing, :conclusion, :objective, :notes, :description, :book, :subject_id, :subsubject_ids, :private, :question_ids, :select_ids, :strategy_ids, :skill_ids, :vocab_ids, :link_ids, :book_id, :cquestions_attributes, :cvocabs_attributes, :lesson_resources_attributes, :cskills_attributes, :cstrategies_attributes, :clinks_attributes, :caquestions_attributes, :source_ids, :aquestion_ids, :headers_attributes, :starts_at, :ends_at, :status
   belongs_to :user
   belongs_to :subject
   
@@ -42,11 +43,10 @@ class Select < ActiveRecord::Base
 
   has_many :select_sources
   has_many :sources, through: :select_sources
-  validates :name, :description, :objective, :grades, :sources, :presence => true, :if => :active?
-
   has_many :headers
   accepts_nested_attributes_for :headers, allow_destroy: true
-
+  has_many :lesson_resources
+  accepts_nested_attributes_for :lesson_resources, allow_destroy: true
 
 #custom user input fields
   has_many :cquestions, :dependent => :destroy
@@ -88,8 +88,30 @@ class Select < ActiveRecord::Base
     Time.at(date_time.to_i).to_formatted_s(:db)
   end
 
+
+  validates :name, :objective, :description, :grades, :sources, :presence => true, :if => :active_or_setup?
   def active?
     status == 'active'
+  end
+
+  def active_or_setup?
+    (status || '').include?('setup') || active?
+  end
+
+  def active_or_text?
+    (status || '').include?('text') || active?
+  end
+
+  def active_or_standards?
+    (status || '').include?('standards') || active?
+  end
+
+  def active_or_standard_resources?
+    (status || '').include?('standard_resources') || active?
+  end
+
+  def active_or_note_resources?
+    (status || '').include?('note_resources') || active?
   end
 
 end

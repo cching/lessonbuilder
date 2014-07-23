@@ -172,6 +172,14 @@ color: #FFF;
 	background-color: #4391ff !important;
 	color: #FFF;
 	}
+	.disabled.list-group-item {
+	background-color: #ffb143 !important;
+	color: #FFF;
+	}
+	.disabled.list-group-item:hover {
+	background-color: #ffb143 !important;
+	color: #FFF;
+	}
 	.active {
 	background-color: #4391ff !important;
 	color: #FFF;
@@ -186,7 +194,14 @@ color: #FFF;
 	}
 }
 
-	#new.list-group-item {
-	background-color: #4391ff;
+
+#notes.panel-warning {
+	background-color: #82b3e7;
 	color: #FFF;
-	}
+	padding-bottom: 0px;
+	border-color: #82b3e7;
+	font-size: 25px;
+	text-align: center;
+}
+
+

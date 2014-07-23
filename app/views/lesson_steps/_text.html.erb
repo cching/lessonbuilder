@@ -1,11 +1,11 @@
-<%= form_for @select, :url => wizard_path(step, select_id: @select.id), :method => :put do |f| %>
+<%= simple_form_for @select, :url => wizard_path(step, select_id: @select.id), :method => :put do |f| %>
 
  <div class="animated fadeInDown">
 <div class="panel panel-warning" id="select-text">Select a Text</div>
 </div>
 <div class="animated fadeInLeft">
 <div class="progress" id="lesson-setup">
-  <div class="progress-bar" style="width: 33%;"></div>
+  <div class="progress-bar" style="width: 25%;"></div>
 
 </div>
 

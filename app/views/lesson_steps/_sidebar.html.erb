@@ -1,32 +1,80 @@
 <div class="list-group" id="lesson_sidebar">
   <div class="list-group-item">Lesson Steps</div><br/>
-  <% if params[:id] == 'setup' %>
-  <%= link_to "Lesson Setup", '#', class: "list-group-item active" %>
-  <% else %>
-  <%= link_to "Lesson Setup", wizard_path(:setup), class: "list-group-item" %>
-  <% end %>
 
-  <% if params[:id] == 'text' %>
-  <%= link_to "Text", '#', class: "list-group-item active" %>
-  <% else %>
-  <%= link_to "Text", wizard_path(:text), class: "list-group-item" %>
-  <% end %>
+  <% if @select.status == 'active' %>
+    <% if params[:id] == 'setup' %>
+    <%= link_to "Lesson Setup", '#', class: "list-group-item active" %>
+    <% else %>
+    <%= link_to "Lesson Setup", wizard_path(:setup), class: "list-group-item" %>
+    <% end %>
 
-  <% if params[:id] == 'standards' %>
-  <%= link_to "Standards", '#', class: "list-group-item active" %>
-  <% else %>
-  <%= link_to "Standards", wizard_path(:standards), class: "list-group-item" %>
-  <% end %>
+    <% if params[:id] == 'text' %>
+    <%= link_to "Text", '#', class: "list-group-item active" %>
+    <% else %>
+    <%= link_to "Text", wizard_path(:text), class: "list-group-item" %>
+    <% end %>
 
-  <% if params[:id] == 'standard_resources' %>
-  <%= link_to "Standard Resources", '#', class: "list-group-item active" %>
-  <% else %>
-  <%= link_to "Standard Resources", wizard_path(:standard_resources), class: "list-group-item" %>
-  <% end %>
+    <% if params[:id] == 'standards' %>
+    <%= link_to "Standards", '#', class: "list-group-item active" %>
+    <% else %>
+    <%= link_to "Standards", wizard_path(:standards), class: "list-group-item" %>
+    <% end %>
 
-  <% if params[:id] == 'note_resources' %>
-  <%= link_to "Lesson Notes", '#', class: "list-group-item active" %>
-  <% else %>
-  <%= link_to "Lesson Notes", wizard_path(:note_resources), class: "list-group-item" %>
+    <% if params[:id] == 'standard_resources' %>
+    <%= link_to "Standard Resources", '#', class: "list-group-item active" %>
+    <% else %>
+    <%= link_to "Standard Resources", wizard_path(:standard_resources), class: "list-group-item" %>
+    <% end %>
+
+    <% if params[:id] == 'note_resources' %>
+    <%= link_to "Lesson Notes", '#', class: "list-group-item active" %>
+    <% else %>
+    <%= link_to "Lesson Notes", wizard_path(:note_resources), class: "list-group-item" %>
+    <% end %>  
+
+  <% elsif @select.status == 'setup' || @select.status == 'text' || @select.status == 'standards' || @select.status == 'standard_resources' || @select.status == 'note_resources' %>
+    <% if params[:id] == 'setup' %>
+    <%= link_to "Lesson Setup", '#', class: "list-group-item active" %>
+    <% else %>
+    <%= link_to "Lesson Setup", wizard_path(:setup), class: "list-group-item" %>
+    <% end %>
+
+    <% if params[:id] == 'text' %>
+    <%= link_to "Text", '#', class: "list-group-item active" %>
+    <% else %>
+    <%= link_to "Text", wizard_path(:text), class: "list-group-item" %>
+    <% end %>
+
+    <% if params[:id] == 'standards' %>
+    <%= link_to "Standards", '#', class: "list-group-item active" %>
+    <% else %>
+    <%= link_to "Standards", wizard_path(:standards), class: "list-group-item" %>
+    <% end %>
+
+    <% if params[:id] == 'standard_resources' %>
+    <%= link_to "Standard Resources", '#', class: "list-group-item active" %>
+    <% else %>
+    <%= link_to "Standard Resources", wizard_path(:standard_resources), class: "list-group-item" %>
+    <% end %>
+
+    <% if params[:id] == 'note_resources' %>
+    <%= link_to "Lesson Notes", '#', class: "list-group-item active" %>
+    <% else %>
+    <%= link_to "Lesson Notes", wizard_path(:note_resources), class: "list-group-item" %>
+    <% end %>  
+
+    <% else %>
+      <% if params[:id] == 'setup' %>
+      <%= link_to "Lesson Setup", wizard_path(:setup), class: "list-group-item active" %>
+      <%= link_to "Text", '#', class: "list-group-item disabled" %>
+      <%= link_to "Standards", '#', class: "list-group-item disabled" %>
+      <%= link_to "Standard Resources", '#', class: "list-group-item disabled" %>
+      <%= link_to "Lesson Notes", '#', class: "list-group-item disabled" %>
+      <% end %>
   <% end %>
-</div>
+  </div>
+  <br/>
+
+  <%= link_to "Lesson Resources", edit_select_lesson_resource_path(:select_id => @select.id), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', 'class' => 'list-group-item', 'id' => 'resources'}  %>
+
+

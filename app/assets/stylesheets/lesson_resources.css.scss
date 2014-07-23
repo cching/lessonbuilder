@@ -1,0 +1,22 @@
+// Place all the styles related to the LessonResources controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.tab-content {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    padding: 10px;
+}
+
+.nav-tabs {
+    margin-bottom: 0;
+}
+
+#resources.list-group-item {
+	background-color: #b19cd9;
+	color: #fff;
+}
+
+#resources.list-group-item:hover {
+	background-color: #9cd9b1;
+}

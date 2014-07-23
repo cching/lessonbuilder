@@ -48,6 +48,12 @@ class BooksController < ApplicationController
     end
   end
 
+  def show_sources
+    respond_to do |format|
+      format.js
+    end
+  end
+
   # GET /books/new
   # GET /books/new.json
   def new

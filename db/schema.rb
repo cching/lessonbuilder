@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140721035139) do
+ActiveRecord::Schema.define(:version => 20140723062310) do
 
   create_table "admin_notes", :force => true do |t|
     t.string   "resource_id",     :null => false
@@ -67,6 +67,8 @@ ActiveRecord::Schema.define(:version => 20140721035139) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "book_grades", ["book_id", "grade_id"], :name => "index_book_grades_on_book_id_and_grade_id"
+
   create_table "books", :force => true do |t|
     t.string   "author"
     t.text     "publisher"
@@ -86,12 +88,16 @@ ActiveRecord::Schema.define(:version => 20140721035139) do
     t.text     "comments",           :default => ""
   end
 
+  add_index "books", ["textcategory_id"], :name => "index_books_on_textcategory_id"
+
   create_table "booksources", :force => true do |t|
     t.integer  "book_id"
     t.integer  "source_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "booksources", ["source_id", "book_id"], :name => "index_booksources_on_source_id_and_book_id"
 
   create_table "caquestions", :force => true do |t|
     t.integer  "standard_id"
@@ -100,6 +106,22 @@ ActiveRecord::Schema.define(:version => 20140721035139) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "ckeditor_assets", :force => true do |t|
+    t.string   "data_file_name",                  :null => false
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.integer  "assetable_id"
+    t.string   "assetable_type",    :limit => 30
+    t.string   "type",              :limit => 30
+    t.integer  "width"
+    t.integer  "height"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
+
+  add_index "ckeditor_assets", ["assetable_type", "assetable_id"], :name => "idx_ckeditor_assetable"
+  add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_ckeditor_assetable_type"
 
   create_table "clinks", :force => true do |t|
     t.integer  "select_id"
@@ -174,6 +196,8 @@ ActiveRecord::Schema.define(:version => 20140721035139) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "plan_id"
+    t.integer  "select_id"
+    t.boolean  "initiate"
   end
 
   create_table "i_cans", :force => true do |t|
@@ -181,6 +205,18 @@ ActiveRecord::Schema.define(:version => 20140721035139) do
     t.text     "content"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "lesson_resources", :force => true do |t|
+    t.integer  "select_id"
+    t.text     "book"
+    t.text     "notes"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
   end
 
   create_table "lessonplans", :force => true do |t|
@@ -271,6 +307,12 @@ ActiveRecord::Schema.define(:version => 20140721035139) do
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
     t.boolean  "initiate",   :default => false
+  end
+
+  create_table "select_plans", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "select_questions", :force => true do |t|

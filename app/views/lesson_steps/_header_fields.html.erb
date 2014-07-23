@@ -1,0 +1,19 @@
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title" id="head_notes">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse_<%= header.id %>">
+          <%= f.input :title, label: false %>
+        </a>
+      </h4>
+    </div>
+    <% if index == 0 %>
+    <div id="collapse_<%= header.id %>" class="panel-collapse collapse in">
+    <% else %>
+    <div id="collapse_<%= header.id %>" class="panel-collapse collapse">
+    <% end %>
+      <div class="panel-body">
+        <%= f.input :content, label: false, :input_html => { :cols => 5, :rows => 10 } %><%= f.options[:child_index] %>
+      </div>
+    </div>
+  </div>
+

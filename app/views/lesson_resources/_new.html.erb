@@ -1,0 +1,46 @@
+<%= simple_form_for([@select,@resource], :remote => true) do |f| %>
+<div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Lesson Resources</h4>
+      </div>
+      <div class="modal-body">
+
+<div class="dropdown">
+
+<ul class="nav nav-tabs" role="tablist">
+  <li class="active"><a href="#home" role="tab" data-toggle="tab" id="book"><%= @select.book.try(:title) %> Notes</a></li>
+  <li><a href="#profile" role="tab" data-toggle="tab" id="notes">Lesson Notes</a></li>
+  <li><a href="#messages" role="tab" data-toggle="tab" id="attachment">File Attachments</a></li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane active fade in" id="home"><br/>
+    <% if @select.try(:book) != nil %>
+  <%= f.input :book, as: :ckeditor, label: false, input_html: {style: 'width:100%; height:500px'} %>
+  <% else %>
+  Please select a text for your lesson before continuing.
+<% end %>
+  </div>
+  <div class="tab-pane fade in" id="profile"><br/>
+
+  <%= f.input :notes, as: :ckeditor, label: false, input_html: {style: 'width:100%; height:500px'} %>
+
+  </div>
+  <div class="tab-pane fade in" id="messages"><br/><%= f.input :attachment, label: false %></div>
+
+</div>
+
+
+      </div>
+      <div class="form-actions">
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>   
+      </div>   
+
+    </div>
+  </div><% end %>

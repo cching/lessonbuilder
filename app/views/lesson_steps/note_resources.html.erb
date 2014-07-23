@@ -1,12 +1,36 @@
+
 <div class="row">
 	<div class="col-md-2">
 	<%= render 'sidebar' %>
 	</div>
 
 	<div class="col-md-10">
-<div id="standard-attributes" class="animated fadeInRightBig">
-<%= render 'note_resources' %>
+
+
+	<div class="animated fadeInDown">
+<div class="panel panel-warning" id="notes">Lesson Notes</div>
 </div>
 
+<div class="progress animated fadeInLeft" id="lesson-setup">
+  <div class="progress-bar" style="width: 25%;"></div>
+  <div class="progress-bar progress-bar-warning" id="lesson-setup" style="width: 25%;"></div>
+  <div class="progress-bar progress-bar-info" id="edit" style="width: 25%;"></div>
+  <div class="progress-bar progress-bar" style="width: 25%;"></div>
+</div>
+<div id="standard-attributes" class="animated fadeInRightBig">
+<div class="panel-group" id="accordion">
+ <%= simple_form_for @select do |f| %>
+ <% @select.headers.each.with_index do |header, index| %>
+  <%= f.fields_for :headers, header do |builder| %>
+  
+  <%= render 'header_fields', f: builder, header: header, index: index %>
+ <% end %>
+ <% end %><br/>
+ <div align="right">
+ <%= f.submit "Save Lesson", class: "btn btn-primary" %></div>
+  <% end %>
+</div>
+
+</div>
 </div>
 </div>

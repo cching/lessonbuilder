@@ -1,4 +1,10 @@
 Commoncore::Application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
+
+  mount Ckeditor::Engine => "/ckeditor"
+  resources :lesson_resources
+
+
   devise_for :users, :path => '', :path_names => { :sign_up => "register", :sign_in => 'login', :sign_out => 'logout' }
 
   resources :headers
@@ -42,6 +48,7 @@ Commoncore::Application.routes.draw do
 
   resources :books do 
     collection do
+      get :show_sources
       get :show2
       get :hide
     end
@@ -85,6 +92,7 @@ Commoncore::Application.routes.draw do
     resources :cstrategies
     resources :clinks
     resources :caquestions
+    resources :lesson_resources
   end
   
   resources :cquestions

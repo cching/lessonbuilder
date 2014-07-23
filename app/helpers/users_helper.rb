@@ -47,4 +47,11 @@ module UsersHelper
     end
   end
 
+  def lesson_name
+    :select
+  end
+
+  def lesson
+    @lesson ||= Select.new
+  end
 end

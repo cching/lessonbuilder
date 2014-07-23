@@ -6,7 +6,7 @@
 
 <center>
 <div class="animated fadeInRightBig">
-<% unless @select.book.title.empty? %>
+<% unless @select.try(:book) == nil %>
 
 	<h4>Close Reading of <i><%= @select.book.title %></i>
 	</h4>
@@ -21,7 +21,7 @@
 
 	<h4>Teaching Date: <%= @select.date.to_time.strftime('%B %e, %Y') %>
 	</h4>
-	<br />
+	
 </div>
 </center>
 

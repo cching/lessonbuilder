@@ -3,11 +3,11 @@ $('#sidebar').addClass('animated bounceOutLeft');
 
 setTimeout(function() {
 	$('#standard').addClass('animated bounceOutRight');
+	$('#standards').addClass('animated bounceOutRight');
 }, 200);
 
 setTimeout(function() {
 	$('#sidebar').removeClass('animated bounceOutLeft');
-
     $('#sidebar').hide();
 }, 700);
 
@@ -15,5 +15,6 @@ setTimeout(function() {
 setTimeout(function() {
 	$('#panel').show();
 	$('#panel').addClass('animated bounceInLeft')
-
+	$('#standards').removeClass('animated bounceOutRight');
+	$('#standards').hide();
 }, 700);

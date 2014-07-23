@@ -24,8 +24,7 @@ class LessonStepsController < ApplicationController
     if (@select.book.try(:title) != nil) && (@resource.try(:book) == nil)
       @resource.book = @select.book.example
       @resource.save
-    
-  end
+    end
 
 
     @select.update_attributes(params[:select])

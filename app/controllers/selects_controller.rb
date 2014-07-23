@@ -117,7 +117,7 @@ class SelectsController < ApplicationController
     @select = current_user.selects.build(params[:select])
     @plan = Plan.where(:district_id => current_user.district_id).last
     @resource = LessonResource.new
-  if @select.save
+    if @select.save
     @plan.headers.where(:initiate => false).each do |header|
     header2 = header.dup
     header2.plan_id = 0

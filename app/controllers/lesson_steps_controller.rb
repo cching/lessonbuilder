@@ -14,15 +14,14 @@ class LessonStepsController < ApplicationController
 
   def update
     @select = Select.find(params[:select_id])
-
+    @resource = LessonResource.where(:select_id => @select.id).first
     if params[:select]
     params[:select][:status] = step.to_s
     end
     
     params[:select][:status] = 'active' if step == steps.last
-    @resource = LessonResource.where(:select_id => @select.id).first
+    
     if (@select.book.try(:title) != nil) && (@resource.try(:book) == nil)
-      @resource = LessonResource.where(:select_id => @select.id).first
       @resource.book = @select.book.example
       @resource.save
     

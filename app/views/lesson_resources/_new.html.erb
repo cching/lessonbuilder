@@ -1,5 +1,5 @@
 <%= simple_form_for([@select,@resource], :remote => true) do |f| %>
-<div class="modal-dialog">
+<div class="modal-dialog" id="lesson_resources">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -19,7 +19,7 @@
 <div class="tab-content">
   <div class="tab-pane active fade in" id="home"><br/>
     <% if @select.try(:book) != nil %>
-  <%= f.input :book, as: :ckeditor, label: false, input_html: {style: 'width:100%; height:500px', :ckeditor => {:toolbar => 'mini', :uiColor => '#82b3e7'}} %>
+  <%= f.input :book, as: :text %>
   <% else %>
   Please select a text for your lesson before continuing.
 <% end %>

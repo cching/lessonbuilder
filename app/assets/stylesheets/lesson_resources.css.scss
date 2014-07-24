@@ -20,3 +20,17 @@
 #resources.list-group-item:hover {
 	background-color: #9cd9b1;
 }
+
+#lesson_resources.modal-dialog {
+  width: 80%;
+}
+
+#lesson_resources.modal-body {
+  overflow-y: auto;
+}
+
+.nav-tabs active {
+	
+		background-color: #000;
+
+}

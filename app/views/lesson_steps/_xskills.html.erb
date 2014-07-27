@@ -1,0 +1,8 @@
+<% if Xskill.where(:standard_id => standard.id).empty? %>
+  No preset skills exist for this standard. Continue to the next page to add them.
+  <% else %>
+
+  
+  <%= f.association :xskills, collection: Xskill.where(:standard_id => standard.id), as: :check_boxes, :label_method => lambda { |skill| "#{skill.content}" }, input_html: {:data => {:toggle => "checkbox"}}, label: false %>
+  
+  <% end %>

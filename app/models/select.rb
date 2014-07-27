@@ -6,7 +6,7 @@ class Select < ActiveRecord::Base
 
 
   #Selects is the lesson model but is named 'select' for the ActiveRecord join association
-  attr_accessible :user_id, :standard_ids, :textdependent, :name, :grade_ids, :text_id, :date, :vocabulary, :writing, :conclusion, :objective, :notes, :description, :book, :subject_id, :subsubject_ids, :private, :question_ids, :select_ids, :strategy_ids, :skill_ids, :vocab_ids, :link_ids, :book_id, :cquestions_attributes, :cvocabs_attributes, :lesson_resources_attributes, :cskills_attributes, :cstrategies_attributes, :clinks_attributes, :caquestions_attributes, :source_ids, :aquestion_ids, :headers_attributes, :starts_at, :ends_at, :status
+  attr_accessible :user_id, :standard_ids, :textdependent, :name, :grade_ids, :text_id, :date, :vocabulary, :writing, :conclusion, :objective, :notes, :description, :book, :subject_id, :subsubject_ids, :private, :xquestion_ids, :select_ids, :xstrategy_ids, :xskill_ids, :xvocab_ids, :xlink_ids, :book_id, :cquestions_attributes, :cvocabs_attributes, :lesson_resources_attributes, :cskills_attributes, :cstrategies_attributes, :clinks_attributes, :caquestions_attributes, :source_ids, :aquestion_ids, :headers_attributes, :starts_at, :ends_at, :status, :xquestions_attributes
   belongs_to :user
   belongs_to :subject
   
@@ -15,22 +15,27 @@ class Select < ActiveRecord::Base
   has_many :standards, through: :selections
   
   has_many :select_questions, :dependent => :destroy
-  has_many :questions, through: :select_questions
+  has_many :xquestions, through: :select_questions
+  has_many :questions
   
   has_many :select_skills, :dependent => :destroy
-  has_many :skills, through: :select_skills
+  has_many :xskills, through: :select_skills
+  has_many :skills
   
   has_many :select_strategies, :dependent => :destroy
-  has_many :strategies, through: :select_strategies
+  has_many :xstrategies, through: :select_strategies
+  has_many :strategies
   
   has_many :select_vocabs, :dependent => :destroy
-  has_many :vocabs, through: :select_vocabs
+  has_many :xvocabs, through: :select_vocabs
+  has_many :vocabs
   
   has_many :select_aquestions, :dependent => :destroy
   has_many :aquestions, through: :select_aquestions
 
   has_many :select_links, :dependent => :destroy
-  has_many :links, through: :select_links
+  has_many :xlinks, through: :select_links
+  has_many :links
 
   has_many :select_subjects, :dependent => :destroy
   has_many :subsubjects, through: :select_subjects
@@ -61,6 +66,7 @@ class Select < ActiveRecord::Base
   accepts_nested_attributes_for :cstrategies, allow_destroy: true
   accepts_nested_attributes_for :clinks, allow_destroy: true
   accepts_nested_attributes_for :caquestions, allow_destroy: true
+  accepts_nested_attributes_for :xquestions, allow_destroy: true
 
     scope :between, lambda {|start_time, end_time|
     {:conditions => [
@@ -89,7 +95,7 @@ class Select < ActiveRecord::Base
   end
 
 
-  validates :name, :objective, :description, :grades, :sources, :presence => true, :if => :active_or_setup?
+  validates :name, :grades, :sources, :presence => true, :if => :active_or_setup?
   def active?
     status == 'active'
   end

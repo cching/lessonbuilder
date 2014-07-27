@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140723062310) do
+ActiveRecord::Schema.define(:version => 20140727072500) do
 
   create_table "admin_notes", :force => true do |t|
     t.string   "resource_id",     :null => false
@@ -301,7 +301,7 @@ ActiveRecord::Schema.define(:version => 20140723062310) do
 
   create_table "select_links", :force => true do |t|
     t.integer  "select_id"
-    t.integer  "link_id"
+    t.integer  "xlink_id"
     t.text     "comment"
     t.text     "link"
     t.datetime "created_at",                    :null => false
@@ -317,16 +317,16 @@ ActiveRecord::Schema.define(:version => 20140723062310) do
 
   create_table "select_questions", :force => true do |t|
     t.integer  "select_id"
-    t.integer  "question_id"
+    t.integer  "xquestion_id"
     t.string   "content"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
-    t.boolean  "initiate",    :default => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.boolean  "initiate",     :default => false
   end
 
   create_table "select_skills", :force => true do |t|
     t.integer  "select_id"
-    t.integer  "skill_id"
+    t.integer  "xskill_id"
     t.string   "content"
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
@@ -349,11 +349,11 @@ ActiveRecord::Schema.define(:version => 20140723062310) do
 
   create_table "select_strategies", :force => true do |t|
     t.integer  "select_id"
-    t.integer  "strategy_id"
+    t.integer  "xstrategy_id"
     t.string   "content"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
-    t.boolean  "initiates",   :default => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.boolean  "initiates",    :default => false
   end
 
   create_table "select_subjects", :force => true do |t|
@@ -365,7 +365,7 @@ ActiveRecord::Schema.define(:version => 20140723062310) do
 
   create_table "select_vocabs", :force => true do |t|
     t.integer  "select_id"
-    t.integer  "vocab_id"
+    t.integer  "xvocab_id"
     t.string   "content_english"
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
@@ -377,6 +377,7 @@ ActiveRecord::Schema.define(:version => 20140723062310) do
     t.integer  "select_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.boolean  "initiate"
   end
 
   create_table "selects", :force => true do |t|
@@ -491,6 +492,43 @@ ActiveRecord::Schema.define(:version => 20140723062310) do
     t.string  "content_spanish"
     t.integer "user_id",         :default => 0
     t.boolean "duplicate",       :default => false
+  end
+
+  create_table "xlinks", :force => true do |t|
+    t.text     "comment"
+    t.text     "link"
+    t.integer  "standard_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "xquestions", :force => true do |t|
+    t.string   "content"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "standard_id"
+  end
+
+  create_table "xskills", :force => true do |t|
+    t.text     "content"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "standard_id"
+  end
+
+  create_table "xstrategies", :force => true do |t|
+    t.text     "content"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "standard_id"
+  end
+
+  create_table "xvocabs", :force => true do |t|
+    t.string   "content_english"
+    t.string   "content_spanish"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.string   "standard_id"
   end
 
 end

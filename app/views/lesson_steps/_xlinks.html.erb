@@ -1,0 +1,8 @@
+<% if Xlink.where(:standard_id => standard.id).empty? %>
+  No preset resources exist for this standard. Continue to the next page to add them.
+  <% else %>
+
+  
+  <%= f.association :xlinks, collection: Xlink.where(:standard_id => standard.id), as: :check_boxes, :label_method => lambda { |link| "#{link.comment} #{link.link}" }, input_html: {:data => {:toggle => "checkbox"}}, label: false %>
+  
+  <% end %>

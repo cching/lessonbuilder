@@ -111,6 +111,10 @@ class SelectsController < ApplicationController
     @select = Select.find(params[:id])
     @standards = @select.standards.all
     @ids = @standards.map{|standard| standard.id}
+    @xquestions = Xquestion.where(:standard_id => @ids).all
+    respond_to do |format|
+      format.js
+    end
   end
 
   def create
@@ -127,7 +131,7 @@ class SelectsController < ApplicationController
     @resource.select_id = @select.id
     @resource.save
     end
-        redirect_to lesson_steps_path(:select_id => @select.id)
+    redirect_to lesson_steps_path(:select_id => @select.id)
 
   else
     render :new
@@ -141,100 +145,8 @@ class SelectsController < ApplicationController
 
       if @select.update_attributes(params[:select])
         format.json { respond_with_bip(@select) }
-
-        if @select.vocabulary.blank?
-                  vocab = @select.vocabs.pluck(:content_english)
-
-          @select.vocabulary = vocab
-          @select.save
-
-        else
-          @select.vocabulary = @select.vocabulary
-      end
-
-
-        @select.questions.each do |question|
-          @select.select_questions.where(:question_id => question.id).each do |squestion|
-            if squestion.initiate?
-                          squestion.content = squestion.content
-
-          else
-            squestion.content = question.content
-            squestion.initiate = TRUE
-            squestion.save
-          end
-
-        end
-      end
-
-              @select.aquestions.each do |aquestion|
-          @select.select_aquestions.where(:aquestion_id => aquestion.id).each do |saquestion|
-            if saquestion.initiate?
-                          saquestion.content = saquestion.content
-
-          else
-            saquestion.content = aquestion.content
-            saquestion.initiate = TRUE
-            saquestion.save
-          end
-
-        end
-      end
-
-              @select.skills.each do |skill|
-          @select.select_skills.where(:skill_id => skill.id).each do |sskill|
-            if sskill.initiate?
-                          sskill.content = sskill.content
-
-          else
-            sskill.initiate = TRUE
-            sskill.content = skill.content
-            sskill.save
-          end
-        end
-      end
-
-      @select.strategies.each do |strategy|
-          @select.select_strategies.where(:strategy_id => strategy.id).each do |sstrategy|
-            if sstrategy.initiates?
-              sstrategy.content = sstrategy.content
-            
-          else
-            sstrategy.initiates = TRUE
-            sstrategy.content = strategy.content
-            sstrategy.save
-          end
-        end
-      end
-
-@select.vocabs.each do |vocab|
-          @select.select_vocabs.where(:vocab_id => vocab.id).each do |svocab|
-            if svocab.initiate?
-              svocab.content_english = svocab.content_english
-            
-          else
-            svocab.initiate = TRUE
-            svocab.content_english = vocab.content_english
-            svocab.save
-          end
-        end
-      end
-
-      @select.links.each do |link|
-          @select.select_links.where(:link_id => link.id).each do |slink|
-            if slink.initiate?
-            slink.comment = slink.comment
-          else
-            slink.initiate = TRUE
-            slink.comment = link.comment
-            slink.save
-            
-          end
-        end
-      end
-
         format.html { redirect_to @select, notice: 'Click on the resources to edit' }
-        format.json { respond_with_bip(@select) }
+
       else
         format.html { render action: "edit" }
         format.json { respond_with_bip(@select) }

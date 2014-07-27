@@ -1,0 +1,26 @@
+<%= simple_form_for([@select], :remote => true) do |f| %>
+<div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Edit Question Stems</h4>
+      </div>
+      <div class="modal-body">
+
+<div class="dropdown">
+  
+<%= f.simple_fields_for :xquestions do |p| %>
+    <%= p.input :content %>
+<% end %>
+
+<br/><br/>
+      </div>
+      <div class="form-actions">
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>   
+      </div>   
+
+    </div>
+  </div><% end %>

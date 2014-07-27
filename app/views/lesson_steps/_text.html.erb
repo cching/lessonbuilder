@@ -1,8 +1,12 @@
+
 <%= simple_form_for @select, :url => wizard_path(step, select_id: @select.id), :method => :put do |f| %>
 
  <div class="animated fadeInDown">
 <div class="panel panel-warning" id="select-text">Select a Text</div>
+  
+  
 </div>
+
 <div class="animated fadeInLeft">
 <div class="progress" id="lesson-setup">
   <div class="progress-bar" style="width: 25%;"></div>
@@ -25,6 +29,8 @@
                    </div>
 
                    <br />
+
+
 
 <% if @select.subject_id==1%>
 <div class="animated fadeInUp">
@@ -191,3 +197,14 @@
   <div align="right" class="animated fadeInRight"><button type="submit" class="btn btn-info" data-loading-text="Saving.." id="text-select">Save and Continue</button></div>
 
   <% end %>
+
+<script>
+
+setTimeout(function() {
+  $("#myModal").modal('show') 
+  $("#modal-window").html("<%= escape_javascript(render 'text_note') %>");
+}, 1100);
+</script>
+
+
+

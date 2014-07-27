@@ -13,17 +13,19 @@
    
    <div class="row">
 
-  <div class="col-md-2"><%= f.association :grades, label: "Grade(s):", as: :check_boxes, label_method: :number, input_html: {:data => {:toggle => "checkbox"}} %></div>
+  <div class="col-md-1"><%= f.association :grades, collection: Grade.where(:id => 1..5), label: "Grade(s):", as: :check_boxes, label_method: :number, input_html: {:data => {:toggle => "checkbox"}} %></div>
+<div class="col-md-1"><br/><%= f.association :grades, collection: Grade.where(:id => 6..9), label: "", as: :check_boxes, label_method: :number, input_html: {:data => {:toggle => "checkbox"}} %></div>
 
-  <div class="col-md-3"><%= f.association :subject, as: :radio_buttons, label_method: :name, label: "Reading Subject:", input_html: {:data => {:toggle => "radio"}} %></div>
+  <div class="col-md-3"><%= f.association :subject, as: :radio_buttons, label_method: :name, label: "Standards:", input_html: {:data => {:toggle => "radio"}} %>
+	<%= f.association :subsubjects, collection: Subsubject.where(:id => 3), label: false, as: :check_boxes, label_method: :name, input_html: {:data => {:toggle => "checkbox"}} %>
+  </div>
 
-<div class="col-md-3"><%= f.association :subsubjects, label: "Subject(s):", as: :check_boxes, label_method: :name, input_html: {:data => {:toggle => "checkbox"}} %></div>
+<div class="col-md-3"><%= f.association :subsubjects, label: "Subject(s):", collection: Subsubject.where(:id => 4..7), as: :check_boxes, label: " ", input_html: {:data => {:toggle => "checkbox"}} %></div>
 
-<div class="col-md-4"><%= f.association :sources, label: "Source(s):", as: :check_boxes, label_method: :name, input_html: {:data => {:toggle => "checkbox"}} %></div>
+<div class="col-md-2"><%= f.association :sources, label: "Source(s):", collection: Source.where(:id => 1..5), as: :check_boxes, label_method: :name, input_html: {:data => {:toggle => "checkbox"}} %></div>
+
+<div class="col-md-2"><%= f.association :sources, label: "Source(s):", collection: Source.where(:id => 6..8), as: :check_boxes, label: "", input_html: {:data => {:toggle => "checkbox"}} %></div>
 </div>
-
-
-        
     
   <div class="form-actions" align="right">
 

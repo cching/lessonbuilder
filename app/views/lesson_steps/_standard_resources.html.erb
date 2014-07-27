@@ -10,7 +10,7 @@
   <div class="progress-bar progress-bar-info" id="edit" style="width: 25%;"></div>
 </div>
 
-<%= render 'selects/form' %>
+<%= render 'form' %>
 
 <% else %>
 
@@ -18,3 +18,10 @@
 
 <% end %>
 
+<script>
+
+setTimeout(function() {
+  $("#myModal").modal('show') 
+  $("#modal-window").html("<%= escape_javascript(render 'standard_resources_note') %>");
+}, 1000);
+</script>

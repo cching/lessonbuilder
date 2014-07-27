@@ -1,7 +1,7 @@
 Commoncore::Application.routes.draw do
-  mount Ckeditor::Engine => '/ckeditor'
+  resources :xquestions
 
-  mount Ckeditor::Engine => "/ckeditor"
+
   resources :lesson_resources
 
 
@@ -79,13 +79,16 @@ Commoncore::Application.routes.draw do
   resources :skills
   resources :caquestions
   scope "selects/:select_id" do
-    resources :lesson_steps
+    resources :lesson_steps do
+      get :hide
+    end
   end
 
 
   root to: 'static_pages#home'
   
   resources :selects do
+    resources :xquestions
     resources :cquestions
     resources :cskills
     resources :cvocabs

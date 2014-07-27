@@ -1,0 +1,8 @@
+<% if Xquestion.where(:standard_id => standard.id).empty? %>
+  No preset question stems exist for this standard.
+  <% else %>
+
+  
+  <%= f.association :xquestions, collection: Xquestion.where(:standard_id => standard.id), as: :check_boxes, :label_method => lambda { |xquestion| "#{xquestion.content}" }, input_html: {:data => {:toggle => "checkbox"}}, label: false %>
+  
+  <% end %>

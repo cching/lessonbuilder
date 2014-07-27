@@ -55,9 +55,6 @@ GEM
     bootstrap-will_paginate (0.0.10)
       will_paginate
     builder (3.0.4)
-    ckeditor (4.1.0)
-      mime-types
-      orm_adapter (~> 0.5.0)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.4)
@@ -208,6 +205,8 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.4)
     tilt (1.4.1)
+    tinymce-rails (4.1.2)
+      railties (>= 3.1.1)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
@@ -237,7 +236,6 @@ DEPENDENCIES
   bcrypt-ruby (= 3.0.1)
   best_in_place
   bootstrap-will_paginate
-  ckeditor
   coffee-rails (~> 3.2.1)
   default_value_for
   devise
@@ -259,6 +257,7 @@ DEPENDENCIES
   simple_form
   taps
   therubyracer
+  tinymce-rails
   turbolinks
   uglifier (>= 1.0.3)
   unicorn

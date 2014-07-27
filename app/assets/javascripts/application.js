@@ -22,7 +22,7 @@
 //= require jquery.purr
 //= require nprogress
 //= require nprogress-ajax
-//= require ckeditor/init
+//= require tinymce
 //= require_tree .
 //= require best_in_place
 
@@ -41,8 +41,6 @@ $(document).ready(function() {
     }
   });
 });
-
-
 
 
 

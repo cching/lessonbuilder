@@ -3,6 +3,6 @@ class AddColumnsToXfiles < ActiveRecord::Migration
   	add_column :xquestions, :standard_id, :string
   	add_column :xvocabs, :standard_id, :string
   	add_column :xskills, :standard_id, :string
-  	add_column :xstrategies, :standard_id, :strings
+  	add_column :xstrategies, :standard_id, :string
   end
 end

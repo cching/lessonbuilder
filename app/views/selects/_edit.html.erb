@@ -1,3 +1,4 @@
+<% if params[:status] == "question" %>
   <%= simple_form_for(@select, :remote => true, :url => select_path) do |f| %>
 <div class="modal-dialog" id="lesson_resources">
     <div class="modal-content" id="lesson_resources">
@@ -12,7 +13,7 @@
   <% @select.standards.each do |standard| %>
   <%= standard.id %>
   <%= f.fields_for :xquestions, Xquestion.where(:select_id => @select.id).where(:standard_id => standard.id) do |builder| %>
-  <%= render 'xquestion_fields', f: builder %>
+  <%= render 'xquestions', f: builder %>
 <% end %>
 <% end %>
 
@@ -20,10 +21,11 @@
       <div class="form-actions">
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <%= link_to select_path(@select), :method => :put %>
+        <button type="submit" class="btn btn-primary">Save</button>
       </div>   
       </div>   
 
     </div>
   </div>
+<% end %>
 <% end %>

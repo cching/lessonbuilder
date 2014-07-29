@@ -3,6 +3,6 @@
   <% else %>
 
   
-  <%= f.association :xskills, collection: Xskill.where(:standard_id => standard.id), as: :check_boxes, :label_method => lambda { |skill| "#{skill.content}" }, input_html: {:data => {:toggle => "checkbox"}}, label: false %>
+  <%= f.association :xskills, collection: Xskill.where(:standard_id => standard.id).order("standard_id DESC"), as: :check_boxes, :label_method => lambda { |skill| "#{skill.content}" }, input_html: {:data => {:toggle => "checkbox"}}, label: false %>
   
   <% end %>

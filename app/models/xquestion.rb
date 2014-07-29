@@ -1,6 +1,5 @@
 class Xquestion < ActiveRecord::Base
-  attr_accessible :content, :standard_id
+  attr_accessible :content, :standard_id, :select_id, :bold, :highlight, :italic
   belongs_to :standard
-  has_many :select_questions
-  has_many :selects, through: :select_questions
+  belongs_to :select
 end

@@ -22,10 +22,9 @@ class XquestionsController < ApplicationController
       end
   
     def update
-      @xquestion = Xquestion.find(params[:id])
-      @select = Select.find(params[:select_id])
+      @select = Select.find(params[:id])
       
-        if @clink.update_attributes(params[:clink])
+        if @select.update_attributes(params[:select])
           redirect_to edit_select_path(@select)
         else
           render :action => 'edit'
@@ -44,7 +43,7 @@ class XquestionsController < ApplicationController
     @select = Select.find(params[:select_id])
     @standards = @select.standards.all
     @ids = @standards.map{|standard| standard.id}
-    @xquestions = Xquestion.where(:standard_id => @ids)
+    @xquestion = Xquestion.new
     end
     
     def show
@@ -53,5 +52,27 @@ class XquestionsController < ApplicationController
     end
     
     def index
+    end
+
+    def select_questions
+    @xquestion = Xquestion.find(params[:id])
+    @select = Select.find(params[:select_id])
+      @selectq = @select.select_questions.new
+      @selectq.select_id = @select.id
+      @selectq.xquestion_id = @xquestion.id
+
+      if @selectq.save
+      respond_to do |format|
+        format.js
+      end
+      end
+end
+
+    def unselect_questions
+    @xquestion = Xquestion.find(params[:id])
+    @select = Select.find(params[:select_id])
+      @selectq = SelectQuestion.where(:xquestion_id => @xquestion.id).where(:select_id => @select.id).last
+      @selectq.delete
+      respond_to :js
     end
 end

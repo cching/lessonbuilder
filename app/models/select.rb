@@ -15,8 +15,7 @@ class Select < ActiveRecord::Base
   has_many :standards, through: :selections
   
   has_many :select_questions, :dependent => :destroy
-  has_many :xquestions, through: :select_questions
-  has_many :questions
+  has_many :xquestions
   
   has_many :select_skills, :dependent => :destroy
   has_many :xskills, through: :select_skills
@@ -66,8 +65,8 @@ class Select < ActiveRecord::Base
   accepts_nested_attributes_for :cstrategies, allow_destroy: true
   accepts_nested_attributes_for :clinks, allow_destroy: true
   accepts_nested_attributes_for :caquestions, allow_destroy: true
-  accepts_nested_attributes_for :xquestions, allow_destroy: true
-
+  accepts_nested_attributes_for :select_questions, allow_destroy: true
+  accepts_nested_attributes_for :xquestions
     scope :between, lambda {|start_time, end_time|
     {:conditions => [
   "starts_at > ? and starts_at < ?",

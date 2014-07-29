@@ -1,5 +1,8 @@
 Commoncore::Application.routes.draw do
-  resources :xquestions
+  resources :xquestions do
+    put :select_questions, on: :member
+    put :unselect_questions, on: :member
+  end
 
 
   resources :lesson_resources

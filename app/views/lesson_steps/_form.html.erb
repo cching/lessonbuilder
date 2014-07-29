@@ -16,21 +16,17 @@
   <div class="col-md-6">
   	<div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Question Stems<div align="right"><%= link_to "Edit", edit_select_xquestion_path(@select), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', 'class' => 'btn btn-primary'}  %></div></h3>
+    <h3 class="panel-title">Question Stems</h3>
   </div>
   <div class="panel-body table-content">
   <% @select.standards.each do |standard| %>
-  <div class="row">
-  <div class="col-md-3"><%= standard.id %></div><div class="col-md-9"></div>
-  </div>
+  
+  <div id="resource_id"> <%= standard.id %></div><br/>
 
-  <div class="row">
-  <div class="col-md-3"></div>
-  <div class="col-md-9">
   <div id="xquestion">
-  <%= render 'xquestions', :standard => standard, :f => f %>
-  </div> 
-  </div>
+    
+    <%= render 'xquestions', :standard => standard, :f => f %>
+    
   
   </div>
 <% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140727072500) do
+ActiveRecord::Schema.define(:version => 20140729221542) do
 
   create_table "admin_notes", :force => true do |t|
     t.string   "resource_id",     :null => false
@@ -500,13 +500,18 @@ ActiveRecord::Schema.define(:version => 20140727072500) do
     t.integer  "standard_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "select_id"
   end
 
   create_table "xquestions", :force => true do |t|
     t.string   "content"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.string   "standard_id"
+    t.integer  "select_id"
+    t.boolean  "bold",        :default => false
+    t.boolean  "highlight",   :default => false
+    t.boolean  "italic",      :default => false
   end
 
   create_table "xskills", :force => true do |t|
@@ -514,6 +519,7 @@ ActiveRecord::Schema.define(:version => 20140727072500) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.string   "standard_id"
+    t.integer  "select_id"
   end
 
   create_table "xstrategies", :force => true do |t|
@@ -521,6 +527,7 @@ ActiveRecord::Schema.define(:version => 20140727072500) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.string   "standard_id"
+    t.integer  "select_id"
   end
 
   create_table "xvocabs", :force => true do |t|
@@ -529,6 +536,7 @@ ActiveRecord::Schema.define(:version => 20140727072500) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.string   "standard_id"
+    t.integer  "select_id"
   end
 
 end

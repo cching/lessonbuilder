@@ -88,9 +88,7 @@ class SelectsController < ApplicationController
 
   def show
     @select = Select.find(params[:id])
-    @standard = @select.standards.first
     @standards = @select.standards.all
-    @questions = @select.questions.all
     respond_to do |format|
       format.html
       format.pdf do
@@ -108,10 +106,8 @@ class SelectsController < ApplicationController
   end
 
   def edit
-    @select = Select.find(params[:id])
-    @standards = @select.standards.all
-    @ids = @standards.map{|standard| standard.id}
-    @xquestions = Xquestion.where(:standard_id => @ids).all
+    @select = Select.find(params[:select_id])
+
     respond_to do |format|
       format.js
     end

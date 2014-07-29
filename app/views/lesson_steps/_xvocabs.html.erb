@@ -3,6 +3,6 @@
   <% else %>
 
   
-  <%= f.association :xvocabs, collection: Xvocab.where(:standard_id => standard.id), as: :check_boxes, :label_method => lambda { |vocab| "#{vocab.content_english}" }, input_html: {:data => {:toggle => "checkbox"}}, label: false %>
+  <%= f.association :xvocabs, collection: Xvocab.where(:standard_id => standard.id).order("standard_id DESC"), as: :check_boxes, :label_method => lambda { |vocab| "#{vocab.content_english}" }, input_html: {:data => {:toggle => "checkbox"}}, label: false %>
   
   <% end %>

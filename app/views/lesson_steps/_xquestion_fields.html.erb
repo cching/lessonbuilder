@@ -1,0 +1,40 @@
+<fieldset>
+<div class="form-inputs">
+<div class="row">
+<div class="col-md-9">
+  <%= f.input :content, label: false %>
+</div>
+<div class="col-md-1">
+
+<div class="dropdown">
+  <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-edit"></span></button>
+  <span class="dropdown-arrow"></span>
+  <ul class="dropdown-menu pull-right">
+
+    <li align="left"><a href="" onclick="return false;">
+    <div class="row">
+    <div class="col-md-1"></div>
+  <div class="col-md-2"><%= f.input :bold, label: false,  input_html: {:data => {:toggle => "checkbox"}} %>
+  </div>
+  <div class="col-md-2"><span class="glyphicon glyphicon-bold"></span></div></div></a></li>
+    <li align="left"><a href="" onclick="return false;">
+    <div class="row">
+    <div class="col-md-1"></div>
+  <div class="col-md-2"><%= f.input :italic, label: false,  input_html: {:data => {:toggle => "checkbox"}} %>
+  </div>
+  <div class="col-md-2"><span class="glyphicon glyphicon-italic"></span></div></div></a></li>
+  <li align="left"><a href="" onclick="return false;">
+    <div class="row">
+    <div class="col-md-1"></div>
+  <div class="col-md-2"><%= f.input :highlight, label: false,  input_html: {:data => {:toggle => "checkbox"}} %>
+  </div>
+  <div class="col-md-2"><span class="glyphicon glyphicon-font"></span></div></div></a></li>
+  </u>
+</div>
+</div>
+</div>
+
+
+</div>
+</fieldset>
+

@@ -12,11 +12,12 @@
     </div>
     </div>
     <div class="col-md-1"></div>
-<div class="col-md-10">
+<div class="col-md-9">
 
-      <%= f.fields_for :xquestions, xquestion do |builder| %>
+      <%= f.simple_fields_for :xquestions, xquestion do |builder| %>
   <%= render 'xquestion_fields', f: builder %>
   <% end %>
   </div>
+  <div class="col-md-1"></div>
 </div>
   <% end %>

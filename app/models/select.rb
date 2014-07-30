@@ -6,7 +6,7 @@ class Select < ActiveRecord::Base
 
 
   #Selects is the lesson model but is named 'select' for the ActiveRecord join association
-  attr_accessible :user_id, :standard_ids, :textdependent, :name, :grade_ids, :text_id, :date, :vocabulary, :writing, :conclusion, :objective, :notes, :description, :book, :subject_id, :subsubject_ids, :private, :xquestion_ids, :select_ids, :xstrategy_ids, :xskill_ids, :xvocab_ids, :xlink_ids, :book_id, :cquestions_attributes, :cvocabs_attributes, :lesson_resources_attributes, :cskills_attributes, :cstrategies_attributes, :clinks_attributes, :caquestions_attributes, :source_ids, :aquestion_ids, :headers_attributes, :starts_at, :ends_at, :status, :xquestions_attributes
+  attr_accessible :user_id, :standard_ids, :textdependent, :name, :grade_ids, :text_id, :date, :vocabulary, :writing, :conclusion, :objective, :notes, :description, :book, :subject_id, :subsubject_ids, :private, :xquestion_ids, :xvocab_ids, :select_ids, :xstrategy_ids, :xskill_ids, :xvocab_ids, :xlink_ids, :book_id, :cquestions_attributes, :cvocabs_attributes, :lesson_resources_attributes, :cskills_attributes, :cstrategies_attributes, :clinks_attributes, :caquestions_attributes, :source_ids, :aquestion_ids, :headers_attributes, :starts_at, :ends_at, :status, :xquestions_attributes, :xvocabs_attributes, :xlinks_attributes, :xstrategies_attributes, :xskills_attributes
   belongs_to :user
   belongs_to :subject
   
@@ -18,23 +18,19 @@ class Select < ActiveRecord::Base
   has_many :xquestions
   
   has_many :select_skills, :dependent => :destroy
-  has_many :xskills, through: :select_skills
-  has_many :skills
+  has_many :xskills
   
   has_many :select_strategies, :dependent => :destroy
-  has_many :xstrategies, through: :select_strategies
-  has_many :strategies
+  has_many :xstrategies
   
   has_many :select_vocabs, :dependent => :destroy
-  has_many :xvocabs, through: :select_vocabs
-  has_many :vocabs
+  has_many :xvocabs
   
   has_many :select_aquestions, :dependent => :destroy
   has_many :aquestions, through: :select_aquestions
 
   has_many :select_links, :dependent => :destroy
-  has_many :xlinks, through: :select_links
-  has_many :links
+  has_many :xlinks
 
   has_many :select_subjects, :dependent => :destroy
   has_many :subsubjects, through: :select_subjects
@@ -67,6 +63,10 @@ class Select < ActiveRecord::Base
   accepts_nested_attributes_for :caquestions, allow_destroy: true
   accepts_nested_attributes_for :select_questions, allow_destroy: true
   accepts_nested_attributes_for :xquestions
+  accepts_nested_attributes_for :xskills
+  accepts_nested_attributes_for :xstrategies
+  accepts_nested_attributes_for :xvocabs
+  accepts_nested_attributes_for :xlinks
     scope :between, lambda {|start_time, end_time|
     {:conditions => [
   "starts_at > ? and starts_at < ?",

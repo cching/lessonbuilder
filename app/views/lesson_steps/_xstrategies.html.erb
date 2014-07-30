@@ -1,8 +1,23 @@
-<% if Xstrategy.where(:standard_id => standard.id).empty? %>
-  No preset strategies exist for this standard. Continue to the next page to add them.
-  <% else %>
+<% Xstrategy.where(:select_id => @select.id).where(:standard_id => standard.id).each do |xstrategy| %>
+<div class="row" id="resources">
 
-  
-  <%= f.association :xstrategies, collection: Xstrategy.where(:standard_id => standard.id).order("standard_id DESC"), as: :check_boxes, :label_method => lambda { |strategy| "#{strategy.content}" }, input_html: {:data => {:toggle => "checkbox"}}, label: false %>
-  
+<div class="col-md-1">
+<div id="xstrategy_<%= xstrategy.id %>">
+
+    <% if @sstrategies.map{|a| a.xstrategy_id}.include? xstrategy.id %>
+      <%= link_to "",  unselect_strategies_xstrategy_path(xstrategy, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-check" %>
+      <% else %>
+      <%= link_to "",  select_strategies_xstrategy_path(xstrategy, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-unchecked" %>
+      <% end %>
+    </div>
+    </div>
+    <div class="col-md-1"></div>
+<div class="col-md-9">
+
+      <%= f.simple_fields_for :xstrategies, xstrategy do |builder| %>
+  <%= render 'xstrategy_fields', f: builder %>
+  <% end %>
+  </div>
+  <div class="col-md-1"></div>
+</div>
   <% end %>

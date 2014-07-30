@@ -1,0 +1,21 @@
+<h1>Listing xvocabs</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @xvocabs.each do |xvocab| %>
+  <tr>
+    <td><%= link_to 'Show', xvocab %></td>
+    <td><%= link_to 'Edit', edit_xvocab_path(xvocab) %></td>
+    <td><%= link_to 'Destroy', xvocab, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Xvocab', new_xvocab_path %>

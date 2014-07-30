@@ -42,17 +42,12 @@
   </div>
   <div class="panel-body table-content">
   <% @select.standards.each do |standard| %>
-  <div class="row">
-  <div class="col-md-3"><%= standard.id %></div><div class="col-md-9"></div>
-  </div>
+  <div id="resource_id"> <%= standard.id %></div><br/>
 
-  <div class="row">
-  <div class="col-md-3"></div>
-  <div class="col-md-9">
-  <div id="xvocabs">
-  <%= render 'xvocabs', :standard => standard, :f => f %>
-  </div> 
-  </div>
+  <div id="xvocab">
+    
+    <%= render 'xvocabs', :standard => standard, :f => f %>
+    
   
   </div>
 <% end %>
@@ -72,17 +67,12 @@
   </div>
   <div class="panel-body table-content">
   <% @select.standards.each do |standard| %>
-  <div class="row">
-  <div class="col-md-3"><%= standard.id %></div><div class="col-md-9"></div>
-  </div>
+  <div id="resource_id"> <%= standard.id %></div><br/>
 
-  <div class="row">
-  <div class="col-md-3"></div>
-  <div class="col-md-9">
-  <div id="xstrategies">
-  <%= render 'xstrategies', :standard => standard, :f => f %>
-  </div> 
-  </div>
+  <div id="xstrategy">
+    
+    <%= render 'xstrategies', :standard => standard, :f => f %>
+    
   
   </div>
 <% end %>

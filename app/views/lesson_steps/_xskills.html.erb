@@ -1,8 +1,23 @@
-<% if Xskill.where(:standard_id => standard.id).empty? %>
-  No preset skills exist for this standard. Continue to the next page to add them.
-  <% else %>
+<% Xskill.where(:select_id => @select.id).where(:standard_id => standard.id).each do |xskill| %>
+<div class="row" id="resources">
 
-  
-  <%= f.association :xskills, collection: Xskill.where(:standard_id => standard.id).order("standard_id DESC"), as: :check_boxes, :label_method => lambda { |skill| "#{skill.content}" }, input_html: {:data => {:toggle => "checkbox"}}, label: false %>
-  
+<div class="col-md-1">
+<div id="xskill_<%= xskill.id %>">
+
+    <% if @sskills.map{|a| a.xskill_id}.include? xskill.id %>
+      <%= link_to "",  unselect_skills_xskill_path(xskill, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-check" %>
+      <% else %>
+      <%= link_to "",  select_skills_xskill_path(xskill, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-unchecked" %>
+      <% end %>
+    </div>
+    </div>
+    <div class="col-md-1"></div>
+<div class="col-md-9">
+
+      <%= f.simple_fields_for :xskills, xskill do |builder| %>
+  <%= render 'xskill_fields', f: builder %>
+  <% end %>
+  </div>
+  <div class="col-md-1"></div>
+</div>
   <% end %>

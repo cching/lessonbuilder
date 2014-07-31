@@ -1,11 +1,8 @@
 Commoncore::Application.routes.draw do
-  resources :xstrategies
-
-
-  resources :xlinks
-
-
-  resources :xvocabs
+  resources :xaquestions do
+    put :select_aquestions, on: :member
+    put :unselect_aquestions, on: :member
+  end
 
 
   resources :xquestions do
@@ -19,7 +16,7 @@ Commoncore::Application.routes.draw do
   end
 
   resources :xlinks do
-    put :select_linkss, on: :member
+    put :select_links, on: :member
     put :unselect_links, on: :member
   end
 

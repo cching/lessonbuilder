@@ -40,18 +40,27 @@ class XvocabsController < ApplicationController
   # POST /xvocabs
   # POST /xvocabs.json
   def create
-    @xvocab = Xvocab.new(params[:xvocab])
+      @select = Select.find(params[:select_id])
+      @standard = Standard.find(params[:standard_id])
+      @svocabs = SelectVocab.where(:select_id => @select.id)
+      @xvocab = Xvocab.new
+      @xvocab.standard_id = @standard.id
+      @xvocab.select_id = @select.id
 
-    respond_to do |format|
-      if @xvocab.save
-        format.html { redirect_to @xvocab, notice: 'Xvocab was successfully created.' }
-        format.json { render json: @xvocab, status: :created, location: @xvocab }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @xvocab.errors, status: :unprocessable_entity }
+
+      respond_to do |format|
+        if @xvocab.save
+            @selectv = SelectVocab.new
+            @selectv.select_id = @select.id
+            @selectv.xvocab_id = @xvocab.id
+            @selectv.save
+            format.js
+
+        else
+          render :action => 'new'
+        end
+        end
       end
-    end
-  end
 
   # PUT /xvocabs/1
   # PUT /xvocabs/1.json

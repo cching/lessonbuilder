@@ -1,6 +1,6 @@
 class LessonStepsController < ApplicationController
   include Wicked::Wizard
-  steps :setup, :text, :standards, :standard_resources, :note_resources
+  steps :setup, :standards, :text, :standard_resources, :note_resources
 
   def show
     @select = Select.find(params[:select_id])
@@ -12,6 +12,9 @@ class LessonStepsController < ApplicationController
     @squestions = SelectQuestion.where(:select_id => @select.id)
     @svocabs = SelectVocab.where(:select_id => @select.id)
     @sstrategies = SelectStrategy.where(:select_id => @select.id)
+    @sskills = SelectSkill.where(:select_id => @select.id)
+    @slinks = SelectLink.where(:select_id => @select.id)
+    @saquestions = SelectAquestion.where(:select_id => @select.id)
     render_wizard
   end
 

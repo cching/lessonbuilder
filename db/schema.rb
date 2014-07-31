@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140729221542) do
+ActiveRecord::Schema.define(:version => 20140731083627) do
 
   create_table "admin_notes", :force => true do |t|
     t.string   "resource_id",     :null => false
@@ -284,12 +284,12 @@ ActiveRecord::Schema.define(:version => 20140729221542) do
   end
 
   create_table "select_aquestions", :force => true do |t|
-    t.integer  "aquestion_id"
+    t.integer  "xaquestion_id"
     t.integer  "select_id"
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
-    t.boolean  "initiate",     :default => false
-    t.text     "content",      :default => ""
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.boolean  "initiate",      :default => false
+    t.text     "content",       :default => ""
   end
 
   create_table "select_grades", :force => true do |t|
@@ -382,28 +382,32 @@ ActiveRecord::Schema.define(:version => 20140729221542) do
 
   create_table "selects", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "grade_id",      :default => 1
+    t.integer  "grade_id",                :default => 1
     t.integer  "text_id"
-    t.integer  "subject_id",    :default => 1
-    t.integer  "subsubject_id", :default => 1
-    t.string   "name",          :default => ""
+    t.integer  "subject_id",              :default => 1
+    t.integer  "subsubject_id",           :default => 1
+    t.string   "name",                    :default => ""
     t.date     "date"
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
-    t.boolean  "private",       :default => false
-    t.string   "description",   :default => ""
-    t.text     "objective",     :default => ""
-    t.string   "book",          :default => ""
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+    t.boolean  "private",                 :default => false
+    t.string   "description",             :default => ""
+    t.text     "objective",               :default => ""
+    t.string   "book",                    :default => ""
     t.text     "notes"
     t.integer  "book_id"
-    t.text     "vocabulary",    :default => ""
-    t.text     "writing",       :default => ""
-    t.text     "conclusion",    :default => ""
-    t.text     "questions",     :default => ""
-    t.text     "textdependent", :default => ""
+    t.text     "vocabulary",              :default => ""
+    t.text     "writing",                 :default => ""
+    t.text     "conclusion",              :default => ""
+    t.text     "questions",               :default => ""
+    t.text     "textdependent",           :default => ""
     t.datetime "starts_at"
     t.datetime "ends_at"
     t.string   "status"
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
   end
 
   create_table "skills", :force => true do |t|
@@ -494,10 +498,18 @@ ActiveRecord::Schema.define(:version => 20140729221542) do
     t.boolean "duplicate",       :default => false
   end
 
+  create_table "xaquestions", :force => true do |t|
+    t.string   "content"
+    t.string   "standard_id"
+    t.integer  "select_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "xlinks", :force => true do |t|
     t.text     "comment"
     t.text     "link"
-    t.integer  "standard_id"
+    t.string   "standard_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "select_id"

@@ -1,11 +1,20 @@
 class XquestionsController < ApplicationController
     def create
       @select = Select.find(params[:select_id])
-      @xquestion = @select.xquestions.build(params[:xquestion])
+      @standard = Standard.find(params[:standard_id])
+      @squestions = SelectQuestion.where(:select_id => @select.id)
+      @xquestion = Xquestion.new
+      @xquestion.standard_id = @standard.id
+      @xquestion.select_id = @select.id
+
+
       respond_to do |format|
         if @xquestion.save
-          
-            format.js { render action: "create" }
+            @selectq = SelectQuestion.new
+            @selectq.select_id = @select.id
+            @selectq.xquestion_id = @xquestion.id
+            @selectq.save
+            format.js
 
         else
           render :action => 'new'
@@ -15,7 +24,9 @@ class XquestionsController < ApplicationController
   
       def new
         @select = Select.find(params[:select_id])
-        @xquestion = @select.xquestions.build
+        @standard = Standard.find(params[:standard_id])
+        @squestions = SelectQuestion.where(:select_id => @select.id).last
+        @xquestion = Xquestion.new
         respond_to do |format|
           format.js
         end

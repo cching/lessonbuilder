@@ -40,18 +40,27 @@ class XstrategiesController < ApplicationController
   # POST /xstrategies
   # POST /xstrategies.json
   def create
-    @xstrategy = Xstrategy.new(params[:xstrategy])
+      @select = Select.find(params[:select_id])
+      @standard = Standard.find(params[:standard_id])
+      @sstrategies = SelectStrategy.where(:select_id => @select.id)
+      @xstrategy = Xstrategy.new
+      @xstrategy.standard_id = @standard.id
+      @xstrategy.select_id = @select.id
 
-    respond_to do |format|
-      if @xstrategy.save
-        format.html { redirect_to @xstrategy, notice: 'Xstrategy was successfully created.' }
-        format.json { render json: @xstrategy, status: :created, location: @xstrategy }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @xstrategy.errors, status: :unprocessable_entity }
+
+      respond_to do |format|
+        if @xstrategy.save
+            @selects = SelectStrategy.new
+            @selects.select_id = @select.id
+            @selects.xstrategy_id = @xstrategy.id
+            @selects.save
+            format.js
+
+        else
+          render :action => 'new'
+        end
+        end
       end
-    end
-  end
 
   # PUT /xstrategies/1
   # PUT /xstrategies/1.json

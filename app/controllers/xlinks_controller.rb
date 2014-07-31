@@ -1,3 +1,4 @@
+
 class XlinksController < ApplicationController
   # GET /xlinks
   # GET /xlinks.json
@@ -27,8 +28,7 @@ class XlinksController < ApplicationController
     @xlink = Xlink.new
 
     respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @xlink }
+      format.js
     end
   end
 
@@ -40,18 +40,27 @@ class XlinksController < ApplicationController
   # POST /xlinks
   # POST /xlinks.json
   def create
-    @xlink = Xlink.new(params[:xlink])
+      @select = Select.find(params[:select_id])
+      @standard = Standard.find(params[:standard_id])
+      @slinks = SelectLink.where(:select_id => @select.id)
+      @xlink = Xlink.new
+      @xlink.standard_id = @standard.id
+      @xlink.select_id = @select.id
 
-    respond_to do |format|
-      if @xlink.save
-        format.html { redirect_to @xlink, notice: 'Xlink was successfully created.' }
-        format.json { render json: @xlink, status: :created, location: @xlink }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @xlink.errors, status: :unprocessable_entity }
+
+      respond_to do |format|
+        if @xlink.save
+            @selectl = SelectLink.new
+            @selectl.select_id = @select.id
+            @selectl.xlink_id = @xlink.id
+            @selectl.save
+            format.js
+
+        else
+          render :action => 'new'
+        end
+        end
       end
-    end
-  end
 
   # PUT /xlinks/1
   # PUT /xlinks/1.json
@@ -80,4 +89,27 @@ class XlinksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def select_links
+    @xlink = Xlink.find(params[:id])
+    @select = Select.find(params[:select_id])
+      @selectl = @select.select_links.new
+      @selectl.select_id = @select.id
+      @selectl.xlink_id = @xlink.id
+
+      if @selectl.save
+      respond_to do |format|
+        format.js
+      end
+      end
+end
+
+    def unselect_links
+    @xlink = Xlink.find(params[:id])
+    @select = Select.find(params[:select_id])
+      @selectl = SelectLink.where(:xlink_id => @xlink.id).where(:select_id => @select.id).last
+      @selectl.delete
+      respond_to :js
+    end
+
 end

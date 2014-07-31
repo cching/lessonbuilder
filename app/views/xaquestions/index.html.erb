@@ -1,0 +1,21 @@
+<h1>Listing xaquestions</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @xaquestions.each do |xaquestion| %>
+  <tr>
+    <td><%= link_to 'Show', xaquestion %></td>
+    <td><%= link_to 'Edit', edit_xaquestion_path(xaquestion) %></td>
+    <td><%= link_to 'Destroy', xaquestion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Xaquestion', new_xaquestion_path %>

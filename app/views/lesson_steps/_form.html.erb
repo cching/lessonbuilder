@@ -26,9 +26,11 @@
   <div id="xquestion">
     
     <%= render 'xquestions', :standard => standard, :f => f %>
+
+    <div id="newquestion_<%= standard.standard_id %>"></div>
+    <div align="right"><%= link_to "Add Question", xquestions_path(:standard_id => standard.id, :select_id => @select.id), :method => :post, remote: :true, class: "btn btn-primary" %></div>
     
-  
-  </div>
+  </div><br/>
 <% end %>
   
   </div>
@@ -47,9 +49,11 @@
   <div id="xvocab">
     
     <%= render 'xvocabs', :standard => standard, :f => f %>
-    
+   
+    <div id="newvocab_<%= standard.standard_id %>"></div>
+    <div align="right"><%= link_to "Add Vocabulary Word", xvocabs_path(:standard_id => standard.id, :select_id => @select.id), :method => :post, remote: :true, class: "btn btn-primary" %></div>
   
-  </div>
+  </div><br/>
 <% end %>
   
   </div>
@@ -72,9 +76,10 @@
   <div id="xstrategy">
     
     <%= render 'xstrategies', :standard => standard, :f => f %>
-    
+  <div id="newstrategy_<%= standard.standard_id %>"></div>
+    <div align="right"><%= link_to "Add Strategy", xstrategies_path(:standard_id => standard.id, :select_id => @select.id), :method => :post, remote: :true, class: "btn btn-primary" %></div>  
   
-  </div>
+  </div><br/>
 <% end %>
   
   </div>
@@ -88,19 +93,15 @@
   </div>
   <div class="panel-body table-content">
   <% @select.standards.each do |standard| %>
-  <div class="row">
-  <div class="col-md-3"><%= standard.id %></div><div class="col-md-9"></div>
-  </div>
+    <div id="resource_id"> <%= standard.id %></div><br/>
 
-  <div class="row">
-  <div class="col-md-3"></div>
-  <div class="col-md-9">
-  <div id="xskills">
-  <%= render 'xskills', :standard => standard, :f => f %>
-  </div> 
-  </div>
+  <div id="xskill">
+    
+    <%= render 'xskills', :standard => standard, :f => f %>
+    <div id="newskill_<%= standard.standard_id %>"></div>
+    <div align="right"><%= link_to "Add Skill", xskills_path(:standard_id => standard.id, :select_id => @select.id), :method => :post, remote: :true, class: "btn btn-primary" %></div>
   
-  </div>
+  </div><br/>
 <% end %>
   
   </div>
@@ -119,19 +120,15 @@
   </div>
   <div class="panel-body table-content-links">
   <% @select.standards.each do |standard| %>
-  <div class="row">
-  <div class="col-md-3"><%= standard.id %></div><div class="col-md-9"></div>
-  </div>
+  <div id="resource_id"> <%= standard.id %></div><br/>
 
-  <div class="row">
-  <div class="col-md-3"></div>
-  <div class="col-md-9">
-  <div id="xlinks">
-  <%= render 'xlinks', :standard => standard, :f => f %>
-  </div> 
-  </div>
-  
-  </div>
+  <div id="xlink">
+    
+    <%= render 'xlinks', :standard => standard, :f => f %>
+    
+  <div id="newlink_<%= standard.standard_id %>"></div>
+    <div align="right"><%= link_to "Add Resource", xlinks_path(:standard_id => standard.id, :select_id => @select.id), :method => :post, remote: :true, class: "btn btn-primary" %></div>
+  </div><br/>
 <% end %>
   
   </div>
@@ -146,29 +143,20 @@
   </div>
   <div class="panel-body table-content-links">
   <% @select.standards.each do |standard| %>
-  <div class="row">
-  <div class="col-md-3"><%= standard.id %></div><div class="col-md-9"></div>
-  </div>
+  <div id="resource_id"> <%= standard.id %></div><br/>
 
-  <div class="row">
-  <div class="col-md-3"></div>
-  <div class="col-md-9">
-  <% if Aquestion.where(:standard_id => standard.id).empty? %>
-  No assessment questions exist for this standard. Continue to the next page to add them.
-  <% else %>
-
+  <div id="xaquestion">
+    
+    <%= render 'xaquestions', :standard => standard, :f => f %>
+    <div id="newaquestion_<%= standard.standard_id %>"></div>
+    <div align="right"><%= link_to "Add Assessment Question", xaquestions_path(:standard_id => standard.id, :select_id => @select.id), :method => :post, remote: :true, class: "btn btn-primary" %></div>
   
-  <%= f.association :aquestions, collection: Aquestion.where(:standard_id => standard.id), as: :check_boxes, :label_method => lambda { |aquestion| "#{aquestion.content}"}, input_html: {:data => {:toggle => "checkbox"}}, label: false %>
-  
-  <% end %>
-  </div>
-  
-  </div>
+  </div><br/>
 <% end %>
   
   </div>
   </div>
- 
+ <%= f.input :attachment, label: false %>
 <div class="row">
 <div class="col-md-2">Teaching on:
  <%= f.text_field :date, id: "selects_date", type: "text", class: "form-control" %></div>

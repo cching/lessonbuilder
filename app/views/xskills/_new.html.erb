@@ -1,0 +1,31 @@
+<%= simple_form_for(@select) do |f| %>
+<div class="row animated fadeIn" id="resources">
+
+<div class="col-md-1">
+<div id="xskill_<%= @xskill.id %>">
+
+    <% if @sskills.map{|a| a.xskill_id}.include? @xskill.id %>
+      <%= link_to "",  unselect_skills_xskill_path(@xskill, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-check" %>
+      <% else %>
+      <%= link_to "",  select_skills_xskill_path(@xskill, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-unchecked" %>
+      <% end %>
+    </div>
+    </div>
+    <div class="col-md-1"></div>
+<div class="col-md-9">
+
+      <%= f.simple_fields_for :xskills, @xskill, :child_index => Time.now.to_i do |builder| %>
+  <fieldset>
+<div class="form-inputs">
+  <%= builder.input :content, label: false, as: :text, :input_html => {:rows => 2} %>
+
+
+
+</div>
+</fieldset>
+
+  <% end %>
+  </div>
+  <div class="col-md-1"></div>
+</div>
+<% end %>

@@ -1,8 +1,22 @@
-<% if Xlink.where(:standard_id => standard.id).empty? %>
-  No preset resources exist for this standard. Continue to the next page to add them.
-  <% else %>
+<% Xlink.where(:select_id => @select.id).where(:standard_id => standard.id).each do |xlink| %>
+<div class="row" id="resources">
 
-  
-  <%= f.association :xlinks, collection: Xlink.where(:standard_id => standard.id).order("standard_id DESC"), as: :check_boxes, :label_method => lambda { |link| "#{link.comment} #{link.link}" }, input_html: {:data => {:toggle => "checkbox"}}, label: false %>
-  
+<div class="col-md-1">
+<div id="xlink_<%= xlink.id %>">
+
+    <% if @slinks.map{|a| a.xlink_id}.include? xlink.id %>
+      <%= link_to "",  unselect_links_xlink_path(xlink, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-check" %>
+      <% else %>
+      <%= link_to "",  select_links_xlink_path(xlink, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-unchecked" %>
+      <% end %>
+    </div>
+    </div>
+<div class="col-md-10">
+
+      <%= f.simple_fields_for :xlinks, xlink do |builder| %>
+  <%= render 'xlink_fields', f: builder, xlink: xlink %>
+  <% end %>
+  </div>
+  <div class="col-md-1"></div>
+</div>
   <% end %>

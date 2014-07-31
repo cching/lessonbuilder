@@ -1,0 +1,31 @@
+<%= simple_form_for @select do |f| %>
+<div class="row animated fadeIn" id="resources">
+
+<div class="col-md-1">
+<div id="xvocab_<%= @xvocab.id %>">
+
+    <% if @svocabs.map{|a| a.xvocab_id}.include? @xvocab.id %>
+      <%= link_to "",  unselect_vocabs_xvocab_path(@xvocab, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-check" %>
+      <% else %>
+      <%= link_to "",  select_vocabs_xvocab_path(@xvocab, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-unchecked" %>
+      <% end %>
+    </div>
+    </div>
+    <div class="col-md-1"></div>
+<div class="col-md-9">
+
+      <%= f.simple_fields_for :xvocabs, @xvocab do |builder| %>
+  <fieldset>
+<div class="form-inputs">
+  <%= builder.input :content_english, label: false, as: :text, :input_html => {:rows => 2} %>
+
+
+
+</div>
+</fieldset>
+
+  <% end %>
+  </div>
+  <div class="col-md-1"></div>
+</div>
+<% end %>

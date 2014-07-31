@@ -1,0 +1,11 @@
+<fieldset>
+<div class="form-inputs">
+<% unless xlink.link == nil %>
+<%= truncate(Rinku.auto_link(xlink.link), :length=>400).html_safe %>
+<% end %>
+  <%= f.input :comment, label: false, as: :text, :input_html => {:rows => 2} %>
+
+
+</div>
+</fieldset>
+

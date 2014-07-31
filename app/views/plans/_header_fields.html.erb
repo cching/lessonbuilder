@@ -1,8 +1,11 @@
+
 <fieldset>
 <div class="form-inputs">
   <%= f.input :title, label: "Header" %><br/>
-  <%= f.input :content %><br/>
+  <%= f.input :content, :input_html => { class: 'tinymce', style: 'width:100%; height:300px' } %><br/>
   <%= f.check_box :_destroy %>
   <%= f.label :_destroy, "Remove" %>
 </div>
 </fieldset>
+
+

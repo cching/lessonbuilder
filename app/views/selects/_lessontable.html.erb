@@ -20,14 +20,11 @@
   <div class="panel-body table-content">
 
                     <% SelectQuestion.where(:select_id => @select).each do |squestion| %>
-                    <%= squestion.id %>
+                    
                         <ul type="disc">
                             <li>
-                                <% if current_user == (@select.user) %>
-                                    <font size="3"><%= squestion.xquestion.standard.id %>: <%= best_in_place squestion.xquestion, :content, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' }, :type => :textarea %></font>
-                                <% else %>
-                                    <font size="3"><%= squestion.question.standard.id %>: <%= squestion.content %></font>
-                                <% end %>
+                                    <font size="3"><%= squestion.xquestion.standard.id %>: <%= squestion.xquestion.content %></font>
+               
                             </li>
                         </ul>
                     <% end %>   
@@ -57,11 +54,8 @@
                     <% SelectVocab.where(:select_id => @select).each do |svocab| %>
                         <ul type="disc">
                             <li>
-                                <% if current_user == (@select.user) %>
-                                    <font size="3"><%= svocab.vocab.standard.id %>: <%= best_in_place svocab, :content_english, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %></font>
-                                <% else %>
-                                    <font size="3"><%= svocab.vocab.standard.id %>: <%= svocab.content_english %></font>
-                                <% end %>
+
+                                    <font size="3"><%= svocab.xvocab.standard.id %>: <%= svocab.xvocab.content_english %></font>
                             </li>
                         </ul>
                     <% end %>
@@ -91,11 +85,8 @@
                     <% SelectStrategy.where(:select_id => @select).each do |sstrategy| %>
                         <ul type="disc">
                             <li>
-                                <% if current_user == (@select.user) %>
-                                    <font size="3"><%= sstrategy.strategy.standard.id %>: <%= best_in_place sstrategy, :content, :type => :textarea, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %></font>
-                                <% else %>
-                                    <font size="3"><%= sstrategy.strategy.standard.id %>: <%= sstrategy.content %></font>
-                                <% end %>
+
+                                    <font size="3"><%= sstrategy.xstrategy.standard.id %>: <%= sstrategy.xstrategy.content %></font>
                             </li>
                         </ul>
                     <% end %>
@@ -124,11 +115,8 @@
                     <% SelectSkill.where(:select_id => @select).each do |sskill| %>
                         <ul type="disc">
                             <li>
-                                <% if current_user == (@select.user) %>
-                                    <font size="3"><%= sskill.skill.standard.id %>: <%= best_in_place sskill, :content, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' }, :type => :textarea %></font>
-                                <% else %>
-                                    <font size="3"><%= sskill.skill.standard.id %>: <%= sskill.content %></font>
-                                <% end %>
+
+                                    <font size="3"><%= sskill.xskill.standard.id %>: <%= sskill.xskill.content %></font>
                             </li>
                         </ul>
                     <% end %> 
@@ -163,13 +151,8 @@
                     <% SelectLink.where(:select_id => @select).each do |slink| %>
                         <ul type="disc">
                             <li>
-                                <% if current_user == (@select.user) %>
-                                    <font size="3"><%= slink.link.standard.id %>: <%= best_in_place slink, :comment, :type => :textarea, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %></font> 
-                                    <br />
-                                    <%= truncate(Rinku.auto_link(slink.link.link), :length=>300).html_safe %>
-                                <% else %>
-                                    <font size="3"><%= slink.link.standard.id %>: <%= slink.comment %></font><br /><%= truncate(Rinku.auto_link(slink.link.link), :length=>300).html_safe %>
-                                <% end %>
+
+                                    <font size="3"><%= slink.xlink.standard.id %>: <%= slink.xlink.comment %></font><br /><%= truncate(Rinku.auto_link(slink.xlink.link), :length=>300).html_safe %>
                             </li>
                         </ul>
                     <% end %>
@@ -198,11 +181,8 @@
                     <% SelectAquestion.where(:select_id => @select).each do |saquestion| %>
                         <ul type="disc">
                             <li>
-                                <% if current_user == (@select.user) %>
-                                    <font size="3"><%= saquestion.aquestion.standard.id %>: <%= best_in_place saquestion, :content, :type => :textarea, :nil => "Click here to add content", :html_attrs => { :style => 'width:100%;' } %></font>
-                                <% else %>
-                                    <font size="3"><%= saquestion.aquestion.standard.id %>: <%= saquestion.content %></font>
-                                <% end %>
+   
+                                    <font size="3"><%= saquestion.xaquestion.standard.id %>: <%= saquestion.xaquestion.content %></font>
                             </li>
                         </ul>
                          <% end %>

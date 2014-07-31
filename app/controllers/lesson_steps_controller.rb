@@ -27,10 +27,7 @@ class LessonStepsController < ApplicationController
     
     params[:select][:status] = 'active' if step == steps.last
     
-    if (@select.book.try(:title) != nil) && (@resource.try(:book) == nil)
-      @resource.book = @select.book.example
-      @resource.save
-    end
+
   if @select.update_attributes(params[:select])
   @select.selections.each do |selection|
     if selection.initiate?

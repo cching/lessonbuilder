@@ -22,6 +22,7 @@
 //= require jquery.purr
 //= require nprogress
 //= require nprogress-ajax
+//= require tinymce
 //= require tinymce-jquery
 //= require_tree .
 //= require best_in_place

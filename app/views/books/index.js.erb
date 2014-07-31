@@ -1,11 +1,20 @@
-$('#sidebar').addClass('animated bounceOutLeft');
-setTimeout(function() {
-	$('#sidebar').removeClass('animated bounceOutLeft');
+$('#main').addClass('animated bounceOutLeft');
 
-    $('#sidebar').hide();
-}, 700);
 setTimeout(function() {
-	$('#panel').show();
-	$('#panel').addClass('animated bounceInLeft')
+	$('#panel').removeClass('animated bounceOutLeft');
+	$('#panel').hide();
 
-}, 700);
+    if ($('#sidebar').is(':hidden')) {
+        $('#sidebar').show();
+     } 
+     if ($('#main').is(':hidden')) {
+        $('#main').show();
+     } 
+
+	$('#main').addClass('animated bounceInLeft');
+	$('#main').html("<%= escape_javascript(render :partial  => "book_list", :locals   => {:grade => @grade, :category => @category}) %>" );
+
+
+
+}, 600);
+

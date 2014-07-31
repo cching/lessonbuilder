@@ -7,7 +7,9 @@ setTimeout(function() {
     if ($('#sidebar').is(':hidden')) {
         $('#sidebar').show();
      } 
-
+     if ($('#main').is(':hidden')) {
+        $('#main').show();
+     } 
 
 	$('#main').addClass('animated bounceInLeft');
 	$('#main').html("<%= escape_javascript(render :partial  => "book_list", :locals   => {:grade => @grade, :category => @category}) %>" );

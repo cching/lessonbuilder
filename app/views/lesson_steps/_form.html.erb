@@ -156,7 +156,17 @@
   
   </div>
   </div>
- <%= f.input :attachment, label: false %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">File Attachment</h3>
+  </div>
+  <div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-10"><br/><%= f.input :attachment, label: false %></div>
+  <div class="col-md-1"></div></div>
+     
+     </div>
+
 <div class="row">
 <div class="col-md-2">Teaching on:
  <%= f.text_field :date, id: "selects_date", type: "text", class: "form-control" %></div>

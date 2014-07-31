@@ -5,9 +5,9 @@
 <div id="xaquestion_<%= @xaquestion.id %>">
 
     <% if @saquestions.map{|a| a.xaquestion_id}.include? @xaquestion.id %>
-      <%= link_to "",  unselect_questions_xaquestion_path(@xaquestion, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-check" %>
+      <%= link_to "",  unselect_aquestions_xaquestion_path(@xaquestion, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-check" %>
       <% else %>
-      <%= link_to "",  select_questions_xaquestion_path(@xaquestion, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-unchecked" %>
+      <%= link_to "",  select_aquestions_xaquestion_path(@xaquestion, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-unchecked" %>
       <% end %>
     </div>
     </div>

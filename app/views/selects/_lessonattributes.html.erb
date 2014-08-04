@@ -30,19 +30,18 @@
 <center>
 <div class="animated fadeInRightBig">
 
-<% unless @select.book.title.empty? %>
-
+<% unless @select.try(:book) == nil %>
 	<h4>Close Reading of <i><%= @select.book.title %></i>
 	</h4>
 
 <% end %>
 
-	<h4>Title: <%= @select.name %></h4>
+	<h4>Title: <%= @select.try(:name) %></h4>
 
-	<h4>Description: <%= @select.description %>
+	<h4>Description: <%= @select.try(:description) %>
 	</h4>
 
-	<h4>Objective: <%= @select.objective %>
+	<h4>Objective: <%= @select.try(:objective) %>
 	</h4>
 
 	<h4>Date Created: <%= @select.date.to_time.strftime('%B %e, %Y') %>

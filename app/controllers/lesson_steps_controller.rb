@@ -1,6 +1,6 @@
 class LessonStepsController < ApplicationController
   include Wicked::Wizard
-  steps :setup, :standards, :text, :standard_resources, :note_resources
+  steps :setup, :standards, :text, :standard_resources, :note_resources, :district_guidelines
 
   def show
     @select = Select.find(params[:select_id])
@@ -38,6 +38,14 @@ class LessonStepsController < ApplicationController
                 xquestion.standard_id = question.standard_id
                 xquestion.select_id = @select.id
                 xquestion.save
+              end
+
+              Aquestion.where(:standard_id => selection.standard_id).each do |aquestion|
+                xaquestion = Xaquestion.new
+                xaquestion.content = aquestion.content
+                xaquestion.standard_id = aquestion.standard_id
+                xaquestion.select_id = @select.id
+                xaquestion.save
               end
 
 

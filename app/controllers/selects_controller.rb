@@ -138,7 +138,7 @@ class SelectsController < ApplicationController
 
       if @select.update_attributes(params[:select])
         format.json { respond_with_bip(@select) }
-        format.html { redirect_to @select, notice: 'Click on the resources to edit' }
+        format.html { redirect_to @select }
 
       else
         format.html { render action: "edit" }

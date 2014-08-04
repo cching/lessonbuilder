@@ -1,4 +1,4 @@
-<%= simple_form_for(@select, :html => { :class => 'form-horizontal' }, url: wizard_path) do |f| %>
+<%= simple_form_for(@select, :html => { :class => 'form-horizontal' }) do |f| %>
 <ul class="nav nav-pills nav-justified" id="succ_standard">
 
 <% @standards.each do |standard| %>
@@ -177,8 +177,15 @@
 <div class="row">
 <div class="col-md-6">	<%= link_to 'Delete lesson', @select, confirm: 'Are you sure you want to delete this lesson?', method: :delete, class: "btn btn-danger btn-mini" %></div>
 <div class="col-md-6" align="right">
- <button type="submit" class="btn btn-info" data-loading-text="Saving..">Submit</button>
+ <button type="submit" class="btn btn-info" data-loading-text="Saving..">Preview</button>
 </div></div>
 
 </div>
 <% end %>
+
+
+<script>
+  $('button[data-loading-text]').click(function () {
+    $(this).button('loading');
+});
+</script>

@@ -70,13 +70,7 @@
 </div><br /><div id="pdflink">
 <% if current_user.admin? %>
 <%= link_to "Edit", edit_book_path(@book), class: "btn btn-link" %>
+<%= link_to "Delete", book_path(@book), :confirm => 'You sure?', :method => :delete %>
 <% end %>
 <%= link_to "Save as PDF", book_path(@book, format: "pdf"), class: "btn btn-link" %></div>
 
-<style type="text/css">
-
-@media print {
-        #pdflink {
-                display: none;
-        }
-        </style>

@@ -28,7 +28,7 @@ class Select < ActiveRecord::Base
   has_many :xvocabs
   
   has_many :select_aquestions, :dependent => :destroy
-  has_many :xaquestions, through: :select_aquestions
+  has_many :xaquestions
 
   has_many :select_links, :dependent => :destroy
   has_many :xlinks

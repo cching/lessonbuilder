@@ -1,0 +1,33 @@
+<div id="standard-options">
+<h4 class="panel-title">
+<%= link_to '<i class="glyphicon glyphicon-chevron-left"></i> '.html_safe, books_path, remote: :true, class: "btn btn-info btn-sm" %>
+</h4>
+</div><br/>
+
+      <div id="accordion">
+      <div class="list-group">
+        <% @sources.each do |source| %>
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse_<%= grade.number %>_<%= source.id %>" class="list-group-item" id="source">
+          <%= source.name %> 
+        </a>
+        </h4>
+
+      <div id="collapse_<%= grade.number %>_<%= source.id %>" class="panel-collapse collapse">
+      <div id="accordion">
+        <div class="list-group">
+        <% @category.each do |category| %>
+        <% if (Book.where(:textcategory_id => category.id).includes(:grades).where(:grades => {:id => grade.id}).order("title ASC") & Book.where(:textcategory_id => category.id).includes(:sources).where(:sources => {:id => source.id}).order("title ASC")).any? %>   
+                          
+            <%= link_to category.category, hide_books_path(:category => category.id, :grade => grade.id, :source => source.id), remote: true, class: "list-group-item", id: "grade" %>                
+          <% end %>
+          <% end %>
+        </div>  
+      </div>
+      </div>
+    <% end %>
+
+  </div>
+
+
+</div>

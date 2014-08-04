@@ -74,5 +74,6 @@
 <%= link_to "Save as PDF", book_path(@book, format: "pdf"), class: "btn btn-primary" %></div>
 <br />
 <% if current_user.try(:admin) %>
-  <%= link_to "Edit", edit_book_path(@book), class: "btn btn-default", remote: :true %>
+  <%= link_to "Edit", edit_book_path(@book), class: "btn btn-default", remote: :true %><br /><br />
+  <%= link_to "Delete", book_path(@book), :confirm => 'You sure?', :method => :delete, class: "btn btn-danger" %>
   <% end %></div>

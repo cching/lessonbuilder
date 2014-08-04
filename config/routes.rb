@@ -79,6 +79,8 @@ Commoncore::Application.routes.draw do
       get :show_sources
       get :show2
       get :hide
+      get :grade
+      get :show_list
     end
   end
 

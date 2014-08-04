@@ -3,9 +3,8 @@ class BooksController < ApplicationController
   # GET /books.json
   def index
     @book = Book.all
-    @category = Textcategory.all
     @grade = Grade.all
-    @sources = Source.all
+
 
     respond_to do |format|
       format.js
@@ -125,5 +124,18 @@ class BooksController < ApplicationController
     respond_to do |format|
       format.js
     end
+  end
+
+  def grade
+    @grade = Grade.find(params[:grade])
+    @sources = Source.where(:id => 1..7)
+    @category = Textcategory.all
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def show_list
+    respond_to :js
   end
 end

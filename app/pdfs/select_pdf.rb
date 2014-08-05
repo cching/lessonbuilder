@@ -19,16 +19,93 @@ class SelectPdf < Prawn::Document
     standards
     move_down 10
     first_table
-    move_down 20
+    start_new_page
     second_table
-    move_down 20
+    start_new_page
     third_table
     move_down 20
     fourth_table
   move_down 20
   header_table_content
+  move_down 20
+  notes
+  move_down 20
+  attachment
+
+  if SelectVocab.where(:select_id => @select.id).any?
+  start_new_page
+  text "Vocabulary Assessment", :align => :center, :style => :bold, :size => 20, :background_color => '2F81D7', :text_color => 'ffffff'
+  stroke do
+    horizontal_rule
+    move_down 30
+  end
+  vocab_assessment
   end
 
+  if SelectQuestion.where(:select_id => @select.id).any?
+  start_new_page
+  text "Question Assessment", :align => :center, :style => :bold, :size => 20, :background_color => '2F81D7', :text_color => 'ffffff'
+  stroke do
+    horizontal_rule
+    move_down 30
+  end
+  question_assessment
+end
+
+  if SelectAquestion.where(:select_id => @select.id).any?
+  start_new_page
+  text "Assessment Questions", :align => :center, :style => :bold, :size => 20, :background_color => '2F81D7', :text_color => 'ffffff'
+  stroke do
+    horizontal_rule
+    move_down 30
+  end
+  aquestion_assessment
+end
+  end
+
+
+def vocab_assessment
+   SelectVocab.where(:select_id => @select.id).map do |vocab|
+      text "#{vocab.xvocab.content_english} -"
+      stroke do
+        move_down 15
+  horizontal_rule
+  move_down 22
+  horizontal_rule
+  move_down 25
+end
+     end
+   end
+
+   def question_assessment
+   SelectQuestion.where(:select_id => @select.id).map do |question|
+      text "#{question.xquestion.content}"
+      stroke do
+        move_down 15
+  horizontal_rule
+  move_down 22
+  horizontal_rule
+  move_down 22
+  horizontal_rule
+  move_down 25
+end
+     end
+   end
+
+   def aquestion_assessment
+   SelectAquestion.where(:select_id => @select.id).map do |question|
+      text "#{question.xaquestion.content}"
+      stroke do
+        move_down 15
+  horizontal_rule
+  move_down 22
+  horizontal_rule
+  move_down 22
+  horizontal_rule
+  move_down 25
+end
+     end
+   end
 
   def header_table_content
     @select.headers.map do |header|
@@ -56,6 +133,30 @@ def standards
   end
   move_down 5
 end
+  end
+
+def notes
+    table([['Notes'],
+        [@select.notes]
+      ], width: 500, :position => :center) do 
+      row(0).align = :center
+    row(0).font_style = :bold
+    row(0).background_color = '82b3e7'
+    row(0).text_color = 'ffffff'
+  end
+  move_down 5
+  end
+
+  def attachment
+    table([['File Attachment'],
+        [@select.try(:attachment_file_name)]
+      ], width: 500, :position => :center) do 
+      row(0).align = :center
+    row(0).font_style = :bold
+    row(0).background_color = '82b3e7'
+    row(0).text_color = 'ffffff'
+  end
+  move_down 5
   end
 
 def first_table

@@ -42,11 +42,11 @@ class Select < ActiveRecord::Base
   belongs_to :book
   belongs_to :document
 
-  has_many :select_sources
+  has_many :select_sources, :dependent => :destroy
   has_many :sources, through: :select_sources
-  has_many :headers
+  has_many :headers, :dependent => :destroy
   accepts_nested_attributes_for :headers, allow_destroy: true
-  has_many :lesson_resources
+  has_many :lesson_resources, :dependent => :destroy
   accepts_nested_attributes_for :lesson_resources, allow_destroy: true
 
 #custom user input fields

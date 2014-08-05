@@ -7,7 +7,7 @@ class SelectsController < ApplicationController
 
   def grade0
     @search = Select.search(params[:q])
-    @selects0 = @search.result.includes(:grades).where(:grades => {:id => 1}).paginate(:page => params[:page], :per_page => 30)
+    @selects0 = @search.result.includes(:grades).where(:grades => {:id => 1})
     respond_to do |format|
       format.html
       format.js
@@ -16,7 +16,7 @@ class SelectsController < ApplicationController
 
   def grade1
     @search = Select.search(params[:q])
-    @selects1 = @search.result.includes(:grades).where(:grades => {:id => 2}).paginate(:page => params[:page], :per_page => 30)
+    @selects1 = @search.result.includes(:grades).where(:grades => {:id => 2})
     respond_to do |format|
       format.html
       format.js
@@ -25,7 +25,7 @@ class SelectsController < ApplicationController
 
   def grade2
     @search = Select.search(params[:q])
-    @selects2 = @search.result.includes(:grades).where(:grades => {:id => 3}).paginate(:page => params[:page], :per_page => 30)
+    @selects2 = @search.result.includes(:grades).where(:grades => {:id => 3})
     respond_to do |format|
       format.html
       format.js
@@ -34,7 +34,7 @@ class SelectsController < ApplicationController
 
   def grade3
     @search = Select.search(params[:q])
-    @selects3 = @search.result.includes(:grades).where(:grades => {:id => 4}).paginate(:page => params[:page], :per_page => 30)
+    @selects3 = @search.result.includes(:grades).where(:grades => {:id => 4})
     respond_to do |format|
       format.html
       format.js
@@ -43,7 +43,7 @@ class SelectsController < ApplicationController
 
   def grade4
     @search = Select.search(params[:q])
-    @selects4 = @search.result.includes(:grades).where(:grades => {:id => 5}).paginate(:page => params[:page], :per_page => 30)
+    @selects4 = @search.result.includes(:grades).where(:grades => {:id => 5})
     respond_to do |format|
       format.html
       format.js
@@ -52,7 +52,7 @@ class SelectsController < ApplicationController
 
   def grade5
     @search = Select.search(params[:q])
-    @selects5 = @search.result.includes(:grades).where(:grades => {:id => 6}).paginate(:page => params[:page], :per_page => 30)
+    @selects5 = @search.result.includes(:grades).where(:grades => {:id => 6})
     respond_to do |format|
       format.html
       format.js
@@ -61,7 +61,7 @@ class SelectsController < ApplicationController
 
   def grade6
     @search = Select.search(params[:q])
-    @selects6 = @search.result.includes(:grades).where(:grades => {:id => 7}).paginate(:page => params[:page], :per_page => 30)
+    @selects6 = @search.result.includes(:grades).where(:grades => {:id => 7})
     respond_to do |format|
       format.html
       format.js
@@ -70,7 +70,7 @@ class SelectsController < ApplicationController
 
   def grade7
     @search = Select.search(params[:q])
-    @selects7 = @search.result.includes(:grades).where(:grades => {:id => 8}).paginate(:page => params[:page], :per_page => 30)
+    @selects7 = @search.result.includes(:grades).where(:grades => {:id => 8})
     respond_to do |format|
       format.html
       format.js
@@ -79,7 +79,7 @@ class SelectsController < ApplicationController
 
   def grade8
     @search = Select.search(params[:q])
-    @selects8 = @search.result.includes(:grades).where(:grades => {:id => 9}).paginate(:page => params[:page], :per_page => 30)
+    @selects8 = @search.result.includes(:grades).where(:grades => {:id => 9})
     respond_to do |format|
       format.html
       format.js
@@ -149,13 +149,17 @@ class SelectsController < ApplicationController
 
   def destroy
     @select = Select.find(params[:id])
+    if @select.user_id == current_user.id || current_user.try(:admin)
+    
     @select.destroy
     @user = current_user
 
     respond_to do |format|
       format.html { redirect_to @user }
+      format.js
       format.json { head :no_content }
     end
+  end
   end
 
 end

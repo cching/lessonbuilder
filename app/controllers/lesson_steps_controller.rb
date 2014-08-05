@@ -1,5 +1,6 @@
 class LessonStepsController < ApplicationController
   include Wicked::Wizard
+  helper(TinyMCE::Rails::Helper)
   steps :setup, :standards, :text, :standard_resources, :note_resources, :district_guidelines
 
   def show

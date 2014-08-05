@@ -59,7 +59,7 @@
 
 				<% if current_user.try(:admin) %>
 				<div id="delete_<%= select.id %>">
-				<%= link_to "Delete", select_path(select), :method => :delete, class: "btn btn-danger", :remote => true %>
+				<%= link_to "Delete", select_path(select), :method => :delete, class: "btn btn-danger", :remote => true, data: { confirm: 'You sure?' } %>
 				</div></td><td>
 				<% end %>
 				<%= link_to select.try(:name), select, class: "btn btn-link" %></td>

@@ -33,7 +33,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span></b></a>
           <ul class="dropdown-menu">
           <li><%= link_to 'View profile <i class="glyphicon glyphicon-tasks"></i>'.html_safe, user_path(current_user), class: "btn btn-link" %></li>
- 
+          <li><%= link_to 'Edit profile <i class="glyphicon glyphicon-wrench"></i>'.html_safe, edit_user_registration_path(current_user), class: "btn btn-link" %></li>
            <li class="divider"></li>
            <li><%= link_to 'Sign out <i class="glyphicon glyphicon-new-window"></i>'.html_safe, destroy_user_session_path, method: :delete, class: "btn btn-link" %></li>
           </ul>

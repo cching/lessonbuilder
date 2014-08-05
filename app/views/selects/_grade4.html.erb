@@ -47,15 +47,17 @@
 		<tr>
 		<% @selects4.where(:private => FALSE).each do |select| %>
 
-			<td><% unless select.name.blank? %>
+			<td>
 
-				<%= link_to select.name, select, class: "btn btn-link" %></td>
-				
-				<% else %> 
-					<div class="exception">No lesson name!
-					</div>
+
+				<% if current_user.try(:admin) %>
+				<div id="delete_<%= select.id %>">
+				<%= link_to "Delete", select_path(select), :method => :delete, class: "btn btn-danger", :remote => true, data: { confirm: 'You sure?' } %>
+				</div></td><td>
 				<% end %>
-			</td>
+				<%= link_to select.try(:name), select, class: "btn btn-link" %></td>
+				
+
 			 <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 
 			<td><%= select.date.to_time.strftime('%B %e, %Y') %></td>

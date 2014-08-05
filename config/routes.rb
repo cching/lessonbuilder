@@ -33,7 +33,7 @@ Commoncore::Application.routes.draw do
   resources :lesson_resources
 
 
-  devise_for :users, :path => '', :path_names => { :sign_up => "register", :sign_in => 'login', :sign_out => 'logout' }
+  devise_for :users, :path => '', :path_names => { :sign_up => "register", :sign_in => 'login', :sign_out => 'logout', :account_update => "update_account" }
 
   resources :headers
 

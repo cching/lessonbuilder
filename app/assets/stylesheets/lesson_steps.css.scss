@@ -259,3 +259,21 @@ color: #FFF;
 	color: #fff;
 }
 
+
+#notes.panel-warning {
+	background-color: #b19cd9;
+	color: #fff;
+	border-color: #b19cd9;
+	text-align: center;
+}
+
+#notes.btn-warning {
+	background-color: #b19cd9;
+	color: #fff;
+}
+
+
+#notes.btn-warning:hover {
+	background-color: #fdfd96;
+	color: #b19cd9;
+}

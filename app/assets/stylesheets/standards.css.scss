@@ -44,7 +44,12 @@
 }
 
 #standard-hover.list-group-item.active {
-  background-color: #82b3e7 !important;
+  background-color: #ffb347 !important;
+  color: #FFF !important;
+}
+
+#standard-hover.list-group-item {
+  background-color: #2F81D7 !important;
   color: #FFF !important;
 }
 
@@ -54,10 +59,6 @@
 	color: #FFF;
 }
 
-.active {
-	background-color: #82b3e7 !important;
-	color: #FFF;
-}
 
 
  li {

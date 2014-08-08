@@ -24,7 +24,13 @@ class StandardsController < ApplicationController
     @links = @standard.links.all
     @vocabs = @standard.vocabs.all
     @aquestions = @standard.aquestions.all
+    @grade = Grade.find(params[:grade_id])
 
+    if params[:subject_id] != nil
+      @subject = Subject.find(params[:subject_id])
+    elsif params[:subject2_id] != nil
+      @subject2 = Subsubject.find(params[:subject2_id])
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @standard }

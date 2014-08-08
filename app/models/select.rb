@@ -7,9 +7,8 @@ class Select < ActiveRecord::Base
   has_attached_file :attachment
   do_not_validate_attachment_file_type :attachment
   #Selects is the lesson model but is named 'select' for the ActiveRecord join association
-  attr_accessible :user_id, :standard_ids, :textdependent, :name, :grade_ids, :text_id, :date, :vocabulary, :writing, :conclusion, :objective, :notes, :description, :book, :subject_id, :subsubject_ids, :private, :xquestion_ids, :xvocab_ids, :select_ids, :xstrategy_ids, :xskill_ids, :xvocab_ids, :xlink_ids, :book_id, :cquestions_attributes, :cvocabs_attributes, :lesson_resources_attributes, :cskills_attributes, :cstrategies_attributes, :clinks_attributes, :caquestions_attributes, :source_ids, :aquestion_ids, :headers_attributes, :starts_at, :ends_at, :status, :xquestions_attributes, :xvocabs_attributes, :xlinks_attributes, :xstrategies_attributes, :xskills_attributes, :xaquestions_attributes, :attachment
+  attr_accessible :user_id, :standard_ids, :textdependent, :name, :grade_ids, :text_id, :date, :vocabulary, :writing, :conclusion, :objective, :notes, :description, :book, :subject_id, :subsubject_ids, :private, :xquestion_ids, :xvocab_ids, :select_ids, :xstrategy_ids, :xskill_ids, :xvocab_ids, :xlink_ids, :book_id, :cquestions_attributes, :cvocabs_attributes, :lesson_resources_attributes, :cskills_attributes, :cstrategies_attributes, :clinks_attributes, :caquestions_attributes, :source_ids, :aquestion_ids, :headers_attributes, :starts_at, :ends_at, :status, :xquestions_attributes, :xvocabs_attributes, :xlinks_attributes, :xstrategies_attributes, :xskills_attributes, :xaquestions_attributes, :attachment, :subject_ids
   belongs_to :user
-  belongs_to :subject
   
 #selections made by the user for lessons  
   has_many :selections, :dependent => :destroy
@@ -35,6 +34,9 @@ class Select < ActiveRecord::Base
 
   has_many :select_subjects, :dependent => :destroy
   has_many :subsubjects, through: :select_subjects
+
+  has_many :select_mainsubjects, :dependent => :destroy
+  has_many :subjects, through: :select_mainsubjects
 
   has_many :select_grades, :dependent => :destroy
   has_many :grades, through: :select_grades
@@ -96,7 +98,7 @@ class Select < ActiveRecord::Base
   end
 
 
-  validates :name, :grades, :sources, :presence => true, :if => :active_or_setup?
+  validates :name, :grades, :sources, :subjects, :presence => true, :if => :active_or_setup?
   def active?
     status == 'active'
   end

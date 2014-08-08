@@ -116,6 +116,14 @@ p {
   }
 }
 
+.form-horizontal .control-group {
+    margin-bottom: 1px;
+}
+
+.form-horizontal .control-label {
+    margin-bottom: 1px;
+}
+
 $nprogress-color: #fff;
 @import 'nprogress';
 @import 'nprogress-bootstrap';

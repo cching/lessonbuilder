@@ -16,7 +16,7 @@
   <div class="col-md-6">
   	<div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Question Stems</h3>
+    <div class="panel-title"><h4 align="center">Question Stems</h4></div>
   </div>
   <div class="panel-body table-content">
   <% @select.standards.each do |standard| %>
@@ -40,7 +40,7 @@
   <div class="col-md-6">
     <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Vocabulary</h3>
+    <div class="panel-title"><h4 align="center">Vocabulary</h4></div>
   </div>
   <div class="panel-body table-content">
   <% @select.standards.each do |standard| %>
@@ -67,7 +67,7 @@
     <div class="col-md-6">
     <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Strategies</h3>
+    <div class="panel-title"><h4 align="center">Strategies</h4></div>
   </div>
   <div class="panel-body table-content">
   <% @select.standards.each do |standard| %>
@@ -89,7 +89,7 @@
   <div class="col-md-6">
     <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Skills</h3>
+    <div class="panel-title"><h4 align="center">Skills</h4></div>
   </div>
   <div class="panel-body table-content">
   <% @select.standards.each do |standard| %>
@@ -116,7 +116,7 @@
   
     <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Resources</h3>
+    <div class="panel-title"><h4 align="center">Resources</h4></div>
   </div>
   <div class="panel-body table-content-links">
   <% @select.standards.each do |standard| %>
@@ -139,7 +139,7 @@
 
     <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Assessment Questions</h3>
+    <div class="panel-title"><h4 align="center">Assessment Questions</h4></div>
   </div>
   <div class="panel-body table-content-links">
   <% @select.standards.each do |standard| %>
@@ -156,9 +156,10 @@
   
   </div>
   </div>
+  
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">File Attachment</h3>
+    <div class="panel-title"><h4 align="center">File Attachment</h4></div>
   </div>
   <div class="row">
   <div class="col-md-1"></div>
@@ -166,6 +167,19 @@
   <div class="col-md-1"></div></div>
      
      </div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title"><h4 align="center">Instructional Plan</h4></div>
+  </div>
+  <div class="panel-body" align="center">
+       <%= f.input :notes, label: false, :input_html => { class: 'wysihtml5', style: 'width:100%; height:300px' }, 'data-no-turbolink' => true %>
+      </div>
+
+  
+  </div>
+
+
 
 <div class="row">
 <div class="col-md-2">Teaching on:
@@ -189,3 +203,5 @@
     $(this).button('loading');
 });
 </script>
+
+

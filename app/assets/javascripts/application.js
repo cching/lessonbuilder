@@ -22,8 +22,7 @@
 //= require jquery.purr
 //= require nprogress
 //= require nprogress-ajax
-//= require tinymce
-//= require tinymce-jquery
+//= require bootstrap-wysihtml5
 //= require_tree .
 //= require best_in_place
 
@@ -43,9 +42,13 @@ $(document).ready(function() {
   });
 });
 
+  $(document).ready(function(){
 
+    $('.wysihtml5').each(function(i, elem) {
+      $(elem).wysihtml5();
+    });
 
-
+  })
 
 
 

@@ -11,7 +11,15 @@
 <ul class="nav nav-pills nav-justified" id="succ_standard">
 
 <% if @successive_prev.present? %>
-    <li class="border"><h4><%= @successive_prev.id %></h4><br/><%= link_to @successive_prev.content, standard_path(@successive_prev), remote: :true %>  </li>
+    <li class="border"><h4><%= @successive_prev.id %></h4><br/>
+    <% if @successive_prev.subject_id == 1 %>
+    <%= link_to @successive_prev.content, standard_path(@successive_prev, :grade_id => @successive_prev.grade_id, :subject_id => @successive_prev.subject_id), remote: :true %>
+    <% elsif @successive_prev.subject_id == 2 %>
+    <%= link_to @successive_prev.content, standard_path(@successive_prev, :grade_id => @successive_prev.grade_id, :subject_id => @successive_prev.subject_id), remote: :true %>
+    <% else %>
+    <%= link_to @successive_prev.content, standard_path(@successive_prev, :grade_id => @successive_prev.grade_id, :subject2_id => @successive_prev.subsubject_id), remote: :true %> 
+    <% end %>
+    </li>
     <% end %>
       <li class="active">
       <h4><%= @standard.id %></h4>
@@ -20,7 +28,14 @@
   <% if @successive_next.present? %>
 
     <li class="border">
-    <h4><%= @successive_next.id %></h4><br/><%= link_to @successive_next.content, standard_path(@successive_next), remote: :true %>
+    <h4>
+    <% if @successive_next.subject_id == 1 %>
+    <%= @successive_next.id %></h4><br/><%= link_to @successive_next.content, standard_path(@successive_next, :grade_id => @successive_next.grade_id, :subject_id => @successive_next.subject_id), remote: :true %>
+    <% elsif @successive_next.subject_id == 2 %>
+    <%= @successive_next.id %></h4><br/><%= link_to @successive_next.content, standard_path(@successive_next, :grade_id => @successive_next.grade_id, :subject_id => @successive_next.subject_id), remote: :true %>
+    <% else %>
+    <%= @successive_next.id %></h4><br/><%= link_to @successive_next.content, standard_path(@successive_next, :grade_id => @successive_next.grade_id, :subject2_id => @successive_next.subsubject_id), remote: :true %>
+    <% end %>
   </li>
   <% end %>
 
@@ -32,7 +47,7 @@
 <% if @standard.anchor_standards.any? %>
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Anchor Standards</h3>
+    <div class="panel-title"><h4 align="center">Anchor Standards</h4></div>
   </div>
   <div class="panel-body">
     <ul>
@@ -45,7 +60,7 @@
 <% if @standard.i_cans.any? %>
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">"I can..." Statements</h3>
+    <div class="panel-title"><h4 align="center">"I can..." Statements</h4></div>
   </div>
   <div class="panel-body">
     <ul>
@@ -59,7 +74,7 @@
   <div class="col-md-6">
   	<div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Question Stems</h3>
+    <div class="panel-title"><h4 align="center">Question Stems</h4></div>
   </div>
   <div class="panel-body">
     <ul>
@@ -75,7 +90,7 @@
   <div class="col-md-6">
       <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Vocabulary</h3>
+    <div class="panel-title"><h4 align="center">Vocabulary</h4></div>
   </div>
   <div class="panel-body">
 <ul>
@@ -95,7 +110,7 @@
   <div class="col-md-6">
   	<div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Strategies</h3>
+    <div class="panel-title"><h4 align="center">Strategies</h4></div>
   </div>
   <div class="panel-body">
     <ul>
@@ -109,7 +124,7 @@
     <div class="col-md-6">
       <div class="panel panel-default">
       <div class="panel-heading">
-    <h3 class="panel-title">Skills</h3>
+    <div class="panel-title"><h4 align="center">Skills</h4></div>
     </div>
   <div class="panel-body">
     <ul>
@@ -127,7 +142,7 @@
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Resources</h3>
+    <div class="panel-title"><h4 align="center">Resources</h4></div>
   </div>
   <div class="panel-body">
     <ul>
@@ -139,13 +154,21 @@
 
 <div class="panel panel-default" >
   <div class="panel-heading">
-    <h3 class="panel-title">Related Standards</h3>
+    <div class="panel-title"><h4 align="center">Related Standards</h4></div>
   </div>
   <div class="panel-body">
     <ul class="nav nav-pills nav-justified">
     <% @successive.each do |successive| %>
-    <li class=<%= "active" if successive.id == @standard.id %>><%= link_to successive.id, standard_path(successive), remote: true %>
+    <% if successive.subject_id == 1 %>
+    <li class=<%= "active" if successive.id == @standard.id %>><%= link_to successive.id, standard_path(successive, :grade_id => successive.grade_id, :subject_id => successive.subject_id), remote: true %>
   </li>
+  <% elsif successive.subject_id == 2 %>
+    <li class=<%= "active" if successive.id == @standard.id %>><%= link_to successive.id, standard_path(successive, :grade_id => successive.grade_id, :subject_id => successive.subject_id), remote: true %>
+  </li>
+  <% else %>
+  <li class=<%= "active" if successive.id == @standard.id %>><%= link_to successive.id, standard_path(successive, :grade_id => successive.grade_id, :subject2_id => successive.subsubject_id), remote: true %>
+  </li>
+  <% end %>
   <% end %>
 
 

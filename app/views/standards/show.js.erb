@@ -1,6 +1,6 @@
 $('#search').addClass('animated bounceOutRight');
 $('#standard_<%= @standard.id %>').addClass('standard-list-group-item');
-
+$('#sidebar').html('<%= escape_javascript(render(:partial => 'standard_list', :locals => {:standard => @standard, :grade => @grade, :subject => @subject, :subject2 => @subject2})) %>')
 setTimeout(function() {
     $('#search').hide();
 }, 600);

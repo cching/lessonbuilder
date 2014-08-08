@@ -24,7 +24,7 @@ gem 'turbolinks'
 gem 'bootstrap-will_paginate'
 gem 'nprogress-rails'
 gem 'devise'
-gem 'tinymce-rails'
+gem 'bootstrap-wysihtml5-rails', :git => 'git://github.com/Nerian/bootstrap-wysihtml5-rails.git'
 
 group :development, :test do
   gem 'rspec-rails', '2.11.0'

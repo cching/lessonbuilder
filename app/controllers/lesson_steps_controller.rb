@@ -1,12 +1,11 @@
 class LessonStepsController < ApplicationController
   include Wicked::Wizard
-  helper(TinyMCE::Rails::Helper)
-  steps :setup, :standards, :text, :standard_resources, :note_resources, :district_guidelines
+  steps :setup, :standards, :text, :standard_resources, :instructional_plan, :instructional_norms
 
   def show
     @select = Select.find(params[:select_id])
     @grades = @select.grades.all
-    @reading_subject = @select.subject
+    @reading_subject = @select.subjects
     @subjects = @select.subsubjects.order("id ASC").all
     @standards = @select.standards.all
     @ids = @standards.map{|standard| standard.id}

@@ -7,16 +7,27 @@
    <div class="list-group">
 
 <% if @subject.try(:id) != nil %>
-
+<div class="list-group-item active" id="standard-hover">Grade <%= @grade.number %> <br/><%= @subject.name %></div>
 <% Standard.where(:subject_id => @subject.id).where(:grade_id => @grade.id).order("standard_id ASC").each do |standard| %>
 
-<%= link_to standard.id, standard_path(standard), class: "list-group-item", id: "standard-hover", remote: :true, :locals => {:standard => standard} %>
 
+<% if @standard.try(:id) == standard.id %>
+<%= link_to standard.id, standard_path(standard, :subject_id => @subject.id, :grade_id => @grade.id), class: "list-group-item active", id: "standard-hover", remote: :true, :locals => {:standard => standard} %>
+<% else %>
+<%= link_to standard.id, standard_path(standard, :subject_id => @subject.id, :grade_id => @grade.id), class: "list-group-item", id: "standard-hover", remote: :true, :locals => {:standard => standard} %>
+<% end %>
 <% end %>
 
-<% else %>
+<% elsif @subject2.try(:id) != nil %>
+<div class="list-group-item active" id="standard-hover">Grade <%= @grade.number %> <br/><%= @subject2.name %></div>
 <% Standard.where(:subsubject_id => @subject2.id).where(:grade_id => @grade.id).order("standard_id ASC").each do |standard| %>
-<%= link_to standard.id, standard_path(standard), class: "list-group-item", id: "standard-hover", remote: :true, :locals => {:standard => standard} %>
+
+<% if @standard.try(:id) == standard.id %>
+
+<%= link_to standard.id, standard_path(standard, :subject2_id => @subject2.id, :grade_id => @grade.id), class: "list-group-item active", id: "standard-hover", remote: :true, :locals => {:standard => standard} %>
+<% else %>
+<%= link_to standard.id, standard_path(standard, :subject2_id => @subject2.id, :grade_id => @grade.id), class: "list-group-item", id: "standard-hover", remote: :true, :locals => {:standard => standard} %>
+<% end %>
 <% end %>
 
 

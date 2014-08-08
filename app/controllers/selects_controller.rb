@@ -89,6 +89,7 @@ class SelectsController < ApplicationController
   def show
     @select = Select.find(params[:id])
     @standards = @select.standards.all
+    
     respond_to do |format|
       format.html
       format.pdf do

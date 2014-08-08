@@ -15,7 +15,7 @@
   <div class="col-md-6">
     <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Question Stems</h3>
+    <div class="panel-title"><h4 align="center">Question Stems</h4></div>
   </div>
   <div class="panel-body table-content">
                 
@@ -42,7 +42,7 @@
   <div class="col-md-6">
       <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Vocabulary</h3>
+    <div class="panel-title"><h4 align="center">Vocabulary</h4></div>
   </div>
   <div class="panel-body table-content">
 <% if (SelectVocab.where(:select_id => @select) || Cvocab.where(:select_id => @select)).empty? %>
@@ -73,7 +73,7 @@
   <div class="col-md-6">
     <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Strategies</h3>
+    <div class="panel-title"><h4 align="center">Strategies</h4></div>
   </div>
   <div class="panel-body table-content">
 <% if (SelectStrategy.where(:select_id => @select) || Cstrategy.where(:select_id => @select)).empty? %>
@@ -103,7 +103,7 @@
     <div class="col-md-6">
       <div class="panel panel-default">
       <div class="panel-heading">
-    <h3 class="panel-title">Skills</h3>
+    <div class="panel-title"><h4 align="center">Skills</h4></div>
     </div>
   <div class="panel-body table-content">
 <% if (SelectSkill.where(:select_id => @select) || Cskill.where(:select_id => @select)).empty? %>
@@ -138,7 +138,7 @@
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Resources</h3>
+    <div class="panel-title"><h4 align="center">Resources</h4></div>
   </div>
   <div class="panel-body">
     
@@ -169,7 +169,7 @@
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Assessment Questions</h3>
+    <div class="panel-title"><h4 align="center">Assessment Questions</h4></div>
   </div>
   <div class="panel-body">
                     <% if (SelectAquestion.where(:select_id => @select) || Caquestion.where(:select_id => @select)).empty? %>
@@ -199,7 +199,7 @@
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">File Attachment</h3>
+    <div class="panel-title"><h4 align="center">File Attachment</h4></div>
   </div>
   <div class="panel-body">
 

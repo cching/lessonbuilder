@@ -26,16 +26,16 @@
     <%= link_to "Resources", wizard_path(:standard_resources), class: "list-group-item" %>
     <% end %>
 
-    <% if params[:id] == 'note_resources' %>
-    <%= link_to "Notes", '#', class: "list-group-item active" %>
+    <% if params[:id] == 'instructional_plan' %>
+    <%= link_to "Instructional Plan", '#', class: "list-group-item active" %>
     <% else %>
-    <%= link_to "Notes", wizard_path(:note_resources), class: "list-group-item" %>
+    <%= link_to "Instructional Plan", wizard_path(:instructional_plan), class: "list-group-item" %>
     <% end %>  
 
-    <% if params[:id] == 'district_guidelines' %>
-    <%= link_to "District Guidelines", '#', class: "list-group-item active" %>
+    <% if params[:id] == 'instructional_norms' %>
+    <%= link_to "Instructional Norms", '#', class: "list-group-item active" %>
     <% else %>
-    <%= link_to "District Guidelines", wizard_path(:district_guidelines), class: "list-group-item" %>
+    <%= link_to "Instructional Norms", wizard_path(:instructional_norms), class: "list-group-item" %>
     <% end %>  
 
 
@@ -64,16 +64,16 @@
     <%= link_to "Resources", wizard_path(:standard_resources), class: "list-group-item" %>
     <% end %>
 
-    <% if params[:id] == 'note_resources' %>
-    <%= link_to "Notes", '#', class: "list-group-item active" %>
+    <% if params[:id] == 'instructional_plan' %>
+    <%= link_to "Instructional Plan", '#', class: "list-group-item active" %>
     <% else %>
-    <%= link_to "Notes", wizard_path(:note_resources), class: "list-group-item" %>
+    <%= link_to "Instructional Plan", wizard_path(:instructional_plan), class: "list-group-item" %>
     <% end %> 
 
-    <% if params[:id] == 'district_guidelines' %>
-    <%= link_to "District Guidelines", '#', class: "list-group-item active" %>
+    <% if params[:id] == 'instructional_norms' %>
+    <%= link_to "Instructional Norms", '#', class: "list-group-item active" %>
     <% else %>
-    <%= link_to "District Guidelines", wizard_path(:district_guidelines), class: "list-group-item" %>
+    <%= link_to "Instructional Norms", wizard_path(:instructional_norms), class: "list-group-item" %>
     <% end %>  
 
     <% else %>
@@ -82,15 +82,15 @@
       <%= link_to "Standards", '#', class: "list-group-item disabled" %>
       <%= link_to "Text", '#', class: "list-group-item disabled" %>
       <%= link_to "Resources", '#', class: "list-group-item disabled" %>
-      <%= link_to "Notes", wizard_path(:note_resources), class: "list-group-item" %>
-      <%= link_to "District Guidelines", wizard_path(:district_guidelines), class: "list-group-item" %>
+      <%= link_to "Instructional Plan", wizard_path(:instructional_plan), class: "list-group-item" %>
+      <%= link_to "Instructional Norms", wizard_path(:instructional_norms), class: "list-group-item" %>
       <% else %>
       <%= link_to "Lesson Setup", wizard_path(:setup), class: "list-group-item active" %>
       <%= link_to "Standards", '#', class: "list-group-item disabled" %>
       <%= link_to "Text", '#', class: "list-group-item disabled" %>
       <%= link_to "Resources", '#', class: "list-group-item disabled" %>
-      <%= link_to "Notes", wizard_path(:note_resources), class: "list-group-item" %>
-      <%= link_to "District Guidelines", wizard_path(:district_guidelines), class: "list-group-item" %>
+      <%= link_to "Instructional Plan", wizard_path(:instructional_plan), class: "list-group-item" %>
+      <%= link_to "Instructional Norms", wizard_path(:instructional_norms), class: "list-group-item" %>
       <% end %>
   <% end %>
   </div>

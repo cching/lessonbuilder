@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140731083627) do
+ActiveRecord::Schema.define(:version => 20140808070627) do
 
   create_table "admin_notes", :force => true do |t|
     t.string   "resource_id",     :null => false
@@ -307,6 +307,13 @@ ActiveRecord::Schema.define(:version => 20140731083627) do
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
     t.boolean  "initiate",   :default => false
+  end
+
+  create_table "select_mainsubjects", :force => true do |t|
+    t.integer  "subject_id"
+    t.integer  "select_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "select_plans", :force => true do |t|

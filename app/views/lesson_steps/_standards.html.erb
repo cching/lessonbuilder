@@ -18,12 +18,13 @@
 	   	</div>
 	   	</div>
 	   	<br/>
+	 <% @reading_subject.each do |subject| %>
 	<% @grades.each do |grade| %>
 		<div class="row animated fadeInUpBig">
-	   		<div class="col-md-2" id="reading_1">
-		    <%= @reading_subject.name %>
+	   		<div class="col-md-2" id="reading_<%= subject.id %>">
+		    <%= subject.name %>
 		    </div>
-		    <div class="col-md-2" id="reading2_1"><%= @reading_subject.name %>
+		    <div class="col-md-2" id="reading2_<%= subject.id %>"><%= subject.name %>
 		    </div>
 		    <div class="col-md-8"></div>
 		</div>
@@ -31,14 +32,14 @@
 		<div class="row animated fadeInRightBig">
 			<div class="col-md-2 standards-select"></div>
 		    
-		    <div class="col-md-10" id="reading_1">
-			<%= f.association :standards, as: :check_boxes, collection: Standard.where(:subject_id => @reading_subject, :grade_id => grade.id).order("standard_id ASC"), :label_method => lambda { |standard| "#{standard.id}:  #{standard.content}" }, label: false, input_html: {:data => {:toggle => "checkbox"}}, id: "standards-checkbox" %>    	
+		    <div class="col-md-10" id="reading_<%= subject.id %>">
+			<%= f.association :standards, as: :check_boxes, collection: Standard.where(:subject_id => subject.id, :grade_id => grade.id).order("standard_id ASC"), :label_method => lambda { |standard| "#{standard.id}:  #{standard.content}" }, label: false, input_html: {:data => {:toggle => "checkbox"}}, id: "standards-checkbox" %>    	
 		   	</div>
 
 
-		 </div>
+		 </div><br/>
 		   	
-		 
+		 <% end %>
 	<% end %>
 	<br/>
 

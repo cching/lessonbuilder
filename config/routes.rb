@@ -8,6 +8,7 @@ Commoncore::Application.routes.draw do
   resources :xquestions do
     put :select_questions, on: :member
     put :unselect_questions, on: :member
+    collection { post :sort }
   end
 
   resources :xvocabs do

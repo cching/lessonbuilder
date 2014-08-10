@@ -89,6 +89,8 @@ class SelectsController < ApplicationController
   def show
     @select = Select.find(params[:id])
     @standards = @select.standards.all
+    @notes = ActionView::Base.full_sanitizer.sanitize(@select.notes)
+
     
     respond_to do |format|
       format.html
@@ -134,7 +136,7 @@ class SelectsController < ApplicationController
   
   def update
     @select = Select.find(params[:id])
-
+    
     respond_to do |format|
 
       if @select.update_attributes(params[:select])

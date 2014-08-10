@@ -9,6 +9,7 @@ class LessonStepsController < ApplicationController
     @subjects = @select.subsubjects.order("id ASC").all
     @standards = @select.standards.all
     @ids = @standards.map{|standard| standard.id}
+    @sources = @select.sources.map{|source| source.name}
     @squestions = SelectQuestion.where(:select_id => @select.id)
     @svocabs = SelectVocab.where(:select_id => @select.id)
     @sstrategies = SelectStrategy.where(:select_id => @select.id)

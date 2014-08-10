@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140808070627) do
+ActiveRecord::Schema.define(:version => 20140810063141) do
 
   create_table "admin_notes", :force => true do |t|
     t.string   "resource_id",     :null => false
@@ -415,6 +415,7 @@ ActiveRecord::Schema.define(:version => 20140808070627) do
     t.string   "attachment_content_type"
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
+    t.text     "sanitize_notes"
   end
 
   create_table "skills", :force => true do |t|
@@ -531,6 +532,7 @@ ActiveRecord::Schema.define(:version => 20140808070627) do
     t.boolean  "bold",        :default => false
     t.boolean  "highlight",   :default => false
     t.boolean  "italic",      :default => false
+    t.integer  "position"
   end
 
   create_table "xskills", :force => true do |t|

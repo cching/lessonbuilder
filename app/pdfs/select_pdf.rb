@@ -1,4 +1,6 @@
 class SelectPdf < Prawn::Document
+  require 'sanitize'
+
   def initialize(select)
     super(top_margin: 70)
     @select = select
@@ -110,7 +112,7 @@ end
   def header_table_content
     @select.headers.map do |header|
     table([[header.title],
-        [header.content]
+        [Sanitize.fragment(header.content)]
       ], width: 500, :position => :center) do 
       row(0).align = :center
     row(0).font_style = :bold
@@ -136,8 +138,8 @@ end
   end
 
 def notes
-    table([['Notes'],
-        [@select.notes]
+    table([['Instructional Plan'],
+        [Sanitize.fragment(@select.notes)]
       ], width: 500, :position => :center) do 
       row(0).align = :center
     row(0).font_style = :bold

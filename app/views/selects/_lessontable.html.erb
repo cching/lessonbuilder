@@ -28,9 +28,7 @@
                             </li>
                         </ul>
                     <% end %>   
-                    <div id="custom_questions">          
-                    <%= render 'custom_questions' %>
-                    </div>              
+           
 
 
   </div>
@@ -45,12 +43,7 @@
     <div class="panel-title"><h4 align="center">Vocabulary</h4></div>
   </div>
   <div class="panel-body table-content">
-<% if (SelectVocab.where(:select_id => @select) || Cvocab.where(:select_id => @select)).empty? %>
-                    <div id="custom_vocabs">
-                    <%= render 'custom_vocabs' %>
-                    </div>
-                    <%= link_to "Add Vocabulary Word", new_select_cvocab_path(@select), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', 'class' => 'btn btn-link'}  %>
-                     <% else %>
+
                     <% SelectVocab.where(:select_id => @select).each do |svocab| %>
                         <ul type="disc">
                             <li>
@@ -59,10 +52,8 @@
                             </li>
                         </ul>
                     <% end %>
-                    <div id="custom_vocabs">
-                    <%= render 'custom_vocabs' %>
-                    </div>
-                    <% end %>           
+
+        
                     
 </div>
 </div>
@@ -76,24 +67,14 @@
     <div class="panel-title"><h4 align="center">Strategies</h4></div>
   </div>
   <div class="panel-body table-content">
-<% if (SelectStrategy.where(:select_id => @select) || Cstrategy.where(:select_id => @select)).empty? %>
-                    <div id="custom_strategies">
-                    <%= render 'custom_strategies' %>
-                    </div>
-                    <%= link_to "Add Strategy", new_select_cstrategy_path(@select), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', 'class' => 'btn btn-link'}  %>
-                     <% else %>
-                    <% SelectStrategy.where(:select_id => @select).each do |sstrategy| %>
-                        <ul type="disc">
+                    <% SelectStrategy.where(:select_id => @select).each do |sstrategy| %>                        <ul type="disc">
                             <li>
 
                                     <font size="3"><%= sstrategy.xstrategy.standard.id %>: <%= sstrategy.xstrategy.content %></font>
                             </li>
                         </ul>
                     <% end %>
-                    <div id="custom_strategies">
-                    <%= render 'custom_strategies' %>
-                    </div>
-                    <% end %>        
+
                     
 
   </div>
@@ -106,12 +87,7 @@
     <div class="panel-title"><h4 align="center">Skills</h4></div>
     </div>
   <div class="panel-body table-content">
-<% if (SelectSkill.where(:select_id => @select) || Cskill.where(:select_id => @select)).empty? %>
-                    <div id="custom_skills">
-                    <%= render 'custom_skills' %>
-                    </div>
-                    <%= link_to "Add Skill", new_select_cskill_path(@select), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', 'class' => 'btn btn-link'}  %>
-                     <% else %>
+
                     <% SelectSkill.where(:select_id => @select).each do |sskill| %>
                         <ul type="disc">
                             <li>
@@ -120,10 +96,7 @@
                             </li>
                         </ul>
                     <% end %> 
-                     <div id="custom_skills">
-                    <%= render 'custom_skills' %>
-                    </div>
-                    <% end %>            
+
                    
     </div>
 
@@ -140,14 +113,9 @@
   <div class="panel-heading">
     <div class="panel-title"><h4 align="center">Resources</h4></div>
   </div>
-  <div class="panel-body">
+  <div class="panel-body table-content">
     
-                    <% if (SelectLink.where(:select_id => @select) || Clink.where(:select_id => @select)).empty? %>
-                   <div id="custom_links">
-                    <%= render 'custom_links' %>
-                    </div>
-                    <%= link_to "Add Resource", new_select_clink_path(@select), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', 'class' => 'btn btn-link'}  %>
-                     <% else %>
+
                     <% SelectLink.where(:select_id => @select).each do |slink| %>
                         <ul type="disc">
                             <li>
@@ -156,10 +124,7 @@
                             </li>
                         </ul>
                     <% end %>
-                    <div id="custom_links">
-                    <%= render 'custom_links' %>
-                    </div>
-                    <% end %>           
+
                     
 
     </div>
@@ -171,13 +136,8 @@
   <div class="panel-heading">
     <div class="panel-title"><h4 align="center">Assessment Questions</h4></div>
   </div>
-  <div class="panel-body">
-                    <% if (SelectAquestion.where(:select_id => @select) || Caquestion.where(:select_id => @select)).empty? %>
-                    <div id="custom_caquestions">
-                    <%= render 'custom_caquestions' %>
-                    </div>
-                    <%= link_to "Add Assessment Question", new_select_caquestion_path(@select), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', 'class' => 'btn btn-link'}  %>
-                     <% else %>
+  <div class="panel-body table-content">
+
                     <% SelectAquestion.where(:select_id => @select).each do |saquestion| %>
                         <ul type="disc">
                             <li>
@@ -186,11 +146,8 @@
                             </li>
                         </ul>
                          <% end %>
-                       <div id="custom_caquestions">
-                    <%= render 'custom_caquestions' %>
-                    </div>
+
                         
-                        <% end %>
                    
                     
 
@@ -204,6 +161,18 @@
   <div class="panel-body">
 
        <%= link_to @select.attachment_file_name, @select.attachment.url %>             
+
+</div>
+</div>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title"><h4 align="center">Instructional Plan</h4></div>
+  </div>
+  <div class="panel-body table-content">
+
+       <%= simple_format(@select.notes) %>           
 
 </div>
 </div>

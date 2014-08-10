@@ -86,4 +86,11 @@ end
       @selectq.delete
       respond_to :js
     end
+
+  def sort
+  params[:xquestion].each_with_index do |id, index|
+    Xquestion.update_all({position: index+1}, {id: id})
+  end
+  render nothing: true
+  end
 end

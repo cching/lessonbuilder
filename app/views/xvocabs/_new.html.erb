@@ -1,4 +1,4 @@
-<%= simple_form_for @select do |f| %>
+<%= simple_form_for(@xvocab, remote: true) do |f| %>
 <div class="row animated fadeIn" id="resources">
 
 <div class="col-md-1">
@@ -14,17 +14,15 @@
     <div class="col-md-1"></div>
 <div class="col-md-9">
 
-      <%= f.simple_fields_for :xvocabs, @xvocab do |builder| %>
   <fieldset>
 <div class="form-inputs">
-  <%= builder.input :content_english, label: false, as: :text, :input_html => {:rows => 1} %>
+  <%= f.input :content_english, label: false, as: :text, :input_html => {:rows => 1} %>
 
 
 
 </div>
 </fieldset>
 
-  <% end %>
   </div>
   <div class="col-md-1"></div>
 </div>

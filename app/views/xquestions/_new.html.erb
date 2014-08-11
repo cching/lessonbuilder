@@ -1,30 +1,28 @@
-<%= simple_form_for(@select) do |f| %>
+<%= simple_form_for(@xquestion, remote: true) do |parent_form| %>
 <div class="row animated fadeIn" id="resources">
 
 <div class="col-md-1">
 <div id="xquestion_<%= @xquestion.id %>">
 
-    <% if @squestions.map{|a| a.xquestion_id}.include? @xquestion.id %>
+<% if @squestions.map{|a| a.xquestion_id}.include? @xquestion.id %>
       <%= link_to "",  unselect_questions_xquestion_path(@xquestion, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-check" %>
       <% else %>
-      <%= link_to "",  select_questions_xquestion_path(@xquestion, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-unchecked" %>
+      <%= link_to "",  select_questions_xvocab_path(@xquestion, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-unchecked" %>
       <% end %>
     </div>
     </div>
     <div class="col-md-1"></div>
 <div class="col-md-9">
 
-      <%= f.simple_fields_for :xquestions, @xquestion, :child_index => Time.now.to_i do |builder| %>
   <fieldset>
 <div class="form-inputs">
-  <%= builder.input :content, label: false, as: :text, :input_html => {:rows => 2} %>
+  <%= parent_form.input :content, label: false, as: :text, :input_html => {:rows => 2} %>
 
 
 
 </div>
 </fieldset>
 
-  <% end %>
   </div>
   <div class="col-md-1"></div>
 </div>

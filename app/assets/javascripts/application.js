@@ -50,5 +50,8 @@ $(document).ready(function() {
 
   })
 
+var autosave = window.setInterval("autosaveForm()", 2000);
 
-
+function autosaveForm() {
+  $('form[data-remote]').submit();
+}

@@ -1,4 +1,4 @@
-<%= simple_form_for(@select) do |f| %>
+<%= simple_form_for(@xlink, :remote => true) do |f| %>
 <div class="row animated fadeIn" id="resources">
 
 <div class="col-md-1">
@@ -11,21 +11,19 @@
       <% end %>
     </div>
     </div>
-    <div class="col-md-1"></div>
-<div class="col-md-9">
+   
+<div class="col-md-10">
 
-      <%= f.simple_fields_for :xlinks, @xlink, :child_index => Time.now.to_i do |builder| %>
   <fieldset>
 <div class="form-inputs">
-<%= builder.input :link, label: false, as: :text, :input_html => {:rows => 2}, label_method: "Resource:" %>
-  <%= builder.input :comment, label: false, as: :text, :input_html => {:rows => 2}, label_method: "Comment" %>
+<%= f.input :link, label: false, as: :text, :input_html => {:rows => 2}, label_method: "Resource:" %>
+  <%= f.input :comment, label: false, as: :text, :input_html => {:rows => 2}, label_method: "Comment" %>
 
 
 
 </div>
 </fieldset>
 
-  <% end %>
   </div>
   <div class="col-md-1"></div>
 </div>

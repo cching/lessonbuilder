@@ -33,14 +33,17 @@ class XaquestionsController < ApplicationController
       end
   
     def update
-      @select = Select.find(params[:id])
-      
-        if @select.update_attributes(params[:select])
-          redirect_to edit_select_path(@select)
-        else
-          render :action => 'edit'
+    @xaquestion = Xaquestion.find(params[:id])
+
+    respond_to do |format|
+      if @xaquestion.update_attributes(params[:xaquestion])
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @xaquestion.errors, status: :unprocessable_entity }
       end
     end
+  end
     
     def destroy
       @xaquestion = Xaquestion.find(params[:id])

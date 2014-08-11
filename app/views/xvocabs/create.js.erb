@@ -1,1 +1,1 @@
-$(newvocab_<%= @standard.standard_id %>).html('<%= escape_javascript(render(:partial => 'new', :locals => {:standard => @standard, :select => @select, :xvocab => @xvocab})) %>')
+$(newvocab_<%= @standard.standard_id %>).append('<%= escape_javascript(render(:partial => 'new', :locals => {:standard => @standard, :select => @select, :xvocab => @xvocab})) %>')

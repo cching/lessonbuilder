@@ -33,10 +33,10 @@ class XquestionsController < ApplicationController
       end
   
     def update
-      @select = Select.find(params[:id])
+      @xquestion = Xquestion.find(params[:id])
       
-        if @select.update_attributes(params[:select])
-          redirect_to edit_select_path(@select)
+        if @xquestion.update_attributes(params[:xquestion])
+          respond_to :js
         else
           render :action => 'edit'
       end

@@ -1,3 +1,1 @@
-$('#newquestion_<%= @standard.standard_id %>').append('<%= escape_javascript(render(:partial => 'new', :locals => {:xquestion => @xquestion, :standard => @standard})) %>');
-
-
+$(newquestion_<%= @standard.standard_id %>).append('<%= escape_javascript(render(:partial => 'new', :locals => {:standard => @standard, :select => @select, :xquestion => @xquestion})) %>')

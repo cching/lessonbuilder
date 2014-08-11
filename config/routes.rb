@@ -119,7 +119,6 @@ Commoncore::Application.routes.draw do
   root to: 'static_pages#home'
   
   resources :selects do
-    resources :xquestions
     resources :cquestions
     resources :cskills
     resources :cvocabs

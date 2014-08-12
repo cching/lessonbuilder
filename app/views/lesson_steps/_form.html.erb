@@ -1,8 +1,6 @@
 <%= simple_form_for(@select, :html => { :class => 'form-horizontal' }) do |f| %>
 <ul class="nav nav-pills nav-justified" id="succ_standard">
-<%= javascript_tag do %>
-  window.standardIDs = <%= raw @ids.to_json %>
-<% end %>
+
 <% @standards.each do |standard| %>
     <li class="border animated fadeInRight"><h4><%= standard.id %></h4><br/><%= link_to standard.content, '#', remote: :true %>  </li>
     <% end %>
@@ -20,7 +18,7 @@
   <div class="panel-heading">
     <div class="panel-title"><h4 align="center">Question Stems</h4></div>
   </div>
-  <div class="panel-body table-content">
+  <div class="panel-body table-content1">
   <% @select.standards.each do |standard| %>
   
   <div id="resource_id"><%= standard.id %></div><br/>
@@ -44,7 +42,7 @@
   <div class="panel-heading">
     <div class="panel-title"><h4 align="center">Vocabulary</h4></div>
   </div>
-  <div class="panel-body table-content">
+  <div class="panel-body table-content1">
   <% @select.standards.each do |standard| %>
   <div id="resource_id"> <%= standard.id %></div><br/>
 
@@ -71,7 +69,7 @@
   <div class="panel-heading">
     <div class="panel-title"><h4 align="center">Strategies</h4></div>
   </div>
-  <div class="panel-body table-content">
+  <div class="panel-body table-content1">
   <% @select.standards.each do |standard| %>
   <div id="resource_id"> <%= standard.id %></div><br/>
 
@@ -93,7 +91,7 @@
   <div class="panel-heading">
     <div class="panel-title"><h4 align="center">Skills</h4></div>
   </div>
-  <div class="panel-body table-content">
+  <div class="panel-body table-content1">
   <% @select.standards.each do |standard| %>
     <div id="resource_id"> <%= standard.id %></div><br/>
 

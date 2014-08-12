@@ -19,11 +19,12 @@
   </div>
   <div class="panel-body table-content">
                 
-                    <% SelectQuestion.where(:select_id => @select).each do |squestion| %>
+                    <% @id = SelectQuestion.where(:select_id => @select).map {|squestion| squestion.xquestion_id} %>
+                    <% Xquestion.where(:id => @id).order("position").each do |squestion| %>
                     
                         <ul type="disc">
                             <li>
-                                    <font size="3"><%= squestion.xquestion.standard.id %>: <%= squestion.xquestion.content %></font>
+                                    <font size="3"><%= squestion.standard.id %>: <%= squestion.content %></font>
                
                             </li>
                         </ul>

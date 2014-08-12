@@ -1,4 +1,4 @@
-<div class="xquestion" id="xquestions_<%= standard.id %>" data-update-url="<%= sort_xquestions_url %>" data-standardid="<%= standard.id %>">
+<div data-update-url="<%= sort_xquestions_url %>">
 
 <% Xquestion.where(:select_id => @select.id).where(:standard_id => standard.id).order("position").each do |xquestion| %>
 <%= content_tag_for :div, xquestion do %>
@@ -8,7 +8,11 @@
 
 <div class="col-md-1">
 <div id="xquestion1_<%= xquestion.id %>">
-
+<% if @squestions.map{|a| a.xquestion_id}.include? xquestion.id %>
+      <%= link_to "",  unselect_questions_xquestion_path(xquestion, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-check" %>
+      <% else %>
+      <%= link_to "",  select_questions_xquestion_path(xquestion, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-unchecked" %>
+      <% end %>
 
     </div>
     </div>

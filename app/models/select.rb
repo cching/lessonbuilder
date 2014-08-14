@@ -45,6 +45,8 @@ class Select < ActiveRecord::Base
   belongs_to :book
   belongs_to :document
 
+  has_many :assessments
+
   has_many :select_sources, :dependent => :destroy
   has_many :sources, through: :select_sources
   has_many :headers, :dependent => :destroy

@@ -1,0 +1,28 @@
+<%= simple_form_for(@assessment) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :title %>
+  </div>
+  <br/>
+
+  <div class="panel panel-warning" id="short" align="center">Short Answer Questions</div>
+<%= link_to_add_fields "Add Short Answer Question", f, :shorts %><br/>
+
+  <%= f.simple_fields_for :shorts do |builder| %>
+  <%= render 'short_fields', f: builder %>
+
+  <% end %>
+<br/>
+
+<div class="panel panel-warning" id="multiple" align="center">Multiple-Choice Questions</div>
+<%= link_to_add_fields "Add Multiple Choice Question", f, :multiples %><br/>
+
+  <%= f.simple_fields_for :multiples do |builder| %>
+  <%= render 'multiple_fields', f: builder %>
+
+  <% end %>
+  <div class="form-actions" align="right">
+    <%= f.button :submit %>
+  </div>
+<% end %>

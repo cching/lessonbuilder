@@ -16,7 +16,8 @@ class SelectPdf < Prawn::Document
 
     move_down 10
     text "Objective: #{@select.objective}", :align => :center
-    
+    text(@select.notes,
+       :inline_format => true)
     move_down 10
     standards
     move_down 10
@@ -139,7 +140,7 @@ end
 
 def notes
     table([['Instructional Plan'],
-        [Sanitize.fragment(@select.notes)]
+        [@select.notes, :inline_format => true]
       ], width: 500, :position => :center) do 
       row(0).align = :center
     row(0).font_style = :bold

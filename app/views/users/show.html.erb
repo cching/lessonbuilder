@@ -6,6 +6,29 @@
       		  		<%= @user.name %>
 				<% end %>
       </h1>
+<br/>
+<div class="row">
+<div class="col-md-4">
+<h1>
+<%= link_to "#{@user.selects.count} Lessons", '#', class: "alert alert-success", role: "alert" %>
+</h1>
+
+</div>
+<div class="col-md-4">
+<h1>
+<%= link_to "#{@user.students.count} Students", user_students_path(@user), class: "alert alert-success", role: "alert" %>
+</h1>
+
+</div>
+<div class="col-md-4">
+<h1>
+<%= link_to "#{@assessments.count} Assessments", '#', class: "alert alert-success", role: "alert" %>
+</h1>
+
+</div>
+</div><br/>
+
+
 <div id="lessons">
   <h2 id="month">
     <%= link_to "<", date: @date.prev_month %>

@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   has_many :strategies, :dependent => :destroy
   has_many :links, :dependent => :destroy
   belongs_to :district
+  has_many :students
 
 
 end

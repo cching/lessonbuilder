@@ -1,0 +1,33 @@
+// Place all the styles related to the Assessments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.answer.col-md-6 {
+
+    border-left: thick solid #6A6AFF;
+
+}
+
+.question {
+
+    border-left: thick solid #6A6AFF;
+
+}
+
+.short_question {
+	border-left: thick solid #ffb347;
+}
+
+
+#short.panel-warning {
+	background-color: #ffb347;
+	border-color: #ffb347;
+	color: #fff;
+}
+
+
+#multiple.panel-warning {
+	background-color: #6A6AFF;
+	border-color: #6A6AFF;
+	color: #fff;
+}

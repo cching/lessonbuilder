@@ -1,4 +1,10 @@
 Commoncore::Application.routes.draw do
+  resources :assessments
+
+
+  devise_for :students
+  resources :students
+
   resources :xaquestions do
     put :select_aquestions, on: :member
     put :unselect_aquestions, on: :member
@@ -119,6 +125,7 @@ Commoncore::Application.routes.draw do
   root to: 'static_pages#home'
   
   resources :selects do
+    resources :assessments
     resources :cquestions
     resources :cskills
     resources :cvocabs
@@ -130,7 +137,9 @@ Commoncore::Application.routes.draw do
   
   resources :cquestions
 
-  resources :users 
+  resources :users do
+    resources :students
+  end
 
   
   

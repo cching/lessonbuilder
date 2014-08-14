@@ -1,0 +1,31 @@
+<div class="animated fadeIn">
+<fieldset>
+<div class="form-inputs">
+<div class="question">
+<div class="row">
+<div class="col-md-1" align="center">
+<%= f.input :standard_id, collection: @select.standards.all, label_method: :id, label: false  %>
+</div>
+<div class="col-md-11">
+  <%= f.input :question, :input_html => {:rows => 2}, label: false %>
+  </div>
+  </div>
+  <div align="right">
+  <%= link_to "Remove question", '#', class: "remove_fields" %>
+  </div>
+  <%= f.simple_fields_for :answers do |builder| %>
+          <%= render 'answer_fields', f: builder %>
+  <% end %>
+  </div>
+  <div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-11">
+  <%= link_to_add_fields "Add Answer", f, :answers %>
+  </div>
+  </div>
+</div>
+
+</fieldset>
+
+
+</div>

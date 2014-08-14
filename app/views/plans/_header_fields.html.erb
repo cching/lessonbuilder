@@ -4,7 +4,7 @@
   <%= f.input :title, label: "Header" %><br/>
   <%= f.input :content, :input_html => { class: 'tinymce', style: 'width:100%; height:300px' } %><br/>
   <%= f.check_box :_destroy %>
-  <%= f.label :_destroy, "Remove" %>
+  <%= link_to "remove", '#', class: "remove_fields" %>
 </div>
 </fieldset>
 

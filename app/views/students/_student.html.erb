@@ -1,0 +1,21 @@
+<div class="row">
+<div class="col-md-3">
+<div class="alert alert-danger" role="alert">Student Identifier</div>
+</div>
+<div class="col-md-9">
+<div class="alert alert-danger" role="alert">Student Name</div>
+</div>
+</div>
+
+<% @students.each do |student| %>
+
+
+<div class="row">
+<div class="col-md-3">
+<div class="alert alert-warning" role="alert"><%= student.unique_identifier %></div>
+</div>
+<div class="col-md-9">
+<div class="alert alert-info" role="alert"><%= student.name %></div>
+</div>
+</div>
+<% end %>

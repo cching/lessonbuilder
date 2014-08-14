@@ -3,6 +3,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @select = Select.where(:user_id => @user)
     @selects = Select.where(:user_id => @user.id)
+    @assessments = Assessment.where(:select_id => @selects).all
     @selects_by_date = @selects.group_by(&:date)
     @date = params[:date] ? Date.parse(params[:date]) : Date.today
 

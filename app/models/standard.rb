@@ -21,6 +21,9 @@ class Standard < ActiveRecord::Base
   has_many :anchor_standards
   has_many :i_cans
 
+  has_many :multiples
+  has_many :shorts
+
   
   has_many :cquestions
   has_many :cskills

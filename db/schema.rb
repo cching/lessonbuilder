@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140810063141) do
+ActiveRecord::Schema.define(:version => 20140814085103) do
 
   create_table "admin_notes", :force => true do |t|
     t.string   "resource_id",     :null => false
@@ -52,12 +52,27 @@ ActiveRecord::Schema.define(:version => 20140810063141) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "answers", :force => true do |t|
+    t.text     "answer"
+    t.integer  "multiple_id"
+    t.boolean  "correct"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "aquestions", :force => true do |t|
     t.text     "content"
     t.string   "standard_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "level"
+  end
+
+  create_table "assessments", :force => true do |t|
+    t.integer  "select_id"
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "book_grades", :force => true do |t|
@@ -250,6 +265,14 @@ ActiveRecord::Schema.define(:version => 20140810063141) do
     t.string "name"
   end
 
+  create_table "multiples", :force => true do |t|
+    t.text     "question"
+    t.integer  "assessment_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "standard_id"
+  end
+
   create_table "plans", :force => true do |t|
     t.string   "name"
     t.integer  "district_id"
@@ -418,6 +441,14 @@ ActiveRecord::Schema.define(:version => 20140810063141) do
     t.text     "sanitize_notes"
   end
 
+  create_table "shorts", :force => true do |t|
+    t.text     "question"
+    t.integer  "assessment_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "standard_id"
+  end
+
   create_table "skills", :force => true do |t|
     t.string  "standard_id"
     t.string  "content"
@@ -449,6 +480,26 @@ ActiveRecord::Schema.define(:version => 20140810063141) do
     t.integer "user_id",     :default => 0
     t.boolean "duplicate",   :default => false
   end
+
+  create_table "students", :force => true do |t|
+    t.string   "email",                  :default => "", :null => false
+    t.string   "unique_identifier",                      :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0,  :null => false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+    t.integer  "user_id"
+    t.string   "name"
+  end
+
+  add_index "students", ["email"], :name => "index_students_on_email", :unique => true
+  add_index "students", ["reset_password_token"], :name => "index_students_on_reset_password_token", :unique => true
 
   create_table "subjects", :force => true do |t|
     t.string "name"

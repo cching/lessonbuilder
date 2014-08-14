@@ -1,0 +1,10 @@
+
+<div id="student_list">
+<%= render 'student' %>
+</div>
+
+
+
+<%= link_to "Add Student", students_path(:user_id => @user.id), :method => :post, remote: :true, class: "btn btn-primary" %>
+
+<div id="new_student"></div>

@@ -2,10 +2,13 @@ class AssessmentsController < ApplicationController
   # GET /assessments
   # GET /assessments.json
   def index
-    @assessments = Assessment.all
+    @user = User.find(params[:user_id])
+    @selects = @user.selects.all
+    @assessments = Assessment.where(:select_id => @selects).all
 
     respond_to do |format|
       format.html # index.html.erb
+      format.js
       format.json { render json: @assessments }
     end
   end

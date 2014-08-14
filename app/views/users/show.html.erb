@@ -10,23 +10,25 @@
 <div class="row">
 <div class="col-md-4">
 <h1>
-<%= link_to "#{@user.selects.count} Lessons", '#', class: "alert alert-success", role: "alert" %>
+<%= link_to pluralize(@user.selects.count, "Lesson"), '#', class: "alert alert-success", role: "alert", id: "lessons" %>
 </h1>
 
 </div>
 <div class="col-md-4">
 <h1>
-<%= link_to "#{@user.students.count} Students", user_students_path(@user), class: "alert alert-success", role: "alert" %>
+<%= link_to pluralize(@user.students.count, "Student"), user_students_path(@user), class: "alert alert-success", role: "alert", id: "students", remote: true %>
 </h1>
 
 </div>
 <div class="col-md-4">
 <h1>
-<%= link_to "#{@assessments.count} Assessments", '#', class: "alert alert-success", role: "alert" %>
+<%= link_to pluralize(@assessments.count, "Assessment"), assessments_path(:user_id => @user.id), class: "alert alert-success", role: "alert", remote: true, id: "assessments" %>
 </h1>
 
 </div>
 </div><br/>
+
+<div id="info"></div>
 
 
 <div id="lessons">

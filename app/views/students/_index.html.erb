@@ -1,0 +1,19 @@
+<div class="jumbotron animated zoomIn" id="students">
+<% if @students.blank? %>
+  <h2>You don't have any students yet.</h2>
+  <div align="center"><%= link_to "Start here", user_students_path(@user), class: "btn btn-primary" %></div>
+  <% else %>
+  <div class="table-content"><br/>
+    <% @students.each do |student| %>
+    <% unless student.name.blank? %>
+        <div align="center">
+        <div class="zoom" align="center"><%= link_to student.name, student_path(student) %></div><br/>
+        </div>
+        <% end %> 
+        <% end %>
+  </div><br/>
+          <div align="right">
+        <%= link_to "Add, Edit, or View Students", user_students_path(@user), class: "btn btn-primary" %>
+        </div>
+<% end %>
+</div>

@@ -2,6 +2,10 @@ class StudentsController < ApplicationController
 	def index
 		@user = User.find(params[:user_id])
 		@students = @user.students.all
+    respond_to do |format|
+      format.js
+      format.html
+    end
 	end
 
 	def new

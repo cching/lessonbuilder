@@ -1,0 +1,13 @@
+<div class="jumbotron animated zoomIn" id="assessments">
+<% if @assessments.blank? %>
+  <h2>You don't have any assessments yet.</h2>
+  <div align="center"><%= link_to "Start here", assessments_path(:user_id => @user), class: "btn btn-primary" %></div>
+  <% else %>
+  <%= link_to "Make a new assessment", assessments_path(:user_id => @user), class: "btn btn-primary" %>
+    <% @assessments.each do |assessment| %>
+        <div align="center">
+        <div class="zoom" align="center"><%= link_to assessment.title, assessment_path(assessment) %></div><br/>
+        </div>
+        <% end %> 
+<% end %>
+</div>

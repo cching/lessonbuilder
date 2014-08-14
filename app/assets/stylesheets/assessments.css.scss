@@ -31,3 +31,86 @@
 	border-color: #6A6AFF;
 	color: #fff;
 }
+
+#assessment.jumbotron {
+	background-color: #b19cd9;
+	color: #fff;
+}
+
+
+#assessment.panel-heading {
+	text-align: center;
+	background-color: #b19cd9;
+	color: #fff;
+}
+
+
+.zoom { 
+   width: 85%; padding: 1px; background-color: #49E9BD; color: #fff; 
+   -webkit-transition: all .3s ease-out; 
+   -moz-transition: all .3s ease-out; 
+   -o-transition: all .3s ease-out; 
+   transition: all .3s ease-out;
+}
+.zoom a {
+	color: #fff;
+}
+.zoom:hover { 
+   -moz-transform: scale(1.1);
+   -webkit-transform: scale(1.1);
+   -o-transform: scale(1.1);
+   transform: scale(1.1);
+   -ms-transform: scale(1.1);
+filter: progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand',
+   M11=2, M12=-0, M21=0, M22=2);
+   }
+
+#assessments.alert-success {
+	background-color: #b19cd9;
+	border-color: #b19cd9;
+	color: #fff;
+}
+
+#assessments.alert-success:hover {
+	background-color: #ddd3ee;
+	border-color: #ddd3ee;
+	color: #b19cd9;
+}
+
+#assessments.jumbotron {
+	background-color: #ddd3ee;
+}
+
+#students.alert-success {
+	background-color: #78D5E3;
+	border-color: #78D5E3;
+	color: #fff;
+}
+
+#students.alert-success:hover {
+	background-color: #7AF5F5;
+	border-color: #7AF5F5;
+	color: #78D5E3;
+}
+
+#students.jumbotron {
+	background-color: #7AF5F5;
+}
+
+
+#lessons.alert-success {
+	background-color: #61CB77;
+	border-color: #61CB77;
+	color: #fff;
+}
+
+#lessons.alert-success:hover {
+	background-color: #BFEAC8;
+	border-color: #BFEAC8;
+	color: #61CB77;
+}
+
+#lessons.jumbotron {
+	background-color: #BFEAC8;
+}
+

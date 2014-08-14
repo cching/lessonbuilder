@@ -1,25 +1,38 @@
-<h1>Listing assessments</h1>
 
-<table>
-  <tr>
-    <th>Select</th>
-    <th>Title</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div class="jumbotron" id="assessment">
+  <h2><%= @user.name %>'s Assessments</h2>
 
-<% @assessments.each do |assessment| %>
-  <tr>
-    <td><%= assessment.select_id %></td>
-    <td><%= assessment.title %></td>
-    <td><%= link_to 'Show', assessment %></td>
-    <td><%= link_to 'Edit', edit_assessment_path(assessment) %></td>
-    <td><%= link_to 'Destroy', assessment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+</div>
+
+
 
 <br />
 
-<%= link_to 'New Assessment', new_assessment_path %>
+
+
+<div class="panel-group" id="accordion">
+  <div class="panel panel-default" id="assessment">
+    <div class="panel-heading" id="assessment">
+      <h4 class="panel-title" id="assessment">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+          Create an Assessment
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse">
+      <div class="panel-body">
+      <div class="table-content">
+      <div class="panel panel-warning" id="short" align="center">Which lesson would you like to make an assessment for?</div><br/>
+        <% @selects.each do |select| %>
+        <% unless select.name.blank? %>
+        <div align="center">
+        <div class="zoom" align="center"><%= link_to select.name, new_select_assessment_path(select) %></div><br/>
+        </div>
+        <% end %>
+        <% end %> 
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+

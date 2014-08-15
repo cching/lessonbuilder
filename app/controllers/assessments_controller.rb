@@ -44,7 +44,8 @@ class AssessmentsController < ApplicationController
   # POST /assessments
   # POST /assessments.json
   def create
-    @assessment = Assessment.new(params[:assessment])
+    @select = Select.find(params[:select_id])
+    @assessment = @select.assessments.build(params[:assessment])
 
     respond_to do |format|
       if @assessment.save

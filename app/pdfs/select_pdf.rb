@@ -1,6 +1,7 @@
-class SelectPdf < Prawn::Document
-  require 'sanitize'
+#!/bin/env ruby
+# encoding: utf-8
 
+class SelectPdf < Prawn::Document
   def initialize(select)
     super(top_margin: 70)
     @select = select
@@ -16,8 +17,9 @@ class SelectPdf < Prawn::Document
 
     move_down 10
     text "Objective: #{@select.objective}", :align => :center
-    text(@select.notes,
-       :inline_format => true)
+    
+
+
     move_down 10
     standards
     move_down 10
@@ -32,6 +34,9 @@ class SelectPdf < Prawn::Document
   header_table_content
   move_down 20
   notes
+  indent(30) do
+  text render_html_text(@select.notes), :inline_format => true
+end
   move_down 20
   attachment
 
@@ -139,8 +144,7 @@ end
   end
 
 def notes
-    table([['Instructional Plan'],
-        [@select.notes, :inline_format => true]
+    table([['Instructional Plan']
       ], width: 500, :position => :center) do 
       row(0).align = :center
     row(0).font_style = :bold
@@ -230,6 +234,7 @@ def skills
      
   end
 
+
   def links
     SelectLink.where(:select_id => @select.id).map do |link|
       [{ content: "#{link.xlink.standard_id}: #{link.xlink.comment} #{link.xlink.link}", width: 500, border_bottom_color: 'ffffff', border_top_color: 'ffffff'} ]
@@ -241,5 +246,71 @@ def skills
       [{ content: "#{aquestion.xaquestion.standard_id}: #{aquestion.xaquestion.content}", width: 500, border_bottom_color: 'ffffff', border_top_color: 'ffffff'} ]
    end
    end
+
+
+
+   def render_html_text(text)
+  #render text (indented if inside ul)
+  indent = 0 #current indentation (absolute, e.g. n*indent_delta for level n)
+  indent_delta = 10 #indentation step per list level
+  states = [] #whether we have an ol or ul at level n
+  indices = [] #remembers at which index the ol list at level n, currently is
+
+  #while there is another list tag do
+  #  => starting position of list tag is at i
+  #  render everything that comes before the tag
+  #  cut everything we have rendered from the whole text
+  #end
+  while (i = text.index /<\/?[ou]l>/) != nil do
+    part = text[0..i-1]
+    if indent == 0 #we're not in a list, but at the top level
+    else
+      indent indent do
+        #render all the lis
+        part.gsub(/<\/li>/, '').split('<li>').each do |item|
+          next if item.blank? #split may return some ugly start and end blanks
+
+          item_text = if states.last == :ul
+                        "• #{item}"
+                      else # :ol
+                        indices[indices.length-1] = indices.last + 1
+                        "#{indices.last}. #{item}"
+                      end
+
+          text item_text, :inline_format => true
+        end
+      end
+    end
+
+    is_closing = text[i+1] == '/' #closing tag?
+    if is_closing
+      indent -= indent_delta
+      i += '</ul>'.length
+
+      states.pop
+      indices.pop
+    else
+      move_down 10 if indent == 0
+
+      type_identifier = text[i+1] #<_u_l> or <_o_l>
+      states << if type_identifier == 'u'
+                  :ul
+                elsif type_identifier == 'o'
+                  :ol
+                else
+                  raise "what means type identifier '#{type_identifier}'?"
+                end
+      indices << 0
+
+      indent += indent_delta
+      i += '<ul>'.length
+    end
+
+    text = text[i..text.length-1] #cut the text we just rendered
+  end
+
+  #render the last part
+  text text, :inline_format => true unless text.blank?
+end
 
 end

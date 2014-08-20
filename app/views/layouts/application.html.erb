@@ -24,8 +24,8 @@
   </div>
 
     <%= render 'layouts/header' %>
-    <div class="container">
-		<div class="container">
+    <div class="container-fluid">
+		
 		  <% flash.each do |name, msg| %>
 		    <div class="alert alert-<%= name == :notice ? "success" : "error" %>  alert-dismissable animated fadeIn">
 		      <a class="close" data-dismiss="alert" href="#">&times;</a>
@@ -33,7 +33,7 @@
 		    </div>
 		  <% end %>
 		  <!-- Rest of content -->
-		</div>
+		
       <%= yield %>
       <br/>
       <%= render 'layouts/footer' %>

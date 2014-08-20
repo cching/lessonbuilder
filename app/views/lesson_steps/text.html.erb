@@ -1,14 +1,23 @@
+<body class="cbp-spmenu-push">
+		<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+			<%= render 'sidebar' %>
+		</nav>
+
 <div class="row">
-  <div class="col-md-2">
-    <%= render 'sidebar' %>
-    </div>
+  <div class="col-md-1">
+	<div class="animated fadeInLeftBig">
+	<button id="showLeftPush" class="bar">
+	<div id="arrow"><span class="glyphicon glyphicon-forward"></span></div>
+	</button>
+	</div>
+	</div>
 
     <div class="col-md-10">
     <%= render 'text' %>
     </div>
     </div>
 
-
+</body>
 
 <script>
 	$('button[data-loading-text]').click(function () {
@@ -16,3 +25,21 @@
 });
 </script>
 
+<script>
+			var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
+
+				showLeftPush = document.getElementById( 'showLeftPush' ),
+
+				body = document.body;
+
+			
+			showLeftPush.onclick = function() {
+				classie.toggle( this, 'active' );
+				classie.toggle( body, 'cbp-spmenu-push-toright' );
+				classie.toggle( menuLeft, 'cbp-spmenu-open' );
+				disableOther( 'showLeftPush' );
+
+			};
+
+
+		</script>

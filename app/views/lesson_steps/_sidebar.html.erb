@@ -1,99 +1,39 @@
-<div class="list-group" id="lesson_sidebar">
-  <div class="list-group-item">Lesson Steps</div><br/>
 
-  <% if @select.status == 'active' %>
+<h3>Lesson Steps</h3>
+
     <% if params[:id] == 'setup' %>
-    <%= link_to "Lesson Setup", '#', class: "list-group-item active" %>
+    <%= link_to "Lesson Setup", '#', class: "list-group-item disabled" %>
     <% else %>
-    <%= link_to "Lesson Setup", wizard_path(:setup), class: "list-group-item" %>
+    <%= link_to "Lesson Setup", wizard_path(:setup) %>
     <% end %>
 
     <% if params[:id] == 'standards' %>
-    <%= link_to "Standards", '#', class: "list-group-item active" %>
+    <%= link_to "Standards", '#', class: "list-group-item disabled" %>
     <% else %>
-    <%= link_to "Standards", wizard_path(:standards), class: "list-group-item" %>
+    <%= link_to "Standards", wizard_path(:standards) %>
     <% end %>
 
     <% if params[:id] == 'text' %>
-    <%= link_to "Text", '#', class: "list-group-item active" %>
+    <%= link_to "Text", '#', class: "list-group-item disabled" %>
     <% else %>
-    <%= link_to "Text", wizard_path(:text), class: "list-group-item" %>
+    <%= link_to "Text", wizard_path(:text) %>
     <% end %>
 
-    <% if params[:id] == 'standard_resources' %>
-    <%= link_to "Resources", '#', class: "list-group-item active" %>
-    <% else %>
-    <%= link_to "Resources", wizard_path(:standard_resources), class: "list-group-item" %>
-    <% end %>
 
     <% if params[:id] == 'instructional_plan' %>
-    <%= link_to "Instructional Plan", '#', class: "list-group-item active" %>
+    <%= link_to "Instructional Plan", '#', class: "list-group-item disabled" %>
     <% else %>
-    <%= link_to "Instructional Plan", wizard_path(:instructional_plan), class: "list-group-item" %>
+    <%= link_to "Instructional Plan", wizard_path(:instructional_plan) %>
     <% end %>  
 
     <% if params[:id] == 'instructional_norms' %>
-    <%= link_to "Instructional Norms", '#', class: "list-group-item active" %>
+    <%= link_to "Instructional Norms", '#', class: "list-group-item disabled" %>
     <% else %>
-    <%= link_to "Instructional Norms", wizard_path(:instructional_norms), class: "list-group-item" %>
+    <%= link_to "Instructional Norms", wizard_path(:instructional_norms) %>
     <% end %>  
 
 
-  <% elsif @select.status == 'setup' || @select.status == 'text' || @select.status == 'standards' || @select.status == 'standard_resources' || @select.status == 'note_resources' %>
-    <% if params[:id] == 'setup' %>
-    <%= link_to "Lesson Setup", '#', class: "list-group-item active" %>
-    <% else %>
-    <%= link_to "Lesson Setup", wizard_path(:setup), class: "list-group-item" %>
-    <% end %>
 
-    <% if params[:id] == 'standards' %>
-    <%= link_to "Standards", '#', class: "list-group-item active" %>
-    <% else %>
-    <%= link_to "Standards", wizard_path(:standards), class: "list-group-item" %>
-    <% end %>
-
-    <% if params[:id] == 'text' %>
-    <%= link_to "Text", '#', class: "list-group-item active" %>
-    <% else %>
-    <%= link_to "Text", wizard_path(:text), class: "list-group-item" %>
-    <% end %>
-
-    <% if params[:id] == 'standard_resources' %>
-    <%= link_to "Resources", '#', class: "list-group-item active" %>
-    <% else %>
-    <%= link_to "Resources", wizard_path(:standard_resources), class: "list-group-item" %>
-    <% end %>
-
-    <% if params[:id] == 'instructional_plan' %>
-    <%= link_to "Instructional Plan", '#', class: "list-group-item active" %>
-    <% else %>
-    <%= link_to "Instructional Plan", wizard_path(:instructional_plan), class: "list-group-item" %>
-    <% end %> 
-
-    <% if params[:id] == 'instructional_norms' %>
-    <%= link_to "Instructional Norms", '#', class: "list-group-item active" %>
-    <% else %>
-    <%= link_to "Instructional Norms", wizard_path(:instructional_norms), class: "list-group-item" %>
-    <% end %>  
-
-    <% else %>
-      <% if params[:id] == 'setup' %>
-      <%= link_to "Lesson Setup", wizard_path(:setup), class: "list-group-item active" %>
-      <%= link_to "Standards", '#', class: "list-group-item disabled" %>
-      <%= link_to "Text", '#', class: "list-group-item disabled" %>
-      <%= link_to "Resources", '#', class: "list-group-item disabled" %>
-      <%= link_to "Instructional Plan", wizard_path(:instructional_plan), class: "list-group-item" %>
-      <%= link_to "Instructional Norms", wizard_path(:instructional_norms), class: "list-group-item" %>
-      <% else %>
-      <%= link_to "Lesson Setup", wizard_path(:setup), class: "list-group-item active" %>
-      <%= link_to "Standards", '#', class: "list-group-item disabled" %>
-      <%= link_to "Text", '#', class: "list-group-item disabled" %>
-      <%= link_to "Resources", '#', class: "list-group-item disabled" %>
-      <%= link_to "Instructional Plan", wizard_path(:instructional_plan), class: "list-group-item" %>
-      <%= link_to "Instructional Norms", wizard_path(:instructional_norms), class: "list-group-item" %>
-      <% end %>
-  <% end %>
-  </div>
 
 
 

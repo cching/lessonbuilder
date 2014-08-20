@@ -1,0 +1,142 @@
+<div class="panel-group" id="accordion">
+  <div class="panel panel-warning">
+    <div class="panel-heading" id="plan">
+      <div class="panel-title" id="plan">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+          Questions
+        </a>
+      </div>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in">
+      <div class="panel-body">
+      <div id="list">
+        <ul id="allfields" runat="server">
+        <table>
+                    <% Xquestion.where(:select_id => @select.id).each do |xquestion| %>
+               <tr>
+               <td>
+              <div id="xquestion1_<%= xquestion.id %>" class="inline">
+              <% if @squestions.map{|a| a.xquestion_id}.include? xquestion.id %>
+              <%= link_to "",  unselect_questions_xquestion_path(xquestion, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-check" %>
+              <% else %>
+              <%= link_to "",  select_questions_xquestion_path(xquestion, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-unchecked" %>
+              <% end %>
+              </div>
+              </td>
+              <td>
+              <li><%= xquestion.standard_id %>: <%= xquestion.content %></li>
+              </td>
+              </tr>
+               <% end %>
+               </table>
+            </ul>
+            </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-warning">
+    <div class="panel-heading" id="plan">
+      <div class="panel-title" id="plan">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+          Vocabulary
+        </a>
+      </div>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse">
+      <div class="panel-body">
+        <div id="list">
+        <ul id="allfields" runat="server">
+        <table>
+                    <% Xvocab.where(:select_id => @select.id).each do |xvocab| %>
+               <tr>
+               <td>
+              <div id="xvocab_<%= xvocab.id %>" class="inline">
+              <% if @svocabs.map{|a| a.xvocab_id}.include? xvocab.id %>
+              <%= link_to "",  unselect_vocabs_xvocab_path(xvocab, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-check" %>
+              <% else %>
+              <%= link_to "",  select_vocabs_xvocab_path(xvocab, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-unchecked" %>
+              <% end %>
+              </div>
+              </td>
+              <td>
+              <li><%= xvocab.standard_id %>: <%= xvocab.content_english %></li>
+              </td>
+              </tr>
+               <% end %>
+               </table>
+            </ul>
+            </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-warning">
+    <div class="panel-heading" id="plan">
+      <div class="panel-title" id="plan">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+          Strategies
+        </a>
+      </div>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse">
+      <div class="panel-body">
+        <div id="list">
+        <ul id="allfields" runat="server">
+        <table>
+                    <% Xstrategy.where(:select_id => @select.id).each do |xstrategy| %>
+               <tr>
+               <td>
+              <div id="xstrategy_<%= xstrategy.id %>" class="inline">
+              <% if @sstrategies.map{|a| a.xstrategy_id}.include? xstrategy.id %>
+              <%= link_to "",  unselect_strategies_xstrategy_path(xstrategy, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-check" %>
+              <% else %>
+              <%= link_to "",  select_strategies_xstrategy_path(xstrategy, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-unchecked" %>
+              <% end %>
+              </div>
+              </td>
+              <td>
+              <li id="content"><%= xstrategy.standard_id %>: <%= xstrategy.content %></li>
+              </td>
+              </tr>
+               <% end %>
+               </table>
+            </ul>
+            </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-warning">
+    <div class="panel-heading" id="plan">
+      <div class="panel-title" id="plan">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+          Assessment Questions
+        </a>
+      </div>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse">
+      <div class="panel-body">
+        <div id="list">
+        <ul id="allfields" runat="server">
+        <table>
+                    <% Xaquestion.where(:select_id => @select.id).each do |xaquestion| %>
+               <tr>
+               <td>
+              <div id="xquestion1_<%= xquestion.id %>" class="inline">
+              <% if @saquestions.map{|a| a.xaquestion_id}.include? xaquestion.id %>
+              <%= link_to "",  unselect_aquestions_xaquestion_path(xaquestion, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-check" %>
+              <% else %>
+              <%= link_to "",  select_aquestions_xaquestion_path(xaquestion, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-unchecked" %>
+              <% end %>
+              </div>
+              </td>
+              <td>
+              <li><%= xaquestion.standard_id %>: <%= xaquestion.content %></li>
+              </td>
+              </tr>
+               <% end %>
+               </table>
+            </ul>
+            </div>
+      </div>
+    </div>
+  </div>
+</div>           

@@ -1,23 +1,15 @@
-<body class="cbp-spmenu-push">
-    <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
-      <%= render 'sidebar' %>
-    </nav>
+<%= render 'sidebar' %><br/>
+
 
 <div class="row">
-  <div class="col-md-1">
-  <div class="animated fadeInLeftBig">
-  <button id="showLeftPush" class="bar">
-  <div id="arrow"><span class="glyphicon glyphicon-forward"></span></div>
-  </button>
-  </div>
-  </div>
 
-  <div class="col-md-10">
+
+  <div class="col-md-12">
 
 
 <div id="standard-attributes" class="animated fadeInUp">
 <div class="panel-group" id="accordion">
- <%= simple_form_for @select, url: wizard_path do |f| %>
+ <%= simple_form_for @select do |f| %>
 
 
     <div id="content">
@@ -27,7 +19,7 @@
 <div align="center"><b>Resources</b></div>  
         <div class="dragitems">
   
-          <%= render 'list_items' %>
+          <%= render 'list_items', f: f %>
         </div>
         
     </div>
@@ -38,8 +30,11 @@
 </div>
 <small align="center">Select resources for your lesson. Add them to your instructional plane by dragging and dropping them into the text box.</small>
 
-            <%= f.input :notes, label: false, :input_html => { style: 'width:100%; height:300px', id: "TextArea1" } %>
+            <%= f.input :notes, label: false, :input_html => { style: 'width:100%; height:100%', id: "TextArea1" } %>
         </div>
+         <div align="right">
+ <%= f.submit "Preview lesson", class: "btn btn-warning", id: "notes" %></div>
+  <% end %>
 </div>
 
     </div>
@@ -50,30 +45,9 @@
   
   
   <br/>
- <div align="right">
- <%= f.submit "Save Lesson", class: "btn btn-warning", id: "notes" %></div>
-  <% end %>
+
 </div>
 
 </div>
 </div>
 </div>
-</body>
-<script>
-      var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
-
-        showLeftPush = document.getElementById( 'showLeftPush' ),
-
-        body = document.body;
-
-      
-      showLeftPush.onclick = function() {
-        classie.toggle( this, 'active' );
-        classie.toggle( body, 'cbp-spmenu-push-toright' );
-        classie.toggle( menuLeft, 'cbp-spmenu-open' );
-        disableOther( 'showLeftPush' );
-
-      };
-
-
-    </script>

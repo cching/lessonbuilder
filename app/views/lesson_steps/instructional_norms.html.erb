@@ -1,29 +1,11 @@
-<body class="cbp-spmenu-push">
-    <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
-      <%= render 'sidebar' %>
-    </nav>
+<%= render 'sidebar' %><br/>
+
 <div class="row">
-	<div class="col-md-1">
-  <div class="animated fadeInLeftBig">
-  <button id="showLeftPush" class="bar">
-  <div id="arrow"><span class="glyphicon glyphicon-forward"></span></div>
-  </button>
-  </div>
-  </div>
-
-	<div class="col-md-10">
 
 
-	<div class="animated fadeInDown">
-<div class="panel panel-warning" id="notes">Instructional Norms</div>
-</div>
+	<div class="col-md-12">
 
-<div class="progress animated fadeInLeft" id="lesson-setup">
-  <div class="progress-bar" style="width: 25%;"></div>
-  <div class="progress-bar progress-bar-warning" id="lesson-setup" style="width: 25%;"></div>
-  <div class="progress-bar progress-bar-info" id="edit" style="width: 25%;"></div>
-  <div class="progress-bar progress-bar" style="width: 25%;"></div>
-</div>
+
 <div id="standard-attributes" class="animated fadeInUp">
 <div class="panel-group" id="accordion">
  <%= simple_form_for @select do |f| %>
@@ -41,7 +23,6 @@
 </div>
 </div>
 </div>
-</body>
 
 <script>
       var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),

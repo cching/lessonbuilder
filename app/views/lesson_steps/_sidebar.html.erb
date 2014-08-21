@@ -1,37 +1,42 @@
 
-<h3>Lesson Steps</h3>
-
-    <% if params[:id] == 'setup' %>
-    <%= link_to "Lesson Setup", '#', class: "list-group-item disabled" %>
+<ul class="nav nav-pills nav-justified" id="navigation">
+  <% if params[:id] == 'setup' %>
+    <li><%= link_to "Lesson Setup", '#', class: "active" %></li>
     <% else %>
-    <%= link_to "Lesson Setup", wizard_path(:setup) %>
+    <li><%= link_to "Lesson Setup", wizard_path(:setup) %></li>
     <% end %>
 
-    <% if params[:id] == 'standards' %>
-    <%= link_to "Standards", '#', class: "list-group-item disabled" %>
-    <% else %>
-    <%= link_to "Standards", wizard_path(:standards) %>
-    <% end %>
 
     <% if params[:id] == 'text' %>
-    <%= link_to "Text", '#', class: "list-group-item disabled" %>
+    <li><%= link_to "Text", '#', class: "active" %></li>
     <% else %>
-    <%= link_to "Text", wizard_path(:text) %>
+    <li><%= link_to "Text", wizard_path(:text) %></li>
+    <% end %>
+    
+    <% if params[:id] == 'standards' %>
+    <li><%= link_to "Standards", '#', class: "active" %></li>
+    <% else %>
+    <li><%= link_to "Standards", wizard_path(:standards) %></li>
     <% end %>
 
-
     <% if params[:id] == 'instructional_plan' %>
-    <%= link_to "Instructional Plan", '#', class: "list-group-item disabled" %>
+    <li><%= link_to "Instructional Plan", '#', class: "active" %></li>
     <% else %>
-    <%= link_to "Instructional Plan", wizard_path(:instructional_plan) %>
+    <li><%= link_to "Instructional Plan", wizard_path(:instructional_plan) %></li>
     <% end %>  
 
     <% if params[:id] == 'instructional_norms' %>
-    <%= link_to "Instructional Norms", '#', class: "list-group-item disabled" %>
+    <li><%= link_to "Instructional Norms", '#', class: "active" %></li>
     <% else %>
-    <%= link_to "Instructional Norms", wizard_path(:instructional_norms) %>
+    <li><%= link_to "Instructional Norms", wizard_path(:instructional_norms) %></li>
     <% end %>  
 
+</ul>
+
+
+
+
+    
 
 
 

@@ -1,6 +1,6 @@
 class LessonStepsController < ApplicationController
   include Wicked::Wizard
-  steps :setup, :standards, :text, :instructional_plan, :instructional_norms
+  steps :setup, :text, :standards, :instructional_plan, :instructional_norms
 
   def show
     @select = Select.find(params[:select_id])

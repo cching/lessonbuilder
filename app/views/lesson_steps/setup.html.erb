@@ -1,35 +1,21 @@
 <% if signed_in? %>
-<body class="cbp-spmenu-push">
-		<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
-			<%= render 'sidebar' %>
-		</nav>
+<div class="animated fadeInDown">
+<%= render 'sidebar' %>
+</div><br/>
 
 <div class="row">
 
 	<div class="col-md-1">
-	<div class="animated fadeInLeftBig">
-	<button id="showLeftPush" class="bar">
-	<div id="arrow"><span class="glyphicon glyphicon-forward"></span></div>
-	</button>
-	</div>
 	</div>
 
 	<div class="col-md-10">
-
-
-<div class="animated fadeInDown">
-<div class="panel panel-warning" id="lesson-setup">Lesson Setup</div>
-<div class="progress" id="lesson-setup">
-  <div class="progress-bar" style="width: 0%;"></div>
-</div>
-</div>
 
 
 <%= render 'setup' %>
 					
 </div>
 </div>
-</body>
+
 	
 	<% else %>
 	<center>Please sign in before continuing.<br /><%= link_to "Sign in", signin_path, class: "btn btn-link" %>
@@ -42,22 +28,3 @@
 });
 </script>
 
-
-		<script>
-			var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
-
-				showLeftPush = document.getElementById( 'showLeftPush' ),
-
-				body = document.body;
-
-			
-			showLeftPush.onclick = function() {
-				classie.toggle( this, 'active' );
-				classie.toggle( body, 'cbp-spmenu-push-toright' );
-				classie.toggle( menuLeft, 'cbp-spmenu-open' );
-				disableOther( 'showLeftPush' );
-
-			};
-
-
-		</script>

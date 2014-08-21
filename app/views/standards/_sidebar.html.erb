@@ -6,19 +6,15 @@
 	   <% @grade.each do |grade| %>
 		<h4 class="panel-title">
         <a data-toggle="collapse" data-parent="#accordion" href="#collapse_<%= grade.number %>" class="list-group-item" id="subject">
-          <%= grade.name %> 
+          <div align="center"><%= grade.name %> </div>
         </a>
       	</h4>
     	<div id="collapse_<%= grade.number %>" class="panel-collapse collapse">
-      
-       
       <div id="accordion">
 				<div class="list-group">
 				<% @subject.each do |subject| %>
 				<% if Standard.where(:subject_id => subject.id).where(:grade_id => grade.id).any? %>   
-		 			         				
         	  <%= link_to subject.name, hide_standards_path(:subject => subject.id, :grade => grade.id), remote: true, class: "list-group-item", id: "grade" %>
-     						
     			<% end %>
     			<% end %>
 
@@ -33,13 +29,6 @@
 			</div>
 		</div>
 		<% end %>
-
-
-
-
-
 	</div>
-
-
 </div>
 </div>

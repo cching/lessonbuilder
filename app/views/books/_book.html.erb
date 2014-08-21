@@ -1,7 +1,7 @@
 <div id="standard">
 <div class="row">
 <div class="col-xs-10">
-<div style="font-size: 25pt;"><i><%= @book.title %></i> <br/>By <%= @book.author %></div> 
+<font size="8"><i><%= @book.title %></i></font><font size="6"> <br/>By <%= @book.author %></font> 
 </div>
 <div class="col-xs-2">
 <%= link_to "Save as PDF", book_path(@book, format: "pdf"), class: "btn btn-primary" %>

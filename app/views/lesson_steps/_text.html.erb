@@ -34,7 +34,6 @@
                 <% @ids = subject.textcategories.map{|textcategory| textcategory.id} %>
                 <% (Book.where(:textcategory_id => @ids).includes(:grades).where(:grades => {:id => grade.id}).order("title ASC") & Book.where(:textcategory_id => @ids).includes(:sources).where(:sources => {:id => source.id}).order("title ASC")).each do |book| %>
                 <div class="animated fadeInUpBig">
-                <div class="list-group">
                   <div class="row">
   <div class="col-md-1">
                 <label class="radio">
@@ -43,8 +42,7 @@
                 </div>
   <div class="col-md-7">
                   
-                    <font size="4">
-                    <i><%= link_to book.title, show2_books_path(:id => book.id), class: "list-group-item", remote: :true, id: "title" %></i></font>
+                    <i><%= link_to book.title, show2_books_path(:id => book.id), class: "list-group-item", remote: :true, id: "title" %></i>
 
                     
                     </div>
@@ -75,7 +73,6 @@
                    
                    <% end %>
                    </div>
-                </div>
                 </div>
 </div>
 <% end %>

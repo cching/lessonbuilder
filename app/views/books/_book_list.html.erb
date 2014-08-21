@@ -30,7 +30,6 @@
                 
                 <% (Book.where(:textcategory_id => @category.id).includes(:grades).where(:grades => {:id => @grade.id}).order("title ASC") & Book.where(:textcategory_id => @category.id).includes(:sources).where(:sources => {:id => @source.id}).order("title ASC")).each do |book| %>
                 <div class="animated fadeInUpBig">
-                <div class="list-group">
                   <div class="row">
 
   <div class="col-md-8">
@@ -67,7 +66,6 @@
                    
                    <% end %>
                    </div>
-                </div>
                 </div>
 </div>
 <% end %>

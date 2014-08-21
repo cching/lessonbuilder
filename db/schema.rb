@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140814085103) do
+ActiveRecord::Schema.define(:version => 20140821173127) do
 
   create_table "admin_notes", :force => true do |t|
     t.string   "resource_id",     :null => false
@@ -203,6 +203,7 @@ ActiveRecord::Schema.define(:version => 20140814085103) do
 
   create_table "grades", :force => true do |t|
     t.string "number"
+    t.string "name"
   end
 
   create_table "headers", :force => true do |t|

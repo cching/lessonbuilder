@@ -4,11 +4,14 @@
   <div class="form-inputs">
   <%= f.input :title, input_html: {style: 'height:100px; width:100%'} %>
     <%= f.input :content, input_html: {style: 'height:100px; width:100%'} %>
-    <%= f.input :media, input_html: {style: 'height:100px; width:100%'} %>
-    
+    <%= f.association :rcategory %>
+	<%= f.input :attachment, label: false %>    
   </div>
 <br />
   <div class="form-actions">
     <%= f.button :submit %>
   </div>
 <% end %>
+
+<%= link_to "Make new category", new_rcategory_path %>
+<br/>

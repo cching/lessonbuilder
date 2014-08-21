@@ -91,6 +91,8 @@ lessonname.jpg: lessonname-53d8f529b230227c6de81828b563f8d0.jpg
 lessonname/index.jpg: lessonname-53d8f529b230227c6de81828b563f8d0.jpg
 lessons.jpg: lessons-3e69aade5d0c2806441f86eae949818e.jpg
 lessons/index.jpg: lessons-3e69aade5d0c2806441f86eae949818e.jpg
+main.jpg: main-df48bbbf77057eb722853486733d4ade.jpg
+main/index.jpg: main-df48bbbf77057eb722853486733d4ade.jpg
 newhome.jpg: newhome-93334647830c3689a870d4f39bef61b5.jpg
 newhome/index.jpg: newhome-93334647830c3689a870d4f39bef61b5.jpg
 rails.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
@@ -107,12 +109,12 @@ standard.jpg: standard-40fc40ad3e3da770ab787750b0a4a086.jpg
 standard/index.jpg: standard-40fc40ad3e3da770ab787750b0a4a086.jpg
 standards.jpg: standards-40fc40ad3e3da770ab787750b0a4a086.jpg
 standards/index.jpg: standards-40fc40ad3e3da770ab787750b0a4a086.jpg
-application.js: application-2aa586caf76f641aa66bf2ab2e43a8a1.js
-application/index.js: application-2aa586caf76f641aa66bf2ab2e43a8a1.js
+application.js: application-a69836adbbc9920d39b38842e1095bf3.js
+application/index.js: application-a69836adbbc9920d39b38842e1095bf3.js
 images/rails.png: images/rails-a3386665c05a2d82f711a4aaa72d247c.png
 images/rails/index.png: images/rails-a3386665c05a2d82f711a4aaa72d247c.png
-application.css: application-5dcb945e6dc79c3bd132263c28629d3f.css
-application/index.css: application-5dcb945e6dc79c3bd132263c28629d3f.css
+application.css: application-1955286596e841eae75724e6b4600de1.css
+application/index.css: application-1955286596e841eae75724e6b4600de1.css
 jquery-ui/animated-overlay.gif: jquery-ui/animated-overlay-602eee4c79a4796b02bb6442948c9e28.gif
 jquery-ui/animated-overlay/index.gif: jquery-ui/animated-overlay-602eee4c79a4796b02bb6442948c9e28.gif
 jquery-ui/ui-bg_flat_0_aaaaaa_40x100.png: jquery-ui/ui-bg_flat_0_aaaaaa_40x100-7d1197a52442bc56fcad60d0390f4b32.png

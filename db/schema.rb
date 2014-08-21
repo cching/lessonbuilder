@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140821173127) do
+ActiveRecord::Schema.define(:version => 20140821211813) do
 
   create_table "admin_notes", :force => true do |t|
     t.string   "resource_id",     :null => false
@@ -290,12 +290,30 @@ ActiveRecord::Schema.define(:version => 20140821173127) do
     t.boolean "duplicate",   :default => false
   end
 
+  create_table "rcategories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "resource_categories", :force => true do |t|
+    t.integer  "resource_id"
+    t.integer  "rcategory_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
   create_table "resources", :force => true do |t|
     t.text     "content"
     t.text     "media"
     t.text     "title"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
+    t.integer  "rcategory_id"
   end
 
   create_table "searches", :force => true do |t|

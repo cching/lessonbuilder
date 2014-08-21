@@ -30,10 +30,19 @@
 </div>
 <small align="center">Select resources for your lesson. Add them to your instructional plane by dragging and dropping them into the text box.</small>
 
-            <%= f.input :notes, label: false, :input_html => { style: 'width:100%; height:100%', id: "TextArea1" } %>
+            <%= f.input :notes, label: false, :input_html => {  id: "TextArea1", style: 'width:100%; height:100%' } %>
         </div>
-         <div align="right">
- <%= f.submit "Preview lesson", class: "btn btn-warning", id: "notes" %></div>
+        <div class="row">
+        <div class="col-md-2">Teaching on:
+        <%= f.text_field :date, id: "selects_date", type: "text", class: "form-control" %>
+        </div>
+        <div class="col-md-8">
+        </div>
+        <div class="col-md-2">
+        <div align="right">
+ <%= f.submit "Preview", class: "btn btn-warning", id: "notes" %></div></div>
+ </div>
+ </div>
   <% end %>
 </div>
 

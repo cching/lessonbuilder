@@ -1,0 +1,21 @@
+<h1>Listing rcategories</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @rcategories.each do |rcategory| %>
+  <tr>
+    <td><%= link_to 'Show', rcategory %></td>
+    <td><%= link_to 'Edit', edit_rcategory_path(rcategory) %></td>
+    <td><%= link_to 'Destroy', rcategory, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Rcategory', new_rcategory_path %>

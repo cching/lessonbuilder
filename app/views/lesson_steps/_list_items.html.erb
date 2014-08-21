@@ -155,7 +155,7 @@
                     <% Xaquestion.where(:select_id => @select.id).each do |xaquestion| %>
                <tr>
                <td>
-              <div id="xaquestion1_<%= xaquestion.id %>" class="inline">
+              <div id="xaquestion_<%= xaquestion.id %>" class="inline">
               <% if @saquestions.map{|a| a.xaquestion_id}.include? xaquestion.id %>
               <%= link_to "",  unselect_aquestions_xaquestion_path(xaquestion, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-check" %>
               <% else %>

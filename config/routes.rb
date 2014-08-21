@@ -1,4 +1,7 @@
 Commoncore::Application.routes.draw do
+  resources :rcategories
+
+
   resources :assessments
 
 

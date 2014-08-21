@@ -2,12 +2,12 @@ class SelectsController < ApplicationController
 
   def index
     @search = Select.search(params[:q])
-    @selects = @search.result.paginate(:page => params[:page], :per_page => 30)
+    @selects = @search.result.paginate(:page => params[:page], :per_page => 30).where(:name != "")
   end
 
   def grade0
     @search = Select.search(params[:q])
-    @selects0 = @search.result.includes(:grades).where(:grades => {:id => 1})
+    @selects0 = @search.result.includes(:grades).where(:grades => {:id => 1}).where(:name != nil)
     respond_to do |format|
       format.html
       format.js
@@ -16,7 +16,7 @@ class SelectsController < ApplicationController
 
   def grade1
     @search = Select.search(params[:q])
-    @selects1 = @search.result.includes(:grades).where(:grades => {:id => 2})
+    @selects1 = @search.result.includes(:grades).where(:grades => {:id => 2}).where(:name != nil)
     respond_to do |format|
       format.html
       format.js
@@ -25,7 +25,7 @@ class SelectsController < ApplicationController
 
   def grade2
     @search = Select.search(params[:q])
-    @selects2 = @search.result.includes(:grades).where(:grades => {:id => 3})
+    @selects2 = @search.result.includes(:grades).where(:grades => {:id => 3}).where(:name != nil)
     respond_to do |format|
       format.html
       format.js
@@ -34,7 +34,7 @@ class SelectsController < ApplicationController
 
   def grade3
     @search = Select.search(params[:q])
-    @selects3 = @search.result.includes(:grades).where(:grades => {:id => 4})
+    @selects3 = @search.result.includes(:grades).where(:grades => {:id => 4}).where(:name != nil)
     respond_to do |format|
       format.html
       format.js
@@ -43,7 +43,7 @@ class SelectsController < ApplicationController
 
   def grade4
     @search = Select.search(params[:q])
-    @selects4 = @search.result.includes(:grades).where(:grades => {:id => 5})
+    @selects4 = @search.result.includes(:grades).where(:grades => {:id => 5}).where(:name != nil)
     respond_to do |format|
       format.html
       format.js
@@ -52,7 +52,7 @@ class SelectsController < ApplicationController
 
   def grade5
     @search = Select.search(params[:q])
-    @selects5 = @search.result.includes(:grades).where(:grades => {:id => 6})
+    @selects5 = @search.result.includes(:grades).where(:grades => {:id => 6}).where(:name != nil)
     respond_to do |format|
       format.html
       format.js
@@ -61,7 +61,7 @@ class SelectsController < ApplicationController
 
   def grade6
     @search = Select.search(params[:q])
-    @selects6 = @search.result.includes(:grades).where(:grades => {:id => 7})
+    @selects6 = @search.result.includes(:grades).where(:grades => {:id => 7}).where(:name != nil)
     respond_to do |format|
       format.html
       format.js
@@ -70,7 +70,7 @@ class SelectsController < ApplicationController
 
   def grade7
     @search = Select.search(params[:q])
-    @selects7 = @search.result.includes(:grades).where(:grades => {:id => 8})
+    @selects7 = @search.result.includes(:grades).where(:grades => {:id => 8}).where(:name != nil)
     respond_to do |format|
       format.html
       format.js
@@ -79,7 +79,7 @@ class SelectsController < ApplicationController
 
   def grade8
     @search = Select.search(params[:q])
-    @selects8 = @search.result.includes(:grades).where(:grades => {:id => 9})
+    @selects8 = @search.result.includes(:grades).where(:grades => {:id => 9}).where(:name != nil)
     respond_to do |format|
       format.html
       format.js

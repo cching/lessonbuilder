@@ -6,7 +6,7 @@
   <div class="list-group">
      <% @grade.each do |grade| %>
     <h4 class="panel-title">
-          <%= link_to grade.number, grade_books_path(:grade => grade.id), remote: true, class: "list-group-item", id: "subject" %> 
+          <div align="center"><%= link_to grade.name, grade_books_path(:grade => grade.id), remote: true, class: "list-group-item", id: "subject" %></div>
       
         </h4>
 

@@ -6,19 +6,14 @@ class SelectPdf < Prawn::Document
     super(top_margin: 70)
     @select = select
     text "#{@select.try(:name)}", :align => :center, :style => :bold, :size => 20, :background_color => '2F81D7', :text_color => 'ffffff'
-    if @select.book.try(:title) != nil 
-    move_down 10
-    text "Close Reading of", :align => :center
-    
-    text "#{@select.book.title}", :align => :center, :style => :italic
-    end
+    text "(Teaching on #{@select.date})", :align => :center
+
     move_down 10
     text "Description: #{@select.description}", :align => :center
 
     move_down 10
     text "Objective: #{@select.objective}", :align => :center
     
-
 
     move_down 10
     standards

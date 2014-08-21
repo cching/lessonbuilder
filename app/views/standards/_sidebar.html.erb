@@ -6,7 +6,7 @@
 	   <% @grade.each do |grade| %>
 		<h4 class="panel-title">
         <a data-toggle="collapse" data-parent="#accordion" href="#collapse_<%= grade.number %>" class="list-group-item" id="subject">
-          <%= grade.number %> 
+          <%= grade.name %> 
         </a>
       	</h4>
     	<div id="collapse_<%= grade.number %>" class="panel-collapse collapse">

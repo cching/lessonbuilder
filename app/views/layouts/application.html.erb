@@ -24,7 +24,7 @@
   </div>
 
     <%= render 'layouts/header' %>
-    <div class="d">
+    <div class="container-fluid">
 		
 		  <% flash.each do |name, msg| %>
 		    <div class="alert alert-<%= name == :notice ? "success" : "error" %>  alert-dismissable animated fadeIn">

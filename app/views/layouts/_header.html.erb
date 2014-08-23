@@ -24,32 +24,53 @@
        
        <li><%= link_to "Standards", standards_path %></li>
                    <li><%= link_to "Text Resources", books_path %></li>
+              <% s = current_user.selects.last %>
+              <% if s.name == nil || s.name == ""  %>
+              <li><%= link_to "Build a lesson", lesson_steps_path(s) %></li>
+              <% else %>
              <li><%= link_to "Build a Lesson", selects_path, :method => :post %></li>
+             <% end %>
                <li><%= link_to "Browse Lessons", lessons_path %></li>
      <li><%= link_to "Resources", resources_path %></li>
      </ul>
      
+     <% if params[:action] == 'home' %>
      <ul class="nav navbar-nav navbar-right">
      <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.name %></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"></a>
+          <div id="menu>"
           <ul class="dropdown-menu">
+          
           <li><%= link_to 'View profile <i class="glyphicon glyphicon-tasks"></i>'.html_safe, user_path(current_user), class: "btn btn-link" %></li>
           <li><%= link_to 'Edit profile <i class="glyphicon glyphicon-wrench"></i>'.html_safe, edit_user_registration_path(current_user), class: "btn btn-link" %></li>
            <li class="divider"></li>
            <li><%= link_to 'Sign out <i class="glyphicon glyphicon-new-window"></i>'.html_safe, destroy_user_session_path, method: :delete, class: "btn btn-link" %></li>
+
           </ul>
+
         </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span></a>
-          <ul class="dropdown-menu">
-          <li><%= link_to 'View profile <i class="glyphicon glyphicon-tasks"></i>'.html_safe, user_path(current_user), class: "btn btn-link" %></li>
-          <li><%= link_to 'Edit profile <i class="glyphicon glyphicon-wrench"></i>'.html_safe, edit_user_registration_path(current_user), class: "btn btn-link" %></li>
-           <li class="divider"></li>
-           <li><%= link_to 'Sign out <i class="glyphicon glyphicon-new-window"></i>'.html_safe, destroy_user_session_path, method: :delete, class: "btn btn-link" %></li>
-          </ul>
-        </li>
+        </div>
+
       </ul>
 
+      <% else %>
+
+      <ul class="nav navbar-nav navbar-right">
+     <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.name %> &nbsp; <span class="glyphicon glyphicon-cog"></span></a>
+          <ul class="dropdown-menu">
+          
+          <li><%= link_to 'View profile <i class="glyphicon glyphicon-tasks"></i>'.html_safe, user_path(current_user), class: "btn btn-link" %></li>
+          <li><%= link_to 'Edit profile <i class="glyphicon glyphicon-wrench"></i>'.html_safe, edit_user_registration_path(current_user), class: "btn btn-link" %></li>
+           <li class="divider"></li>
+           <li><%= link_to 'Sign out <i class="glyphicon glyphicon-new-window"></i>'.html_safe, destroy_user_session_path, method: :delete, class: "btn btn-link" %></li>
+
+          </ul>
+
+        </li>
+
+      </ul>
+<% end %>
 
 <% else %>
 <ul class="nav navbar-nav">

@@ -4,6 +4,7 @@ if ($('#book').hasClass('animated fadeInRightBig')) {
 	$('#book').addClass('animated fadeOutRightBig')
 	setTimeout(function() {
 	$('#book').html('<%= escape_javascript(render(:partial => 'book', :locals => {:book => @book})) %>');
+	$('#pdf').html('<%= escape_javascript(render(:partial => 'lesson_steps/pdf', :locals => {:book => @book})) %>');
 	$('#book').removeClass('animated fadeOutRightBig')
 	$('#book').addClass('animated fadeInRightBig')
 
@@ -11,7 +12,7 @@ if ($('#book').hasClass('animated fadeInRightBig')) {
 
 } else {
 	$('#book').html('<%= escape_javascript(render(:partial => 'book', :locals => {:book => @book})) %>');
-
+	$('#pdf').html('<%= escape_javascript(render(:partial => 'lesson_steps/pdf', :locals => {:book => @book})) %>');
 	$('#book').addClass('animated fadeInRightBig')
 
 }

@@ -1,3 +1,27 @@
+<% if @select.status.blank? %>
+
+<ul class="nav nav-pills nav-justified" id="navigation">
+    <li><%= link_to "Lesson Setup", '#', class: "active" %></li>
+
+
+
+    <li><a href="#" data-html="true" rel="tooltip" title="Please select text <br/> sources before continuing." data-placement="left" id="tooltip2"> Text </a></li>
+    
+    <li><a href="#" data-html="true" rel="tooltip" title="Please select standard <br/> categories before continuing." data-placement="left" id="tooltip2"> Standards </a></li>
+
+    <li><a href="#" data-html="true" rel="tooltip" title="Please select standards <br/> before continuing." data-placement="right" id="tooltip2"> Instructional Plan </a></li>
+
+
+    <% if params[:id] == 'instructional_norms' %>
+    <li><%= link_to "Instructional Norms", '#', class: "active" %></li>
+    <% else %>
+    <li><%= link_to "Instructional Norms", wizard_path(:instructional_norms) %></li>
+    <% end %>  
+
+</ul>
+
+<% else %>
+
 
 <ul class="nav nav-pills nav-justified" id="navigation">
   <% if params[:id] == 'setup' %>
@@ -33,7 +57,7 @@
 
 </ul>
 
-
+<% end %>
 
 
     

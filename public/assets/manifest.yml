@@ -1,4 +1,14 @@
 ---
+codropsicons/codropsicons.eot: codropsicons/codropsicons-1abb9f62dc877e425128eebce430868e.eot
+codropsicons/codropsicons/index.eot: codropsicons/codropsicons-1abb9f62dc877e425128eebce430868e.eot
+codropsicons/codropsicons.svg: codropsicons/codropsicons-26756383957b4982a04570d3fc5ed313.svg
+codropsicons/codropsicons/index.svg: codropsicons/codropsicons-26756383957b4982a04570d3fc5ed313.svg
+codropsicons/codropsicons.ttf: codropsicons/codropsicons-5c5482b4f6cb92596180abf2beb709f6.ttf
+codropsicons/codropsicons/index.ttf: codropsicons/codropsicons-5c5482b4f6cb92596180abf2beb709f6.ttf
+codropsicons/codropsicons.woff: codropsicons/codropsicons-c67a2dda55e11f34d349ef62434d4d70.woff
+codropsicons/codropsicons/index.woff: codropsicons/codropsicons-c67a2dda55e11f34d349ef62434d4d70.woff
+codropsicons/license.txt: codropsicons/license-17f2fb04a704c0e8707495ea7c4e6a24.txt
+codropsicons/license/index.txt: codropsicons/license-17f2fb04a704c0e8707495ea7c4e6a24.txt
 flat-ui-icons-regular.eot: flat-ui-icons-regular-e1eab2822818c7c1e3791d20a92ce602.eot
 flat-ui-icons-regular/index.eot: flat-ui-icons-regular-e1eab2822818c7c1e3791d20a92ce602.eot
 flat-ui-icons-regular.svg: flat-ui-icons-regular-070ef3ccb1408dfc041d855295de909f.svg
@@ -15,6 +25,14 @@ glyphicons-halflings-regular.ttf: glyphicons-halflings-regular-89ac66980d09bf7e4
 glyphicons-halflings-regular/index.ttf: glyphicons-halflings-regular-89ac66980d09bf7e4619976d2fa08de1.ttf
 glyphicons-halflings-regular.woff: glyphicons-halflings-regular-26a4cf908d46a31304c50b30b5696da5.woff
 glyphicons-halflings-regular/index.woff: glyphicons-halflings-regular-26a4cf908d46a31304c50b30b5696da5.woff
+icomoon/icomoon.eot: icomoon/icomoon-294da05b9e63822bfa4c8acf8f2dd370.eot
+icomoon/icomoon/index.eot: icomoon/icomoon-294da05b9e63822bfa4c8acf8f2dd370.eot
+icomoon/icomoon.svg: icomoon/icomoon-ecfcf7823a4ee929651188f4caa0c16f.svg
+icomoon/icomoon/index.svg: icomoon/icomoon-ecfcf7823a4ee929651188f4caa0c16f.svg
+icomoon/icomoon.ttf: icomoon/icomoon-77ea534e0ca94114423ef43f1453e535.ttf
+icomoon/icomoon/index.ttf: icomoon/icomoon-77ea534e0ca94114423ef43f1453e535.ttf
+icomoon/icomoon.woff: icomoon/icomoon-bd8635a3fbd6adc5bb066965bdab425f.woff
+icomoon/icomoon/index.woff: icomoon/icomoon-bd8635a3fbd6adc5bb066965bdab425f.woff
 lato/lato-black.eot: lato/lato-black-16b15f7336a006c71b2efd744d6f66cc.eot
 lato/lato-black/index.eot: lato/lato-black-16b15f7336a006c71b2efd744d6f66cc.eot
 lato/lato-black.svg: lato/lato-black-087abb379817ba3c3311c20bcc63f89b.svg
@@ -67,6 +85,8 @@ Headers.jpg: Headers-5e2710bac351e2f5f9461bbda5844862.jpg
 Headers/index.jpg: Headers-5e2710bac351e2f5f9461bbda5844862.jpg
 Lesson Setup Screen.jpg: Lesson Setup Screen-854f0f68b58606b531f8cc597553fdf1.jpg
 Lesson Setup Screen/index.jpg: Lesson Setup Screen-854f0f68b58606b531f8cc597553fdf1.jpg
+LessonBuilder_Header.jpg: LessonBuilder_Header-8281cf236caf58b51370c0868085596e.jpg
+LessonBuilder_Header/index.jpg: LessonBuilder_Header-8281cf236caf58b51370c0868085596e.jpg
 aftersignin.jpg: aftersignin-8d58bed76d30f6ac3258fe7664536483.jpg
 aftersignin/index.jpg: aftersignin-8d58bed76d30f6ac3258fe7664536483.jpg
 favicon.ico: favicon-262a646318e6f7a84228fe4871dfcaef.ico
@@ -77,6 +97,8 @@ gatherresources.jpg: gatherresources-f5839e50873bdaa6e16d4a14638825ee.jpg
 gatherresources/index.jpg: gatherresources-f5839e50873bdaa6e16d4a14638825ee.jpg
 header.png: header-6d316fa061b0e6abaf25f8f5e878726d.png
 header/index.png: header-6d316fa061b0e6abaf25f8f5e878726d.png
+header1.png: header1-87a9396d1e18a0a2fce8cb36569108ef.png
+header1/index.png: header1-87a9396d1e18a0a2fce8cb36569108ef.png
 home.jpg: home-1e01424a35615813ce03e882af0d6200.jpg
 home/index.jpg: home-1e01424a35615813ce03e882af0d6200.jpg
 homescreen.jpg: homescreen-0fcf7071c39aa10a82185c3853dda2f1.jpg
@@ -109,12 +131,12 @@ standard.jpg: standard-40fc40ad3e3da770ab787750b0a4a086.jpg
 standard/index.jpg: standard-40fc40ad3e3da770ab787750b0a4a086.jpg
 standards.jpg: standards-40fc40ad3e3da770ab787750b0a4a086.jpg
 standards/index.jpg: standards-40fc40ad3e3da770ab787750b0a4a086.jpg
-application.js: application-a69836adbbc9920d39b38842e1095bf3.js
-application/index.js: application-a69836adbbc9920d39b38842e1095bf3.js
+application.js: application-1858d86e1d719973e8e8f776bf0b03b9.js
+application/index.js: application-1858d86e1d719973e8e8f776bf0b03b9.js
 images/rails.png: images/rails-a3386665c05a2d82f711a4aaa72d247c.png
 images/rails/index.png: images/rails-a3386665c05a2d82f711a4aaa72d247c.png
-application.css: application-1955286596e841eae75724e6b4600de1.css
-application/index.css: application-1955286596e841eae75724e6b4600de1.css
+application.css: application-d39db49e86eab7fb71f4027af92d1efc.css
+application/index.css: application-d39db49e86eab7fb71f4027af92d1efc.css
 jquery-ui/animated-overlay.gif: jquery-ui/animated-overlay-602eee4c79a4796b02bb6442948c9e28.gif
 jquery-ui/animated-overlay/index.gif: jquery-ui/animated-overlay-602eee4c79a4796b02bb6442948c9e28.gif
 jquery-ui/ui-bg_flat_0_aaaaaa_40x100.png: jquery-ui/ui-bg_flat_0_aaaaaa_40x100-7d1197a52442bc56fcad60d0390f4b32.png

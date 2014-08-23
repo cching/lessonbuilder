@@ -24,7 +24,7 @@
 <div class="row"> 
 
         <div class="col-md-4">
-        <div class="verticalLine">
+        <div class="verticaline">
             <div class="div-table-content">
 
                 
@@ -36,41 +36,33 @@
                 <div class="animated fadeInUpBig">
                   <div class="row">
   <div class="col-md-1">
-                <label class="radio">
-                <%= f.radio_button :book_id, book.id, :data => {:toggle => "radio"} %>
-                </label>
+                <%= check_box_tag "select[book_ids][]", book.id, @select.book_ids.include?(book.id), id: dom_id(book) %>
                 </div>
-  <div class="col-md-7">
+  <div class="col-md-8">
                   
                     <i><%= link_to book.title, show2_books_path(:id => book.id), class: "list-group-item", remote: :true, id: "title" %></i>
 
                     
                     </div>
 
-                     <div class="col-md-1">
+                     <div class="col-md-2">
 
                    <% unless book.assess_questions == nil || book.assess_questions == "" %>
-                   
-                   <span class="glyphicon glyphicon-pencil" id="pencil"></span>
-                   
+                  <div id="inline">
+                   <span class="glyphicon glyphicon-pencil" id="pencil"></span>&nbsp;
+                </div>
                    <% end %>
-                   </div>
-                  <div class="col-md-1">
 
                    <% if book.pdf? %>
-                   <div align="center">
-                  
-                   <span class="glyphicon glyphicon-cloud-upload" id="upload"></span>
-                   
+                  <div id="inline">
+                   <span class="glyphicon glyphicon-cloud-upload" id="upload"></span>&nbsp;
                    </div>
                    <% end %>
-                   </div>
 
-                    <div class="col-md-1">
                     <% if book.example == nil || book.example == "" %>
-                  
+                  <div id="inline">
                    <span class="glyphicon glyphicon-book" id="book-icon"></span>
-                   
+                   </div>
                    <% end %>
                    </div>
                 </div>
@@ -80,27 +72,32 @@
              </div>
         </div>
 </div>
-        <div class="col-md-8">
+        <div class="col-md-8" id="book-preview">
         <div class="div-table-content">
                 <div id="book">
                   
                             Click on a book to see a preview
                   </div>
-                  </div>
+                  </div><br/>
+<div class="row">
+<div class="col-xs-6"></div>
+  <div class="animated fadeInRight" id="inline">
+  <div class="col-xs-3" align="right">
+<div id="pdf"></div>
+</div>
+<div class="col-xs-2" align="right">
+  <button type="submit" class="btn btn-primary" id="builder" data-loading-text="Saving.." id="text-select">Save and Continue</button></div>
+</div>
+</div>
         </div>
 </div>
 
 
 
 
-
-
 </div>
 
 
-<br/>
-
-  <div align="right" class="animated fadeInRight"><button type="submit" class="btn btn-info" data-loading-text="Saving.." id="text-select">Save and Continue</button></div>
 
   <% end %>
 

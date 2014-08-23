@@ -28,6 +28,12 @@ border-color: #2F81D7;
     overflow: hidden;
 }
 
+#menu ul li {
+  z-index: 100000;
+}
+
+
+
 .input_field input { width: 1000; }
 
 .thumbnail a p {
@@ -59,8 +65,10 @@ html {
   overflow-y: scroll;
 }
 
-body {
-  padding-top: 60px;
+.navbar.navbar-default {
+  padding: 0px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
 }
 
 section {
@@ -132,6 +140,16 @@ p {
     margin-bottom: 1px;
 }
 
+
+.footer {
+  height: 75px;
+  font-size: 13px;
+  text-align: left;
+  background-color: #262626;
+  color: #E0E0E0;
+  padding-top: 10px;
+  padding-left: 27px;
+}
 $nprogress-color: #34DDDD;
 @import 'nprogress';
 @import 'nprogress-bootstrap';

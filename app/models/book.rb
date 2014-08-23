@@ -11,7 +11,8 @@ class Book < ActiveRecord::Base
   has_many :book_grades, :dependent => :destroy
   has_many :grades, through: :book_grades
   belongs_to :textcategory
-  has_many :selects
+  has_many :select_texts
+  has_many :selects, through: :select_texts
   has_many :booksources
   has_many :sources, through: :booksources
 

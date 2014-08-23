@@ -1,3 +1,4 @@
+<div class="container-fluid">
 <% if signed_in? %>
 <div class="animated fadeInDown">
 <%= render 'sidebar', select: @select %>
@@ -20,7 +21,8 @@
 	<% else %>
 	<center>Please sign in before continuing.<br /><%= link_to "Sign in", signin_path, class: "btn btn-link" %>
 		<% end %>
-
+</center>
+</div>
 
 <script>
 	$('button[data-loading-text]').click(function () {

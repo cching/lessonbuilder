@@ -4,6 +4,37 @@ class Select < ActiveRecord::Base
   default_value_for :date do
     Date.today
   end
+  default_value_for :notes do
+
+  "Suggested guidelines (ACHIEVE THE CORE - CCSS Instructional Practice Guide)
+  Focus:  High-quality text (Appendix B is a good place to start).
+    Regular practice with complex text and its academic language.
+    Complex text that builds coherent knowledge.
+  Time: The majority of the lesson is spent reading, writing or speaking about the text.
+  Questions: Require students to use evidence from the text.
+  Questions: Address the text to clarify structure(s), details and concepts in the text.
+  Questions: Sequenced to build knowledge by guiding students to delve deeper into the text.
+  Equity: Provide all students with opportunities to engage in the work of the lesson.
+
+Focus
+  The text _______________ contains ______________ information that will help students gain
+  an understanding of the world around them. 
+    Specific details include ______________
+    Inferences which may be made based on these details are _____________. 
+
+Time
+  ____ readings of the text will take place.  Students will spend ___ to ___ total minutes reading.
+
+
+Questions
+
+
+
+
+
+Equity"
+end
+
 
   has_attached_file :attachment
   do_not_validate_attachment_file_type :attachment

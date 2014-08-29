@@ -24,13 +24,13 @@
        
        <li><%= link_to "Standards", standards_path %></li>
                    <li><%= link_to "Text Resources", books_path %></li>
-              <% if current_user && current_user.selects.any? %>
               <% s = current_user.selects.last %>
               <% if s.name == nil || s.name == ""  %>
               <li><%= link_to "Build a lesson", lesson_steps_path(s) %></li>
-              <% else %>
+              <% elsif s == nil %>
              <li><%= link_to "Build a Lesson", selects_path, :method => :post %></li>
-             <% end %>
+             <% else %>
+             <li><%= link_to "Build a Lesson", selects_path, :method => :post %></li>
              <% end %>
                <li><%= link_to "Browse Lessons", lessons_path %></li>
      <li><%= link_to "Resources", resources_path %></li>

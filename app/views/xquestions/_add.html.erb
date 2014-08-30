@@ -1,0 +1,3 @@
+ <%= simple_form_for(@select, remote: true) do |f| %>
+            <%= f.input :notes, label: false, :input_html => { class: 'wysihtml5', style: 'width:100%; height:400' } %>
+            <% end %>

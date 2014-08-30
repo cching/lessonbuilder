@@ -1,6 +1,6 @@
 <% Xvocab.where(:select_id => @select.id).where(:standard_id => standard.id).each do |xvocab| %>
 <div class="row" id="resources">
-
+<div class="col-md-1"><%= link_to "",  add_xvocab_path(xvocab, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-share" %></div>
 <div class="col-md-1">
 <div id="xvocab_<%= xvocab.id %>">
 
@@ -11,7 +11,6 @@
       <% end %>
     </div>
     </div>
-    <div class="col-md-1"></div>
 <div class="col-md-9">
 
       <%= f.simple_fields_for :xvocabs, xvocab do |builder| %>

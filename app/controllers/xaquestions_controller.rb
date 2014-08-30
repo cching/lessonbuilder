@@ -89,4 +89,13 @@ end
       @selectq.delete
       respond_to :js
     end
+
+    def add
+    @xaquestion = Xaquestion.find(params[:id])
+    @select = Select.find(params[:select_id])
+    
+    @select.notes = @select.notes + "<br/>" +  @xaquestion.content
+    @select.save
+      respond_to :js
+    end
 end

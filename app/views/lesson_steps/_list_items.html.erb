@@ -1,3 +1,4 @@
+<%= simple_form_for(@select) do |f| %>
 <div class="panel-group" id="accordion">
   <div class="panel panel-warning">
     <div class="panel-heading" id="plan">
@@ -12,26 +13,19 @@
     <div id="collapseOne" class="panel-collapse collapse in">
       <div class="panel-body">
       <div id="list">
-        <ul id="allfields" runat="server">
-        <table>
-                    <% Xquestion.where(:select_id => @select.id).each do |xquestion| %>
-               <tr>
-               <td>
-              <div id="xquestion1_<%= xquestion.id %>" class="inline">
-              <% if @squestions.map{|a| a.xquestion_id}.include? xquestion.id %>
-              <%= link_to "",  unselect_questions_xquestion_path(xquestion, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-check" %>
-              <% else %>
-              <%= link_to "",  select_questions_xquestion_path(xquestion, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-unchecked" %>
-              <% end %>
-              </div>
-              </td>
-              <td>
-              <li><%= xquestion.standard_id %>: <%= xquestion.content %></li>
-              </td>
-              </tr>
-               <% end %>
-               </table>
-            </ul>
+        <% @select.standards.each do |standard| %>
+  
+  <div id="resource_id"><%= standard.id %></div><br/>
+
+  <div id="xquestion">
+    
+    <%= render 'xquestions', :standard => standard, :f => f %>
+
+    <div id="newquestion_<%= standard.standard_id %>"></div>
+    <div align="right"><%= link_to "Add Question", xquestions_path(:standard_id => standard.id, :select_id => @select.id), :method => :post, remote: :true, class: "btn btn-primary" %></div>
+    
+  </div><br/>
+<% end %>
             </div>
       </div>
     </div>
@@ -49,26 +43,19 @@
     <div id="collapseTwo" class="panel-collapse collapse">
       <div class="panel-body">
         <div id="list">
-        <ul id="allfields" runat="server">
-        <table>
-                    <% Xvocab.where(:select_id => @select.id).each do |xvocab| %>
-               <tr>
-               <td>
-              <div id="xvocab_<%= xvocab.id %>" class="inline">
-              <% if @svocabs.map{|a| a.xvocab_id}.include? xvocab.id %>
-              <%= link_to "",  unselect_vocabs_xvocab_path(xvocab, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-check" %>
-              <% else %>
-              <%= link_to "",  select_vocabs_xvocab_path(xvocab, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-unchecked" %>
-              <% end %>
-              </div>
-              </td>
-              <td>
-              <li><%= xvocab.standard_id %>: <%= xvocab.content_english %></li>
-              </td>
-              </tr>
-               <% end %>
-               </table>
-            </ul>
+        <% @select.standards.each do |standard| %>
+  
+  <div id="resource_id"><%= standard.id %></div><br/>
+
+  <div id="xvocab">
+    
+    <%= render 'xvocabs', :standard => standard, :f => f %>
+
+    <div id="newvocab_<%= standard.standard_id %>"></div>
+    <div align="right"><%= link_to "Add Vocabulary Word", xvocabs_path(:standard_id => standard.id, :select_id => @select.id), :method => :post, remote: :true, class: "btn btn-primary" %></div>
+    
+  </div><br/>
+<% end %>
             </div>
       </div>
     </div>
@@ -86,26 +73,19 @@
     <div id="collapseThree" class="panel-collapse collapse">
       <div class="panel-body">
         <div id="list">
-        <ul id="allfields" runat="server">
-        <table>
-                    <% Xskill.where(:select_id => @select.id).each do |xskill| %>
-               <tr>
-               <td>
-              <div id="xskill_<%= xskill.id %>" class="inline">
-              <% if @sskills.map{|a| a.xskill_id}.include? xskill.id %>
-              <%= link_to "",  unselect_skills_xskill_path(xskill, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-check" %>
-              <% else %>
-              <%= link_to "",  select_skills_xskill_path(xskill, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-unchecked" %>
-              <% end %>
-              </div>
-              </td>
-              <td>
-              <li id="content"><%= xskill.standard_id %>: <%= xskill.content %></li>
-              </td>
-              </tr>
-               <% end %>
-               </table>
-            </ul>
+        <% @select.standards.each do |standard| %>
+  
+  <div id="resource_id"><%= standard.id %></div><br/>
+
+  <div id="xskill">
+    
+    <%= render 'xskills', :standard => standard, :f => f %>
+
+    <div id="newskill_<%= standard.standard_id %>"></div>
+    <div align="right"><%= link_to "Add Skill", xskills_path(:standard_id => standard.id, :select_id => @select.id), :method => :post, remote: :true, class: "btn btn-primary" %></div>
+    
+  </div><br/>
+<% end %>
             </div>
       </div>
     </div>
@@ -123,26 +103,19 @@
     <div id="collapseFour" class="panel-collapse collapse">
       <div class="panel-body">
         <div id="list">
-        <ul id="allfields" runat="server">
-        <table>
-                    <% Xlink.where(:select_id => @select.id).each do |xlink| %>
-               <tr>
-               <td>
-              <div id="xlink_<%= xlink.id %>" class="inline">
-              <% if @slinks.map{|a| a.xlink_id}.include? xlink.id %>
-              <%= link_to "",  unselect_links_xlink_path(xlink, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-check" %>
-              <% else %>
-              <%= link_to "",  select_links_xlink_path(xlink, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-unchecked" %>
-              <% end %>
-              </div>
-              </td>
-              <td>
-              <li><%= xlink.standard_id %>: <%= xlink.comment %><br/> <% unless xlink.link.blank? %> <%= truncate(Rinku.auto_link(xlink.link), :length=>300).html_safe %> <% end %></li><br/>
-              </td>
-              </tr>
-               <% end %>
-               </table>
-            </ul>
+        <% @select.standards.each do |standard| %>
+  
+  <div id="resource_id"><%= standard.id %></div><br/>
+
+  <div id="xlink">
+    
+    <%= render 'xlinks', :standard => standard, :f => f %>
+
+    <div id="newlink_<%= standard.standard_id %>"></div>
+    <div align="right"><%= link_to "Add Resource", xlinks_path(:standard_id => standard.id, :select_id => @select.id), :method => :post, remote: :true, class: "btn btn-primary" %></div>
+    
+  </div><br/>
+<% end %>
             </div>
       </div>
     </div>
@@ -160,26 +133,19 @@
     <div id="collapseFive" class="panel-collapse collapse">
       <div class="panel-body">
         <div id="list">
-        <ul id="allfields" runat="server">
-        <table>
-                    <% Xaquestion.where(:select_id => @select.id).each do |xaquestion| %>
-               <tr>
-               <td>
-              <div id="xaquestion_<%= xaquestion.id %>" class="inline">
-              <% if @saquestions.map{|a| a.xaquestion_id}.include? xaquestion.id %>
-              <%= link_to "",  unselect_aquestions_xaquestion_path(xaquestion, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-check" %>
-              <% else %>
-              <%= link_to "",  select_aquestions_xaquestion_path(xaquestion, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-unchecked" %>
-              <% end %>
-              </div>
-              </td>
-              <td>
-              <li><%= xaquestion.standard_id %>: <%= xaquestion.content %></li>
-              </td>
-              </tr>
-               <% end %>
-               </table>
-            </ul>
+        <% @select.standards.each do |standard| %>
+  
+  <div id="resource_id"><%= standard.id %></div><br/>
+
+  <div id="xaquestion">
+    
+    <%= render 'xaquestions', :standard => standard, :f => f %>
+
+    <div id="newaquestion_<%= standard.standard_id %>"></div>
+    <div align="right"><%= link_to "Add AssessmentQuestion", xquestions_path(:standard_id => standard.id, :select_id => @select.id), :method => :post, remote: :true, class: "btn btn-primary" %></div>
+    
+  </div><br/>
+<% end %>
             </div>
       </div>
     </div>
@@ -200,4 +166,5 @@
       </div>
     </div>
   </div>
-</div>           
+</div>    
+<% end %>        

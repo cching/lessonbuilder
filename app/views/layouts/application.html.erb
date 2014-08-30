@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="height: 100%;">
+<html>
   <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	  <%= favicon_link_tag 'favicon.ico' %>
@@ -18,13 +18,13 @@
     <link href="/css/bootstrap-ie7.css" rel="stylesheet">
 <![endif]-->
   </head>
-  <body style="height: 100%;">
+  <body>
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div id="modal-window"></div>
   </div>
 
     <%= render 'layouts/header' %>
-    <div class="container-fluid" style="height: 100%;">
+    <div class="container-fluid">
 		
 		  <% flash.each do |name, msg| %>
 		    <div class="alert alert-<%= name == :notice ? "success" : "error" %>  alert-dismissable animated fadeIn">
@@ -33,9 +33,7 @@
 		    </div>
 		  <% end %>
 		  <!-- Rest of content -->
-		  <div style="height: 100%;">
       <%= yield %>
-      </div>
       </div>
       <br/>
       <%= render 'layouts/footer' %>

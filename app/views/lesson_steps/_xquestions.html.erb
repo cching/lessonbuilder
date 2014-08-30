@@ -2,10 +2,9 @@
 
 <% Xquestion.where(:select_id => @select.id).where(:standard_id => standard.id).order("position").each do |xquestion| %>
 <%= content_tag_for :div, xquestion do %>
-    <span class="handle">[drag]</span>
 <div class="row" id="resources">
 
-
+<div class="col-md-1"><%= link_to "",  add_xquestion_path(xquestion, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-share" %></div>
 <div class="col-md-1">
 <div id="xquestion1_<%= xquestion.id %>">
 <% if @squestions.map{|a| a.xquestion_id}.include? xquestion.id %>
@@ -16,7 +15,7 @@
 
     </div>
     </div>
-    <div class="col-md-1"></div>
+    
 <div class="col-md-9">
 
       <%= f.simple_fields_for :xquestions, xquestion do |builder| %>

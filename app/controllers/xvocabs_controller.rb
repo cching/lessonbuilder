@@ -111,4 +111,13 @@ end
       @selectv.delete
       respond_to :js
     end
+
+    def add
+    @xvocab = Xvocab.find(params[:id])
+    @select = Select.find(params[:select_id])
+    
+    @select.notes = @select.notes + "<br/>" +  @xvocab.content_english
+    @select.save
+      respond_to :js
+    end
 end

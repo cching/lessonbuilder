@@ -112,4 +112,12 @@ end
       respond_to :js
     end
 
+    def add
+    @xlink = Xlink.find(params[:id])
+    @select = Select.find(params[:select_id])
+    
+    @select.notes = @select.notes + "<br/>" +  @xlink.comment + "<br/>" + @xlink.link
+    @select.save
+      respond_to :js
+    end
 end

@@ -87,6 +87,15 @@ end
       respond_to :js
     end
 
+    def add
+    @xquestion = Xquestion.find(params[:id])
+    @select = Select.find(params[:select_id])
+    
+    @select.notes = @select.notes + "<br/>" +  @xquestion.content
+    @select.save
+      respond_to :js
+    end
+
   def sort
   params[:xquestion].each_with_index do |id, index|
     Xquestion.update_all({position: index+1}, {id: id})

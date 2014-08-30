@@ -111,4 +111,14 @@ end
       @selects.delete
       respond_to :js
     end
+
+
+    def add
+    @xskill = Xskill.find(params[:id])
+    @select = Select.find(params[:select_id])
+    
+    @select.notes = @select.notes + "<br/>" +  @xskill.content
+    @select.save
+      respond_to :js
+    end
 end

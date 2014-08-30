@@ -1,6 +1,8 @@
 <% Xskill.where(:select_id => @select.id).where(:standard_id => standard.id).each do |xskill| %>
 <div class="row" id="resources">
 
+<div class="col-md-1"><%= link_to "",  add_xskill_path(xskill, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-share" %></div>
+
 <div class="col-md-1">
 <div id="xskill_<%= xskill.id %>">
 
@@ -11,7 +13,6 @@
       <% end %>
     </div>
     </div>
-    <div class="col-md-1"></div>
 <div class="col-md-9">
 
       <%= f.simple_fields_for :xskills, xskill do |builder| %>

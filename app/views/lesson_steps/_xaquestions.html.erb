@@ -1,6 +1,6 @@
 <% Xaquestion.where(:select_id => @select.id).where(:standard_id => standard.id).each do |xaquestion| %>
 <div class="row" id="resources">
-
+<div class="col-md-1"><%= link_to "",  add_xaquestion_path(xaquestion, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-share" %></div>
 <div class="col-md-1">
 <div id="xaquestion_<%= xaquestion.id %>">
 
@@ -11,7 +11,6 @@
       <% end %>
     </div>
     </div>
-    <div class="col-md-1"></div>
 <div class="col-md-9">
 
       <%= f.simple_fields_for :xaquestions, xaquestion do |builder| %>

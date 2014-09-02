@@ -21,9 +21,9 @@ move_down 20
   indent(30) do
   text render_html_text(@select.notes), :inline_format => true
 end
-    move_down 20
-    standards_content
-    start_new_page
+start_new_page
+standards_content
+    
 
     if SelectQuestion.where(:select_id => @select.id).any?
     first_table

@@ -1,7 +1,7 @@
 <% if current_user == (@select.user) %>
 
 <div id="navigation">
-<%= link_to "Edit Lesson", lesson_steps_path(@select), class: "btn btn-primary" %>
+<%= link_to "Edit Lesson", lesson_steps_path(@select, :id => "instructional_plan"), class: "btn btn-primary" %>
 <%= link_to "Create an assessment", new_select_assessment_path(@select), class: "btn btn-info" %>
 <%= link_to "Save as PDF", select_path(@select, format: "pdf"), class: "btn btn-warning" %>
 </div>

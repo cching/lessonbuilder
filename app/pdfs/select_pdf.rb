@@ -8,35 +8,59 @@ class SelectPdf < Prawn::Document
     text "#{@select.try(:name)}", :align => :center, :style => :bold, :size => 20, :background_color => '2F81D7', :text_color => 'ffffff'
     text "(Teaching on #{@select.date})", :align => :center
 
+    unless @select.description.blank?
     move_down 10
     text "Description: #{@select.description}", :align => :center
-
+  end
+    unless @select.objective.blank?
     move_down 10
     text "Objective: #{@select.objective}", :align => :center
-    
-
-    move_down 10
-    standards
-    move_down 10
-    first_table
-    start_new_page
-    second_table
-    start_new_page
-    third_table
-    move_down 20
-    fourth_table
-  move_down 20
-  header_table_content
-  move_down 20
+    end
+move_down 20
   notes
   indent(30) do
   text render_html_text(@select.notes), :inline_format => true
 end
+    move_down 20
+    standards_content
+    start_new_page
+
+    if SelectQuestion.where(:select_id => @select.id).any?
+    first_table
+    move_down 20
+    end
+    
+    if SelectVocab.where(:select_id => @select.id).any?
+    vocab_table
+    move_down 20
+    end
+
+    if SelectSkill.where(:select_id => @select.id).any?
+    skill_table 
+    move_down 20
+    end
+
+    if SelectAquestion.where(:select_id => @select.id).any?
+    third_table
+    move_down 20
+    end
+    if SelectLink.where(:select_id => @select.id).any?
+    fourth_table
+  move_down 20
+end
+  header_table_content
+  
   move_down 20
   attachment
 
   if SelectVocab.where(:select_id => @select.id).any?
   start_new_page
+  text "Name:", :align => :left
+    horizontal_rule
+  move_down 20
+  text "Date:", :align => :left
+    horizontal_rule
+    move_down 25
   text "Vocabulary Assessment", :align => :center, :style => :bold, :size => 20, :background_color => '2F81D7', :text_color => 'ffffff'
   stroke do
     horizontal_rule
@@ -47,6 +71,12 @@ end
 
   if SelectQuestion.where(:select_id => @select.id).any?
   start_new_page
+  text "Name:", :align => :left
+    horizontal_rule
+  move_down 20
+  text "Date:", :align => :left
+    horizontal_rule
+    move_down 25
   text "Question Assessment", :align => :center, :style => :bold, :size => 20, :background_color => '2F81D7', :text_color => 'ffffff'
   stroke do
     horizontal_rule
@@ -57,6 +87,12 @@ end
 
   if SelectAquestion.where(:select_id => @select.id).any?
   start_new_page
+  text "Name:", :align => :left
+    horizontal_rule
+  move_down 20
+  text "Date:", :align => :left
+    horizontal_rule
+    move_down 25
   text "Assessment Questions", :align => :center, :style => :bold, :size => 20, :background_color => '2F81D7', :text_color => 'ffffff'
   stroke do
     horizontal_rule
@@ -81,6 +117,7 @@ end
    end
 
    def question_assessment
+
    SelectQuestion.where(:select_id => @select.id).map do |question|
       text "#{question.xquestion.content}"
       stroke do
@@ -96,6 +133,7 @@ end
    end
 
    def aquestion_assessment
+    
    SelectAquestion.where(:select_id => @select.id).map do |question|
       text "#{question.xaquestion.content}"
       stroke do
@@ -124,18 +162,33 @@ end
 end
   end
 
-def standards
-    @select.standards.map do |standard|
-    table([[standard.id],
-        [standard.content]
-      ], width: 500, :position => :center) do 
+def standards_content
+   
+  table([@select.standards.map do |standard|
+      standard.id
+    end] +
+    [@select.standards.map do |standard|
+      standard.content
+    end], :position => :center
+    ) do 
       row(0).align = :center
     row(0).font_style = :bold
     row(0).background_color = '82b3e7'
     row(0).text_color = 'ffffff'
   end
-  move_down 5
-end
+
+  end
+
+  def standard_header
+    @select.standards.map do |standard|
+    [standard.id]
+    end
+  end
+
+  def standard_content
+    @select.standards.map do |standard|
+    [standard.content]
+    end
   end
 
 def notes
@@ -162,7 +215,7 @@ def notes
   end
 
 def first_table
-  table([['Questions', 'Vocabulary'], [(questions if SelectQuestion.where(:select_id => @select.id).any?), (vocabs if SelectVocab.where(:select_id => @select.id).any?)]], width: 250+250, :position => :center) do
+  table([['Questions'], [(questions if SelectQuestion.where(:select_id => @select.id).any?)]], width: 500, :position => :center) do
     row(0).align = :center
     row(0).font_style = :bold
     row(0).background_color = '82b3e7'
@@ -170,14 +223,26 @@ def first_table
   end
 end
 
-def second_table
-  table([['Strategies', 'Skills'], [(strategies if SelectStrategy.where(:select_id => @select.id).any?), (skills if SelectSkill.where(:select_id => @select.id).any?)]], width: 250+250, :position => :center) do
+
+def vocab_table
+  table([['Vocabulary'], [(vocabs if SelectVocab.where(:select_id => @select.id).any?)]], width: 500, :position => :center) do
     row(0).align = :center
     row(0).font_style = :bold
     row(0).background_color = '82b3e7'
     row(0).text_color = 'ffffff'
   end
 end
+
+def skill_table
+  table([['Skills'], [(skills if SelectSkill.where(:select_id => @select.id).any?)]], width: 500, :position => :center) do
+    row(0).align = :center
+    row(0).font_style = :bold
+    row(0).background_color = '82b3e7'
+    row(0).text_color = 'ffffff'
+  end
+end
+
+
 
 def third_table
   table([['Assessment Questions'], [(aquestions if SelectAquestion.where(:select_id => @select.id).any?)]], width: 500, :position => :center) do
@@ -189,7 +254,7 @@ def third_table
 end
 
 def fourth_table
-  table([['Resources'], [(links if SelectLink.where(:select_id => @select.id).any?)]], width: 500, :position => :center) do
+  table([['Links'], [(links if SelectLink.where(:select_id => @select.id).any?)]], width: 500, :position => :center) do
     row(0).align = :center
     row(0).font_style = :bold
     row(0).background_color = '82b3e7'
@@ -201,30 +266,26 @@ end
   	
   	 SelectQuestion.where(:select_id => @select.id).map do |question|
 
-  	 	[{ content: "#{question.xquestion.standard_id}: #{question.xquestion.content}", width: 250, border_bottom_color: 'ffffff', border_top_color: 'ffffff'} ]
+  	 	[{ content: "#{question.xquestion.standard_id}: #{question.xquestion.content}", width: 500, border_bottom_color: '000000', border_top_color: 'ffffff'} ]
   	 end
   	 
   end
+
+
+
 def vocabs
     
      SelectVocab.where(:select_id => @select.id).map do |vocab|
-      [{ content: "#{vocab.xvocab.standard_id}: #{vocab.xvocab.content_english}", width: 250, border_bottom_color: 'ffffff', border_top_color: 'ffffff'} ]
+      [{ content: "#{vocab.xvocab.standard_id}: #{vocab.xvocab.content_english}", width: 500, border_bottom_color: '000000', border_top_color: 'ffffff'} ]
      end
      
   end
 
-  def strategies
-    
-     SelectStrategy.where(:select_id => @select.id).map do |strategy|
 
-      [{ content: "#{strategy.xstrategy.standard_id}: #{strategy.xstrategy.content}", width: 250, border_bottom_color: 'ffffff', border_top_color: 'ffffff'} ]
-     end
-     
-  end
 def skills
     
      SelectSkill.where(:select_id => @select.id).map do |skill|
-      [{ content: "#{skill.xskill.standard_id}: #{skill.xskill.content}", width: 250, border_bottom_color: 'ffffff', border_top_color: 'ffffff'} ]
+      [{ content: "#{skill.xskill.standard_id}: #{skill.xskill.content}", width: 500, border_bottom_color: '000000', border_top_color: 'ffffff'} ]
      end
      
   end
@@ -232,13 +293,13 @@ def skills
 
   def links
     SelectLink.where(:select_id => @select.id).map do |link|
-      [{ content: "#{link.xlink.standard_id}: #{link.xlink.comment} #{link.xlink.link}", width: 500, border_bottom_color: 'ffffff', border_top_color: 'ffffff'} ]
+      [{ content: "#{link.xlink.standard_id}: #{link.xlink.comment} #{link.xlink.link}", width: 500, border_bottom_color: '000000', border_top_color: 'ffffff'} ]
      end
    end
 
    def aquestions
     SelectAquestion.where(:select_id => @select.id).map do |aquestion|
-      [{ content: "#{aquestion.xaquestion.standard_id}: #{aquestion.xaquestion.content}", width: 500, border_bottom_color: 'ffffff', border_top_color: 'ffffff'} ]
+      [{ content: "#{aquestion.xaquestion.standard_id}: #{aquestion.xaquestion.content}", width: 500, border_bottom_color: '000000', border_top_color: 'ffffff'} ]
    end
    end
 

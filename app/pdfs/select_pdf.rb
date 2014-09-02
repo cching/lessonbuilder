@@ -23,7 +23,7 @@ move_down 20
 end
 start_new_page
 standards_content
-    
+    move_down 30
 
     if SelectQuestion.where(:select_id => @select.id).any?
     first_table

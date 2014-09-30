@@ -28,6 +28,8 @@ gem 'bootstrap-wysihtml5-rails', :git => 'git://github.com/Nerian/bootstrap-wysi
 gem 'sanitize'
 gem 'acts_as_list'
 gem 'coffeebeans'
+gem 'google_drive'
+gem 'google-api-client', '~> 0.7.1'
 
 group :development, :test do
   gem 'rspec-rails', '2.11.0'

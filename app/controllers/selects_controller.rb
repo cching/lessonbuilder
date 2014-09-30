@@ -120,6 +120,11 @@ class SelectsController < ApplicationController
     @select = current_user.selects.build(params[:select])
     @plan = Plan.where(:district_id => current_user.district_id).last
     if @select.save
+
+    require './lib/google_drive'
+    file = Drive::GoogleDriveNew.new(@select)
+    file.upload
+
     @plan.headers.where(:initiate => false).each do |header|
     header2 = header.dup
     header2.plan_id = 0
@@ -134,21 +139,6 @@ class SelectsController < ApplicationController
   end
   end
   
-  def update
-    @select = Select.find(params[:id])
-    
-    respond_to do |format|
-
-      if @select.update_attributes(params[:select])
-        format.json { respond_with_bip(@select) }
-        format.html { redirect_to @select }
-
-      else
-        format.html { render action: "edit" }
-        format.json { respond_with_bip(@select) }
-      end
-    end
-  end
 
   def destroy
     @select = Select.find(params[:id])

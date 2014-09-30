@@ -16,12 +16,14 @@ class LessonStepsController < ApplicationController
     @sskills = SelectSkill.where(:select_id => @select.id)
     @slinks = SelectLink.where(:select_id => @select.id)
     @saquestions = SelectAquestion.where(:select_id => @select.id)
+    
     render_wizard
   end
 
   def update
     @select = Select.find(params[:select_id])
     @resource = LessonResource.where(:select_id => @select.id).first
+
     if params[:select]
     params[:select][:status] = step.to_s
     end

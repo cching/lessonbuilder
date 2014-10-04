@@ -11,7 +11,7 @@
 
 <div id="standard-attributes" class="animated fadeInUp">
 <div class="panel-group" id="accordion">
- <%= simple_form_for(@select, remote: true) do |f| %>
+ <%= simple_form_for(@select) do |f| %>
 
 
     <div id="content">
@@ -31,7 +31,9 @@
 <div class="panel panel-warning" id="plan">Instructional Plan</div>
 </div>
 
-          iFrame Google Docs embed><iframe src="<%= @url %>"></iframe>
+<iframe width='800' height='600' frameborder='0' src='<%= @url %>'></iframe>
+
+   
         </div>
         <div class="row">
         <div class="col-md-2">Teaching on:

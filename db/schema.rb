@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140822185945) do
+ActiveRecord::Schema.define(:version => 20141003061012) do
 
   create_table "admin_notes", :force => true do |t|
     t.string   "resource_id",     :null => false
@@ -191,16 +191,6 @@ ActiveRecord::Schema.define(:version => 20140822185945) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "events", :force => true do |t|
-    t.string   "title"
-    t.datetime "starts_at"
-    t.datetime "ends_at"
-    t.boolean  "all_day"
-    t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
   create_table "grades", :force => true do |t|
     t.string "number"
     t.string "name"
@@ -296,13 +286,6 @@ ActiveRecord::Schema.define(:version => 20140822185945) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "resource_categories", :force => true do |t|
-    t.integer  "resource_id"
-    t.integer  "rcategory_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-  end
-
   create_table "resources", :force => true do |t|
     t.text     "content"
     t.text     "media"
@@ -354,12 +337,6 @@ ActiveRecord::Schema.define(:version => 20140822185945) do
   create_table "select_mainsubjects", :force => true do |t|
     t.integer  "subject_id"
     t.integer  "select_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "select_plans", :force => true do |t|
-    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -465,6 +442,7 @@ ActiveRecord::Schema.define(:version => 20140822185945) do
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
     t.text     "sanitize_notes"
+    t.string   "resource_id"
   end
 
   create_table "shorts", :force => true do |t|

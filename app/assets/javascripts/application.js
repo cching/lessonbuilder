@@ -11,7 +11,6 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require jquery-ui
 //= require jquery_ujs
 //= require jquery.turbolinks
 //= require turbolinks
@@ -23,7 +22,6 @@
 //= require nprogress
 //= require nprogress-ajax
 //= require classie
-//= require bootstrap-wysihtml5
 //= require_tree .
 //= require best_in_place
 

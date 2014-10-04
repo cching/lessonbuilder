@@ -27,12 +27,12 @@
               <% unless current_user.selects.last.nil? %>
               <% s = current_user.selects.last %>
               <% if s.name == nil || s.name == "" %>
-              <li><%= link_to "Build a lesson", lesson_steps_path(s) %></li>
+              <li><%= link_to "Build a Lesson", lesson_steps_path(s) %></li>
               <% else %>
-             <li><%= link_to "Build a Lesson", selects_path, :method => :post %></li>
+             <li><%= link_to "Build a Lesson", selects_path, :method => :post, class: "lesson" %></li>
              <% end %>
              <% else %>
-             <li><%= link_to "Build a Lesson", selects_path, :method => :post %></li>
+             <li><%= link_to "Build a Lesson", selects_path, :method => :post, class: "lesson" %></li>
              <% end %>
                <li><%= link_to "Browse Lessons", lessons_path %></li>
      <li><%= link_to "Resources", resources_path %></li>
@@ -80,6 +80,14 @@
 
 
 </div>
+
+<script>
+
+$(".lesson").on("click", function() {
+  $('#myModal').modal('show');
+  $("#modal-window").html("<%= escape_javascript(render partial: 'lesson_steps/text_note') %>"); 
+});
+</script>
 
 <style type="text/css">   
 .navbar-default {

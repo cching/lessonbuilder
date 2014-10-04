@@ -20,6 +20,7 @@ class LessonStepsController < ApplicationController
     @url = 'https://docs.google.com/document/d/' + @select.resource_id + '/edit'
   else
     @url = 'https://docs.google.com/document/d/'
+  end
     render_wizard
   end
 

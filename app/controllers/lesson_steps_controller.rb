@@ -16,7 +16,10 @@ class LessonStepsController < ApplicationController
     @sskills = SelectSkill.where(:select_id => @select.id)
     @slinks = SelectLink.where(:select_id => @select.id)
     @saquestions = SelectAquestion.where(:select_id => @select.id)
+    if @url != nil
     @url = 'https://docs.google.com/document/d/' + @select.resource_id + '/edit'
+  else
+    @url = 'https://docs.google.com/document/d/'
     render_wizard
   end
 

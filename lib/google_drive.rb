@@ -41,7 +41,7 @@ upload = client.execute(:api_method => drive.files.insert,
 id = upload.data.id
 revision_id = 1
 
-@select.resource_id = id
+
 @select.save
 
 revision = client.execute(:api_method => drive.revisions.update,
@@ -52,8 +52,12 @@ revision = client.execute(:api_method => drive.revisions.update,
 
 permission = client.execute(:api_method => drive.permissions.insert, 
               :parameters => { 'fileId' => id },
-              :body_object => {'withLink' => 'true', 'type' => 'anyone', 'role' => 'reader', 'value' => '' }
+              :body_object => {'withLink' => 'true', 'type' => 'anyone', 'role' => 'reader', 'value' => '', 'authKey' => '0000' }
               )
+
+
+@select.resource_id = id
+@select.save
 
 end
 attr_reader :var

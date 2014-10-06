@@ -17,7 +17,7 @@ class LessonStepsController < ApplicationController
     @slinks = SelectLink.where(:select_id => @select.id)
     @saquestions = SelectAquestion.where(:select_id => @select.id)
     if @select.resource_id != nil
-    @url = 'https://docs.google.com/document/d/' + @select.resource_id + '/edit'
+    @url = 'https://docs.google.com/document/d/' + @select.resource_id + '/edit?usp=sharing'
   else
     @url = 'https://docs.google.com/document/d/'
   end

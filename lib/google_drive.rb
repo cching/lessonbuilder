@@ -52,7 +52,7 @@ revision = client.execute(:api_method => drive.revisions.update,
 
 permission = client.execute(:api_method => drive.permissions.insert, 
               :parameters => { 'fileId' => id },
-              :body_object => {'withLink' => 'true', 'type' => 'anyone', 'role' => 'reader', 'value' => '', 'authKey' => '0000' }
+              :body_object => {'withLink' => 'true', 'type' => 'anyone', 'role' => 'writer', 'value' => '' }
               )
 
 

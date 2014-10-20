@@ -143,6 +143,7 @@ Commoncore::Application.routes.draw do
     resources :lesson_resources
     member do
       get 'post_questions'
+      put 'post_qs'
     end
   end
   

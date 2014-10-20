@@ -38,13 +38,23 @@ class SelectsController < ApplicationController
   def post_questions
     @select = Select.find(params[:id])
     @questions = @select.xquestions.all
+
     require './lib/post_drive'
-    file = Post::Questions.new(@select)
+    file = Post::Mass.new(@select)
     file.post_question
   
-    respond_to do |format|
-      format.js
-    end
+
+  end
+
+  def post_qs
+    @select = Select.find(params[:id])
+    @question = Xquestion.find(params[:xquestion_id])
+
+    require './lib/post_drive'
+    file = Post::Individual.new(@select, @question)
+    file.post_individual_question
+  
+    render :nothing => true
   end
 
   def create

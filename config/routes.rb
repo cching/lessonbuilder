@@ -141,6 +141,9 @@ Commoncore::Application.routes.draw do
     resources :clinks
     resources :caquestions
     resources :lesson_resources
+    member do
+      get 'post_questions'
+    end
   end
   
   resources :cquestions

@@ -144,6 +144,14 @@ Commoncore::Application.routes.draw do
     member do
       get 'post_questions'
       put 'post_qs'
+      get 'post_aquestions'
+      put 'post_aqs'
+      get 'post_skills'
+      put 'post_ss'
+      get 'post_links'
+      put 'post_ls'
+      get 'post_vocabs'
+      put 'post_vs'
     end
   end
   

@@ -1,7 +1,7 @@
 <% Xlink.where(:select_id => @select.id).where(:standard_id => standard.id).each do |xlink| %>
 <div class="row" id="resources">
 
-<div class="col-md-1"><%= link_to "",  add_xlink_path(xlink, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-share" %></div>
+<div class="col-md-1"><%= link_to "",  post_ls_select_path(@select, :xlink_id => xlink.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-share" %></div>
 
 <div class="col-md-1">
 <div id="xlink_<%= xlink.id %>">

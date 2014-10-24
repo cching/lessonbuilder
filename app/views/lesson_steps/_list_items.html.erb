@@ -7,7 +7,7 @@
         <div class="panel-title" id="plan">
         <div class="row">
         <div class="col-sm-10" id="question_stems">
-          <h3>Questions</h3>
+          <h4>Questions</h4>
           </div>
           <div align="right">
           <div class="col-sm-2">
@@ -51,7 +51,23 @@
       
         <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
         <div class="panel-title" id="plan">
-          Vocabulary
+          <div class="row">
+        <div class="col-sm-10" id="question_stems">
+          <h4>Vocabulary</h4>
+          </div>
+          <div align="right">
+          <div class="col-sm-2">
+
+<%= link_to post_vocabs_select_path(@select), remote: true do %>
+          <button class="btn btn-default btn-sm">
+    <span class="glyphicon glyphicon-share-alt"></span>
+
+  </button>
+  <% end %>
+
+  </div>
+  </div>
+  </div>
           </div>
         </a>
       
@@ -81,7 +97,23 @@
       
         <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
         <div class="panel-title" id="plan">
-          Skills
+          <div class="row">
+        <div class="col-sm-10" id="question_stems">
+          <h4>Skills</h4>
+          </div>
+          <div align="right">
+          <div class="col-sm-2">
+
+<%= link_to post_skills_select_path(@select), remote: true do %>
+          <button class="btn btn-default btn-sm">
+    <span class="glyphicon glyphicon-share-alt"></span>
+
+  </button>
+  <% end %>
+
+  </div>
+  </div>
+  </div>
           </div>
         </a>
       
@@ -111,7 +143,23 @@
       
         <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
         <div class="panel-title" id="plan">
-          Links
+          <div class="row">
+        <div class="col-sm-10" id="question_stems">
+          <h4>Links</h4>
+          </div>
+          <div align="right">
+          <div class="col-sm-2">
+
+<%= link_to post_links_select_path(@select), remote: true do %>
+          <button class="btn btn-default btn-sm">
+    <span class="glyphicon glyphicon-share-alt"></span>
+
+  </button>
+  <% end %>
+
+  </div>
+  </div>
+  </div>
           </div>
         </a>
       
@@ -141,7 +189,23 @@
       
         <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
         <div class="panel-title" id="plan">
-          Assessment Questions
+          <div class="row">
+        <div class="col-sm-10" id="question_stems">
+          <h4>Assessment Questions</h4>
+          </div>
+          <div align="right">
+          <div class="col-sm-2">
+
+<%= link_to post_aquestions_select_path(@select), remote: true do %>
+          <button class="btn btn-default btn-sm">
+    <span class="glyphicon glyphicon-share-alt"></span>
+
+  </button>
+  <% end %>
+
+  </div>
+  </div>
+  </div>
           </div>
         </a>
       

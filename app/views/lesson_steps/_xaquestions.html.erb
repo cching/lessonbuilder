@@ -1,6 +1,6 @@
 <% Xaquestion.where(:select_id => @select.id).where(:standard_id => standard.id).each do |xaquestion| %>
 <div class="row" id="resources">
-<div class="col-md-1"><%= link_to "",  add_xaquestion_path(xaquestion, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-share" %></div>
+<div class="col-md-1"><%= link_to "",  post_aqs_select_path(@select, :xaquestion_id => xaquestion.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-share" %></div>
 <div class="col-md-1">
 <div id="xaquestion_<%= xaquestion.id %>">
 

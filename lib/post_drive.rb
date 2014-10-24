@@ -36,7 +36,7 @@ result = client.execute(
     file = result.data
     result = client.execute(:uri => file['exportLinks']['text/html'])
 
-questions = @select.xquestions.map! { |question| "#{question.standard_id }: #{question.content}" }.join(" <br /> ")
+questions = @select.select_questions.map! { |question| "#{question.xquestion.standard_id }: #{question.xquestion.content}" }.join(" <br /> ")
 
 out_file = File.new("public/#{@select.id}.txt", "w")
 out_file.puts("#{result.body}" + "<br />" + "<h2>Question Stems</h2>" + questions)
@@ -56,7 +56,7 @@ File.delete(out_file)
 
 end
 
-def post_individual_question
+def post_vocab
 # Initialize the client.
 
 key = Google::APIClient::PKCS12.load_key(SERVICE_ACCOUNT_PKCS12_FILE_PATH, 'notasecret')
@@ -79,10 +79,10 @@ result = client.execute(
     file = result.data
     result = client.execute(:uri => file['exportLinks']['text/html'])
 
-questions = @select.xquestions.map! { |question| "#{question.standard_id }: #{question.content}" }.join(" <br /> ")
+vocabs = @select.select_vocabs.map! { |vocab| "#{vocab.xvocab.standard_id }: #{vocab.xvocab.content_english}" }.join(" <br /> ")
 
 out_file = File.new("public/#{@select.id}.txt", "w")
-out_file.puts("#{result.body}" + "<br />" + "<h2>Question Stems</h2>" + questions)
+out_file.puts("#{result.body}" + "<br />" + "<h2>Vocabulary</h2>" + vocabs)
 out_file.close
 
  media = Google::APIClient::UploadIO.new("public/#{@select.id}.txt", 'text/html')
@@ -98,6 +98,136 @@ out_file.close
 File.delete(out_file)
 
 end
+
+def post_skill
+# Initialize the client.
+
+key = Google::APIClient::PKCS12.load_key(SERVICE_ACCOUNT_PKCS12_FILE_PATH, 'notasecret')
+    asserter = Google::APIClient::JWTAsserter.new(SERVICE_ACCOUNT_EMAIL,
+        'https://www.googleapis.com/auth/drive', key)
+    client = Google::APIClient.new(
+  :application_name => 'Example Ruby application',
+  :application_version => '1.0.0'
+)
+    client.authorization = asserter.authorize()
+    client
+
+drive = client.discovered_api('drive', 'v2')
+
+file_id = @select.resource_id
+
+result = client.execute(
+    :api_method => drive.files.get,
+    :parameters => { 'fileId' => file_id })
+    file = result.data
+    result = client.execute(:uri => file['exportLinks']['text/html'])
+
+skills = @select.select_skills.map! { |skill| "#{skill.xskill.standard_id }: #{skill.xskill.content}" }.join(" <br /> ")
+
+out_file = File.new("public/#{@select.id}.txt", "w")
+out_file.puts("#{result.body}" + "<br />" + "<h2>Skills</h2>" + skills)
+out_file.close
+
+ media = Google::APIClient::UploadIO.new("public/#{@select.id}.txt", 'text/html')
+    result = client.execute(
+      :api_method => drive.files.update,
+      :body_object => file,
+      :media => media,
+      :parameters => { 'fileId' => file_id,
+                       'uploadType' => 'multipart',
+                       'convert' => 'true',
+                       'alt' => 'json' })
+
+File.delete(out_file)
+
+end
+
+def post_aquestion
+# Initialize the client.
+
+key = Google::APIClient::PKCS12.load_key(SERVICE_ACCOUNT_PKCS12_FILE_PATH, 'notasecret')
+    asserter = Google::APIClient::JWTAsserter.new(SERVICE_ACCOUNT_EMAIL,
+        'https://www.googleapis.com/auth/drive', key)
+    client = Google::APIClient.new(
+  :application_name => 'Example Ruby application',
+  :application_version => '1.0.0'
+)
+    client.authorization = asserter.authorize()
+    client
+
+drive = client.discovered_api('drive', 'v2')
+
+file_id = @select.resource_id
+
+result = client.execute(
+    :api_method => drive.files.get,
+    :parameters => { 'fileId' => file_id })
+    file = result.data
+    result = client.execute(:uri => file['exportLinks']['text/html'])
+
+aquestions = @select.select_aquestions.map! { |aquestion| "#{aquestion.xaquestion.standard_id }: #{aquestion.xaquestion.content}" }.join(" <br /> ")
+
+out_file = File.new("public/#{@select.id}.txt", "w")
+out_file.puts("#{result.body}" + "<br />" + "<h2>Assessment Questions</h2>" + aquestions)
+out_file.close
+
+ media = Google::APIClient::UploadIO.new("public/#{@select.id}.txt", 'text/html')
+    result = client.execute(
+      :api_method => drive.files.update,
+      :body_object => file,
+      :media => media,
+      :parameters => { 'fileId' => file_id,
+                       'uploadType' => 'multipart',
+                       'convert' => 'true',
+                       'alt' => 'json' })
+
+File.delete(out_file)
+
+end
+
+def post_link
+# Initialize the client.
+
+key = Google::APIClient::PKCS12.load_key(SERVICE_ACCOUNT_PKCS12_FILE_PATH, 'notasecret')
+    asserter = Google::APIClient::JWTAsserter.new(SERVICE_ACCOUNT_EMAIL,
+        'https://www.googleapis.com/auth/drive', key)
+    client = Google::APIClient.new(
+  :application_name => 'Example Ruby application',
+  :application_version => '1.0.0'
+)
+    client.authorization = asserter.authorize()
+    client
+
+drive = client.discovered_api('drive', 'v2')
+
+file_id = @select.resource_id
+
+result = client.execute(
+    :api_method => drive.files.get,
+    :parameters => { 'fileId' => file_id })
+    file = result.data
+    result = client.execute(:uri => file['exportLinks']['text/html'])
+
+links = @select.select_links.map! { |link| "#{link.xlink.standard_id }: #{link.xlink.comment} < br /> #{link.xlink.link}" }.join(" <br /> ")
+
+out_file = File.new("public/#{@select.id}.txt", "w")
+out_file.puts("#{result.body}" + "<br />" + "<h2>Resources</h2>" + links)
+out_file.close
+
+ media = Google::APIClient::UploadIO.new("public/#{@select.id}.txt", 'text/html')
+    result = client.execute(
+      :api_method => drive.files.update,
+      :body_object => file,
+      :media => media,
+      :parameters => { 'fileId' => file_id,
+                       'uploadType' => 'multipart',
+                       'convert' => 'true',
+                       'alt' => 'json' })
+
+File.delete(out_file)
+
+end
+
 end
 
 class Individual
@@ -107,50 +237,9 @@ def initialize(var, var2)
   @resource = var2
 end
 
-def post_question
-# Initialize the client.
 
-key = Google::APIClient::PKCS12.load_key(SERVICE_ACCOUNT_PKCS12_FILE_PATH, 'notasecret')
-    asserter = Google::APIClient::JWTAsserter.new(SERVICE_ACCOUNT_EMAIL,
-        'https://www.googleapis.com/auth/drive', key)
-    client = Google::APIClient.new(
-  :application_name => 'Example Ruby application',
-  :application_version => '1.0.0'
-)
-    client.authorization = asserter.authorize()
-    client
 
-drive = client.discovered_api('drive', 'v2')
-
-file_id = @select.resource_id
-
-result = client.execute(
-    :api_method => drive.files.get,
-    :parameters => { 'fileId' => file_id })
-    file = result.data
-    result = client.execute(:uri => file['exportLinks']['text/html'])
-
-questions = @select.xquestions.map! { |question| "#{question.standard_id }: #{question.content}" }.join(" <br /> ")
-
-out_file = File.new("public/#{@select.id}.txt", "w")
-out_file.puts("#{result.body}" + "<br />" + "<h2>Question Stems</h2>" + questions)
-out_file.close
-
- media = Google::APIClient::UploadIO.new("public/#{@select.id}.txt", 'text/html')
-    result = client.execute(
-      :api_method => drive.files.update,
-      :body_object => file,
-      :media => media,
-      :parameters => { 'fileId' => file_id,
-                       'uploadType' => 'multipart',
-                       'convert' => 'true',
-                       'alt' => 'json' })
-
-File.delete(out_file)
-
-end
-
-def post_individual_question
+def post_individual
 # Initialize the client.
 
 key = Google::APIClient::PKCS12.load_key(SERVICE_ACCOUNT_PKCS12_FILE_PATH, 'notasecret')
@@ -176,6 +265,90 @@ result = client.execute(
 
 out_file = File.new("public/#{@select.id}.txt", "w")
 out_file.puts("#{result.body}" + "<br />" + "#{@resource.standard_id}: " + @resource.content)
+out_file.close
+
+ media = Google::APIClient::UploadIO.new("public/#{@select.id}.txt", 'text/html')
+    result = client.execute(
+      :api_method => drive.files.update,
+      :body_object => file,
+      :media => media,
+      :parameters => { 'fileId' => file_id,
+                       'uploadType' => 'multipart',
+                       'convert' => 'true',
+                       'alt' => 'json' })
+
+File.delete(out_file)
+
+end
+
+def post_individual_link
+# Initialize the client.
+
+key = Google::APIClient::PKCS12.load_key(SERVICE_ACCOUNT_PKCS12_FILE_PATH, 'notasecret')
+    asserter = Google::APIClient::JWTAsserter.new(SERVICE_ACCOUNT_EMAIL,
+        'https://www.googleapis.com/auth/drive', key)
+    client = Google::APIClient.new(
+  :application_name => 'Example Ruby application',
+  :application_version => '1.0.0'
+)
+    client.authorization = asserter.authorize()
+    client
+
+drive = client.discovered_api('drive', 'v2')
+
+file_id = @select.resource_id
+
+result = client.execute(
+    :api_method => drive.files.get,
+    :parameters => { 'fileId' => file_id })
+    file = result.data
+    result = client.execute(:uri => file['exportLinks']['text/html'])
+
+
+out_file = File.new("public/#{@select.id}.txt", "w")
+out_file.puts("#{result.body}" + "<br />" + "#{@resource.standard_id}: " + @resource.comment + "< br />" + @resource.link)
+out_file.close
+
+ media = Google::APIClient::UploadIO.new("public/#{@select.id}.txt", 'text/html')
+    result = client.execute(
+      :api_method => drive.files.update,
+      :body_object => file,
+      :media => media,
+      :parameters => { 'fileId' => file_id,
+                       'uploadType' => 'multipart',
+                       'convert' => 'true',
+                       'alt' => 'json' })
+
+File.delete(out_file)
+
+end
+
+def post_individual_vocab
+# Initialize the client.
+
+key = Google::APIClient::PKCS12.load_key(SERVICE_ACCOUNT_PKCS12_FILE_PATH, 'notasecret')
+    asserter = Google::APIClient::JWTAsserter.new(SERVICE_ACCOUNT_EMAIL,
+        'https://www.googleapis.com/auth/drive', key)
+    client = Google::APIClient.new(
+  :application_name => 'Example Ruby application',
+  :application_version => '1.0.0'
+)
+    client.authorization = asserter.authorize()
+    client
+
+drive = client.discovered_api('drive', 'v2')
+
+file_id = @select.resource_id
+
+result = client.execute(
+    :api_method => drive.files.get,
+    :parameters => { 'fileId' => file_id })
+    file = result.data
+    result = client.execute(:uri => file['exportLinks']['text/html'])
+
+
+out_file = File.new("public/#{@select.id}.txt", "w")
+out_file.puts("#{result.body}" + "<br />" + "#{@resource.standard_id}: " + @resource.content_english)
 out_file.close
 
  media = Google::APIClient::UploadIO.new("public/#{@select.id}.txt", 'text/html')

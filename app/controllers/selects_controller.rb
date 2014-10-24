@@ -42,7 +42,6 @@ class SelectsController < ApplicationController
     require './lib/post_drive'
     file = Post::Mass.new(@select)
     file.post_question
-  
 
   end
 
@@ -52,7 +51,91 @@ class SelectsController < ApplicationController
 
     require './lib/post_drive'
     file = Post::Individual.new(@select, @question)
-    file.post_individual_question
+    file.post_individual
+  
+    render :nothing => true
+  end
+
+  def post_vocabs
+    @select = Select.find(params[:id])
+    @vocabs = @select.xvocabs.all
+
+    require './lib/post_drive'
+    file = Post::Mass.new(@select)
+    file.post_vocab 
+
+  end
+
+  def post_vs
+    @select = Select.find(params[:id])
+    @vocab = Xvocab.find(params[:xvocab_id])
+
+    require './lib/post_drive'
+    file = Post::Individual.new(@select, @vocab)
+    file.post_individual_vocab
+  
+    render :nothing => true
+  end
+
+  def post_skills
+    @select = Select.find(params[:id])
+    @skills = @select.xskills.all
+
+    require './lib/post_drive'
+    file = Post::Mass.new(@select)
+    file.post_skill 
+
+  end
+
+  def post_ss
+    @select = Select.find(params[:id])
+    @skill = Xskill.find(params[:xskill_id])
+
+    require './lib/post_drive'
+    file = Post::Individual.new(@select, @skill)
+    file.post_individual
+  
+    render :nothing => true
+  end
+
+  def post_links
+    @select = Select.find(params[:id])
+    @links = @select.xlinks.all
+
+    require './lib/post_drive'
+    file = Post::Mass.new(@select)
+    file.post_link
+
+  end
+
+  def post_ls
+    @select = Select.find(params[:id])
+    @link = Xlink.find(params[:xlink_id])
+
+    require './lib/post_drive'
+    file = Post::Individual.new(@select, @link)
+    file.post_individual_link
+  
+    render :nothing => true
+  end
+
+  def post_aquestions
+    @select = Select.find(params[:id])
+    @aquestions = @select.xaquestions.all
+
+    require './lib/post_drive'
+    file = Post::Mass.new(@select)
+    file.post_aquestion 
+
+  end
+
+  def post_aqs
+    @select = Select.find(params[:id])
+    @aquestion = Xaquestion.find(params[:xaquestion_id])
+
+    require './lib/post_drive'
+    file = Post::Individual.new(@select, @aquestion)
+    file.post_individual
   
     render :nothing => true
   end

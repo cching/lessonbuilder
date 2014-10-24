@@ -1,7 +1,7 @@
 <% Xskill.where(:select_id => @select.id).where(:standard_id => standard.id).each do |xskill| %>
 <div class="row" id="resources">
 
-<div class="col-md-1"><%= link_to "",  add_xskill_path(xskill, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-share" %></div>
+<div class="col-md-1"><%= link_to "",  post_ss_select_path(@select, :xskill_id => xskill.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-share" %></div>
 
 <div class="col-md-1">
 <div id="xskill_<%= xskill.id %>">

@@ -306,7 +306,7 @@ result = client.execute(
 
 
 out_file = File.new("public/#{@select.id}.txt", "w")
-out_file.puts("#{result.body}" + "<br />" + "#{@resource.standard_id}: " + @resource.comment + "< br />" + @resource.link)
+out_file.puts("#{result.body}" + "<br />" + "<a href='#{@resource.link}'> #{@resource.standard_id }: #{@resource.comment}</a>")
 out_file.close
 
  media = Google::APIClient::UploadIO.new("public/#{@select.id}.txt", 'text/html')

@@ -126,6 +126,7 @@ Commoncore::Application.routes.draw do
   scope "selects/:select_id" do
     resources :lesson_steps do
       get :hide
+
     end
   end
 

@@ -3,6 +3,7 @@ class LessonStepsController < ApplicationController
   steps :setup, :text, :standards, :instructional_plan, :instructional_norms
 
   def show
+
     @select = Select.find(params[:select_id])
     @grades = @select.grades.all
     @reading_subject = @select.subjects
@@ -16,6 +17,15 @@ class LessonStepsController < ApplicationController
     @sskills = SelectSkill.where(:select_id => @select.id)
     @slinks = SelectLink.where(:select_id => @select.id)
     @saquestions = SelectAquestion.where(:select_id => @select.id)
+
+    if @select.try(:status) == 'standards' && @select.drive == false
+      require './lib/update_drive'
+    file = Update::Drive.new(@select)
+    file.update
+
+    @select.drive = true
+    end
+
     if @select.resource_id != nil
     @url = 'https://docs.google.com/document/d/' + @select.resource_id + '/edit?usp=sharing'
   else
@@ -24,18 +34,24 @@ class LessonStepsController < ApplicationController
     render_wizard
   end
 
+
+  
   def update
     @select = Select.find(params[:select_id])
     @resource = LessonResource.where(:select_id => @select.id).first
 
+    
+    
+  
+
     if params[:select]
-    params[:select][:status] = step.to_s
-    end
-    
+    params[:select][:status] = step.to_s  
     params[:select][:status] = 'active' if step == steps.last
-    
+    end
+
 
   if @select.update_attributes(params[:select])
+
   @select.selections.each do |selection|
     if selection.initiate?
     else
@@ -102,8 +118,10 @@ class LessonStepsController < ApplicationController
     edit_select_path(@select)
   end
 
+
   def hide
     respond_to :js
   end
+
 
 end

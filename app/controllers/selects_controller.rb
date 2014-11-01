@@ -5,7 +5,7 @@ class SelectsController < ApplicationController
     @selects = @search.result.paginate(:page => params[:page], :per_page => 30).where(:name != "")
   end
 
-    def show
+  def show
     @select = Select.find(params[:id])
     @standards = @select.standards.all
     @notes = ActionView::Base.full_sanitizer.sanitize(@select.notes)
@@ -259,6 +259,7 @@ class SelectsController < ApplicationController
       format.js
     end
   end
+
 
 
 

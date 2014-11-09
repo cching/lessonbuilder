@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141024042700) do
+ActiveRecord::Schema.define(:version => 20141107194003) do
 
   create_table "admin_notes", :force => true do |t|
     t.string   "resource_id",     :null => false
@@ -424,7 +424,7 @@ ActiveRecord::Schema.define(:version => 20141024042700) do
     t.datetime "created_at",                                 :null => false
     t.datetime "updated_at",                                 :null => false
     t.boolean  "private",                 :default => false
-    t.string   "description",             :default => ""
+    t.text     "description",             :default => ""
     t.text     "objective",               :default => ""
     t.string   "book",                    :default => ""
     t.text     "notes"
@@ -446,6 +446,7 @@ ActiveRecord::Schema.define(:version => 20141024042700) do
     t.string   "auth_key"
     t.text     "body"
     t.boolean  "drive",                   :default => false
+    t.text     "big_idea"
   end
 
   create_table "shorts", :force => true do |t|

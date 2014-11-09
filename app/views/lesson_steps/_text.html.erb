@@ -37,7 +37,7 @@
                 <div class="animated fadeInUpBig">
                   <div class="row">
   <div class="col-md-1">
-                <%= check_box_tag "select[book_ids][]", book.id, @select.book_ids.include?(book.id), id: dom_id(book) %>
+                <%= check_box_tag "select[book_ids][]", book.id, @select.book_ids.include?(book.id), id: dom_id(book), :class => "checkbox_#{book.id}" %>
                 </div>
   <div class="col-md-8">
                   

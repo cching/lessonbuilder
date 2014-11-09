@@ -36,7 +36,7 @@ result = client.execute(
     file = result.data
     result = client.execute(:uri => file['exportLinks']['text/html'])
 
-questions = @select.select_questions.map! { |question| "#{question.xquestion.standard_id }: #{question.xquestion.content}" }.join(" <br /> ")
+questions = @select.select_questions.map! { |question| "#{question.xquestion.standard_id }: #{question.xquestion.content}"  }.join(" <br /> ")
 
 out_file = File.new("public/#{@select.id}.txt", "w")
 out_file.puts("#{result.body}" + "<br />" + "<h2>Question Stems</h2>" + questions)

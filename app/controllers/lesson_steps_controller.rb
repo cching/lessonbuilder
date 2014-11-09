@@ -24,6 +24,7 @@ class LessonStepsController < ApplicationController
     file.update
 
     @select.drive = true
+    @select.save
     end
 
     if @select.resource_id != nil

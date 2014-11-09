@@ -22,10 +22,11 @@
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div id="modal-window"></div>
   </div>
+
   <% if current_user %>
     <%= render 'layouts/header' %>
     <% end %>
-    <div class="container-fluid">
+
 		
 		  <% flash.each do |name, msg| %>
 		    <div class="alert alert-<%= name == :notice ? "success" : "error" %>  alert-dismissable animated fadeIn">
@@ -34,6 +35,7 @@
 		    </div>
 		  <% end %>
 		  <!-- Rest of content -->
+      <div class="container-fluid">
       <%= yield %>
       </div>
       <br/>

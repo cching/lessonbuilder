@@ -39,6 +39,8 @@ result = client.execute(
 
 out_file = File.new("public/#{@select.id}_update.txt", "w")
 standards = @select.standards.map { |standard| "#{standard.content}" }.join(" </td> <td> ")
+standard_tds = @select.standards.map { |standard| "<td>" }.join(" </td> ")
+
 standard_ids = @select.standards.map { |standard| "<b><center>#{standard.id}</center></b>" }.join(" </td> <td> ")
 subject = @select.subjects.map { |subject| "#{subject.name}" }.join(",")
 grade = @select.grades.map { |grade| "#{grade.number}" }.join(",")
@@ -48,7 +50,7 @@ text = @select.books.map { |book| "<i>#{book.title}</i><br/> Publisher: #{book.p
 
 
 
-out_file.puts("<h1>#{@select.name}</h1>" + "<h2><font color='#FFA500'>Grade " + grade + " - " + subject + "</font></h2><h2><font color='#63B8FF'>Close reading of " + book + "</font></h2><table><tr><td><font color='#63B8FF' size='3'>Objective</font></td><td>#{@select.objective}</td></tr><tr><td><font color='#63B8FF' size='3'>Big Idea</font></td><td>#{@select.big_idea}</td></tr><tr><td><font color='#63B8FF' size='3'>Description</font></td><td>#{@select.description}</td></tr></table><br />" + "<table><tr><td></td><td>" + standard_ids + "</td></tr>" + "<tr><td><font color='#63B8FF'>Standards</font></td><td>" + standards + "</td></tr></table><br/><br/><br/>" + text)
+out_file.puts("<h1>#{@select.name}</h1>" + "<h2><font color='#FFA500'>Grade " + grade + " - " + subject + "</font></h2><h2><font color='#63B8FF'>Close reading of " + book + "</font></h2><table cellpadding='10'><tr><td><font color='#63B8FF' size='3'>Objective</font></td><td>#{@select.objective}</td></tr><tr><td><font color='#63B8FF' size='3'>Big Idea</font></td><td>#{@select.big_idea}</td></tr><tr><td><font color='#63B8FF' size='3'>Description</font></td><td>#{@select.description}</td></tr></table><br />" + "<table cellpadding='10'><tr><td></td><td>" + standard_ids + "</td></tr>" + "<tr><td><font color='#63B8FF'>Standards</font></td><td>" + standards + "</td></tr><tr><td><font color='#63B8FF'>Standards Unpacked</font></td>" + standard_tds + "</td></tr></table><br/><br/><br/>" + text)
 out_file.close
 
  media = Google::APIClient::UploadIO.new("public/#{@select.id}_update.txt", 'text/html')

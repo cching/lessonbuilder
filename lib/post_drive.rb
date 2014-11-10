@@ -211,7 +211,7 @@ result = client.execute(
 links = @select.select_links.map! { |link| "<a href='#{link.xlink.link}'> #{link.xlink.standard_id }: #{link.xlink.comment}</a>" }.join(" <br /> ")
 
 out_file = File.new("public/#{@select.id}.txt", "w")
-out_file.puts("#{result.body}" + "<br />" + "<h2>Resources</h2>" + links)
+out_file.puts("#{result.body}" + "<br />" + "<h2>Links</h2>" + links)
 out_file.close
 
  media = Google::APIClient::UploadIO.new("public/#{@select.id}.txt", 'text/html')

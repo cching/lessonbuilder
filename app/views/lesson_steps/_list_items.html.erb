@@ -92,52 +92,7 @@
       </div>
     </div>
   </div>
-  <div class="panel panel-warning">
-    <div class="panel-heading" id="plan">
-      
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-        <div class="panel-title" id="plan">
-          <div class="row">
-        <div class="col-sm-10" id="question_stems">
-          <h4>Skills</h4>
-          </div>
-          <div align="right">
-          <div class="col-sm-2">
-
-<%= link_to post_skills_select_path(@select), remote: true do %>
-          <button class="btn btn-default btn-sm">
-    <span class="glyphicon glyphicon-share-alt"></span>
-
-  </button>
-  <% end %>
-
-  </div>
-  </div>
-  </div>
-          </div>
-        </a>
-      
-    </div>
-    <div id="collapseThree" class="panel-collapse collapse">
-      <div class="panel-body">
-        <div id="list">
-        <% @select.standards.each do |standard| %>
   
-  <div id="resource_id"><%= standard.id %></div><br/>
-
-  <div id="xskill">
-    
-    <%= render 'xskills', :standard => standard, :f => f %>
-
-    <div id="newskill_<%= standard.standard_id %>"></div>
-    <div align="right"><%= link_to "Add Skill", xskills_path(:standard_id => standard.id, :select_id => @select.id), :method => :post, remote: :true, class: "btn btn-primary" %></div>
-    
-  </div><br/>
-<% end %>
-            </div>
-      </div>
-    </div>
-  </div>
   <div class="panel panel-warning">
     <div class="panel-heading" id="plan">
       
@@ -235,7 +190,7 @@
       
         <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix">
         <div class="panel-title" id="plan">
-          Additional Resources
+          <h4>Additional Resources</h4>
           </div>
         </a>
       

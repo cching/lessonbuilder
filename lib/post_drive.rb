@@ -36,10 +36,10 @@ result = client.execute(
     file = result.data
     result = client.execute(:uri => file['exportLinks']['text/html'])
 
-questions = @select.select_questions.map! { |question| "#{question.xquestion.standard_id }: #{question.xquestion.content}"  }.join(" <br /> ")
+questions = @select.select_questions.map! { |question| "#{question.xquestion.standard_id }: #{question.xquestion.content}"  }.join(" </td><td></td></tr><tr><td>")
 
 out_file = File.new("public/#{@select.id}.txt", "w")
-out_file.puts("#{result.body}" + "<br />" + "<h2>Question Stems</h2>" + questions)
+out_file.puts("#{result.body}" + "<br />" + "<font color='#63B8FF' size='4'>Question Stems</font>" + "<table cellpadding='10'><tr><td>" + questions + "</td><td></td></tr></table>")
 out_file.close
 
  media = Google::APIClient::UploadIO.new("public/#{@select.id}.txt", 'text/html')
@@ -79,10 +79,10 @@ result = client.execute(
     file = result.data
     result = client.execute(:uri => file['exportLinks']['text/html'])
 
-vocabs = @select.select_vocabs.map! { |vocab| "#{vocab.xvocab.standard_id }: #{vocab.xvocab.content_english}" }.join(" <br /> ")
+vocabs = @select.select_vocabs.map! { |vocab| "#{vocab.xvocab.standard_id }: #{vocab.xvocab.content_english}" }.join(" </td><td></td></tr><tr><td>")
 
 out_file = File.new("public/#{@select.id}.txt", "w")
-out_file.puts("#{result.body}" + "<br />" + "<h2>Vocabulary</h2>" + vocabs)
+out_file.puts("#{result.body}" + "<br />" + "<font color='#63B8FF' size='4'>Vocabulary</font>" + "<table cellpadding='10'><tr><td>" + vocabs + "</td><td></td></tr></table>")
 out_file.close
 
  media = Google::APIClient::UploadIO.new("public/#{@select.id}.txt", 'text/html')
@@ -168,7 +168,7 @@ result = client.execute(
 aquestions = @select.select_aquestions.map! { |aquestion| "#{aquestion.xaquestion.standard_id }: #{aquestion.xaquestion.content}" }.join(" <br /> ")
 
 out_file = File.new("public/#{@select.id}.txt", "w")
-out_file.puts("#{result.body}" + "<br />" + "<h2>Assessment Questions</h2>" + aquestions)
+out_file.puts("#{result.body}" + "<br />" + "<font color='#63B8FF' size='4'>Assessment Questions</font>" + aquestions)
 out_file.close
 
  media = Google::APIClient::UploadIO.new("public/#{@select.id}.txt", 'text/html')
@@ -211,7 +211,7 @@ result = client.execute(
 links = @select.select_links.map! { |link| "<a href='#{link.xlink.link}'> #{link.xlink.standard_id }: #{link.xlink.comment}</a>" }.join(" <br /> ")
 
 out_file = File.new("public/#{@select.id}.txt", "w")
-out_file.puts("#{result.body}" + "<br />" + "<h2>Links</h2>" + links)
+out_file.puts("#{result.body}" + "<br />" + "<font color='#63B8FF' size='4'>Links</font>" + links)
 out_file.close
 
  media = Google::APIClient::UploadIO.new("public/#{@select.id}.txt", 'text/html')

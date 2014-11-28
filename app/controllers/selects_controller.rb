@@ -8,7 +8,16 @@ class SelectsController < ApplicationController
   def show
     @select = Select.find(params[:id])
     @standards = @select.standards.all
-    @notes = ActionView::Base.full_sanitizer.sanitize(@select.notes)
+    @url_edit = 'https://docs.google.com/document/d/' + @select.resource_id + '/edit?usp=sharing'
+    @url = 'https://docs.google.com/document/d/' + @select.resource_id 
+
+    if SelectUser.where(:user_id => current_user.id).where(:check => false).where(:select_id => @select.id).any?
+      SelectUser.where(:user_id => current_user.id).where(:check => false).where(:select_id => @select.id).each do |invite|
+        invite.check = true
+        invite.save
+      end
+    end
+
 
     
     respond_to do |format|
@@ -26,6 +35,16 @@ class SelectsController < ApplicationController
     @select = Select.new
 
   end
+
+  def update
+    @select = Select.find(params[:id])
+     @select.update_attributes(params[:select])
+     respond_to do |format|
+        format.js {render layout: false}
+      end
+
+    
+    end
 
   def edit
     @select = Select.find(params[:select_id])

@@ -28,7 +28,7 @@ gem 'acts_as_list'
 gem 'sanitize'
 gem 'google_drive'
 gem 'google-api-client', '~> 0.7.1'
-
+gem 'chosen-rails'
 
 group :development, :test do
   gem 'rspec-rails', '2.11.0'

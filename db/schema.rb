@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141107194003) do
+ActiveRecord::Schema.define(:version => 20141128095933) do
 
   create_table "admin_notes", :force => true do |t|
     t.string   "resource_id",     :null => false
@@ -213,6 +213,14 @@ ActiveRecord::Schema.define(:version => 20141107194003) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "invites", :force => true do |t|
+    t.integer  "user_id"
+    t.boolean  "checked"
+    t.boolean  "accepted"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "lesson_resources", :force => true do |t|
     t.integer  "select_id"
     t.text     "book"
@@ -396,6 +404,14 @@ ActiveRecord::Schema.define(:version => 20141107194003) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "select_users", :force => true do |t|
+    t.integer  "select_id"
+    t.integer  "user_id"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "check",      :default => false
+  end
+
   create_table "select_vocabs", :force => true do |t|
     t.integer  "select_id"
     t.integer  "xvocab_id"
@@ -532,6 +548,13 @@ ActiveRecord::Schema.define(:version => 20141107194003) do
     t.string  "subject"
     t.string  "author"
     t.string  "title"
+  end
+
+  create_table "user_invites", :force => true do |t|
+    t.integer  "select_id"
+    t.integer  "invite_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

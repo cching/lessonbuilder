@@ -37,9 +37,49 @@
                <li><%= link_to "Browse Lessons", lessons_path %></li>
      <li><%= link_to "Resources", resources_path %></li>
      </ul>
-     
+
+     <% if SelectUser.where(:user_id => current_user.id).where(:check => false).any? %>
+     <ul class="nav navbar-nav navbar-right">
+  <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Invites <span class="badge"><%= SelectUser.where(:user_id => current_user.id).where(:check => false).length %></span></a>
+          <ul class="dropdown-menu">
+          <% SelectUser.where(:user_id => current_user.id).where(:check => false).each do |invite| %>
+         <li>
+         <% select = Select.where(:id => invite.select_id).last %>
+         <% user = User.where(:id => select.user_id).last %>
+         <%= link_to "#{user.name} has invited you to the lesson #{select.name}", select %>
+         
+
+         </li>
+         <% end %>
+
+          </ul>
+
+        </li>
+        </ul>
+        <% else %>
+        <ul class="nav navbar-nav navbar-right">
+  <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Invites <span class="badge">0</span></a>
+          <ul class="dropdown-menu">
+          <% SelectUser.where(:user_id => current_user.id).where(:check => false).each do |invite| %>
+         <li>
+         <% select = Select.where(:id => invite.select_id).last %>
+         <% user = User.where(:id => select.user_id).last %>
+         <%= link_to "#{user.name} has invited you to the lesson #{select.name}", select %>
+         
+
+         </li>
+         <% end %>
+
+          </ul>
+
+        </li>
+        </ul>
+     <% end %>
 
       <ul class="nav navbar-nav navbar-right">
+      
      <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.name %> &nbsp; <span class="glyphicon glyphicon-cog"></span></a>
           <ul class="dropdown-menu">

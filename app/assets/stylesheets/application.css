@@ -14,8 +14,10 @@
  *= require nprogress
  *= require nprogress-bootstrap
  *= require jquery.ui.datepicker
+ *= require chosen
  *= require_self
  *= require_tree .
+ *= require chosen
  */
 
 #standards th{

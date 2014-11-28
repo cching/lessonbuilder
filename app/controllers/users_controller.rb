@@ -28,13 +28,13 @@ class UsersController < ApplicationController
   end
   
   def index
-    @users = User.all
+    @users = User.order(:name)
     respond_to do |format|
-      format.html 
-      format.json { render json: @users }
+      format.html
+      format.json { render json: @users.where("name like ?", "%#{params[:q]}%") }
     end
   end
-  
+
   def destroy
     @user = User.find(params[:id])
     @user.destroy

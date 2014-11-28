@@ -21,5 +21,6 @@ class User < ActiveRecord::Base
   belongs_to :district
   has_many :students
 
-
+  has_many :select_users, :dependent => :destroy
+  has_many :selects, through: :select_users
 end

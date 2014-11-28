@@ -4,42 +4,12 @@ class Select < ActiveRecord::Base
   default_value_for :date do
     Date.today
   end
-  default_value_for :notes do
-
-  "Suggested guidelines (ACHIEVE THE CORE - CCSS Instructional Practice Guide)
-  Focus:  High-quality text (Appendix B is a good place to start).
-    Regular practice with complex text and its academic language.
-    Complex text that builds coherent knowledge.
-  Time: The majority of the lesson is spent reading, writing or speaking about the text.
-  Questions: Require students to use evidence from the text.
-  Questions: Address the text to clarify structure(s), details and concepts in the text.
-  Questions: Sequenced to build knowledge by guiding students to delve deeper into the text.
-  Equity: Provide all students with opportunities to engage in the work of the lesson.
-
-Focus
-  The text _______________ contains ______________ information that will help students gain
-  an understanding of the world around them. 
-    Specific details include ______________
-    Inferences which may be made based on these details are _____________. 
-
-Time
-  ____ readings of the text will take place.  Students will spend ___ to ___ total minutes reading.
-
-
-Questions
-
-
-
-
-
-Equity"
-end
 
 
   has_attached_file :attachment
   do_not_validate_attachment_file_type :attachment
   #Selects is the lesson model but is named 'select' for the ActiveRecord join association
-  attr_accessible :user_id, :standard_ids, :textdependent, :name, :grade_ids, :text_id, :date, :vocabulary, :writing, :conclusion, :objective, :notes, :description, :book, :subject_id, :subsubject_ids, :private, :xquestion_ids, :xvocab_ids, :select_ids, :xstrategy_ids, :xskill_ids, :xvocab_ids, :xlink_ids, :book_id, :cquestions_attributes, :cvocabs_attributes, :lesson_resources_attributes, :cskills_attributes, :cstrategies_attributes, :clinks_attributes, :caquestions_attributes, :source_ids, :aquestion_ids, :headers_attributes, :starts_at, :ends_at, :status, :xquestions_attributes, :xvocabs_attributes, :xlinks_attributes, :xstrategies_attributes, :xskills_attributes, :xaquestions_attributes, :attachment, :subject_ids, :sanitize_notes, :book_ids, :body, :big_idea
+  attr_accessible :user_id, :standard_ids, :textdependent, :name, :grade_ids, :text_id, :date, :vocabulary, :writing, :conclusion, :objective, :notes, :description, :book, :subject_id, :subsubject_ids, :private, :xquestion_ids, :xvocab_ids, :select_ids, :xstrategy_ids, :xskill_ids, :xvocab_ids, :xlink_ids, :book_id, :cquestions_attributes, :cvocabs_attributes, :lesson_resources_attributes, :cskills_attributes, :cstrategies_attributes, :clinks_attributes, :caquestions_attributes, :source_ids, :aquestion_ids, :headers_attributes, :starts_at, :ends_at, :status, :xquestions_attributes, :xvocabs_attributes, :xlinks_attributes, :xstrategies_attributes, :xskills_attributes, :xaquestions_attributes, :attachment, :subject_ids, :sanitize_notes, :book_ids, :body, :big_idea, :user_ids
   belongs_to :user
   
 #selections made by the user for lessons  
@@ -107,6 +77,8 @@ end
   accepts_nested_attributes_for :xstrategies
   accepts_nested_attributes_for :xvocabs
   accepts_nested_attributes_for :xlinks
+  has_many :select_users, :dependent => :destroy
+  has_many :users, through: :select_users
   accepts_nested_attributes_for :xaquestions
     scope :between, lambda {|start_time, end_time|
     {:conditions => [
@@ -132,6 +104,12 @@ end
 
   def self.format_date(date_time)
     Time.at(date_time.to_i).to_formatted_s(:db)
+  end
+
+  attr_reader :user_tokens
+
+  def user_tokens=(ids)
+    self.user_ids = ids.split(",")
   end
 
 

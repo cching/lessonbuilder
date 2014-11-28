@@ -1,10 +1,18 @@
-<div class="container">
-<%= render 'lessonattributes' %>
-
-<%= render 'lessontable' %>  
-
-<%= render 'lessonlinks' %>
-
-
-
+<div align="center">
+<iframe width='910' height='660' frameborder='0' src='<%= @url %>'></iframe>
 </div>
+
+
+<% if current_user.id == @select.user_id %>
+<div align="center">
+<%= form_for(@select, remote: true) do |f| %>
+<div class="field">
+  <%= f.label :user_ids, "Users" %><br/>
+  <%= f.collection_select :user_ids, User.order(:name), :id, :name, {}, {multiple:true} %>
+</div>          
+<br/>
+<div class="actions">
+   <%= f.submit "Invite users" %>
+</div><% end %>
+</div>
+<% end %>

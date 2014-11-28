@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require chosen-jquery
 //= require jquery.turbolinks
 //= require turbolinks
 //= require bootstrap.min
@@ -23,7 +24,7 @@
 //= require nprogress-ajax
 //= require classie
 //= require_tree .
-//= require best_in_place
+
 
 $(document).ready(function() {
   $('.best_in_place').best_in_place();

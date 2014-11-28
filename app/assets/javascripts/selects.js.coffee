@@ -2,11 +2,10 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-jQuery ->
-  $('.best_in_place').best_in_place()
-
 
 jQuery ->
   $('#selects_date').datepicker
     dateFormat: 'yy-mm-dd'
 
+jQuery ->
+  $('#select_user_ids').chosen()

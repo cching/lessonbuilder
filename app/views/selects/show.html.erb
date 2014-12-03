@@ -7,7 +7,7 @@
 <div align="center">
 <%= form_for(@select, remote: true) do |f| %>
 <div class="field">
-  <%= f.label :user_ids, "Users" %><br/>
+  <%= f.label :user_ids, "Invite Users" %><br/>
   <%= f.collection_select :user_ids, User.order(:name), :id, :name, {}, {multiple:true} %>
 </div>          
 <br/>

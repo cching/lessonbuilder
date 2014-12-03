@@ -87,4 +87,7 @@ $(function() {
         });
 
 
-
+function printpage()
+  {
+  window.print()
+  }

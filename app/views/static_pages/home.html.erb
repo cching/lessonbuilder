@@ -1,16 +1,18 @@
 <div class="animated fadeInDown">
-<%= image_tag("final_homepage_header.jpg",  class: "img-responsive") %>
+<span class="header">
+<%= image_tag("final_homepage_header.jpg",  class: "img-responsive header") %>
+</span>
 </div>
 <% if current_user %>
 <div class="animated fadeInUp">
-<%= image_tag("final_homepage.jpg",  class: "img-responsive") %>
+<%= image_tag("final_homepage.jpg",  class: "img-responsive header") %>
 </div>
 <% else %>
 <div id="right">
 <div class="row">
 <div class="col-sm-8">
 <div class="animated fadeInLeft">
-<%= image_tag("final_homepage.jpg",  class: "img-responsive") %>
+<%= image_tag("final_homepage.jpg",  class: "img-responsive header") %>
 </div>
 </div>
 <div class="col-sm-4 animated fadeInRight">

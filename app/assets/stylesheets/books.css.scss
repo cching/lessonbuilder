@@ -3,19 +3,19 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .div-table-content-books {
-  height:460px;
+  height:85vh;
   overflow-y:auto;
     width:100%;
   overflow-x:hidden;
 }
 .div-table-content1 {
-  height:555px;
+  height:85vh;
   overflow-y:auto;
     width:100%;
   overflow-x:hidden;
 }
 .div-table-content2 {
-  height:450px;
+  height:80vh;
   overflow-y:auto;
     width:100%;
   overflow-x:hidden;
@@ -58,3 +58,5 @@
 .verticalLine {
     border-right: thick solid #1CBC9A;
 }
+
+html,body{min-height:100%;}

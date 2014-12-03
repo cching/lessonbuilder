@@ -59,6 +59,12 @@
 }
 
 
+@media print {
+
+ div.hide {
+	display: none;
+}
+}
 
 
 

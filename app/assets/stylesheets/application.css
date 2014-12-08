@@ -60,10 +60,9 @@
 
 
 @media print {
-
- div.hide {
-	display: none;
-}
+	#printable { display: none; }
+	#non-printable { display: none; }
+    #printable { display: block; }
 }
 
 

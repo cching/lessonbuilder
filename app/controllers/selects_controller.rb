@@ -161,6 +161,7 @@ class SelectsController < ApplicationController
 
   def create
     @select = current_user.selects.build(params[:select])
+    @select.user_id = current_user.id
     @plan = Plan.where(:district_id => current_user.district_id).last
     if @select.save
 

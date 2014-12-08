@@ -37,7 +37,14 @@
                 <div class="animated fadeInUpBig">
                   <div class="row">
   <div class="col-md-1">
-                <%= check_box_tag "select[book_ids][]", book.id, @select.book_ids.include?(book.id), id: dom_id(book), :class => "checkbox_#{book.id}" %>
+                <div id="book_<%= book.id %>">
+
+    <% if SelectText.where(:select_id => @select.id).map{|a| a.book_id}.include? book.id %>
+      <%= link_to "",  unselect_books_book_path(:book_id => book.id, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-check" %>
+      <% else %>
+      <%= link_to "",  select_books_book_path(:book_id => book.id, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-unchecked" %>
+      <% end %>
+    </div>
                 </div>
   <div class="col-md-8">
                   

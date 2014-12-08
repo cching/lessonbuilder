@@ -90,7 +90,9 @@ Commoncore::Application.routes.draw do
 
 
   resources :books do 
-    collection do
+    put :select_books, on: :member
+    put :unselect_books, on: :member
+    collection do   
       get :show_sources
       get :show2
       get :hide

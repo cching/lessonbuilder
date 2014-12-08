@@ -138,4 +138,26 @@ class BooksController < ApplicationController
   def show_list
     respond_to :js
   end
+
+  def select_books
+    @book = Book.find(params[:book_id])
+    @select = Select.find(params[:select_id])
+      @selects = SelectText.new
+      @selects.select_id = @select.id
+      @selects.book_id = @book.id
+
+      if @selects.save
+      respond_to do |format|
+        format.js
+      end
+      end
+end
+
+    def unselect_books
+    @book = Book.find(params[:book_id])
+    @select = Select.find(params[:select_id])
+      @selects = SelectText.where(:book_id => @book.id).where(:select_id => @select.id).last
+      @selects.delete
+      respond_to :js
+    end
 end

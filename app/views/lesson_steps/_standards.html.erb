@@ -1,4 +1,6 @@
 <%= simple_form_for @select, url: wizard_path do |f| %>
+<div class="div-table-content1">
+
 <div class="animated fadeInLeft">
 
 		<div class="row">
@@ -62,6 +64,7 @@
 	<% end %>
 	<% end %>
 	
+		</div>
 
 <div class="actions animated fadeInRight">
 <div class="row">
@@ -73,11 +76,10 @@
 		
 			<button type="submit" class="btn btn-info" id="standards" data-loading-text="Saving..">Save and Continue</button>
 			</div>
-			</div>
 		</div>
 		</div>
-	<% end %>
 
+	<% end %>
 
 <% if @select.drive == false %>
 <script>

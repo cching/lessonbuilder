@@ -427,3 +427,20 @@ list-style-type: none;
 
 }
 
+#buttons ul
+{
+margin: 0;
+padding: 0;
+list-style-type: none;
+text-align: right;
+}
+
+#buttons ul li { display: inline; }
+
+#buttons ul li a
+{
+text-decoration: none;
+padding: .2em 1em;
+color: #fff;
+background-color: #036;
+}

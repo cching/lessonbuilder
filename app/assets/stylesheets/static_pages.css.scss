@@ -33,13 +33,16 @@
 }
 
 .info{
-	width:100%;
+	width:80%;
 	height:70%;
-	text-align:center;
-	align:center;
+	align:middle;
 	background-color:#fff;
-	margin-bottom:0px;
-	margin:10px;
+}
+
+img.info {
+	display: block;
+    margin-left: auto;
+    margin-right: auto;	
 }
 
 

@@ -1,8 +1,9 @@
-<table>
-<tr>
-<td><input type="button" onclick="printDiv('printableArea')" value="Print Text" class="btn btn-primary" id="builder" /></td>
-<td> <br/></td>
-<td>
-<%= link_to "Save Text as PDF", book_path(@book, format: "pdf"), class: "btn btn-primary", id: "builder" %></td>
-</tr>
-</table>
+<div class="col-xs-4"></div>
+<div class="col-xs-2" align="right">
+<input type="button" onclick="printDiv('printableArea')" value="Print Text" class="btn btn-primary" id="builder" />
+</div>
+
+
+<div class="col-xs-3" align="right">
+<%= link_to "Save Text as PDF", book_path(@book, format: "pdf"), class: "btn btn-primary", id: "builder" %>
+</div>

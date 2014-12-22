@@ -97,8 +97,8 @@ final_home.jpg: final_home-a8b11d2380206d825a2341dec58a2bd5.jpg
 final_home/index.jpg: final_home-a8b11d2380206d825a2341dec58a2bd5.jpg
 final_homepage.jpg: final_homepage-dd2c74626a566ac54bbf75cde1b54856.jpg
 final_homepage/index.jpg: final_homepage-dd2c74626a566ac54bbf75cde1b54856.jpg
-final_homepage_header.jpg: final_homepage_header-51bf8ede9afbd5ee9b23316de8a14bcf.jpg
-final_homepage_header/index.jpg: final_homepage_header-51bf8ede9afbd5ee9b23316de8a14bcf.jpg
+final_homepage_header.jpg: final_homepage_header-f10911578cf2bc38d4e3a633c6e2b700.jpg
+final_homepage_header/index.jpg: final_homepage_header-f10911578cf2bc38d4e3a633c6e2b700.jpg
 gatherresources.jpg: gatherresources-3034f8a3d28f1ee3823f0a702f3ccd62.jpg
 gatherresources/index.jpg: gatherresources-3034f8a3d28f1ee3823f0a702f3ccd62.jpg
 header.png: header-185436f9c7717bd8992e360c8f5cebfb.png
@@ -141,8 +141,8 @@ application.js: application-aaef6b9b3a1f817d0ce869782d761b77.js
 application/index.js: application-aaef6b9b3a1f817d0ce869782d761b77.js
 images/rails.png: images/rails-71e944d9b39043eba50b77788c0d767f.png
 images/rails/index.png: images/rails-71e944d9b39043eba50b77788c0d767f.png
-application.css: application-eedb4eeb435985d058e7fd2746aa8b14.css
-application/index.css: application-eedb4eeb435985d058e7fd2746aa8b14.css
+application.css: application-a180ec4185d0a0d200828ce7a1edec74.css
+application/index.css: application-a180ec4185d0a0d200828ce7a1edec74.css
 jquery-ui/animated-overlay.gif: jquery-ui/animated-overlay-e0c9fc4ab5cae26e1d14c62eabb0a289.gif
 jquery-ui/animated-overlay/index.gif: jquery-ui/animated-overlay-e0c9fc4ab5cae26e1d14c62eabb0a289.gif
 jquery-ui/ui-bg_flat_0_aaaaaa_40x100.png: jquery-ui/ui-bg_flat_0_aaaaaa_40x100-6b0858a07f9b26b1fbf609593cf427f4.png

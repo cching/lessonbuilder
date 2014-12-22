@@ -5,19 +5,16 @@
 </div>
 <% if current_user %>
 <div class="animated fadeInUp">
-<div class="container">
-<%= image_tag("final_homepage.jpg",  class: "img-responsive info") %>
-</div>
+<%= image_tag("final_homepage.jpg", class: "img-responsive info", align: "center") %>
 </div>
 <% else %>
 <div id="right">
 <div class="row">
 <div class="col-sm-8">
 <div class="animated fadeInLeft">
-<div class="container">
 
-<%= image_tag("final_homepage.jpg",  class: "img-responsive info", align: "middle") %>
-</div>
+<%= image_tag("final_homepage.jpg",  class: "img-responsive info") %>
+
 </div>
 </div>
 <div class="col-sm-4 animated fadeInRight">

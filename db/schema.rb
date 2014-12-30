@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141128095933) do
+ActiveRecord::Schema.define(:version => 20141229081948) do
 
   create_table "admin_notes", :force => true do |t|
     t.string   "resource_id",     :null => false
@@ -73,6 +73,19 @@ ActiveRecord::Schema.define(:version => 20141128095933) do
     t.string   "title"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "attachments", :force => true do |t|
+    t.integer  "select_id"
+    t.string   "file_type"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.string   "file"
+    t.text     "google_url"
   end
 
   create_table "book_grades", :force => true do |t|

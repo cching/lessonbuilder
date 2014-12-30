@@ -197,9 +197,20 @@
     </div>
     <div id="collapseSix" class="panel-collapse collapse">
       <div class="panel-body">
-      <%= f.input :attachment, label: false %>
+      <div align="center">
+      <a href='#', class="btn btn-default attachments">Upload Resources to your Doc</a>
+      </div>
       </div>
     </div>
   </div>
 </div>    
-<% end %>        
+<% end %>      
+
+
+<script>
+
+$(".attachments").on("click", function() {
+  $('#myModal').modal('show');
+  $("#modal-window").html("<%= escape_javascript(render partial: 'lesson_steps/attachments') %>"); 
+});
+</script>  

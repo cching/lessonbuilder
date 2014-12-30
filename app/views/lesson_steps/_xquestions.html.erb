@@ -1,7 +1,9 @@
+
 <div data-update-url="<%= sort_xquestions_url %>">
 
 <% Xquestion.where(:select_id => @select.id).where(:standard_id => standard.id).order("position").each do |xquestion| %>
 <%= content_tag_for :div, xquestion do %>
+<span class="handle">[drag]</span>
 <div class="row" id="resources">
 
 <div class="col-md-1"><%= link_to "",  post_qs_select_path(@select, :xquestion_id => xquestion.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-share" %></div>

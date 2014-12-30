@@ -52,7 +52,6 @@ out_file.close
                        'convert' => 'true',
                        'alt' => 'json' })
 
-File.delete(out_file)
 
 end
 

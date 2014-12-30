@@ -1,0 +1,11 @@
+<div class='animated fadeIn'>
+<%= form_for @attachment, :html => {:multipart => true, :remote => true} do |f| %>
+  <p>
+  </p>
+  <p>
+    <%= f.file_field :file %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>
+</div>
+

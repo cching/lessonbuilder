@@ -42,19 +42,6 @@ $(document).ready(function() {
   });
 });
 
-  $(document).ready(function(){
-
-    $('.wysihtml5').each(function(i, elem) {
-      $(elem).wysihtml5();
-    });
-
-  })
-
-var autosave = window.setInterval("autosaveForm()", 2000);
-
-function autosaveForm() {
-  $('form[data-remote]').submit();
-}
 
 $(function() {
             $("#allfields li").draggable({

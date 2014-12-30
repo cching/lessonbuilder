@@ -4,7 +4,10 @@ Commoncore::Application.routes.draw do
 
   resources :assessments
 
-
+  resources :attachments do
+     get :upload, on: :member
+   end
+  
   devise_for :students
   resources :students
 

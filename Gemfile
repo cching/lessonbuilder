@@ -30,6 +30,7 @@ gem 'google_drive'
 gem 'google-api-client', '~> 0.7.1'
 gem 'chosen-rails'
 gem 'carrierwave'
+gem 'yomu'
 
 
 group :development, :test do

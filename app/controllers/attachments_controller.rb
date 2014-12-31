@@ -47,7 +47,6 @@ class AttachmentsController < ApplicationController
 
     respond_to do |format|
       if @attachment.update_attributes(params[:attachment])
-
         
     		format.html { redirect_to upload_attachment_path(@attachment) }
       else
@@ -60,10 +59,20 @@ class AttachmentsController < ApplicationController
   def upload 
     @attachment = Attachment.find(params[:id])
     @select = Select.where(:id => @attachment.select_id).last
-    require './lib/attachments'
+    if @attachment.file_type == 'image'
+      require './lib/attachment_image'
+    elsif @attachment.file_type == 'mp3'
+      require './lib/attachment_mp3'
+    elsif @attachment.file_type == 'doc'
+      require './lib/attachment_doc'
+    elsif @attachment.file_type == 'pdf'
+      require './lib/attachment_pdf'
+    end
         file = Post::Drive.new(@select, @attachment)
         file.update
-        render :nothing => true
+    respond_to do |format|
+    format.html { redirect_to lesson_steps_path(@select, :id => "instructional_plan") }
+  end
   end
 
   # DELETE /aquestions/1

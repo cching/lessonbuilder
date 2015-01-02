@@ -37,12 +37,10 @@ result = client.execute(
     file = result.data
     result = client.execute(:uri => file['exportLinks']['text/html'])
 
-questions = @select.select_questions.map! { |question| "#{question.xquestion.standard_id }: #{question.xquestion.content}"  }.join(" </td><td></td></tr><tr><td>")
-
-doc = Nokogiri::XML "#{result.body}"
+questions = @select.select_questions.sort_by{ |squestion| squestion.xquestion.position }.map! { |question| "#{question.xquestion.standard_id }: #{question.xquestion.content}"  }.join(" </td><td></td></tr><tr><td>")
 
 out_file = File.new("public/#{@select.id}.html", "w")
-out_file.puts("#{doc}")
+out_file.puts("#{result.body}" +  "<br />" + "<font color='#63B8FF' size='4'>Questions</font>" + "<table cellpadding='10'><tr><td>" + questions + "</td><td></td></tr></table>")
 out_file.close
 
  media = Google::APIClient::UploadIO.new("public/#{@select.id}.html", 'text/html')

@@ -5,7 +5,6 @@ ruby "1.9.3"
 gem 'rails', '3.2.13'
 gem 'dotenv-rails', :groups => [:development, :test]
 gem 'jquery-rails'
-gem 'ransack'
 gem 'activerecord-postgresql-adapter'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'rake', '>=0.9.2'
@@ -31,7 +30,7 @@ gem 'google-api-client', '~> 0.7.1'
 gem 'chosen-rails'
 gem 'carrierwave'
 gem 'yomu'
-
+gem 'nokogiri'
 
 group :development, :test do
   gem 'rspec-rails', '2.11.0'

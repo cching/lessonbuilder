@@ -70,9 +70,7 @@ class AttachmentsController < ApplicationController
     end
         file = Post::Drive.new(@select, @attachment)
         file.update
-    respond_to do |format|
-    format.html { redirect_to lesson_steps_path(@select, :id => "instructional_plan") }
-  end
+    redirect_to :back
   end
 
   # DELETE /aquestions/1

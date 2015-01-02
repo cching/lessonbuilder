@@ -13,6 +13,7 @@
  *= require animate
  *= require nprogress
  *= require nprogress-bootstrap
+ *= require jquery.ui.all
  *= require jquery.ui.datepicker
  *= require chosen
  *= require_self

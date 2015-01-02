@@ -8,7 +8,7 @@ class SelectsController < ApplicationController
   def show
     @select = Select.find(params[:id])
     @standards = @select.standards.all
-    @url_edit = 'https://docs.google.com/document/d/' + @select.resource_id + '/edit?usp=sharing'
+    @url_edit = 'https://docs.google.com/document/d/' + @select.resource_id + '/edit?usp=sharing&output=embed'
     @url = 'https://docs.google.com/document/d/' + @select.resource_id 
 
     if SelectUser.where(:user_id => current_user.id).where(:check => false).where(:select_id => @select.id).any?

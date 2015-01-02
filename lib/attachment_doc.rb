@@ -40,19 +40,26 @@ drive = client.discovered_api('drive', 'v2')
                  :parameters => { 'uploadType' => 'multipart' },
                  :body_object => metadata,
                  :media => media)
+  upload_id = upload.data.id
   @attachment.google_url = upload.data.alternateLink
   @attachment.save
 
   revision = client.execute(:api_method => drive.revisions.update,
-               :parameters => { 'fileId' => upload.data.id, 'revisionId' => 1 },
+               :parameters => { 'fileId' => upload_id, 'revisionId' => 1 },
                :body_object => { 'published' => 'true', 'publishAuto' => 'true' }
                )
 
-
-permission = client.execute(:api_method => drive.permissions.insert, 
-              :parameters => { 'fileId' => upload.data.id },
+  permission = client.execute(:api_method => drive.permissions.insert, 
+              :parameters => { 'fileId' => upload_id },
               :body_object => {'withLink' => 'true', 'type' => 'anyone', 'role' => 'writer', 'value' => '' }
               )
+
+  result = client.execute(
+    :api_method => drive.files.get,
+    :parameters => { 'fileId' => upload_id })
+    result = client.execute(:uri => file['exportLinks']['text/html'])
+
+    upload_body = result.body
 
   file_id = @select.resource_id
 
@@ -63,7 +70,7 @@ permission = client.execute(:api_method => drive.permissions.insert,
       result = client.execute(:uri => file['exportLinks']['text/html'])
 
   out_file = File.new("public/#{@select.id}.txt", "w") #creates a file with the user's google doc info
-  out_file.puts("#{result.body}" + "<br /> #{@attachment.google_url}")
+  out_file.puts("#{result.body}" + "<br /> #{upload_body}")
   out_file.close
 
    media = Google::APIClient::UploadIO.new("public/#{@select.id}.txt", 'text/html') #updates user's google doc with new resource attached

@@ -1,5 +1,6 @@
 require 'google/api_client'
 require 'google/api_client/auth/installed_app'
+require 'nokogiri'
 
 SERVICE_ACCOUNT_EMAIL = '897576187605-3sv0ecr29m4clj9uampliu93dn5ea1qe@developer.gserviceaccount.com'
 
@@ -38,11 +39,13 @@ result = client.execute(
 
 questions = @select.select_questions.map! { |question| "#{question.xquestion.standard_id }: #{question.xquestion.content}"  }.join(" </td><td></td></tr><tr><td>")
 
-out_file = File.new("public/#{@select.id}.txt", "w")
-out_file.puts("#{result.body}" + "<br />" + "<font color='#63B8FF' size='4'>Question Stems</font>" + "<table cellpadding='10'><tr><td>" + questions + "</td><td></td></tr></table>")
+doc = Nokogiri::XML "#{result.body}"
+
+out_file = File.new("public/#{@select.id}.html", "w")
+out_file.puts("#{doc}")
 out_file.close
 
- media = Google::APIClient::UploadIO.new("public/#{@select.id}.txt", 'text/html')
+ media = Google::APIClient::UploadIO.new("public/#{@select.id}.html", 'text/html')
     result = client.execute(
       :api_method => drive.files.update,
       :body_object => file,
@@ -51,8 +54,6 @@ out_file.close
                        'uploadType' => 'multipart',
                        'convert' => 'true',
                        'alt' => 'json' })
-
-
 end
 
 def post_vocab

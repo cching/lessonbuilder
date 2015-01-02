@@ -30,14 +30,14 @@ key = Google::APIClient::PKCS12.load_key(SERVICE_ACCOUNT_PKCS12_FILE_PATH, 'nota
 
 drive = client.discovered_api('drive', 'v2')
 
-  media = Google::APIClient::UploadIO.new("public#{@attachment.file.url}", 'image/jpeg') #sets the media to the file uploaded
+  media = Google::APIClient::UploadIO.new("public#{@attachment.file.url}", 'application/msword') #sets the media to the file uploaded
 
   metadata = {
       'title' => "'#{@select.id}'",
       'description' => 'Picture'
   }
   upload = client.execute(:api_method => drive.files.insert, #uploads selected file
-                 :parameters => { 'uploadType' => 'multipart' },
+                 :parameters => { 'uploadType' => 'multipart', 'convert' => 'true' },
                  :body_object => metadata,
                  :media => media)
   upload_id = upload.data.id
@@ -57,6 +57,7 @@ drive = client.discovered_api('drive', 'v2')
   result = client.execute(
     :api_method => drive.files.get,
     :parameters => { 'fileId' => upload_id })
+    file = result.data
     result = client.execute(:uri => file['exportLinks']['text/html'])
 
     upload_body = result.body

@@ -47,7 +47,6 @@ drive = client.discovered_api('drive', 'v2')
                :body_object => { 'published' => 'true', 'publishAuto' => 'true' }
                )
 
-
   permission = client.execute(:api_method => drive.permissions.insert, 
               :parameters => { 'fileId' => upload.data.id },
               :body_object => {'withLink' => 'true', 'type' => 'anyone', 'role' => 'writer', 'value' => '' }
@@ -60,7 +59,6 @@ drive = client.discovered_api('drive', 'v2')
       :parameters => { 'fileId' => file_id })
       file = result.data
       result = client.execute(:uri => file['exportLinks']['text/html'])
-
 
   out_file = File.new("public/#{@select.id}.txt", "w") #creates a file with the user's google doc info
   out_file.puts("#{result.body}" + "#{@attachment.google_url}")

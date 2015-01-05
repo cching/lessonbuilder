@@ -41,8 +41,7 @@ result = client.execute(
 questions = @select.select_questions.sort_by{ |squestion| squestion.xquestion.position }.map! { |question| "#{question.xquestion.content}"  }.join(" </td><td></td></tr><tr><td>")
 f = "#{result.body}"
 doc = Nokogiri::HTML(f)
-append = "<body><hr style=\"page-break-before:always;display:none;\">
-<font color='#63B8FF' size='4'>Questions</font>" + "<table cellpadding='10' name='5'><tr><td>" + questions + "</td><td></td></tr></table></body>"
+append = "<body><br /><hr style=\"page-break-before:always;display:none;\"><br />" + "<table cellpadding='10'><thead><tr><th colspan='2'><font color='#63B8FF' size='4'>Questions</font></th></tr></thead> <tbody><tr><td>" + questions + "</td><td></td></tr></tbody></table></body>"
 doc.at('body').add_next_sibling("#{append}")
 
 
@@ -59,7 +58,6 @@ out_file.close
                        'uploadType' => 'multipart',
                        'convert' => 'true',
                        'alt' => 'json' })
-    File.delete(out_file)
 
 end
 

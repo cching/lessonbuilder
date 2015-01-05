@@ -137,10 +137,10 @@ standard.jpg: standard-72f3d4e38475c8f211bd907aef154bcd.jpg
 standard/index.jpg: standard-72f3d4e38475c8f211bd907aef154bcd.jpg
 standards.jpg: standards-72f3d4e38475c8f211bd907aef154bcd.jpg
 standards/index.jpg: standards-72f3d4e38475c8f211bd907aef154bcd.jpg
-application.js: application-67015b705b9814644da4fa707fb794f8.js
-application/index.js: application-67015b705b9814644da4fa707fb794f8.js
-application.css: application-af1bb753cc9c32dbe1fb3b6a3b0c60ec.css
-application/index.css: application-af1bb753cc9c32dbe1fb3b6a3b0c60ec.css
+application.js: application-206d037c5874efab6e28d4e593f737d8.js
+application/index.js: application-206d037c5874efab6e28d4e593f737d8.js
+application.css: application-72059fb407174f817c3dbf89b4cb0e2e.css
+application/index.css: application-72059fb407174f817c3dbf89b4cb0e2e.css
 jquery-ui/animated-overlay.gif: jquery-ui/animated-overlay-e0c9fc4ab5cae26e1d14c62eabb0a289.gif
 jquery-ui/animated-overlay/index.gif: jquery-ui/animated-overlay-e0c9fc4ab5cae26e1d14c62eabb0a289.gif
 jquery-ui/ui-bg_flat_0_aaaaaa_40x100.png: jquery-ui/ui-bg_flat_0_aaaaaa_40x100-6b0858a07f9b26b1fbf609593cf427f4.png

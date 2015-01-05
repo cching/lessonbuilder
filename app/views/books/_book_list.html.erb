@@ -1,9 +1,5 @@
-<div id="standard-options">
-<h4 class="panel-title">
-<%= link_to '<i class="glyphicon glyphicon-chevron-left"></i> '.html_safe, show_list_books_path, remote: :true, class: "btn btn-info btn-sm" %>
-</h4>
-</div>
-<div align="center">
+
+<div align="center" class="">
 <div class="animated fadeInRight">
 <span class="label label-info">
                    <span class="glyphicon glyphicon-pencil"></span> <a href="#" data-html="true" rel="tooltip" title="The text has a <br/> specific performance task" data-placement="left" id="tooltip2"> Performace task available </a></span>
@@ -20,73 +16,78 @@
                    <br />
 
 
+
 <div class="animated fadeInUp">
 <div class="row"> 
 
-        <div class="col-md-5">
-        <div class="verticalLine">
-            <div class="div-table-content-books">
+        <div class="col-md-4">
+        <div class="verticaline">
+            <div class="div-table-content1">
 
-                
                 <% (Book.where(:textcategory_id => @category.id).includes(:grades).where(:grades => {:id => @grade.id}).order("title ASC") & Book.where(:textcategory_id => @category.id).includes(:sources).where(:sources => {:id => @source.id}).order("title ASC")).each do |book| %>
                 <div class="animated fadeInUpBig">
                   <div class="row">
 
-  <div class="col-md-8">
+  <div class="col-md-9">
                   
                     <font size="4">
                     <i><%= link_to book.title, show2_books_path(:id => book.id), class: "list-group-item", remote: :true, id: "title" %></i></font>
 
+
                     
                     </div>
 
-                     <div class="col-md-1">
+                     <div class="col-md-2">
 
                    <% unless book.assess_questions == nil || book.assess_questions == "" %>
-                   
-                   <span class="glyphicon glyphicon-pencil" id="pencil"></span>
-                   
+                  <div id="inline">
+                   <span class="glyphicon glyphicon-pencil" id="pencil"></span>&nbsp;
+                </div>
                    <% end %>
-                   </div>
-                  <div class="col-md-1">
 
                    <% if book.pdf? %>
-                   <div align="center">
-                  
-                   <span class="glyphicon glyphicon-cloud-upload" id="upload"></span>
-                   
+                  <div id="inline">
+                   <span class="glyphicon glyphicon-cloud-upload" id="upload"></span>&nbsp;
                    </div>
                    <% end %>
-                   </div>
 
-                    <div class="col-md-1">
                     <% if book.example == nil || book.example == "" %>
-                  
+                  <div id="inline">
                    <span class="glyphicon glyphicon-book" id="book-icon"></span>
-                   
+                   </div>
                    <% end %>
                    </div>
                 </div>
 </div>
 <% end %>
-          
              </div>
         </div>
 </div>
-        <div class="col-md-7">
-        <div class="div-table-content-books">
+        <div class="col-md-8" id="book-preview">
+        <div class="div-table-content2">
                 <div id="book">
                   
                             Click on a book to see a preview
                   </div>
-                  </div>
+                  </div><br/>
+
+  <div class="animated fadeInRight" id="inline">
+  
+<div id="buttons">
+<ul>
+<span id="pdf"></span>
+<li>
+  <button type="submit" class="btn btn-primary" id="builder" data-loading-text="Saving.." id="text-select">Save and Continue</button>
+  </li>
+  </ul>
+</div>
+</div>
         </div>
-</div>
-
-
-
-
-
 
 </div>
-</div>
+
+
+
+
+
+

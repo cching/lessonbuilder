@@ -48,3 +48,7 @@ function printDiv(divName) {
 
      document.body.innerHTML = originalContents;
 }
+
+$(":file").jfilestyle({iconName: "icon-plus"});
+
+

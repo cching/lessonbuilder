@@ -1,30 +1,19 @@
-<div data-update-url="<%= sort_xquestions_url %>">
+<div data-update-url="<%= sort_xquestions_url %>" class="row" id="resources">
 
 <% Xquestion.where(:select_id => @select.id).where(:standard_id => standard.id).order("position").each do |xquestion| %>
 <%= content_tag_for :div, xquestion do %>
-<span class="glyphicon glyphicon-resize-vertical handle" aria-hidden="true"></span>
 
-<div class="row" id="resources">
-
-<div class="col-md-1">
-<div id="xquestion1_<%= xquestion.id %>">
+<span class="glyphicon glyphicon-resize-vertical handle col-md-1" aria-hidden="true"></span>
+<div id="xquestion1_<%= xquestion.id %>" class="col-md-1" align="center">
 <% if @squestions.map{|a| a.xquestion_id}.include? xquestion.id %>
       <%= link_to "",  unselect_questions_xquestion_path(xquestion, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-check" %>
       <% else %>
       <%= link_to "",  select_questions_xquestion_path(xquestion, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-unchecked" %>
       <% end %>
 </div>
-</div>
-    
-<div class="col-md-10">
-
-      <%= f.simple_fields_for :xquestions, xquestion do |builder| %>
+<%= f.simple_fields_for :xquestions, xquestion do |builder| %>
   <%= render 'xquestion_fields', f: builder %>
-  <% end %>
-  </div>
-  
-</div>
 <% end %>
-
+<% end %>
 <% end %>
 </div>

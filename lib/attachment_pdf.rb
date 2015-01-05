@@ -17,7 +17,6 @@ end
 def update
 # Initialize the client.
 
-
 key = Google::APIClient::PKCS12.load_key(SERVICE_ACCOUNT_PKCS12_FILE_PATH, 'notasecret')
     asserter = Google::APIClient::JWTAsserter.new(SERVICE_ACCOUNT_EMAIL,
         'https://www.googleapis.com/auth/drive', key)
@@ -49,7 +48,7 @@ drive = client.discovered_api('drive', 'v2')
                )
 
 
-permission = client.execute(:api_method => drive.permissions.insert, 
+  permission = client.execute(:api_method => drive.permissions.insert, 
               :parameters => { 'fileId' => upload.data.id },
               :body_object => {'withLink' => 'true', 'type' => 'anyone', 'role' => 'writer', 'value' => '' }
               )
@@ -62,8 +61,9 @@ permission = client.execute(:api_method => drive.permissions.insert,
       file = result.data
       result = client.execute(:uri => file['exportLinks']['text/html'])
 
+
   out_file = File.new("public/#{@select.id}.txt", "w") #creates a file with the user's google doc info
-  out_file.puts("#{result.body}" + "<br /> #{@attachment.google_url}")
+  out_file.puts("#{result.body}" + "#{@attachment.google_url}")
   out_file.close
 
    media = Google::APIClient::UploadIO.new("public/#{@select.id}.txt", 'text/html') #updates user's google doc with new resource attached
@@ -77,8 +77,7 @@ permission = client.execute(:api_method => drive.permissions.insert,
                          'alt' => 'json' })
 
   File.delete(out_file)
-  File.delete(File.new("public#{@attachment.file.url}"))
-
+  File.delete("public#{@attachment.file.url}")
 
 end
 end

@@ -7,13 +7,13 @@
         <div class="panel-title" id="plan">
         <div class="row">
         <div class="col-sm-10" id="question_stems">
-          <h4>Questions</h4>
+          Questions
           </div>
           <div align="right">
           <div class="col-sm-2">
 
 <%= link_to post_questions_select_path(@select), remote: true do %>
-          <button class="btn btn-default btn-sm">
+          <button class="btn btn-default btn-xs" rel="tooltip" data-placement="left" title="Post selected questions to your Doc">
     <span class="glyphicon glyphicon-share-alt"></span>
 
   </button>
@@ -53,13 +53,13 @@
         <div class="panel-title" id="plan">
           <div class="row">
         <div class="col-sm-10" id="question_stems">
-          <h4>Vocabulary</h4>
+          Vocabulary
           </div>
           <div align="right">
           <div class="col-sm-2">
 
 <%= link_to post_vocabs_select_path(@select), remote: true do %>
-          <button class="btn btn-default btn-sm">
+          <button class="btn btn-default btn-xs" rel="tooltip" data-placement="left" title="Post selected vocabulary words to your Doc">
     <span class="glyphicon glyphicon-share-alt"></span>
 
   </button>
@@ -100,13 +100,13 @@
         <div class="panel-title" id="plan">
           <div class="row">
         <div class="col-sm-10" id="question_stems">
-          <h4>Links</h4>
+          Links
           </div>
           <div align="right">
           <div class="col-sm-2">
 
 <%= link_to post_links_select_path(@select), remote: true do %>
-          <button class="btn btn-default btn-sm">
+          <button class="btn btn-default btn-xs" rel="tooltip" data-placement="left" title="Post selected links to your Doc">
     <span class="glyphicon glyphicon-share-alt"></span>
 
   </button>
@@ -146,13 +146,13 @@
         <div class="panel-title" id="plan">
           <div class="row">
         <div class="col-sm-10" id="question_stems">
-          <h4>Assessment Questions</h4>
+          Assessment Questions
           </div>
           <div align="right">
           <div class="col-sm-2">
 
 <%= link_to post_aquestions_select_path(@select), remote: true do %>
-          <button class="btn btn-default btn-sm">
+          <button class="btn btn-default btn-xs" rel="tooltip" data-placement="left" title="Post selected assessment questions to your Doc">
     <span class="glyphicon glyphicon-share-alt"></span>
 
   </button>
@@ -190,7 +190,7 @@
       
         <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix">
         <div class="panel-title" id="plan">
-          <h4>Additional Resources</h4>
+          Additional Resources
           </div>
         </a>
       
@@ -205,7 +205,11 @@
   </div>
 </div>    
 <% end %>      
-
+<script>
+    $(function ($) {
+        $("button").tooltip()
+    });
+</script>
 
 <script>
 

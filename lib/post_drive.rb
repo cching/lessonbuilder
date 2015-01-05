@@ -37,10 +37,17 @@ result = client.execute(
     file = result.data
     result = client.execute(:uri => file['exportLinks']['text/html'])
 
-questions = @select.select_questions.sort_by{ |squestion| squestion.xquestion.position }.map! { |question| "#{question.xquestion.standard_id }: #{question.xquestion.content}"  }.join(" </td><td></td></tr><tr><td>")
+
+questions = @select.select_questions.sort_by{ |squestion| squestion.xquestion.position }.map! { |question| "#{question.xquestion.content}"  }.join(" </td><td></td></tr><tr><td>")
+f = "#{result.body}"
+doc = Nokogiri::HTML(f)
+append = "<body><hr style=\"page-break-before:always;display:none;\">
+<font color='#63B8FF' size='4'>Questions</font>" + "<table cellpadding='10' name='5'><tr><td>" + questions + "</td><td></td></tr></table></body>"
+doc.at('body').add_next_sibling("#{append}")
+
 
 out_file = File.new("public/#{@select.id}.html", "w")
-out_file.puts("#{result.body}" +  "<br />" + "<font color='#63B8FF' size='4'>Questions</font>" + "<table cellpadding='10'><tr><td>" + questions + "</td><td></td></tr></table>")
+out_file.puts("#{doc}")
 out_file.close
 
  media = Google::APIClient::UploadIO.new("public/#{@select.id}.html", 'text/html')
@@ -52,6 +59,8 @@ out_file.close
                        'uploadType' => 'multipart',
                        'convert' => 'true',
                        'alt' => 'json' })
+    File.delete(out_file)
+
 end
 
 def post_vocab
@@ -234,7 +243,6 @@ def initialize(var, var2)
   @select = var
   @resource = var2
 end
-
 
 
 def post_individual

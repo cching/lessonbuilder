@@ -59,6 +59,8 @@ class AttachmentsController < ApplicationController
   def upload 
     @attachment = Attachment.find(params[:id])
     @select = Select.where(:id => @attachment.select_id).last
+    Dir.mkdir(File.join(Rails.root, 'tmp'))
+
     if @attachment.file_type == 'image'
       require './lib/attachment_image'
     elsif @attachment.file_type == 'mp3'

@@ -44,7 +44,7 @@ doc = Nokogiri::HTML(f)
 
 doc.search('//table/tbody/tr/td/p/span').each do |header|
   if header.content == "Questions"
-    header.parent.parent.parent.parent.parent['class']= "new_class"
+    header['class']= "new_class"
   else  
     append = "<body><br /><hr style=\"page-break-before:always;display:none;\"><br />" + "<table cellpadding='10'><thead><tr><th colspan='2'><font color='#63B8FF' size='4'>Questions</font></th></tr></thead> <tbody><tr><td>" + questions + "</td><td></td></tr></tbody></table></body>"
     doc.at('body').add_next_sibling("#{append}")

@@ -29,7 +29,7 @@ key = Google::APIClient::PKCS12.load_key(SERVICE_ACCOUNT_PKCS12_FILE_PATH, 'nota
 
 drive = client.discovered_api('drive', 'v2')
 
-  media = Google::APIClient::UploadIO.new("public#{@attachment.file.url}", 'application/pdf') #sets the media to the file uploaded
+  media = Google::APIClient::UploadIO.new("#{@attachment.file.url}", 'application/pdf') #sets the media to the file uploaded
 
   metadata = {
       'title' => "'#{@select.id}'",
@@ -75,7 +75,7 @@ drive = client.discovered_api('drive', 'v2')
                          'alt' => 'json' })
 
   File.delete(out_file)
-  File.delete("public#{@attachment.file.url}")
+  File.delete("#{@attachment.file.url}")
 
 end
 end

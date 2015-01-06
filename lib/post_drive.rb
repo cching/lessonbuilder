@@ -37,12 +37,19 @@ result = client.execute(
     file = result.data
     result = client.execute(:uri => file['exportLinks']['text/html'])
 
-
 questions = @select.select_questions.sort_by{ |squestion| squestion.xquestion.position }.map! { |question| "#{question.xquestion.content}"  }.join(" </td><td></td></tr><tr><td>")
-f = "#{result.body}"
+
+f = "#{result.body}" #define the result of the request as the body of the nokogiri HTML
 doc = Nokogiri::HTML(f)
-append = "<body><br /><hr style=\"page-break-before:always;display:none;\"><br />" + "<table cellpadding='10'><thead><tr><th colspan='2'><font color='#63B8FF' size='4'>Questions</font></th></tr></thead> <tbody><tr><td>" + questions + "</td><td></td></tr></tbody></table></body>"
-doc.at('body').add_next_sibling("#{append}")
+
+doc.search('//table/tbody/tr/td/p/span').each do |header|
+  if header.content == "Questions"
+    header.parent.parent.parent.parent.parent['class']= "new_class"
+  else  
+    append = "<body><br /><hr style=\"page-break-before:always;display:none;\"><br />" + "<table cellpadding='10'><thead><tr><th colspan='2'><font color='#63B8FF' size='4'>Questions</font></th></tr></thead> <tbody><tr><td>" + questions + "</td><td></td></tr></tbody></table></body>"
+    doc.at('body').add_next_sibling("#{append}")
+  end
+end
 
 
 out_file = File.new("public/#{@select.id}.html", "w")

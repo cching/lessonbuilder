@@ -17,7 +17,6 @@ end
 def update
 # Initialize the client.
 
-
 key = Google::APIClient::PKCS12.load_key(SERVICE_ACCOUNT_PKCS12_FILE_PATH, 'notasecret')
     asserter = Google::APIClient::JWTAsserter.new(SERVICE_ACCOUNT_EMAIL,
         'https://www.googleapis.com/auth/drive', key)
@@ -30,7 +29,7 @@ key = Google::APIClient::PKCS12.load_key(SERVICE_ACCOUNT_PKCS12_FILE_PATH, 'nota
 
 drive = client.discovered_api('drive', 'v2')
 
-  media = Google::APIClient::UploadIO.new("public#{@attachment.file.url}", 'image/jpeg') #sets the media to the file uploaded
+  media = Google::APIClient::UploadIO.new("#{@attachment.file.url}", 'image/jpeg') #sets the media to the file uploaded
 
   metadata = {
       'title' => "'#{@select.id}'",
@@ -77,7 +76,7 @@ permission = client.execute(:api_method => drive.permissions.insert,
                          'alt' => 'json' })
 
   File.delete(out_file)
-  File.delete(File.new("public#{@attachment.file.url}"))
+  File.delete(File.new("#{@attachment.file.url}"))
 
 
 end

@@ -104,19 +104,7 @@ Commoncore::Application.routes.draw do
   resources :vocabs
 
 
-  resources :strategies
-
-
   resources :questions
-
-
-  resources :clinks
-
-
-  resources :cstrategies
-
-
-  resources :cvocabs
 
   resources :cskills
   resources :skills
@@ -153,10 +141,7 @@ Commoncore::Application.routes.draw do
       put 'post_vs'
     end
   end
-  
-  resources :cquestions
-
-  resources :users do
+    resources :users do
     resources :students
   end
 

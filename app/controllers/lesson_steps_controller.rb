@@ -41,10 +41,7 @@ class LessonStepsController < ApplicationController
     @select = Select.find(params[:select_id])
     @resource = LessonResource.where(:select_id => @select.id).first
 
-    
-    
   
-
     if params[:select]
     params[:select][:status] = step.to_s  
     params[:select][:status] = 'active' if step == steps.last
@@ -72,29 +69,12 @@ class LessonStepsController < ApplicationController
                 xaquestion.save
               end
 
-
-              Skill.where(:standard_id => selection.standard_id).each do |skill|
-                 xskill = Xskill.new
-                xskill.content = skill.content
-                xskill.standard_id = skill.standard_id
-                xskill.select_id = @select.id
-                xskill.save
-              end
-
               Vocab.where(:standard_id => selection.standard_id).each do |vocab|
                 xvocab = Xvocab.new
                 xvocab.content_english = vocab.content_english
                 xvocab.standard_id = vocab.standard_id
                 xvocab.select_id = @select.id
                 xvocab.save
-              end
-
-              Strategy.where(:standard_id => selection.standard_id).each do |strategy|
-                xstrategy = Xstrategy.new
-                xstrategy.content = strategy.content
-                xstrategy.standard_id = strategy.standard_id
-                xstrategy.select_id = @select.id
-                xstrategy.save
               end
 
               Link.where(:standard_id => selection.standard_id).each do |link|

@@ -221,7 +221,7 @@ result = client.execute(
     file = result.data
     result = client.execute(:uri => file['exportLinks']['text/html'])
 
-links = @select.select_links.sort_by{ |slink| slink.xlink.position }.map! { |link| "#{link.xlink.comment}</td><td>#{link.xlink.link}"  }.join(" </td></tr><tr><td>")
+links = @select.select_links.sort_by{ |slink| slink.xlink.position }.map! { |link| "#{link.xlink.comment}</td><td><a href='#{link.xlink.link}'>#{link.xlink.link}</a>"  }.join(" </td></tr><tr><td>")
 
 f = "#{result.body}" #define the result of the request as the body of the nokogiri HTML
 doc = Nokogiri::HTML(f)
@@ -234,11 +234,11 @@ end
 
 if doc.search('//table[@class = "new_class_links"]').any?
   doc.search('//table[@class = "new_class_links"]').each do |table|
-    table.inner_html = "<thead><tr><th colspan='2'><font color='#63B8FF' size='4'>Links</font></th></tr></thead> <tbody><tr><td>" + links + "</td><td></td></tr></tbody>"
+    table.inner_html = "<thead><tr><th colspan='2'><font color='#63B8FF' size='4'>Links</font></th></tr></thead> <tbody><tr><td>" + links + "</td></tr></tbody>"
     table['cellpadding']="10"
   end
 else
-  append = "<body><br /><hr style=\"page-break-before:always;display:none;\"><br />" + "<table cellpadding='10'><thead><tr><th colspan='2'><font color='#63B8FF' size='4'>Links</font></th></tr></thead> <tbody><tr><td>" + links + "</td><td></td></tr></tbody></table></body>"
+  append = "<body><br /><hr style=\"page-break-before:always;display:none;\"><br />" + "<table cellpadding='10'><thead><tr><th colspan='2'><font color='#63B8FF' size='4'>Links</font></th></tr></thead> <tbody><tr><td>" + links + "</td></tr></tbody></table></body>"
   doc.at('body').add_next_sibling("#{append}")
 end
 

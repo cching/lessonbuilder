@@ -1,24 +1,19 @@
-<% Xlink.where(:select_id => @select.id).where(:standard_id => standard.id).each do |xlink| %>
-<div class="row" id="resources">
+<div data-update-url="<%= sort_xlinks_url %>" class="row" id="resources">
 
-<div class="col-md-1"><%= link_to "",  post_ls_select_path(@select, :xlink_id => xlink.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-share" %></div>
+<% Xlink.where(:select_id => @select.id).where(:standard_id => standard.id).order("position").each do |xlink| %>
+<%= content_tag_for :div, xlink do %>
 
-<div class="col-md-1">
-<div id="xlink_<%= xlink.id %>">
-
-    <% if @slinks.map{|a| a.xlink_id}.include? xlink.id %>
+<span class="glyphicon glyphicon-resize-vertical handle col-md-1" aria-hidden="true"></span>
+<div id="xlink1_<%= xlink.id %>" class="col-md-1" align="center">
+<% if @slinks.map{|a| a.xlink_id}.include? xlink.id %>
       <%= link_to "",  unselect_links_xlink_path(xlink, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-check" %>
       <% else %>
       <%= link_to "",  select_links_xlink_path(xlink, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-unchecked" %>
       <% end %>
-    </div>
-    </div>
-<div class="col-md-9">
-
-      <%= f.simple_fields_for :xlinks, xlink do |builder| %>
-  <%= render 'xlink_fields', f: builder, xlink: xlink %>
-  <% end %>
-  </div>
-  <div class="col-md-1"></div>
 </div>
-  <% end %>
+<%= f.simple_fields_for :xlinks, xlink do |builder| %>
+  <%= render 'xlink_fields', f: builder, xlink: xlink %>
+<% end %>
+<% end %>
+<% end %>
+</div>

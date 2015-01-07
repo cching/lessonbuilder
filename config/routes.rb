@@ -15,6 +15,7 @@ Commoncore::Application.routes.draw do
     put :select_aquestions, on: :member
     put :unselect_aquestions, on: :member
     put :add, on: :member
+    collection { post :sort }
   end
 
 
@@ -29,24 +30,16 @@ Commoncore::Application.routes.draw do
     put :select_vocabs, on: :member
     put :unselect_vocabs, on: :member
     put :add, on: :member
+    collection { post :sort }
   end
 
   resources :xlinks do
     put :select_links, on: :member
     put :unselect_links, on: :member
     put :add, on: :member
+    collection { post :sort }
   end
 
-  resources :xstrategies do
-    put :select_strategies, on: :member
-    put :unselect_strategies, on: :member
-  end
-
-  resources :xskills do
-    put :select_skills, on: :member
-    put :unselect_skills, on: :member
-    put :add, on: :member
-  end
 
   resources :lesson_resources
 

@@ -45,7 +45,7 @@ standard_ids = @select.standards.map { |standard| "<b><center>#{standard.id}</ce
 subject = @select.subjects.map { |subject| "#{subject.name}" }.join(",")
 grade = @select.grades.map { |grade| "#{grade.number}" }.join(",")
 book = @select.books.map { |book| "<i>#{book.title}</i>" }.join(",")
-text = @select.books.map { |book| "<i>#{book.title}</i><br/> Publisher: #{book.publisher} <br /> #{book.example.gsub(/(?:\n\r?|\r\n?)/, '<br>')}" }.join("<br /><br/><br/>")
+text = @select.books.map { |book| "<i>#{book.title}</i><br/> Publisher: #{book.publisher} <br /> #{book.example.gsub(/(?:\n\r?|\r\n?)/, '<br>')}" }.join("<br /><br/><br/>" )
 
 
 

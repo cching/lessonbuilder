@@ -1,6 +1,7 @@
 <div class='animated fadeIn'>
-<%= form_for @attachment, :html => {:multipart => true, :remote => true} do |f| %>
+<%= simple_form_for @attachment, :html => {:multipart => true, :remote => true} do |f| %>
   <p>
+  <%= f.input :name, label: "What do you want to call this #{@attachment.file_type}?", :input_html => {:rows => 2} %>
   </p>
   <p>
   <span class="btn btn-default btn-file">

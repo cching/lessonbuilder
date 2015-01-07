@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141229081948) do
+ActiveRecord::Schema.define(:version => 20150107201646) do
 
   create_table "admin_notes", :force => true do |t|
     t.string   "resource_id",     :null => false
@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(:version => 20141229081948) do
     t.datetime "file_updated_at"
     t.string   "file"
     t.text     "google_url"
+    t.text     "name"
   end
 
   create_table "book_grades", :force => true do |t|
@@ -607,6 +608,7 @@ ActiveRecord::Schema.define(:version => 20141229081948) do
     t.integer  "select_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "position"
   end
 
   create_table "xlinks", :force => true do |t|
@@ -616,6 +618,7 @@ ActiveRecord::Schema.define(:version => 20141229081948) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "select_id"
+    t.integer  "position"
   end
 
   create_table "xquestions", :force => true do |t|
@@ -653,6 +656,7 @@ ActiveRecord::Schema.define(:version => 20141229081948) do
     t.datetime "updated_at",      :null => false
     t.string   "standard_id"
     t.integer  "select_id"
+    t.integer  "position"
   end
 
 end

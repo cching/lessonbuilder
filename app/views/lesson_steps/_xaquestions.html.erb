@@ -1,22 +1,19 @@
-<% Xaquestion.where(:select_id => @select.id).where(:standard_id => standard.id).each do |xaquestion| %>
-<div class="row" id="resources">
-<div class="col-md-1"><%= link_to "",  post_aqs_select_path(@select, :xaquestion_id => xaquestion.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-share" %></div>
-<div class="col-md-1">
-<div id="xaquestion_<%= xaquestion.id %>">
+<div data-update-url="<%= sort_xaquestions_url %>" class="row" id="resources">
 
-    <% if @saquestions.map{|a| a.xaquestion_id}.include? xaquestion.id %>
+<% Xaquestion.where(:select_id => @select.id).where(:standard_id => standard.id).order("position").each do |xaquestion| %>
+<%= content_tag_for :div, xaquestion do %>
+
+<span class="glyphicon glyphicon-resize-vertical handle col-md-1" aria-hidden="true"></span>
+<div id="xaquestion1_<%= xaquestion.id %>" class="col-md-1" align="center">
+<% if @saquestions.map{|a| a.xaquestion_id}.include? xaquestion.id %>
       <%= link_to "",  unselect_aquestions_xaquestion_path(xaquestion, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-check" %>
       <% else %>
       <%= link_to "",  select_aquestions_xaquestion_path(xaquestion, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-unchecked" %>
       <% end %>
-    </div>
-    </div>
-<div class="col-md-9">
-
-      <%= f.simple_fields_for :xaquestions, xaquestion do |builder| %>
-  <%= render 'xaquestion_fields', f: builder %>
-  <% end %>
-  </div>
-  <div class="col-md-1"></div>
 </div>
-  <% end %>
+<%= f.simple_fields_for :xaquestions, xaquestion do |builder| %>
+  <%= render 'xaquestion_fields', f: builder %>
+<% end %>
+<% end %>
+<% end %>
+</div>

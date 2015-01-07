@@ -120,4 +120,11 @@ end
     @select.save
       respond_to :js
     end
+
+  def sort
+  params[:xvocab].each_with_index do |id, index|
+    Xvocab.update_all({position: index+1}, {id: id})
+  end
+  render nothing: true
+  end
 end

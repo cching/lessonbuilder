@@ -17,8 +17,6 @@ class SelectsController < ApplicationController
         invite.save
       end
     end
-
-
     
     respond_to do |format|
       format.html

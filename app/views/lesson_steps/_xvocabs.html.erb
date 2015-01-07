@@ -1,22 +1,19 @@
-<% Xvocab.where(:select_id => @select.id).where(:standard_id => standard.id).each do |xvocab| %>
-<div class="row" id="resources">
-<div class="col-md-1"><%= link_to "",  post_vs_select_path(@select, :xvocab_id => xvocab.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-share" %></div>
-<div class="col-md-1">
-<div id="xvocab_<%= xvocab.id %>">
+<div data-update-url="<%= sort_xvocabs_url %>" class="row" id="resources">
 
-    <% if @svocabs.map{|a| a.xvocab_id}.include? xvocab.id %>
+<% Xvocab.where(:select_id => @select.id).where(:standard_id => standard.id).order("position").each do |xvocab| %>
+<%= content_tag_for :div, xvocab do %>
+
+<span class="glyphicon glyphicon-resize-vertical handle col-md-1" aria-hidden="true"></span>
+<div id="xvocab1_<%= xvocab.id %>" class="col-md-1" align="center">
+<% if @svocabs.map{|a| a.xvocab_id}.include? xvocab.id %>
       <%= link_to "",  unselect_vocabs_xvocab_path(xvocab, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-check" %>
       <% else %>
       <%= link_to "",  select_vocabs_xvocab_path(xvocab, :select_id => @select.id), method: :put, remote: :true, :class => "btn btn-link glyphicon glyphicon-unchecked" %>
       <% end %>
-    </div>
-    </div>
-<div class="col-md-9">
-
-      <%= f.simple_fields_for :xvocabs, xvocab do |builder| %>
-  <%= render 'xvocab_fields', f: builder %>
-  <% end %>
-  </div>
-  <div class="col-md-1"></div>
 </div>
-  <% end %>
+<%= f.simple_fields_for :xvocabs, xvocab do |builder| %>
+  <%= render 'xvocab_fields', f: builder %>
+<% end %>
+<% end %>
+<% end %>
+</div>

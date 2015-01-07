@@ -82,11 +82,11 @@ else
   doc.at('body').add_next_sibling("#{append}")
 end
 
-  out_file = File.new("public/#{@select.id}.txt", "w") #creates a file with the user's google doc info
+  out_file = File.new("public/#{@select.id}.html", "w") #creates a file with the user's google doc info
   out_file.puts("#{doc}")
   out_file.close
 
-   media = Google::APIClient::UploadIO.new("public/#{@select.id}.txt", 'text/html') #updates user's google doc with new resource attached
+   media = Google::APIClient::UploadIO.new("public/#{@select.id}.html", 'text/html') #updates user's google doc with new resource attached
       result = client.execute(
         :api_method => drive.files.update,
         :body_object => file,
@@ -98,7 +98,6 @@ end
 
   File.delete(out_file)
   File.delete(File.new("#{@attachment.file.url}"))
-
 
 end
 end

@@ -221,7 +221,7 @@ result = client.execute(
     file = result.data
     result = client.execute(:uri => file['exportLinks']['text/html'])
 
-links = @select.select_links.sort_by{ |slink| slink.xlink.position }.map! { |link| "<a href='#{link.xlink.link}'>#{link.xlink.comment}</a>"  }.join(" </td><td></td></tr><tr><td>")
+links = @select.select_links.sort_by{ |slink| slink.xlink.position }.map! { |link| "#{link.xlink.comment}</td><td>#{link.xlink.link}"  }.join(" </td></tr><tr><td>")
 
 f = "#{result.body}" #define the result of the request as the body of the nokogiri HTML
 doc = Nokogiri::HTML(f)

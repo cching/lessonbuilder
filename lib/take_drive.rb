@@ -54,7 +54,6 @@ drive = client.discovered_api('drive', 'v2')
 File.open("tmp/uploads/#{@attachment.id}#{@extension}", "wb") do |f|
     f.write file.body
 end
-
   media = Google::APIClient::UploadIO.new("tmp/uploads/#{@attachment.id}#{@extension}", "#{@type}") #sets the media to the file uploaded
 
   metadata = {
@@ -78,6 +77,7 @@ Attachment.create(:google_url => upload.data.alternateLink, :select_id => @selec
               :body_object => {'withLink' => 'true', 'type' => 'anyone', 'role' => 'writer', 'value' => '' }
               )
 
+File.delete
 
 end 
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150107201646) do
+ActiveRecord::Schema.define(:version => 20150109212126) do
 
   create_table "admin_notes", :force => true do |t|
     t.string   "resource_id",     :null => false
@@ -75,11 +75,18 @@ ActiveRecord::Schema.define(:version => 20150107201646) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "attachment_resources", :force => true do |t|
+    t.integer  "attachment_id"
+    t.integer  "resource_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
   create_table "attachments", :force => true do |t|
     t.integer  "select_id"
     t.string   "file_type"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
     t.string   "file_file_name"
     t.string   "file_content_type"
     t.integer  "file_file_size"
@@ -87,6 +94,7 @@ ActiveRecord::Schema.define(:version => 20150107201646) do
     t.string   "file"
     t.text     "google_url"
     t.text     "name"
+    t.boolean  "alternate",         :default => false
   end
 
   create_table "book_grades", :force => true do |t|
@@ -205,6 +213,12 @@ ActiveRecord::Schema.define(:version => 20150107201646) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "filetypes", :force => true do |t|
+    t.string   "type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "grades", :force => true do |t|
     t.string "number"
     t.string "name"
@@ -308,6 +322,13 @@ ActiveRecord::Schema.define(:version => 20150107201646) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "resource_grades", :force => true do |t|
+    t.integer  "resource_id"
+    t.integer  "grade_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "resources", :force => true do |t|
     t.text     "content"
     t.text     "media"
@@ -319,6 +340,10 @@ ActiveRecord::Schema.define(:version => 20150107201646) do
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
     t.integer  "rcategory_id"
+    t.integer  "filetype_id"
+    t.text     "google_url"
+    t.string   "file"
+    t.string   "url"
   end
 
   create_table "searches", :force => true do |t|

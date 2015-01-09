@@ -38,7 +38,7 @@ class AttachmentsController < ApplicationController
       end
     end
   end
-
+  
   # PUT /aquestions/1
   # PUT /aquestions/1.json
   def update
@@ -47,8 +47,11 @@ class AttachmentsController < ApplicationController
 
     respond_to do |format|
       if @attachment.update_attributes(params[:attachment])
-        
-    		format.html { redirect_to upload_attachment_path(@attachment) }
+        if @attachment.alternate?
+          format.html { redirect_to take_attachment_path(@attachment) }
+        else
+    		  format.html { redirect_to upload_attachment_path(@attachment) }
+        end
       else
         format.html { render action: "edit" }
         format.json { render json: @aquestion.errors, status: :unprocessable_entity }
@@ -70,6 +73,18 @@ class AttachmentsController < ApplicationController
       require './lib/attachment_pdf'
     end
         file = Post::Drive.new(@select, @attachment)
+        file.update
+    redirect_to :back
+  end
+
+  def take 
+    @attachment = Attachment.find(params[:id])
+    @resources = @attachment.resources.all
+    @select = Select.where(:id => @attachment.select_id).last
+    
+    require './lib/take_drive'
+
+        file = Post::Drive.new(@attachment, @resources, @select)
         file.update
     redirect_to :back
   end

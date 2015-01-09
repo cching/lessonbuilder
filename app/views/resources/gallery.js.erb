@@ -1,0 +1,6 @@
+$('#myModal').modal('hide');
+  setTimeout(function(){
+    $('#myModal').modal('show');
+  $("#modal-window").html("<%= escape_javascript(render partial: 'resources/resources') %>"); 
+}, 500);
+  

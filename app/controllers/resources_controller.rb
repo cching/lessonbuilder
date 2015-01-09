@@ -14,10 +14,23 @@ class ResourcesController < ApplicationController
   # GET /resources/1.json
   def show
     @resource = Resource.find(params[:id])
+    @id = "https://docs.google.com/file/d/" + "#{@resource.google_url}" "/preview" 
 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @resource }
+    end
+  end
+
+  def gallery
+    @attachment = Attachment.new
+    @select = Select.find(params[:select_id])
+    @attachment.select_id = @select.id
+    @attachment.alternate = TRUE
+    @attachment.save
+    @resources = Resource.where(:gogle_url != nil).all
+    respond_to do |format|
+      format.js
     end
   end
 
@@ -44,13 +57,32 @@ class ResourcesController < ApplicationController
 
     respond_to do |format|
       if @resource.save
-        format.html { redirect_to @resource, notice: 'Resource was successfully created.' }
+        format.html { redirect_to upload_resource_path(@resource) }
         format.json { render json: @resource, status: :created, location: @resource }
       else
         format.html { render action: "new" }
         format.json { render json: @resource.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def upload
+    @resource = Resource.find(params[:id])
+
+    case @resource.filetype_id 
+      when 1
+        @type = "application/pdf"
+      when 2
+        @type = "application/msword"
+      when 3
+        @type = "image/jpeg"
+    end
+
+     require './lib/resource_drive'
+        file = Post::Drive.new(@resource, @type)
+        file.update
+
+        redirect_to resource_path(@resource)
   end
 
   # PUT /resources/1

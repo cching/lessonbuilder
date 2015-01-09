@@ -5,7 +5,10 @@
   <%= f.input :title, input_html: {style: 'height:100px; width:100%'} %>
     <%= f.input :content, input_html: {style: 'height:100px; width:100%'} %>
     <%= f.association :rcategory %>
-	<%= f.input :attachment, label: false %>    
+    <%= f.association :grades, as: :check_boxes, input_html: {:data => {:toggle => "checkbox"}} %>
+    <%= f.input :filetype_id, label: 'What type of file is this?', collection: [ ['1', 'PDF' ], ['2', 'Doc'], ['3', 'Image/JPEG'] ], as: :radio_buttons, label_method: :last, value_method: :first, checked: @resource.filetype_id, item_wrapper_class: 'inline' , input_html: {:data => {:toggle => "radio"}}%>
+
+	 <%= f.input :file %>  
   </div>
 <br />
   <div class="form-actions">

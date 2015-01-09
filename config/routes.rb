@@ -1,11 +1,11 @@
 Commoncore::Application.routes.draw do
   resources :rcategories
 
-
   resources :assessments
 
   resources :attachments do
      get :upload, on: :member
+     get :take, on: :member
    end
   
   devise_for :students
@@ -58,7 +58,10 @@ Commoncore::Application.routes.draw do
   resources :aquestions
 
 
-  resources :resources
+  resources :resources do
+    get :upload, on: :member
+    get :gallery, on: :member
+  end
 
 
   resources :sources

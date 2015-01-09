@@ -1,0 +1,46 @@
+<%= form_for(@attachment, remote: true) do |f| %>
+<div class="modal-dialog modal-dialog-center"  id="resources">
+    <div class="modal-content height" id="resources">
+      <div class="modal-header" id="resources" align="right">
+            <%= f.submit "Add Selected Resources to Your Lesson", class: "btn btn-primary wait" %>
+
+        <h4 class="modal-title" id="myModalLabel"></h4>
+      </div>
+      <div class="modal-body" id="resources">
+      <% @resources.each_slice(6) do |slice| %>
+  <div class="gallery">
+    <% slice.each do |resource| %>
+    <%= check_box_tag "attachment[resource_ids][]", resource.id, @attachment.resource_ids.include?(resource.id) %>
+    <% @url = "https://docs.google.com/file/d/" + "#{resource.google_url}" + "/preview" %>
+<iframe width='200' height='300' frameborder='0' src='<%= @url %>' sandbox="allow-same-origin allow-scripts allow-popups"></iframe>
+
+    <% end %>
+  </div>
+<% end %>
+  
+      <div class="form-actions">
+      <div class="modal-footer">
+
+      </div>   
+      </div>   
+
+    </div>
+  </div>
+</div>
+
+<% end %>
+
+<script>
+$(".wait").on("click", function() {
+  $('#myModal').modal('hide');
+  setTimeout(function(){
+    $('#myModal').modal('show');
+  $("#modal-window").html("<%= escape_javascript(render partial: 'attachments/wait') %>"); 
+}, 500);
+  setTimeout(function(){
+
+   $('#myModal').modal('hide');
+}, 10000);
+});
+
+</script>

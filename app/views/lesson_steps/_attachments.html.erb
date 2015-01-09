@@ -1,13 +1,18 @@
-<div class="modal-dialog">
-    <div class="modal-content">
+<div class="modal-dialog"  id="attachments">
+    <div class="modal-content"  id="attachments">
       <div class="modal-header">
         <h4 class="modal-title" id="myModalLabel"></h4>
       </div>
       <div class="modal-body">
-      <h3>What type of file would you like to add?</h3>
-<div id="upload">
-<ul>
+      <h3>Browse ShoobPhoto resources to add to your lesson</h3>
+      <div align="center">
+      <%= link_to "Browse Resources", gallery_resource_path(:select_id => @select.id, :file_type => "placeholder", :alternate => "true"), remote: true, class: "btn btn-primary" %>
+      </div>
+      <br /><br />
+      <h3>Upload your own file to your lesson</h3>
 
+<div id="upload" align="center">
+<ul>
 <li><%= link_to "Doc", new_attachment_path(:select_id => @select.id, :file_type => 'doc'), remote: true, class: "btn btn-primary" %></li>
 <li><%= link_to "PDF", new_attachment_path(:select_id => @select.id, :file_type => 'pdf'), remote: true, class: "btn btn-primary" %></li>
 <li><%= link_to "MP3", new_attachment_path(:select_id => @select.id, :file_type => 'mp3'), remote: true, class: "btn btn-primary" %></li>
@@ -15,7 +20,6 @@
 <li><%= link_to "Video", new_attachment_path(:select_id => @select.id, :file_type => 'video'), remote: true, class: "btn btn-primary" %></li>
 </ul>
 </div>
-
 
 <div class="dropdown">
 
@@ -27,5 +31,6 @@
       </div>   
 
     </div>
-  </div></div>
+  </div>
+</div>
 

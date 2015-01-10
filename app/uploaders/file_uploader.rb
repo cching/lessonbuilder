@@ -13,7 +13,6 @@ class FileUploader < CarrierWave::Uploader::Base
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    Dir.mkdir(File.join(Rails.root, 'tmp'))
     "#{Rails.root.join('tmp') }/#{Process.pid}/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 

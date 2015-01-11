@@ -19,8 +19,6 @@ class StandardsController < ApplicationController
     @questions = @standard.questions.all
     @anchors = @standard.anchor_standards.all
     @icans = @standard.i_cans.all
-    @skills = @standard.skills.all
-    @strategies = @standard.strategies.all
     @links = @standard.links.all
     @vocabs = @standard.vocabs.all
     @aquestions = @standard.aquestions.all

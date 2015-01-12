@@ -1,38 +1,63 @@
 <div id="standard-options">
 <h4 class="panel-title">
-<%= link_to '<i class="glyphicon glyphicon-chevron-left"></i> '.html_safe, standards_path, remote: :true, class: "btn btn-info btn-sm" %>
-</div>
+<%= link_to '<i class="glyphicon glyphicon-chevron-left"></i> Back '.html_safe, standards_path, remote: :true, class: "btn btn-info btn-sm" %>
 
 <div class="panel-body">
-   <div class="list-group">
 
 <% if @subject.try(:id) != nil %>
 <div class="list-group-item active" id="standard-hover">Grade <%= @grade.number %> <br/><%= @subject.name %></div>
+<br />
+
+
 <% Standard.where(:subject_id => @subject.id).where(:grade_id => @grade.id).order("standard_id ASC").each do |standard| %>
-
-
-<% if @standard.try(:id) == standard.id %>
-<%= link_to standard.id, standard_path(standard, :subject_id => @subject.id, :grade_id => @grade.id), class: "list-group-item active", id: "standard-hover", remote: :true, :locals => {:standard => standard} %>
-<% else %>
-<%= link_to standard.id, standard_path(standard, :subject_id => @subject.id, :grade_id => @grade.id), class: "list-group-item", id: "standard-hover", remote: :true, :locals => {:standard => standard} %>
+<div class="row" id="standards-list">
+	<% if @standard.try(:id) == standard.id %>
+		<div class="col-sm-2">
+			<%= link_to standard.id, standard_path(standard, :subject_id => @subject.id, :grade_id => @grade.id), remote: :true, :locals => {:standard => standard}, class: "btn btn-primary btn-block active" %>
+		</div>
+		<div class="col-sm-10">
+			<%= standard.content %>
+		</div>
+	<% else %>
+			<div class="col-sm-2">
+				<%= link_to standard.id, standard_path(standard, :subject_id => @subject.id, :grade_id => @grade.id), remote: :true, :locals => {:standard => standard}, class: "btn btn-primary btn-block" %>
+			</div>
+			<div class="col-sm-10 standard-content">
+				<%= standard.content %>
+			</div>
 <% end %>
+</div>
 <% end %>
 
 <% elsif @subject2.try(:id) != nil %>
 <div class="list-group-item active" id="standard-hover">Grade <%= @grade.number %> <br/><%= @subject2.name %></div>
+<br />
+
+
 <% Standard.where(:subsubject_id => @subject2.id).where(:grade_id => @grade.id).order("standard_id ASC").each do |standard| %>
-
-<% if @standard.try(:id) == standard.id %>
-
-<%= link_to standard.id, standard_path(standard, :subject2_id => @subject2.id, :grade_id => @grade.id), class: "list-group-item active", id: "standard-hover", remote: :true, :locals => {:standard => standard} %>
-<% else %>
-<%= link_to standard.id, standard_path(standard, :subject2_id => @subject2.id, :grade_id => @grade.id), class: "list-group-item", id: "standard-hover", remote: :true, :locals => {:standard => standard} %>
+<div class="row" id="standards-list">
+	<% if @standard.try(:id) == standard.id %>
+		<div class="col-sm-2">
+			<%= link_to standard.id, standard_path(standard, :subject2_id => @subject2.id, :grade_id => @grade.id), remote: :true, :locals => {:standard => standard}, class: "btn btn-primary btn-block active" %>
+		</div>
+		<div class="col-sm-10">
+			<%= standard.content %>
+		</div>
+	<% else %>
+			<div class="col-sm-2">
+				<%= link_to standard.id, standard_path(standard, :subject2_id => @subject2.id, :grade_id => @grade.id), remote: :true, :locals => {:standard => standard}, class: "btn btn-primary btn-block" %>
+			</div>
+			<div class="col-sm-10 standard-content">
+				<%= standard.content %>
+			</div>
 <% end %>
-<% end %>
-
-
-<% end %>
-
 </div>
+<% end %>
+
+
+<% end %>
+
 </div>
 </h4>
+</div>
+

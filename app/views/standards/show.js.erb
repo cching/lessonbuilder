@@ -1,6 +1,6 @@
 $('#search').addClass('animated bounceOutRight');
 $('#standard_<%= @standard.id %>').addClass('standard-list-group-item');
-$('#sidebar').html('<%= escape_javascript(render(:partial => 'standard_list', :locals => {:standard => @standard, :grade => @grade, :subject => @subject, :subject2 => @subject2})) %>')
+$('#standard-options').html('<%= escape_javascript(render(:partial => 'standard_content', :locals => {:standard => @standard, :grade => @grade, :subject => @subject, :subject2 => @subject2})) %>')
 setTimeout(function() {
     $('#search').hide();
 }, 600);
@@ -10,7 +10,7 @@ if ($('#standard').hasClass('animated bounceInRight')) {
 	$('#standard').addClass('animated bounceOutRight')
 
 	setTimeout(function() {
-	$('#standards').html('<%= escape_javascript(render(:partial => 'standard', :locals => {:standard => @standard})) %>')
+	$('#standards_page').html('<%= escape_javascript(render(:partial => 'standard', :locals => {:standard => @standard})) %>')
 	$('#standard').removeClass('animated bounceOutRight')
 	$('#standard').addClass('animated bounceInRight')
 
@@ -21,7 +21,7 @@ if ($('#standard').hasClass('animated bounceInRight')) {
 	$('#standard').addClass('animated bounceOutRight')
 
 	setTimeout(function() {
-	$('#standards').html('<%= escape_javascript(render(:partial => 'standard', :locals => {:standard => @standard})) %>')
+	$('#standards_page').html('<%= escape_javascript(render(:partial => 'standard', :locals => {:standard => @standard})) %>')
 	$('#standard').removeClass('animated bounceOutRight')
 	$('#standard').addClass('animated bounceInRight')
 
@@ -30,8 +30,8 @@ if ($('#standard').hasClass('animated bounceInRight')) {
 
 } else {
 
-
-	$('#standards').html('<%= escape_javascript(render(:partial => 'standard', :locals => {:standard => @standard})) %>')
+	$('#standard').addClass('animated bounceOutRight')
+	$('#standards_page').html('<%= escape_javascript(render(:partial => 'standard', :locals => {:standard => @standard})) %>')
 	$('#standard').addClass('animated bounceInRight')
 
 

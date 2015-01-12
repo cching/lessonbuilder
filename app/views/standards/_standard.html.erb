@@ -1,12 +1,13 @@
+<div id="printableArea">
+
 <div id="standard">
 <div id="standard-options">
 <% if current_user.admin? %>
-<div align="right"><%= link_to "Edit", edit_standard_path(@standard), class: "btn btn-default", remote: :true %></div>
+<div align="right"><input type="button" onclick="printDiv('printableArea')" value="Print this Standard" class="btn btn-primary" />
+<%= link_to "Edit", edit_standard_path(@standard), class: "btn btn-default", remote: :true %></div>
 <% end %></div>
 
 <br/>
-
-
 
 <ul class="nav nav-pills nav-justified" id="succ_standard">
 
@@ -106,7 +107,17 @@
 
 </div>
 
-
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title"><h4 align="center">Assessment Questions</h4></div>
+  </div>
+  <div class="panel-body">
+    <ul>
+    <% @aquestions.each do |aquestion| %>
+      <li><%= aquestion.content %></li>
+      <% end %></ul>
+  </div>
+</div>
 
 <div class="panel panel-default">
   <div class="panel-heading">
@@ -115,7 +126,7 @@
   <div class="panel-body">
     <ul>
     <% @links.each do |link| %>
-    	<li><%= link.comment %><br/> <%= link.link %></li>
+    	<li id="black_link"><%= link.comment %><br/> <%= truncate(Rinku.auto_link(link.link), :length=>400).html_safe %></li>
     	<% end %></ul>
   </div>
 </div>
@@ -125,7 +136,7 @@
     <div class="panel-title"><h4 align="center">Related Standards</h4></div>
   </div>
   <div class="panel-body">
-    <ul class="nav nav-pills nav-justified">
+    <ul class="nav nav-pills nav-justified" id="related">
     <% @successive.each do |successive| %>
     <% if successive.subject_id == 1 %>
     <li class=<%= "active" if successive.id == @standard.id %>><%= link_to successive.id, standard_path(successive, :grade_id => successive.grade_id, :subject_id => successive.subject_id), remote: true %>
@@ -142,5 +153,6 @@
 
 </ul>
   </div></div>
+</div>
 </div>
 </div>

@@ -1,5 +1,6 @@
 require 'google/api_client'
 require 'google/api_client/auth/installed_app'
+require 'nokogiri'
 
 SERVICE_ACCOUNT_EMAIL = '897576187605-3sv0ecr29m4clj9uampliu93dn5ea1qe@developer.gserviceaccount.com'
 

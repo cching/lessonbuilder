@@ -1,7 +1,8 @@
 <div id="sidebar">
 </div>
-<div id="panel">
-<div id="accordion">
+<div id="panel" align="center" class="row">
+<div class="col-md-5"></div>
+<div id="accordion" class="col-md-2">
 	<div class="list-group">
 	   <% @grade.each do |grade| %>
 		<h4 class="panel-title">
@@ -24,11 +25,13 @@
                 
           <% end %>
           <% end %>
-
 				</div>	
 			</div>
 		</div>
 		<% end %>
 	</div>
+</div>
+<div class="col-md-5"></div>
+
 </div>
 </div>

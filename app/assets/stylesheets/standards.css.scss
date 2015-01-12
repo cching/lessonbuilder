@@ -25,6 +25,7 @@
 	background-color: #82b3e7;
 	color: #FFF;
 	border-color: #FFF;
+  font-size:17px;
 
 }
 
@@ -44,13 +45,14 @@
 }
 
 #standard-hover.list-group-item.active {
-  background-color: #ffb347 !important;
-  color: #FFF !important;
+  background-color: #82b3e7 !important;
+  color: #fff !important;
 }
 
 #standard-hover.list-group-item {
   background-color: #2F81D7 !important;
-  color: #FFF !important;
+  color: #000 !important;
+  border-color:#000;
 }
 
 #succ_standard{
@@ -117,4 +119,85 @@ a {
   color: #FFF !important;
 }
 
+.standard-content {
+  background-color:#E9E9E9;
+  height:100%;
+}
+
+#standards-list.row {
+  background-color: #E9E9E9;
+  padding:2px;
+  border-style: solid;
+  border-width: 2px;
+  border-color:#fff;
+  vertical-align: middle;
+}
+
+#standards-list.new_row {
+  background-color: #E9E9E9;
+  padding:2px;
+  border-style: solid;
+  border-width: 2px;
+  border-color:#fff;
+  vertical-align: middle;
+}
+#standards-list.btn-primary {
+  background-color: #0e2640;
+  width: 100%;
+  text-align:left;
+}
+
+#standards-list.btn-primary.active {
+  background-color: #000;
+  width: 100%;
+}
+
+#standards_page {
+  background-color:#fff;
+  padding:10px;
+}
+
+.border a {
+color:#000;
+  background-color:#E9E9E9;
+  
+  border-style: solid;
+    border-width: 2px;
+    border-color:#fff;
+}
+
+#related{
+ a {
+    border-style: solid;
+    border-width: 2px;
+    border-color:#fff;
+    background-color: #E9E9E9;
+    color:#000;
+
+}
+}
+
+#succ_standard{
+ a {
+    border-style: solid;
+    border-width: 2px;
+    border-color:#fff;
+    background-color: #E9E9E9;
+    color:#000;
+
+}
+}
+
+.standard_id {
+  background-color: #E9E9E9;
+  padding:2px;
+  border-style: solid;
+  border-width: 2px;
+  border-color:#fff;
+  vertical-align: middle;
+}
+
+#black_link a { 
+color:#0e2640;
+}
 

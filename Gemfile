@@ -30,6 +30,7 @@ gem 'google-api-client', '~> 0.7.1'
 gem 'chosen-rails'
 gem 'carrierwave'
 gem 'yomu'
+gem 'ransack'
 gem 'nokogiri'
 
 group :development, :test do

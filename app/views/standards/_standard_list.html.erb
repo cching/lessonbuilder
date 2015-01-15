@@ -1,8 +1,15 @@
 <div id="standard-options">
 <h4 class="panel-title">
+<div class="row">
+<div class="col-xs-2">
 <%= link_to '<i class="glyphicon glyphicon-chevron-left"></i> Back '.html_safe, standards_path, remote: :true, class: "btn btn-info btn-sm" %>
-
-<div class="panel-body">
+</div>
+<div class="col-xs-8"></div>
+<div class="col-xs-2">
+<input type="button" onclick="printDiv('printableArea')" value="Print standard list" class="btn btn-primary"/>
+</div>
+</div>
+<div class="panel-body" id="printableArea">
 
 <% if @subject.try(:id) != nil %>
 <div class="list-group-item active" id="standard-hover">Grade <%= @grade.number %> <br/><%= @subject.name %></div>

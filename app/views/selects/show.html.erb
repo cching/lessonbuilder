@@ -1,18 +1,23 @@
-<div align="center">
+<div class="row">
+<div class="col-xs-10" align="center">
 <iframe width='910' height='660' frameborder='0' src='<%= @url %>'></iframe>
 </div>
-
+<div class="col-xs-2" align="center">
 
 <% if current_user.id == @select.user_id %>
 <div align="center">
 <%= form_for(@select, remote: true) do |f| %>
 <div class="field">
-  <%= f.label :user_ids, "Invite Users" %><br/>
+  <%= f.label :user_ids, "Invite Users to Share", {:include_blank => 'Select Person'} %><br/>
   <%= f.collection_select :user_ids, User.order(:name), :id, :name, {}, {multiple:true} %>
 </div>          
 <br/>
 <div class="actions">
-   <%= f.submit "Invite users" %>
+   <%= f.submit "Send notice of share", class: "btn btn-primary" %>
 </div><% end %>
 </div>
 <% end %>
+</div>
+</div>
+
+

@@ -54,7 +54,7 @@ if doc.search('//table[@class = "new_class"]').any?
     table['cellpadding']="10"
   end
 else
-  append = "<body><br /><hr style=\"page-break-before:always;display:none;\"><br />" + "<table cellpadding='10'><thead><tr><th colspan='2'><font color='#63B8FF' size='4'>Questions</font></th></tr></thead> <tbody><tr><td>" + questions + "</td><td></td></tr></tbody></table></body>"
+  append = "<body><br /><hr style=\"page-break-before:always;\"><br />" + "<table cellpadding='10'><thead><tr><th colspan='2'><font color='#63B8FF' size='4'>Questions</font></th></tr></thead> <tbody><tr><td>" + questions + "</td><td></td></tr></tbody></table></body>"
   doc.at('body').add_next_sibling("#{append}")
 end
 
@@ -71,7 +71,6 @@ out_file.close
                        'uploadType' => 'multipart',
                        'convert' => 'true',
                        'alt' => 'json' })
-File.delete(out_file)
 end
 
 def post_vocab

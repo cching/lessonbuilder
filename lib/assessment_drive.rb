@@ -1,6 +1,5 @@
 require 'google/api_client'
 require 'google/api_client/auth/installed_app'
-require 'nokogiri'
 
 SERVICE_ACCOUNT_EMAIL = '897576187605-3sv0ecr29m4clj9uampliu93dn5ea1qe@developer.gserviceaccount.com'
 
@@ -91,43 +90,7 @@ end
       result = client.execute(:uri => file['exportLinks']['text/html'])
 
 
-attachments = @select.attachments.where('name IS NOT NULL').order(:created_at).map! { |attachment| "#{attachment.file_type}</td><td><a href='#{attachment.google_url}'>#{attachment.try(:name)}</a>"  }.join(" </td></tr><tr><td>")
 
-f = "#{result.body}" #define the result of the request as the body of the nokogiri HTML
-doc = Nokogiri::HTML(f)
-
-doc.search('//table/tbody/tr/td/p/span').each do |header|
-  if header.content == "Resources"
-    header.parent.parent.parent.parent.parent['class'] = "new_class_resources"
-  end
-end
-
-if doc.search('//table[@class = "new_class_resources"]').any?
-  doc.search('//table[@class = "new_class_resources"]').each do |table|
-    table.inner_html = "<thead><tr><th colspan='2'><font color='#63B8FF' size='4'>Resources</font></th></tr></thead> <tbody><tr><td>" + attachments + "</td></tr></tbody>"
-    table['cellpadding']="10"
-  end
-else
-  append = "<body><br /><hr style=\"page-break-before:always;display:none;\"><br />" + "<table cellpadding='10'><thead><tr><th colspan='2'><font color='#63B8FF' size='4'>Resources</font></th></tr></thead> <tbody><tr><td>" + attachments + "</td></tr></tbody></table></body>"
-  doc.at('body').add_next_sibling("#{append}")
-end
-
-  out_file = File.new("public/#{@select.id}.html", "w") #creates a file with the user's google doc info
-  out_file.puts("#{doc}")
-  out_file.close
-
-   media = Google::APIClient::UploadIO.new("public/#{@select.id}.html", 'text/html') #updates user's google doc with new resource attached
-      result = client.execute(
-        :api_method => drive.files.update,
-        :body_object => file,
-        :media => media,
-        :parameters => { 'fileId' => file_id,
-                         'uploadType' => 'multipart',
-                         'convert' => 'true',
-                         'alt' => 'json' })
-
-  File.delete(out_file)
-@attachment.delete
 end
 end
 end

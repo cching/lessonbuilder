@@ -53,7 +53,7 @@
 			<div class="col-md-2 standards-select"></div>
 		    
 		    <div class="col-md-10" id="subject_<%= subject.id %>">
-			<%= f.association :standards, as: :check_boxes, collection: Standard.where(:subsubject_id => subject.id, :grade_id => grade.id).order("standard_id ASC"), :label_method => lambda { |standard| "#{standard.id}:  #{standard.content}" }, label: false, input_html: {:data => {:toggle => "checkbox"}} %>    	
+			<%= f.association :standards, as: :check_boxes, collection: Standard.where(:subsubject_id => subject.id, :grade_id => grade.id).order("standard_id ASC"), :label_method => lambda { |standard| "#{standard.id}:  #{standard.content}" }, label: false, input_html: {:data => {:toggle => "checkbox"}}, id: "standards-checkbox"  %>    	
 		   	</div>
 
 
@@ -92,9 +92,18 @@ $(".btn-info").on("click", function() {
 </script>
 <% end %>
 
-<script>
+
+
+<script type='text/javascript'>
+var checkboxes = $("input[type='checkbox']"),
+    submitButt = $("input[type='submit']");
+
+checkboxes.click(function() {
+    submitButt.attr("disabled", !checkboxes.is(":checked"));
+});
+
 	$('button[data-loading-text]').click(function () {
     $(this).button('loading');
 });
-</script>	
+</script>
 

@@ -49,6 +49,16 @@ function printDiv(divName) {
      document.body.innerHTML = originalContents;
 }
 
-$(":file").jfilestyle({iconName: "icon-plus"});
+window.setInterval(function() {
+    $('form[data-remote].edit_select').submit(); // this will trigger the form to submit and save
+  }, 5000);
+
+window.setInterval(function() {
+    $('#xquestion_content').submit(); // this will trigger the form to submit and save
+  }, 5000);
+
+window.setInterval(function() {
+    $('#xvocab_content_english').submit(); // this will trigger the form to submit and save
+  }, 5000);
 
 

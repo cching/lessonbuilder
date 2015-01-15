@@ -41,7 +41,7 @@ class LessonStepsController < ApplicationController
     @select = Select.find(params[:select_id])
     @resource = LessonResource.where(:select_id => @select.id).first
 
-  
+
     if params[:select]
     params[:select][:status] = step.to_s  
     params[:select][:status] = 'active' if step == steps.last

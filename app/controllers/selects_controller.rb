@@ -29,6 +29,16 @@ class SelectsController < ApplicationController
     end
   end
 
+  def post_script
+    @select = Select.find(params[:id])
+
+    require './lib/post_script'
+    file = Post::Script.new(@select)
+    file.post
+  
+    render :nothing => true
+  end
+
   def new
     @select = Select.new
 

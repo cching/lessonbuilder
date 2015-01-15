@@ -1,4 +1,4 @@
-<%= simple_form_for(@xquestion, remote: true) do |parent_form| %>
+<%= simple_form_for(@xquestion, remote: true, class: "xquestion") do |parent_form| %>
 <div class="row animated fadeIn" id="resources">
 
 <div class="col-md-1">
@@ -17,8 +17,6 @@
   <fieldset>
 <div class="form-inputs">
   <%= parent_form.input :content, label: false, as: :text, :input_html => {:rows => 2} %>
-
-
 
 </div>
 </fieldset>

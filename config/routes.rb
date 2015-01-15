@@ -142,6 +142,7 @@ Commoncore::Application.routes.draw do
       put 'post_ls'
       get 'post_vocabs'
       put 'post_vs'
+      get 'post_script'
     end
   end
     resources :users do

@@ -45,12 +45,12 @@ standard_ids = @select.standards.map { |standard| "<b><center>#{standard.id}</ce
 subject = @select.subjects.map { |subject| "#{subject.name}" }.join(",")
 grade = @select.grades.map { |grade| "#{grade.number}" }.join(",")
 book = @select.books.map { |book| "<i>#{book.title}</i>" }.join(",")
-text = @select.books.map { |book| "<i>#{book.title}</i><br/> Publisher: #{book.publisher} <br /> #{book.example.gsub(/(?:\n\r?|\r\n?)/, '<br>')}" }.join("<br /><br/><br/>" )
+text = @select.books.map { |book| "<hr style='mso-special-character:line-break; pageBreakBefore:auto'><i>#{book.title}</i><br/> Publisher: #{book.publisher} <br /> #{book.example.gsub(/(?:\n\r?|\r\n?)/, '<br>')}" }.join("<br /><br/><br/>" )
 
 
 
 
-out_file.puts("<h1>#{@select.name}</h1>" + "<font color='#FFA500' size='4'>Grade " + grade + " - " + subject + "</font><br /><font color='#63B8FF' size='4'>Close reading of " + book + "</font><br/><table cellpadding='10'><tr><td><font color='#63B8FF' size='3'>Objective</font></td><td>#{@select.objective}</td></tr><tr><td><font color='#63B8FF' size='3'>Big Idea</font></td><td>#{@select.big_idea}</td></tr><tr><td><font color='#63B8FF' size='3'>Description</font></td><td>#{@select.description}</td></tr></table><br />" + "<table cellpadding='10'><tr><td></td><td>" + standard_ids + "</td></tr>" + "<tr><td><font color='#63B8FF'>Standards</font></td><td>" + standards + "</td></tr><tr><td><font color='#63B8FF'>Standards Unpacked</font></td>" + standard_tds + "</td></tr></table><br/><br/><br/>" + text)
+out_file.puts("<h1>#{@select.name}</h1>" + "<font color='#FFA500' size='4'>Grade " + grade + " - " + subject + "</font><br /><font color='#63B8FF' size='4'>Close reading of " + book + "</font><br/><table cellpadding='10'><tr><td><font color='#63B8FF' size='3'>Objective</font></td><td>#{@select.objective}</td></tr><tr><td><font color='#63B8FF' size='3'>Big Idea</font></td><td>#{@select.big_idea}</td></tr><tr><td><font color='#63B8FF' size='3'>Description</font></td><td>#{@select.description}</td></tr></table><br />" + "<table cellpadding='10'><tr><td></td><td>" + standard_ids + "</td></tr>" + "<tr><td><font color='#63B8FF'>Standards</font></td><td>" + standards + "</td></tr><tr><td><font color='#63B8FF'>Standards Unpacked</font></td>" + standard_tds + "</td></tr></table>" + text)
 out_file.close
 
  media = Google::APIClient::UploadIO.new("public/#{@select.id}_update.txt", 'text/html')

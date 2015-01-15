@@ -50,11 +50,15 @@
 </p>
 </div></div>
 <hr>
+
+<% if book.pdf? %>
+<iframe src="<%= book.image.url %>" width="800px" height="600px" >
+<% else %>
 <html id=style="white-space: pre-wrap;">
 <p>
   <div style="font-size: 13pt;"><%= simple_format(@book.example) %>
 </p></html>
-
+<% end %>
 <% unless @book.assess_questions.blank? %>
 <p>
   <b>Performance task:</b>

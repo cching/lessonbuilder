@@ -33,6 +33,7 @@ gem 'yomu'
 gem 'ransack'
 gem 'nokogiri'
 
+
 group :development, :test do
   gem 'rspec-rails', '2.11.0'
   gem 'taps', :require => false

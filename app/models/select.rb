@@ -10,9 +10,10 @@ class Select < ActiveRecord::Base
   has_many :attachments
   do_not_validate_attachment_file_type :attachment
   #Selects is the lesson model but is named 'select' for the ActiveRecord join association
-  attr_accessible :user_id, :standard_ids, :textdependent, :name, :grade_ids, :text_id, :date, :vocabulary, :writing, :conclusion, :objective, :notes, :description, :book, :subject_id, :subsubject_ids, :private, :xquestion_ids, :xvocab_ids, :select_ids, :xstrategy_ids, :xskill_ids, :xvocab_ids, :xlink_ids, :book_id, :cquestions_attributes, :cvocabs_attributes, :lesson_resources_attributes, :cskills_attributes, :cstrategies_attributes, :clinks_attributes, :caquestions_attributes, :source_ids, :aquestion_ids, :headers_attributes, :starts_at, :ends_at, :status, :xquestions_attributes, :xvocabs_attributes, :xlinks_attributes, :xstrategies_attributes, :xskills_attributes, :xaquestions_attributes, :attachment, :subject_ids, :sanitize_notes, :book_ids, :body, :big_idea, :user_ids
+  attr_accessible :user_id, :standard_ids, :textdependent, :name, :grade_ids, :text_id, :date, :vocabulary, :writing, :conclusion, :objective, :notes, :description, :book, :subject_id, :subsubject_ids, :private, :xquestion_ids, :xvocab_ids, :select_ids, :xstrategy_ids, :xskill_ids, :xvocab_ids, :xlink_ids, :book_id, :cquestions_attributes, :cvocabs_attributes, :lesson_resources_attributes, :cskills_attributes, :cstrategies_attributes, :clinks_attributes, :caquestions_attributes, :source_ids, :aquestion_ids, :headers_attributes, :starts_at, :ends_at, :status, :xquestions_attributes, :xvocabs_attributes, :xlinks_attributes, :xstrategies_attributes, :xskills_attributes, :xaquestions_attributes, :attachment, :subject_ids, :sanitize_notes, :book_ids, :body, :big_idea, :user_ids, :publish_id
   belongs_to :user
   
+  has_many :mailers
 #selections made by the user for lessons  
   has_many :selections, :dependent => :destroy
   has_many :standards, through: :selections

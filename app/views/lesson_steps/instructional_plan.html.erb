@@ -43,7 +43,8 @@
         </div>
         <div class="col-md-2">
         <div align="right">
- <%= link_to "Preview", select_path(@select), class: "btn btn-warning", id: "notes" %></div></div>
+         <%= link_to  "Publish", publish_select_path(@select), class: "btn btn-warning", id: "notes" %></div>
+
  </div>
  </div>
   <% end %>
@@ -63,3 +64,12 @@
 </div>
 </div>
 </div>
+
+<script>
+
+$("#notes").on("click", function() {
+  $('#myModal').modal('show');
+  $("#modal-window").html("<%= escape_javascript(render partial: 'lesson_steps/publish') %>"); 
+});
+
+</script>

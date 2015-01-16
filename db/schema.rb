@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150109212126) do
+ActiveRecord::Schema.define(:version => 20150116082316) do
 
   create_table "admin_notes", :force => true do |t|
     t.string   "resource_id",     :null => false
@@ -288,6 +288,13 @@ ActiveRecord::Schema.define(:version => 20150109212126) do
     t.boolean "duplicate",   :default => false
   end
 
+  create_table "mailers", :force => true do |t|
+    t.integer  "select_id"
+    t.string   "email"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "math_subsubjects", :force => true do |t|
     t.string "name"
   end
@@ -502,6 +509,7 @@ ActiveRecord::Schema.define(:version => 20150109212126) do
     t.text     "body"
     t.boolean  "drive",                   :default => false
     t.text     "big_idea"
+    t.string   "publish_id"
   end
 
   create_table "shorts", :force => true do |t|

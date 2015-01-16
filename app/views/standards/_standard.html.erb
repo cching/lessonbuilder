@@ -1,7 +1,10 @@
 <div id="standard">
 <div id="standard-options">
+
 <% if current_user.admin? %>
 <div align="right"><input type="button" onclick="printDiv('printableArea')" value="Print this Standard" class="btn btn-primary" />
+
+
 <%= link_to "Edit", edit_standard_path(@standard), class: "btn btn-default", remote: :true %></div>
 <% end %></div>
 
@@ -21,6 +24,7 @@
     <% end %>
     </li>
     <% end %>
+
       <li class="active">
       <h4><%= @standard.id %></h4>
       <a href="#"><%= @standard.content %></a>
@@ -71,7 +75,7 @@
   <% end %>
 
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-xs-6">
   	<div class="panel panel-default">
   <div class="panel-heading">
     <div class="panel-title"><h4 align="center">Question Stems</h4></div>
@@ -87,7 +91,7 @@
   </div>
 
 
-  <div class="col-md-6">
+  <div class="col-xs-6">
       <div class="panel panel-default">
   <div class="panel-heading">
     <div class="panel-title"><h4 align="center">Vocabulary</h4></div>

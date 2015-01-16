@@ -8,8 +8,9 @@ class SelectsController < ApplicationController
   def show
     @select = Select.find(params[:id])
     @standards = @select.standards.all
+    @mailer = Mailer.new
     @url_edit = 'https://docs.google.com/document/d/' + @select.resource_id + '/edit?usp=sharing&output=embed'
-    @url = 'https://docs.google.com/document/d/' + @select.resource_id 
+    @url = 'https://docs.google.com/document/d/' + @select.publish_id + '/pub?embedded=true'
 
     if SelectUser.where(:user_id => current_user.id).where(:check => false).where(:select_id => @select.id).any?
       SelectUser.where(:user_id => current_user.id).where(:check => false).where(:select_id => @select.id).each do |invite|
@@ -29,6 +30,34 @@ class SelectsController < ApplicationController
     end
   end
 
+  def fork
+    @select = Select.find(params[:id])
+
+    @fork = @select.dup
+    @fork.user_id = current_user.id
+
+    @fork.xquestions = @select.xquestions
+    @fork.select_questions = @select.select_questions
+    @fork.xvocabs = @select.xvocabs
+    @fork.select_vocabs = @select.select_vocabs
+    @fork.xlinks = @select.xlinks
+    @fork.select_links = @select.select_links
+    @fork.xaquestions = @select.xaquestions
+    @fork.select_aquestions = @select.select_aquestions
+    @fork.sources = @select.sources
+    @fork.grades = @select.grades
+    @fork.books = @select.books
+    @fork.subjects = @select.subjects
+    @fork.subsubjects = @select.subsubjects
+    @fork.standards = @select.standards
+    @fork.save
+    require './lib/fork_drive'
+    file = Fork::Drive.new(@select, @fork)
+    file.fork
+
+    redirect_to lesson_step_path(@fork, 'instructional_plan'.to_param)
+    end
+
   def post_script
     @select = Select.find(params[:id])
 
@@ -37,6 +66,16 @@ class SelectsController < ApplicationController
     file.post
   
     render :nothing => true
+  end
+
+  def publish
+    @select = Select.find(params[:id])
+
+    require './lib/publish_drive'
+    file = Publish::Drive.new(@select)
+    file.update
+  
+    redirect_to select_path(@select)
   end
 
   def new
@@ -48,7 +87,7 @@ class SelectsController < ApplicationController
     @select = Select.find(params[:id])
      @select.update_attributes(params[:select])
      respond_to do |format|
-        format.js {render layout: false}
+        format.html {redirect_to select_path(@select)}
       end
 
     

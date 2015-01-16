@@ -1,6 +1,5 @@
 Commoncore::Application.routes.draw do
   resources :rcategories
-
   resources :assessments
 
   resources :attachments do
@@ -123,6 +122,7 @@ Commoncore::Application.routes.draw do
   root to: 'static_pages#home'
   
   resources :selects do
+    resources :mailers
     resources :assessments
     resources :cquestions
     resources :cskills
@@ -143,6 +143,8 @@ Commoncore::Application.routes.draw do
       get 'post_vocabs'
       put 'post_vs'
       get 'post_script'
+      get 'publish'
+      get 'fork'
     end
   end
     resources :users do

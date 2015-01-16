@@ -63,7 +63,11 @@ Commoncore::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
+  ActionMailer::Base.delivery_method = :sendmail
 
+  ActionMailer::Base.sendmail_settings = { :address => "smtp.gmail.com",
+     :port => "587", :domain => "gmail.com", :user_name => "shoobtech@gmail.com", 
+    :password => "shoob2420", :authentication => "plain", :enable_starttls_auto => true }
 
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)

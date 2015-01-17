@@ -21,12 +21,6 @@ class Select < ActiveRecord::Base
   has_many :select_questions, :dependent => :destroy
   has_many :xquestions
   
-  has_many :select_skills, :dependent => :destroy
-  has_many :xskills
-  
-  has_many :select_strategies, :dependent => :destroy
-  has_many :xstrategies
-  
   has_many :select_vocabs, :dependent => :destroy
   has_many :xvocabs
 

@@ -58,8 +58,6 @@ class Select < ActiveRecord::Base
 
   accepts_nested_attributes_for :select_questions, allow_destroy: true
   accepts_nested_attributes_for :xquestions
-  accepts_nested_attributes_for :xskills
-  accepts_nested_attributes_for :xstrategies
   accepts_nested_attributes_for :xvocabs
   accepts_nested_attributes_for :xlinks
   has_many :select_users, :dependent => :destroy

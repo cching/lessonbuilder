@@ -23,46 +23,29 @@
 <hr>
 
 
-
-<table class="table-hover">
-	<thead>
-
-		<th>
-			<%= sort_link @search, :name, "Lesson Name" %>
-		</th>
-		        <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-
-
-		<th>
-			<%= sort_link @search, :date, "Date" %>
-		</th>
-		        <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-		<th>
-			<%= sort_link @search, :user_id, "Created By" %>
-		</th>
-	</thead>
-	
-	<tbody>
-		<tr>
-		<% @selects6.where(:private => FALSE).each do |select| %>
-
-			<td>
-
-
-				<% if current_user.try(:admin) %>
+<% @selects6.where(:private => FALSE).each_slice(6) do |slice| %>
+  <div class="gallery">
+    <% slice.each do |select| %>
+    <table>
+    <tr>
+    <td>
+    
+    <%= link_to select.try(:name), select_path(select) %><br />
+    Created by <%= link_to select.user.name, user_path(select.user) %>
+    </td>
+    </tr>
+    <tr>
+    <td>
+    <% @url = "https://docs.google.com/file/d/" + "#{select.publish_id}" + "/preview" %>
+<iframe width='200' height='300' frameborder='0' src='<%= @url %>' sandbox="allow-same-origin allow-scripts allow-popups"></iframe>
+<% if current_user.try(:admin) %><br />
 				<div id="delete_<%= select.id %>">
 				<%= link_to "Delete", select_path(select), :method => :delete, class: "btn btn-danger", :remote => true, data: { confirm: 'You sure?' } %>
-				</div></td><td>
+				</div>
 				<% end %>
-				<%= link_to select.try(:name), select, class: "btn btn-link" %></td>
-				
-
-			 <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-
-			<td><%= select.date.to_time.strftime('%B %e, %Y') %></td>
-			        <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-			<td><%= link_to select.user.name, select.user, class: "btn btn-link" %></td>
-		</tr>
-	</tbody>
-	<% end %>
+</td>
+</tr>
 </table>
+    <% end %>
+
+<% end %>

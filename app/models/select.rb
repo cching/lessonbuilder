@@ -10,7 +10,7 @@ class Select < ActiveRecord::Base
   has_many :attachments
   do_not_validate_attachment_file_type :attachment
   #Selects is the lesson model but is named 'select' for the ActiveRecord join association
-  attr_accessible :user_id, :standard_ids, :textdependent, :name, :grade_ids, :text_id, :date, :vocabulary, :writing, :conclusion, :objective, :notes, :description, :book, :subject_id, :subsubject_ids, :private, :xquestion_ids, :xvocab_ids, :select_ids, :xstrategy_ids, :xskill_ids, :xvocab_ids, :xlink_ids, :book_id, :cquestions_attributes, :cvocabs_attributes, :lesson_resources_attributes, :cskills_attributes, :cstrategies_attributes, :clinks_attributes, :caquestions_attributes, :source_ids, :aquestion_ids, :headers_attributes, :starts_at, :ends_at, :status, :xquestions_attributes, :xvocabs_attributes, :xlinks_attributes, :xstrategies_attributes, :xskills_attributes, :xaquestions_attributes, :attachment, :subject_ids, :sanitize_notes, :book_ids, :body, :big_idea, :user_ids, :publish_id
+  attr_accessible :user_id, :standard_ids, :textdependent, :name, :grade_ids, :text_id, :date, :vocabulary, :writing, :conclusion, :objective, :notes, :description, :book, :subject_id, :subsubject_ids, :private, :xquestion_ids, :xvocab_ids, :select_ids, :xstrategy_ids, :xskill_ids, :xvocab_ids, :xlink_ids, :book_id, :cvocabs_attributes, :lesson_resources_attributes, :cskills_attributes, :cstrategies_attributes, :clinks_attributes, :caquestions_attributes, :source_ids, :aquestion_ids, :headers_attributes, :starts_at, :ends_at, :status, :xquestions_attributes, :xvocabs_attributes, :xlinks_attributes, :xstrategies_attributes, :xskills_attributes, :xaquestions_attributes, :attachment, :subject_ids, :sanitize_notes, :book_ids, :body, :big_idea, :user_ids, :publish_id
   belongs_to :user
   
   has_many :mailers
@@ -61,18 +61,7 @@ class Select < ActiveRecord::Base
   accepts_nested_attributes_for :lesson_resources, allow_destroy: true
 
 #custom user input fields
-  has_many :cquestions, :dependent => :destroy
-  has_many :cskills, :dependent => :destroy
-  has_many :cvocabs, :dependent => :destroy
-  has_many :cstrategies, :dependent => :destroy
-  has_many :clinks, :dependent => :destroy
-  has_many :caquestions, :dependent => :destroy
-  accepts_nested_attributes_for :cquestions, allow_destroy: true
-  accepts_nested_attributes_for :cvocabs, allow_destroy: true
-  accepts_nested_attributes_for :cskills, allow_destroy: true
-  accepts_nested_attributes_for :cstrategies, allow_destroy: true
-  accepts_nested_attributes_for :clinks, allow_destroy: true
-  accepts_nested_attributes_for :caquestions, allow_destroy: true
+
   accepts_nested_attributes_for :select_questions, allow_destroy: true
   accepts_nested_attributes_for :xquestions
   accepts_nested_attributes_for :xskills

@@ -103,7 +103,12 @@
 
 
   <% end %>
+<% unless @select.books.any? %>
+<script type="text/javascript">
+ 
+$('button[data-loading-text]').addClass('disabled');
 
 
-
+</script>
+<% end %>
 

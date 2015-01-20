@@ -95,3 +95,12 @@ color: #000;
 #content li {
 	font-size: medium;
 }
+
+#resource_gallery ul
+{
+margin: 0;
+padding: 0;
+list-style-type: none;
+}
+
+#resource_gallery ul li { display: inline; }

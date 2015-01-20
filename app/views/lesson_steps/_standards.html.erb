@@ -27,7 +27,6 @@
 			<%= f.association :standards, as: :check_boxes, collection: Standard.where(:subject_id => subject.id, :grade_id => grade.id).order("standard_id ASC"), :label_method => lambda { |standard| "#{standard.id}:  #{standard.content}" }, label: false, input_html: {:data => {:toggle => "checkbox"}}, id: "standards-checkbox" %>    	
 		   	</div>
 
-
 		 </div><br/>
 		   	
 		 <% end %>
@@ -72,7 +71,6 @@
 <%= link_to "Back", previous_wizard_path, :class => "btn btn-info", id: "text-select" %>
 </div>
 <div class="col-md-6" align="right">
-
 		
 			<button type="submit" class="btn btn-info" id="standards" data-loading-text="Saving..">Save and Continue</button>
 			</div>
@@ -83,27 +81,31 @@
 
 <% if @select.drive == false %>
 <script>
-
 $(".btn-info").on("click", function() {
   $('#myModal').modal('show');
   $("#modal-window").html("<%= escape_javascript(render partial: 'lesson_steps/standard_note') %>"); 
 });
-
 </script>
 <% end %>
 
 
-
 <script type='text/javascript'>
-var checkboxes = $("input[type='checkbox']"),
-    submitButt = $("input[type='submit']");
+$('#standards').addClass('disabled');
+$(':checkbox').each(function() {
+    if ($(this).is(':checked') === true) {
+        $('#standards').removeClass('disabled')
+    }
+});
 
-checkboxes.click(function() {
-    submitButt.attr("disabled", !checkboxes.is(":checked"));
+$(":checkbox").change(function() {
+    if($(this).is(':checked')) 
+        $('button[data-loading-text]').removeClass('disabled'); 
+
 });
 
 	$('button[data-loading-text]').click(function () {
     $(this).button('loading');
 });
+
 </script>
 

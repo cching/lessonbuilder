@@ -1,1 +1,5 @@
 $(book_<%= @book.id %>).html('<%= escape_javascript(render(:partial => 'unselect_book', :locals => {:book => @book})) %>')
+
+<% if @select.books.any? == false %>
+$('button[data-loading-text]').addClass('disabled')
+<% end %>

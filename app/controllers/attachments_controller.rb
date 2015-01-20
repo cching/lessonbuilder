@@ -86,7 +86,9 @@ class AttachmentsController < ApplicationController
 
         file = Post::Drive.new(@attachment, @resources, @select)
         file.update
-    redirect_to :back
+    respond_to do |format|
+      format.js
+    end
   end
 
   # DELETE /aquestions/1

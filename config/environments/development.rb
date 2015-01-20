@@ -35,9 +35,4 @@ Commoncore::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = false
 
-ActionMailer::Base.delivery_method = :sendmail
-
-ActionMailer::Base.sendmail_settings = { :address => "smtp.gmail.com",
-     :port => "587", :domain => "gmail.com", :user_name => "shoobtech@gmail.com", 
-    :password => "shoob2420", :authentication => "plain", :enable_starttls_auto => true }
 end

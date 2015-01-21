@@ -1,3 +1,4 @@
+ <%= simple_form_for(@select, remote: true, class: "inputs") do |f| %>
 <div data-update-url="<%= sort_xlinks_url %>" class="row" id="resources">
 
 <% Xlink.where(:select_id => @select.id).where(:standard_id => standard.id).order("position").each do |xlink| %>
@@ -17,3 +18,4 @@
 <% end %>
 <% end %>
 </div>
+<% end %>

@@ -60,45 +60,7 @@
     
   </div>
   <div class="col-md-6">
-      <div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Skills</h3>
-  </div>
-  <div class="panel-body">
-    
-
-  <%= f.fields_for :skills do |builder| %>
-  <%= render 'skill_fields', f: builder %>
-
-  <% end %>
-  <%= link_to_add_fields "Add Skills", f, :skills %>
-  </div>
-</div>
-
-
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-6">
-    <div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Strategies</h3>
-  </div>
-  <div class="panel-body">
-    
-
-  <%= f.fields_for :strategies do |builder| %>
-  <%= render 'strategy_fields', f: builder %>
-
-  <% end %>
-  <%= link_to_add_fields "Add Strategies", f, :strategies %>
-  </div>
-</div>
-    
-  </div>
-  <div class="col-md-6">
-      <div class="panel panel-default">
+     <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">Vocabulary</h3>
   </div>
@@ -118,9 +80,11 @@
 </div>
 
 
+
+
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Resources</h3>
+    <h3 class="panel-title">Links</h3>
   </div>
   <div class="panel-body">
     
@@ -130,7 +94,7 @@
   <%= render 'link_fields', f: builder %>
 
   <% end %>
-  <%= link_to_add_fields "Add Resources", f, :links %>
+  <%= link_to_add_fields "Add Link", f, :links %>
   </div>
 </div>
 

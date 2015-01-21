@@ -1,4 +1,7 @@
-<div data-update-url="<%= sort_xquestions_url %>" class="row" id="resources">
+ <div data-update-url="<%= sort_xquestions_url %>" class="row" id="resources">
+
+ <%= simple_form_for(@select, remote: true, class: "inputs") do |f| %>
+
 
 <% Xquestion.where(:select_id => @select.id).where(:standard_id => standard.id).order("position").each do |xquestion| %>
 <%= content_tag_for :div, xquestion do %>
@@ -12,8 +15,18 @@
       <% end %>
 </div>
 <%= f.simple_fields_for :xquestions, xquestion do |builder| %>
-  <%= render 'xquestion_fields', f: builder %>
+  <fieldset>
+<div class="form-inputs col-md-10">
+  <%= builder.input :content, label: false, as: :text, :input_html => {:rows => 2} %>
+
+</div>
+</fieldset>
+
+
 <% end %>
 <% end %>
 <% end %>
+<% end %>
+
+    
 </div>

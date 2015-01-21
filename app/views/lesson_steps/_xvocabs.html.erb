@@ -1,3 +1,5 @@
+ <%= simple_form_for(@select, remote: true, class: "inputs") do |f| %>
+
 <div data-update-url="<%= sort_xvocabs_url %>" class="row" id="resources">
 
 <% Xvocab.where(:select_id => @select.id).where(:standard_id => standard.id).order("position").each do |xvocab| %>
@@ -17,3 +19,4 @@
 <% end %>
 <% end %>
 </div>
+<% end %>

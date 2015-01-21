@@ -10,7 +10,6 @@
 
 <div id="standard-attributes" class="animated fadeInUp">
 <div class="panel-group" id="accordion">
- <%= simple_form_for(@select, remote: true, class: "inputs") do |f| %>
 
 
     <div id="content">
@@ -20,7 +19,7 @@
 <div align="center"><b>Resources</b></div>  
         <div class="dragitems">
   
-          <%= render 'list_items', f: f %>
+          <%= render 'list_items' %>
         </div>
         
     </div>
@@ -37,7 +36,6 @@
         </div>
         <div class="row">
         <div class="col-md-2">Teaching on:
-        <%= f.text_field :date, id: "selects_date", type: "text", class: "form-control" %>
         </div>
         <div class="col-md-8">
         </div>
@@ -47,7 +45,6 @@
 
  </div>
  </div>
-  <% end %>
 </div>
 
     </div>

@@ -10,8 +10,9 @@ class SelectsController < ApplicationController
     @standards = @select.standards.all
     @mailer = Mailer.new
     @url_edit = 'https://docs.google.com/document/d/' + @select.resource_id + '/edit?usp=sharing&output=embed'
-    @url = 'https://docs.google.com/document/d/' + @select.publish_id + '/pub?embedded=true'
-
+    if @select.publish_id != nil
+    @url = 'https://docs.google.com/document/d/' + @select.try(:publish_id) + '/pub?embedded=true'
+    end
     if SelectUser.where(:user_id => current_user.id).where(:check => false).where(:select_id => @select.id).any?
       SelectUser.where(:user_id => current_user.id).where(:check => false).where(:select_id => @select.id).each do |invite|
         invite.check = true

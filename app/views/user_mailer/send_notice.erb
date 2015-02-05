@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Order receipt for <%= @name %></h1>
+    Name: <%= @name %><br />
+    School: <%= @form.school %><br />
+    District: <%= @form.district %><br />
+    Notes: <%= @notes %>
+
+    <table>
+    	<tr>
+    		<td>
+    		Item
+    		</td>
+    		<td>
+    		Quantity
+    		</td>
+    	<% @form.items.each do |item| %>
+    	<tr>
+    		<td>
+    		<%= item.id %>: <%= item.name %>
+    		</td>
+    		<td>
+    		<%= item.item_forms.where(:form_id => @form.id).last.quantity %> x <%= number_to_currency(item.price, :unit => "$") %>
+    		</td>
+    	</tr>
+    	<% end %>
+    	<tr>
+    	<td></td>
+    	<td><b>Total: $<%= @total %>
+  </body>
+</html>

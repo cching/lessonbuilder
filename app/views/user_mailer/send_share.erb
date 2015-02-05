@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Your order receipt</h1>
+    Notes: <%= @notes %>
+    <table>
+    	<tr>
+    		<td>
+    		Item
+    		</td>
+    		<td>
+    		Quantity
+    		</td>
+    	<% @form.items.each do |item| %>
+    	<tr>
+    		<td>
+    		<%= item.name %>
+    		</td>
+    		<td>
+    		<%= item.item_forms.where(:form_id => @form.id).last.quantity %> x <%= number_to_currency(item.price, :unit => "$") %>
+    		</td>
+    	</tr>
+    	<% end %>
+    	<tr>
+    	<td></td>
+    	<td><b>Total: $<%= @total %>
+  </body>
+</html>

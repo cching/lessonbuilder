@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150116082316) do
+ActiveRecord::Schema.define(:version => 20150205011023) do
 
   create_table "admin_notes", :force => true do |t|
     t.string   "resource_id",     :null => false
@@ -219,6 +219,16 @@ ActiveRecord::Schema.define(:version => 20150116082316) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "forms", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "school"
+    t.string   "district"
+    t.text     "notes"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "grades", :force => true do |t|
     t.string "number"
     t.string "name"
@@ -247,6 +257,20 @@ ActiveRecord::Schema.define(:version => 20150116082316) do
     t.boolean  "accepted"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "item_forms", :force => true do |t|
+    t.integer "item_id"
+    t.integer "form_id"
+    t.integer "quantity", :default => 0
+  end
+
+  create_table "items", :force => true do |t|
+    t.string  "name"
+    t.text    "notes"
+    t.decimal "price",    :precision => 8, :scale => 2
+    t.string  "item_id"
+    t.boolean "per_page"
   end
 
   create_table "lesson_resources", :force => true do |t|

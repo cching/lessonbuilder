@@ -1,0 +1,108 @@
+<div class="header"><%= image_tag('logo.jpg') %></div>
+
+<%= simple_form_for(@form, url: form_path, :html => { :class => 'form-horizontal' }) do |f| %>
+  <% if @form.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@form.errors.count, "error") %> prohibited this form from being saved:</h2>
+
+      <ul>
+      <% @form.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-inputs">
+
+  <div class="field container">
+    <%= f.input :name %>
+    <div class="row">
+      <div class="col-sm-6">
+        <%= f.input :school %>
+      </div>
+      <div class="col-sm-6">
+        <%= f.input :district %>
+      </div>
+    </div>
+    <%= f.input :email %>
+    <%= f.input :notes, :input_html => { :rows => 2} %>
+  </div>
+
+<div class="gallery">
+
+<table class="table table-striped">
+<tr>
+  <td>
+    Item #
+  </td>
+  <td>
+    Description
+  </td>
+  <td>
+    Price
+  </td>
+  <td>
+    Quantiy
+  </td>
+  <td>
+    Total
+  </td>
+</tr>
+<% @form.items.order(:item_id).each_slice(2) do |slice| %>
+<% slice.each do |item| %>
+<tr>
+    
+    <td>
+      <%= item.item_id %>
+    </td>
+    <td>
+      <%= item.name %>
+    </td>
+    <td>
+      <div class=<%= 'free' if item.price == 0%>><%= number_to_currency(item.price, :unit => "$") %> <%= 'per page' if item.per_page? %></div>
+    </td>
+    <td align="center"> 
+      <%= f.simple_fields_for(:item_forms, item.item_forms.where(:form_id => @form.id).last) do |p| %>
+        <div class="quantity_input" align="left"><%= p.input :quantity, input_html: { min: '0', step: 'any', :maxlength => 1, :size => 4, :onBlur => 'updateTotalFunction(this.id, this.value, this.dataset.price)', :id => "#{item.id}", data: { :price => "#{item.price}"} }, label: false %></div>
+      <% end %>
+    </td>
+    <td>
+    <div id="item_<%= item.id %>" class="item"  onload="loadFunction(this.dataset.id, this.dataset.price, this.dataset.quantity)" data-id="#{item.id}" data-price="#{item.price}" data-quantity="#{item.item_forms.where(:form_id => @form.id).last.quantity}">
+    $0.00
+      </div>
+    </td>
+</tr>
+    <% end %>
+
+<% end %>
+</table>
+</div>
+</div>
+<br />
+  <div class="actions row">
+  <div class="col-sm-9"></div>
+  <div class="col-sm-1">
+  <a href="http://www.shoobphoto.com" class="btn btn-danger">Cancel</a></div>
+  <div class="col-sm-2">
+    <%= f.submit "Place Order", class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
+
+<script>
+
+
+
+function updateTotalFunction(id, value, price) {
+var str2 = "item_";
+var res = str2.concat(id);
+
+var tot = price * value;
+tot = tot.toFixed(2) 
+
+document.getElementById(res).innerHTML = '$' + tot;
+
+}
+</script>
+
+

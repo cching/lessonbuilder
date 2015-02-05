@@ -3,7 +3,6 @@ class LessonStepsController < ApplicationController
   steps :setup, :text, :standards, :instructional_plan, :instructional_norms
 
   def show
-
     @select = Select.find(params[:select_id])
     @grades = @select.grades.all
     @reading_subject = @select.subjects

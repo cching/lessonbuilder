@@ -119,6 +119,8 @@ lessonname.jpg: lessonname-e4e06ffd59597e8d680a856dfb328cca.jpg
 lessonname/index.jpg: lessonname-e4e06ffd59597e8d680a856dfb328cca.jpg
 lessons.jpg: lessons-1417c9ea3bdccbcf9119b34e26a5a9c3.jpg
 lessons/index.jpg: lessons-1417c9ea3bdccbcf9119b34e26a5a9c3.jpg
+logo.jpg: logo-1b42610ca39d64350aa9739aa2f411e0.jpg
+logo/index.jpg: logo-1b42610ca39d64350aa9739aa2f411e0.jpg
 main.jpg: main-6fa46636291857b55e05bc8a2adf0a39.jpg
 main/index.jpg: main-6fa46636291857b55e05bc8a2adf0a39.jpg
 newhome.jpg: newhome-183a842e86567491eadd6ee006875caf.jpg
@@ -137,10 +139,10 @@ standard.jpg: standard-72f3d4e38475c8f211bd907aef154bcd.jpg
 standard/index.jpg: standard-72f3d4e38475c8f211bd907aef154bcd.jpg
 standards.jpg: standards-72f3d4e38475c8f211bd907aef154bcd.jpg
 standards/index.jpg: standards-72f3d4e38475c8f211bd907aef154bcd.jpg
-application.js: application-0174c98e53af108d046eb4fbf6c57db3.js
-application/index.js: application-0174c98e53af108d046eb4fbf6c57db3.js
-application.css: application-77267a95798a0a01bec1a8cbd8bda5a7.css
-application/index.css: application-77267a95798a0a01bec1a8cbd8bda5a7.css
+application.js: application-bfa2b99a19807f954688448a9e9fbb0d.js
+application/index.js: application-bfa2b99a19807f954688448a9e9fbb0d.js
+application.css: application-aee251f48dae785506f21bd866af76b0.css
+application/index.css: application-aee251f48dae785506f21bd866af76b0.css
 jquery-ui/animated-overlay.gif: jquery-ui/animated-overlay-e0c9fc4ab5cae26e1d14c62eabb0a289.gif
 jquery-ui/animated-overlay/index.gif: jquery-ui/animated-overlay-e0c9fc4ab5cae26e1d14c62eabb0a289.gif
 jquery-ui/ui-bg_flat_0_aaaaaa_40x100.png: jquery-ui/ui-bg_flat_0_aaaaaa_40x100-6b0858a07f9b26b1fbf609593cf427f4.png

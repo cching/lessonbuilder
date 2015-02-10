@@ -18,7 +18,7 @@ class UserMailer < ActionMailer::Base
     @name = @form.name
     @notes = @form.notes
     @total = total
-    @sender = 'awards@shoobphoto.com'
+    @sender = 'projects@shoobphoto.com'
     mail( :to => @sender,
     :subject => "Order receipt" )
   end

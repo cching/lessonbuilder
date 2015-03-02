@@ -64,9 +64,9 @@ class SelectsController < ApplicationController
 
     require './lib/post_script'
     file = Post::Script.new(@select)
+
     file.post
-  
-    render :nothing => true
+    redirect_to select_path(@select)
   end
 
   def publish

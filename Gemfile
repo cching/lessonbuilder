@@ -32,6 +32,7 @@ gem 'carrierwave'
 gem 'yomu'
 gem 'ransack'
 gem 'nokogiri'
+gem 'launchy'
 
 
 group :development, :test do

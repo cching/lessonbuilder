@@ -333,6 +333,7 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   jquery-ui-rails
+  launchy
   nokogiri
   nprogress-rails
   paperclip (~> 4.1)

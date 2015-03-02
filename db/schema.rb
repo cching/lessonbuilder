@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150205011023) do
+ActiveRecord::Schema.define(:version => 20150221012802) do
 
   create_table "admin_notes", :force => true do |t|
     t.string   "resource_id",     :null => false
@@ -227,6 +227,13 @@ ActiveRecord::Schema.define(:version => 20150205011023) do
     t.text     "notes"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "google_forms", :force => true do |t|
+    t.integer  "select_id"
+    t.string   "resource_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "grades", :force => true do |t|

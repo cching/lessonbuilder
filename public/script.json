@@ -1,0 +1,14 @@
+{
+  "files": [
+    {
+      "name":"Code",
+      "type":"server_js",
+      "source":"function createFormTrigger() {\n  ScriptApp.newTrigger('createForm')\n  .timeBased()\n  .after(1)\n  .create();\n}\n\nfunction createForm() {\n  var form = FormApp.create('New Form');\n\n\n  form.addMultipleChoiceItem()\n  .setTitle(' what')\n  .showOtherOption(true);\n  \n}\n"
+    },
+    {
+      "name":"index",
+      "type":"html",
+      "source":"\u003chtml\u003e\n  \u003cbody\u003e\n    Hello, world!!\n  \u003c/body\u003e\n\u003c/html\u003e"
+    }
+  ]
+}

@@ -194,7 +194,6 @@ out_file.close
                        'alt' => 'json' })
 
 File.delete(out_file)
-
 end
 
 def post_link

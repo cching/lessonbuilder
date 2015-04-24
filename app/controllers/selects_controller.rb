@@ -38,13 +38,9 @@ class SelectsController < ApplicationController
     @fork.user_id = current_user.id
 
     @fork.xquestions = @select.xquestions
-    @fork.select_questions = @select.select_questions
     @fork.xvocabs = @select.xvocabs
-    @fork.select_vocabs = @select.select_vocabs
     @fork.xlinks = @select.xlinks
-    @fork.select_links = @select.select_links
     @fork.xaquestions = @select.xaquestions
-    @fork.select_aquestions = @select.select_aquestions
     @fork.sources = @select.sources
     @fork.grades = @select.grades
     @fork.books = @select.books

@@ -36,21 +36,12 @@ class SelectsController < ApplicationController
 
     @fork = @select.dup
     @fork.user_id = current_user.id
-
-    @fork.xquestions = @select.xquestions
-    @fork.xvocabs = @select.xvocabs
-    @fork.xlinks = @select.xlinks
-    @fork.xaquestions = @select.xaquestions
-    @fork.sources = @select.sources
-    @fork.grades = @select.grades
-    @fork.books = @select.books
-    @fork.subjects = @select.subjects
-    @fork.subsubjects = @select.subsubjects
-    @fork.standards = @select.standards
     @fork.save
+
     require './lib/fork_drive'
     file = Fork::Drive.new(@select, @fork)
     file.fork
+    file.copy
 
     redirect_to lesson_step_path(@fork, 'instructional_plan'.to_param)
     end

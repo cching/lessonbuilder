@@ -12,6 +12,7 @@ class Drive
 def initialize(var, var2)
   @select = var
   @fork = var2
+
 end
 
 def fork
@@ -85,6 +86,26 @@ permission = client.execute(:api_method => drive.permissions.insert,
               )
 File.delete(out_file)
 
+end
+
+def copy
+
+      @select.xquestions.each do |xquestion|
+      x = xquestion.dup
+      x.select_id = @fork.id
+      puts "#{x.id}@@@@@@@@@@@@@@@@"
+      x.save
+    end
+    @fork.xvocabs = @select.xvocabs
+    @fork.xlinks = @select.xlinks
+    @fork.xaquestions = @select.xaquestions
+    @fork.sources = @select.sources
+    @fork.grades = @select.grades
+    @fork.books = @select.books
+    @fork.subjects = @select.subjects
+    @fork.subsubjects = @select.subsubjects
+    @fork.standards = @select.standards
+    @fork.save
 end
 end
 end

@@ -125,6 +125,7 @@ Commoncore::Application.routes.draw do
   root to: 'static_pages#home'
   
   resources :selects do
+    resources :google_forms, :on => :member
     resources :mailers
     resources :assessments
     resources :cquestions

@@ -66,7 +66,7 @@ class SelectsController < ApplicationController
     file = Post::Script.new(@select)
 
     file.post
-    redirect_to select_path(@select)
+    redirect_to select_google_forms_path(@select, @gform)
   end
 
   def publish

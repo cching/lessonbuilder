@@ -1,0 +1,21 @@
+<h1>Listing google_forms</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @google_forms.each do |google_form| %>
+  <tr>
+    <td><%= link_to 'Show', google_form %></td>
+    <td><%= link_to 'Edit', edit_google_form_path(google_form) %></td>
+    <td><%= link_to 'Destroy', google_form, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Google form', new_google_form_path %>

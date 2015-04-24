@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150221012802) do
+ActiveRecord::Schema.define(:version => 20150421055419) do
 
   create_table "admin_notes", :force => true do |t|
     t.string   "resource_id",     :null => false
@@ -232,8 +232,9 @@ ActiveRecord::Schema.define(:version => 20150221012802) do
   create_table "google_forms", :force => true do |t|
     t.integer  "select_id"
     t.string   "resource_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.string   "spreadsheet_id"
   end
 
   create_table "grades", :force => true do |t|
@@ -664,6 +665,13 @@ ActiveRecord::Schema.define(:version => 20150221012802) do
     t.string  "content_spanish"
     t.integer "user_id",         :default => 0
     t.boolean "duplicate",       :default => false
+  end
+
+  create_table "webapps", :force => true do |t|
+    t.string   "url"
+    t.string   "query_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "xaquestions", :force => true do |t|

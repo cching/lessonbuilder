@@ -27,12 +27,22 @@
 <%= f.submit  "Email lesson", class: "btn btn-info" %>
 <% end %><br/>
 
+<% unless @select.user_id == current_user.id %>
 <%= link_to "Save this lesson to my account", fork_select_path(@select), class: "btn btn-danger", id: "fork" %>
-
+<% end %>
+<br />
+<br />
+<% if @select.user_id == current_user.id %>
+<a href="#" id="assessment" class="btn btn-primary">Create Assessment</a>
+<% end %>
 </div>
 </div>
-<%= link_to "Create Assessment", post_script_select_path(@select) %>
 <script>
+
+$("#assessment").on("click", function() {
+  $('#myModal').modal('show');
+  $("#modal-window").html("<%= escape_javascript(render partial: 'lesson_steps/assessment') %>"); 
+});
 
 $("#fork").on("click", function() {
   $('#myModal').modal('show');
